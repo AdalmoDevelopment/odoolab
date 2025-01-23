@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Código del diseño del informe Condiciones Generales -->
+    <template id="report_document_adalmo_structure" name="Pnt General Conditions">
+        <t t-call="web.basic_layout">
+        <t t-if="not o" t-set="o" t-value="doc"/>
+
+        <t t-if="not company">
+            <t t-if="company_id">
+                <t t-set="company" t-value="company_id"/>
+            </t>
+            <t t-elif="o and 'company_id' in o and o.company_id.sudo()">
+                <t t-set="company" t-value="o.company_id.sudo()"/>
+            </t>
+            <t t-else="else">
+                <t t-set="company" t-value="res_company"/>
+            </t>
+        </t>
+        <!--Header-->
+        <div class="header">
+            <div class="row">
+                <div class="col-5">
+                    <img t-if="company.pnt_logo_general_conditions" t-att-src="image_data_uri(company.pnt_logo_general_conditions)"
+                         alt="pnt_logo_general_conditions" style="max-width: 200px;"/>
+                </div>
+                <div class="col-7">
+                    <h4 t-field="company.report_header"/>
+                    <div>
+                        <span t-if="company.name" t-field="company.name"></span> |
+                        <span t-if="company.street" t-field="company.street"></span> |
+                        <span t-if="company.zip_id" t-field="company.zip_id"></span>
+                        <span t-if="company.phone" t-field="company.phone"></span> |
+                        <span t-if="company.email" t-field="company.email"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Page-->
+        <div class="page" style="text-align: justify;"><br/>
+            <strong><h2 style="text-align:center; text-decoration: underline;">CONDICIONES GENERALES</h2></strong>
+            <div class="row">
+                <div class="col-1" style="text-align: center;">
+                    <img t-if="company.pnt_inscription_general_conditions"
+                     t-att-src="image_data_uri(company.pnt_inscription_general_conditions)"
+                     alt="pnt_inscription_general_conditions" style="page-break-inside: avoid; margin-top:275px;"/>
+                </div>
+                <div class="col-11">
+                    <p>La gestión de los residuos se regula en base a normativa específica: Ley 7/2022, de 8 de abril,
+                    de residuos y suelos contaminados para una economía circular, y el Real Decreto 553/2020 de traslado de residuos.</p>
+
+                    <p>De la normativa anteriormente citada se desprenden una serie de OBLIGACIONES que como PRODUCTOR de residuos debe cumplir: </p>
+                    <p>
+                        <ul>
+                            <li><strong>Alta en el Registro de productor de residuos:</strong> Nos debe aportar el código NIMA o si no lo tiene,
+                                realizar el trámite de solicitud de alta de productor de residuos ante la Conselleria de Medi Ambient (Servei de Residus),
+                                si genera residuos peligrosos o genera más de 1000 toneladas/año de residuos no peligrosos.</li>
+                            <li><strong>Contrato de Tratamiento (CT):</strong> Debe devolvernos firmado el Contrato de tratamiento de cada residuo que le enviemos.
+                                Es el acuerdo de aceptación por parte del gestor de los residuos generados por el productor, que establece las especificaciones,
+                                las condiciones del traslado y las obligaciones de las partes cuando se presenten incidencias. Se emite un único contrato por residuo,
+                                que permanecerá en vigor hasta que surjan cambios significativos.</li>
+                            <li><strong>Documento de Identificación (DI):</strong> En cada retirada el productor entregará al transportista un DI con el contenido del Anexo I del RD 553/2020.
+                                Es el documento de control de la transferencia del residuo entre productor y gestor, que identifica y acompaña al residuo durante su traslado.
+                                En caso contrario puede autorizarnos como Agente de residuos para la emisión de la documentación de traslado.</li>
+                            <li><strong>No mezclar residuos:</strong> <span style="text-decoration: underline;">Separar los residuos que genere</span> en función de las categorías acordadas con Adalmo a través de los contratos de tratamiento,
+                                sirviéndose para ello de los depósitos que le sean facilitados.</li>
+                            <li>La <strong>duración máxima de almacenamiento</strong> de residuos peligrosos es de 6 meses.
+                                En el caso de residuos no peligrosos la duración máxima será de 1 año cuando se destinen a eliminación,
+                                y dos años cuando se destinen a valorización.</li>
+                            <li>Los residuos peligrosos deberán estar <strong>etiquetados</strong> etiquetados de forma clara
+                                y visible incluyendo el código LER, peligrosidad, datos del Productor y fecha de inicio de depósito.</li>
+                        </ul>
+                    </p>
+                    <p>Se pactan por las partes los siguientes aspectos que regirán en la gestión de los residuos generados:</p>
+                    <ul>
+                        <li><span style="text-decoration: underline;">Solicitar servicio de retirada al Dpto. de Logística</span> mediante el correo electrónico <strong><span t-field="company.pnt_email_logistics_general_conditions" style="color: blue; text-decoration: underline;"/></strong> o teléfono <span t-field="company.pnt_phone_logistics_general_conditions"/>, con un mínimo de diez días de antelación, <span style="text-decoration: underline;">indicando el tipo de residuo y el número de recipientes</span> (bidones, big bag’s, cubetos, contenedores, etc.). Los big bag’s o sacas deberán ir sobre palet.</li>
+                        <li><span style="text-decoration: underline;">Colaborar con el gestor:</span> informar a su personal para que separe correctamente los residuos y no se mezclen; identificar los residuos con las etiquetas facilitadas; informar del horario de su empresa para evitar desplazamientos no productivos, etc.</li>
+                        <li>En caso de que el residuo retirado sea distinto al descrito o no esté recogido en el presupuesto, se facturará a precio de tarifa de Adalmo.</li>
+                        <li>Si el residuo retirado no se encuentra en las <span style="text-decoration: underline;">condiciones pactadas</span> se cobrará un plus de manipulación en función de las horas invertidas (a razón de 50 eur/hora) y la peligrosidad del residuo. Si finalmente dicho residuo no reuniera las condiciones para ser asumido, se procederá a su devolución al productor, cobrándose los servicios realizados.</li>
+                        <li>Los precios ofertados ya incluyen los importes abonados a Adalmo por los sistemas de responsabilidad ampliada del productor (SRAP).</li>
+                        <li>La <span style="text-decoration: underline;">facturación</span> de residuos a granel será por <span style="text-decoration: underline;">Tonelada bruta retirada</span>, incluyendo los acondicionamientos de residuo (bidones, embalajes, palets y cualquier otro acondicionamiento).</li>
+                        <li>La <span style="text-decoration: underline;">forma de pago</span> deberá ser por <span t-field="o.pnt_customer_payment_mode_id.note"></span>, siendo la fecha de vencimiento como máximo  <span t-field="o.pnt_customer_payment_term_id.name"></span> a fecha de factura (según la Ley 15/2010 de 5 de julio, de modificación de la Ley 3/2004 de 29 de diciembre por la que se establecen medidas de lucha contra la morosidad en las operaciones comerciales). En el caso que no lo especifiquen se entenderá que el vencimiento es de 45 días, si existe la condición de pago por adelanto, será según el importe acordado previo a la realización de los trabajos. En caso de no cumplirse con los plazos de pago se podrá aplicar el tipo de interés señalado en la citada Ley 3/2004 sin necesidad de intimación previa.</li>
+                        <li>La relación contractual pactada a través de estas condiciones se establece por un período inicial de  <span style="text-decoration: underline;"> dos años</span>, desde la fecha expuesta en la primera hoja del presupuesto, que se renovará automáticamente por períodos bianuales siempre y cuando ninguna de las dos partes se pronuncie en sentido contrario mediante comunicación fehaciente y escrita notificada con una antelación mínima de 3 meses a la respectiva fecha de vencimiento.</li>
+                        <li>Las tarifas aplicables a la gestión de los residuos serán las vigentes en cada momento en la empresa Adalmo SL para cada tipo de residuo y/o gestión. En todo caso, dichos precios pactados podrán ser modificados anualmente, sin previo aviso, según el <span style="text-decoration: underline;">incremento del IPC</span> (Índice de Precios de Consumo).</li>
+                        <li>Para cualquier divergencia derivada de este contrato las partes se someten expresamente a los Juzgados y Tribunales de Palma de Mallorca.</li>
+                    </ul>
+
+                    <p>Agradecemos la confianza depositada en nosotros y quedamos a su disposición para cualquier consulta o aclaración de la presente.</p>
+                </div>
+            </div>
+            <br/><br/>
+            <div class="row" style="page-break-inside: avoid;">
+                <div class="col-3">
+                    <img t-if="company.pnt_scale_general_conditions"
+                     t-att-src="image_data_uri(company.pnt_scale_general_conditions)"
+                     alt="pnt_scale_general_conditions" style="max-width: 200px;"/>
+                </div>
+                <div class="col-2">
+                    <img t-if="company.pnt_sign_general_conditions"
+                     t-att-src="image_data_uri(company.pnt_sign_general_conditions)"
+                     alt="pnt_sign_general_conditions" style="max-width: 150px;"/>
+                    <strong><span t-field="company.pnt_sign_name_general_conditions"/></strong>
+                    <p style="font-style: italic;" t-field="company.pnt_sign_position_general_conditions"/>
+                </div>
+                <div class="col-3">
+                    <img t-if="company.pnt_seal_general_conditions"
+                     t-att-src="image_data_uri(company.pnt_seal_general_conditions)"
+                     alt="pnt_seal_general_conditions" style="max-width: 150px;"/>
+                </div>
+                <div class="col-2" style="margin-top: 110px;">
+                    <strong><span t-field="company.pnt_sign_customer_general_conditions"/></strong>
+                    <p style="font-style: italic;">Fecha, firma y sello</p>
+                </div>
+                <div class="col-1" style="margin-top: 120px;">
+                    <img t-if="company.pnt_symbol_general_conditions"
+                     t-att-src="image_data_uri(company.pnt_symbol_general_conditions)"
+                     alt="pnt_symbol_general_conditions" style="max-width: 150px;"/>
+                </div>
+            </div>
+        </div>
+
+        <!--Footer-->
+        <div t-attf-class="footer o_standard o_company_#{company.id}_layout">
+            <div class="text-center text-muted" style="border-top: 1px solid black; font-size: 12px;">
+
+                <ul class="list-inline mb4">
+                    <!-- using the list-inline-item class from bootstrap causes weird behaviours in pdf report
+                         adding d-inline class fixes the problem-->
+                    <li t-if="company.phone" class="list-inline-item d-inline">
+                        <span class="o_force_ltr" t-field="company.phone"/>
+                    </li>
+                    <li t-if="company.email" class="list-inline-item d-inline">
+                        <span t-field="company.email"/>
+                    </li>
+                    <li t-if="company.website" class="list-inline-item d-inline">
+                        <span t-field="company.website"/>
+                    </li>
+                    <li t-if="company.vat" class="list-inline-item d-inline"><t
+                        t-esc="company.country_id.vat_label or 'Tax ID'"/>:
+                        <span t-field="company.vat"/>
+                    </li>
+                </ul>
+
+                <div name="financial_infos">
+                    <span t-field="company.report_footer"/>
+                </div>
+
+                <div t-if="report_type == 'pdf'" class="text-muted">
+                    Page:
+                    <span class="page"/>
+                    /
+                    <span class="topage"/>
+                </div>
+            </div>
+        </div>
+         </t>
+    </template>
+
+        <!--Llamada al reporte-->
+    <template id="report_conditions_document_adalmo">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="report_pnt.report_document_adalmo_structure"/>
+            </t>
+        </t>
+    </template>
+
+        <!-- Diseño del paperformat-->
+    <record id="paperformat_report_adalmo_structure" model="report.paperformat">
+        <field name="name">A4 General Conditions</field>
+        <field name="default" eval="True"/>
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">15</field>
+        <field name="margin_bottom">12</field>
+        <field name="margin_left">1</field>
+        <field name="margin_right">3</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">10</field>
+        <field name="dpi">115</field>
+    </record>
+
+    <!-- Botón acción -->
+    <record id="pnt_agreement_conditions_report" model="ir.actions.report">
+        <field name="name">General Conditions</field>
+        <field name="model">pnt.agreement.agreement</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">report_pnt.report_conditions_document_adalmo</field>
+        <field name="paperformat_id" ref="paperformat_report_adalmo_structure"/>
+        <field name="binding_model_id" eval="False" />
+        <field name="binding_type">report</field>
+    </record>
+
+</odoo>

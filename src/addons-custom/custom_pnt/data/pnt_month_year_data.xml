@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="month_year_j" model="pnt.month.year">
+            <field name="code">j</field>
+            <field name="name">January</field>
+            <field name="sequence">1</field>
+        </record>
+        <record id="month_year_f" model="pnt.month.year">
+            <field name="code">f</field>
+            <field name="name">February</field>
+            <field name="sequence">2</field>
+        </record>
+        <record id="month_year_m" model="pnt.month.year">
+            <field name="code">m</field>
+            <field name="name">March</field>
+            <field name="sequence">3</field>
+        </record>
+        <record id="month_year_a" model="pnt.month.year">
+            <field name="code">a</field>
+            <field name="name">April</field>
+            <field name="sequence">4</field>
+        </record>
+        <record id="month_year_ma" model="pnt.month.year">
+            <field name="code">ma</field>
+            <field name="name">May</field>
+            <field name="sequence">5</field>
+        </record>
+        <record id="month_year_ju" model="pnt.month.year">
+            <field name="code">ju</field>
+            <field name="name">June</field>
+            <field name="sequence">6</field>
+        </record>
+        <record id="month_year_jul" model="pnt.month.year">
+            <field name="code">jul</field>
+            <field name="name">July</field>
+            <field name="sequence">7</field>
+        </record>
+        <record id="month_year_au" model="pnt.month.year">
+            <field name="code">au</field>
+            <field name="name">August</field>
+            <field name="sequence">8</field>
+        </record>
+        <record id="month_year_s" model="pnt.month.year">
+            <field name="code">s</field>
+            <field name="name">September</field>
+            <field name="sequence">9</field>
+        </record>
+        <record id="month_year_o" model="pnt.month.year">
+            <field name="code">o</field>
+            <field name="name">October</field>
+            <field name="sequence">10</field>
+        </record>
+        <record id="month_year_n" model="pnt.month.year">
+            <field name="code">n</field>
+            <field name="name">November</field>
+            <field name="sequence">11</field>
+        </record>
+        <record id="month_year_d" model="pnt.month.year">
+            <field name="code">d</field>
+            <field name="name">December</field>
+            <field name="sequence">12</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_move_tree" model="ir.ui.view">
+        <field name="model">stock.move</field>
+        <field name="inherit_id" ref="stock.view_move_tree"/>
+        <field name="arch" type="xml">
+            <field name="date" position="after">
+                <field name="pnt_sd_effective_date" optional="hide"/>
+            </field>
+            <field name="product_id" position="after">
+                <field name="pnt_sd_holder_id" optional="hide"/>
+                <field name="pnt_sd_partner_pickup_id" optional="hide"/>
+                <field name="pnt_single_document_id" optional="show"/>
+            </field>
+            <field name="date" position="attributes">
+                <attribute name="optional">hide</attribute>
+            </field>
+            <field name="location_id" position="attributes">
+                <attribute name="optional">hide</attribute>
+            </field>
+            <field name="location_dest_id" position="attributes">
+                <attribute name="optional">hide</attribute>
+            </field>
+        </field>
+    </record>
+</odoo>

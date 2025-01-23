@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--  TREE  -->
+    <record id="pnt_carrier_rate_tree_view" model="ir.ui.view">
+        <field name="name">pnt.carrier.rate.tree</field>
+        <field name="model">pnt.carrier.rate</field>
+        <field name="arch" type="xml">
+            <tree string="Carrier Rates">
+                <field name="name" readonly="1"/>
+                <field name="company_id"
+                       readonly="1"
+                       optional="hidden"
+                />
+                <field name="pnt_carrier_id"
+                       widget="selection"
+                />
+                <field name="pnt_vehicle_category_id"
+                       widget="selection"
+                />
+                <field name="pnt_rate_type"/>
+                <field name="pnt_product_id"
+                       widget="selection"
+                />
+            </tree>
+        </field>
+    </record>
+    <!-- FORM -->
+    <record id="pnt_carrier_rate_form_view" model="ir.ui.view">
+        <field name="name">pnt.carrier.rate.form</field>
+        <field name="model">pnt.carrier.rate</field>
+        <field name="priority">100</field>
+        <field name="arch" type="xml">
+            <form string="Carrier rate">
+                <sheet>
+                    <field name="active" invisible="1"/>
+                    <widget name="web_ribbon" title="Archived"
+                            bg_color="bg-danger"
+                            attrs="{'invisible': [('active', '=', True)]}"/>
+                    <div class="oe_title">
+                        <h1>
+                            <label for="name" class="oe_edit_only"/>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group name="pnt_rate_header">
+                        <field name="pnt_carrier_id"
+                               options="{'create_name_field': 'city', 'no_open': True, 'no_create': True, 'no_edit': True}"
+                               required="1"
+                        />
+                        <field name="pnt_vehicle_category_id"
+                               options="{'no_open': True, 'no_create': True, 'no_edit': True}"
+                               required="1"
+                        />
+                        <field name="pnt_rate_type"
+                               required="1"
+                        />
+                        <field name="pnt_product_id"
+                               options="{'no_open': True, 'no_create': True, 'no_edit': True}"
+                               required="1"
+                        />
+                        <field name="currency_id"
+                               invisible="1"
+                        />
+                        <field name="pnt_price_hour"
+                               widget="monetary"
+                               options="{'currency_field': 'currency_id'}"
+                               attrs="{'invisible': [('pnt_rate_type', '!=', 'hour')]}"
+                        />
+                        <field name="pnt_carrier_rate_zone_ids"
+                               attrs="{'invisible': [('pnt_rate_type', '!=', 'zone')]}"
+                        >
+                            <tree editable="bottom">
+                                <field name="pnt_carrier_zone_id"
+                                       options="{'no_open': True, 'no_create': True, 'no_edit': True}"
+                                       required="1"
+                                />
+                                <field name="zip"
+                                       readonly="1"
+                                />
+                                <field name="currency_id"
+                                       invisible="1"
+                                />
+                                <field name="pnt_price_zone"
+                                       widget="monetary"
+                                       options="{'currency_field': 'currency_id'}"
+                                />
+                            </tree>
+                        </field>
+                        <field name="pnt_carrier_rate_fromto_ids"
+                               attrs="{'invisible': [('pnt_rate_type', '!=', 'fromto')]}"
+                        >
+                            <tree editable="bottom">
+                                <field name="pnt_partner_from_id"
+                                       options="{'no_open': True, 'no_create': True, 'no_edit': True}"
+                                       required="1"
+                                />
+                                <field name="pnt_partner_to_id"
+                                       options="{'no_open': True, 'no_create': True, 'no_edit': True}"
+                                       required="1"
+                                />
+                                <field name="currency_id"
+                                       invisible="1"
+                                />
+                                <field name="pnt_price_fromto"
+                                       widget="monetary"
+                                       options="{'currency_field': 'currency_id'}"
+                                />
+                            </tree>
+                        </field>
+                        <field name="company_id"
+                               readonly="1"
+                               invisible="1"
+                        />
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <!-- ACTIONS -->
+    <record id="action_carrier_rate_menu_pnt" model="ir.actions.act_window">
+        <field name="name">Carrier rate</field>
+        <field name="res_model">pnt.carrier.rate</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_pnt_Carrier_rate"
+              name="Carrier rate"
+              action="action_carrier_rate_menu_pnt"
+              parent="custom_pnt.menu_pnt_carrier_settings"
+              sequence="2"
+              groups="base.group_user"
+    />
+</odoo>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pnt_global_time_off_view_form" model="ir.ui.view">
+        <field name="name">pnt.global.time.off.view.form</field>
+        <field name="model">pnt.global.time.off</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+                    <group>
+                        <field name="active" invisible="1"/>
+                        <field name="pnt_name"/>
+                    </group>
+                    <field name="pnt_line_ids">
+                        <tree editable="bottom">
+                            <field name="pnt_name"/>
+                            <field name="pnt_date_from"/>
+                            <field name="pnt_date_to"/>
+                        </tree>
+                    </field>
+                 </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="pnt_global_time_off_view_tree" model="ir.ui.view">
+        <field name="name">pnt.global.time.off.view.tree</field>
+        <field name="model">pnt.global.time.off</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="pnt_name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="pnt_global_time_off_action" model="ir.actions.act_window">
+        <field name="name">Global Time Off</field>
+        <field name="res_model">pnt.global.time.off</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No items created.</p>
+        </field>
+    </record>
+
+    <record id="pnt_global_time_off_act_view_tree" model="ir.actions.act_window.view">
+        <field name="sequence">10</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="pnt_global_time_off_view_tree"/>
+        <field name="act_window_id" ref="pnt_global_time_off_action"/>
+    </record>
+
+    <record id="pnt_global_time_off_act_view_form" model="ir.actions.act_window.view">
+        <field name="sequence">20</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="pnt_global_time_off_view_form"/>
+        <field name="act_window_id" ref="pnt_global_time_off_action"/>
+    </record>
+
+    <record id="pnt_global_time_off_menu" model="ir.ui.menu">
+        <field name="name">Global Time Off</field>
+        <field name="action" ref="pnt_global_time_off_action"/>
+        <field name="parent_id" ref="hr.menu_human_resources_configuration_employee"/>
+    </record>
+</odoo>

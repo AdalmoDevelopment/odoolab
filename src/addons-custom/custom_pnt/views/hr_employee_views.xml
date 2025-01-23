@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="pnt_view_employee_tree" model="ir.ui.view">
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_tree"/>
+        <field name="arch" type="xml">
+            <field name="company_id" position="before">
+                <field name="pnt_is_driver" invisible="1"/>
+                <field name="pnt_renovation_state" widget="badge" decoration-success="pnt_renovation_state == 'done'"
+                       decoration-warning="pnt_renovation_state == 'todo'"
+                       decoration-danger="pnt_renovation_state == 'expire'"
+                       attrs="{'invisible': [('pnt_is_driver', '!=', True)]}" optional="show"/>
+            </field>
+        </field>
+    </record>
+    <record id="pnt_hr_kanban_view_employees" model="ir.ui.view">
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.hr_kanban_view_employees"/>
+        <field name="arch" type="xml">
+            <field name="hr_icon_display" position="after">
+                <field name="pnt_renovation_state"/>
+                <field name="pnt_is_driver"/>
+            </field>
+            <xpath expr="//div[@class='o_kanban_record_bottom']/div[@class='oe_kanban_bottom_right']" position="inside">
+                <field name="pnt_renovation_state" widget="label_selection"
+                       attrs="{'invisible': [('pnt_is_driver', '!=', True)]}"
+                       options="{'classes': {'done': 'success', 'todo': 'warning', 'expire': 'danger'}}"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="pnt_view_employee_form" model="ir.ui.view">
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <field name="identification_id" position="after">
+                <field name="pnt_due_date_identification_id" groups="hr.group_hr_user"/>
+            </field>
+            <field name="category_ids" position="after">
+                <field name="pnt_is_driver" invisible="1"/>
+                <field name="pnt_renovation_state" attrs="{'invisible': [('pnt_is_driver', '!=', True)]}" widget="badge"
+                       decoration-success="pnt_renovation_state == 'done'"
+                       decoration-warning="pnt_renovation_state == 'todo'"
+                       decoration-danger="pnt_renovation_state == 'expire'" optional="show"/>
+            </field>
+            <xpath expr="//sheet/notebook" position="inside">
+                <page name="incident_app" string="Incident app" invisible="0">
+                    <group>
+                        <field name="pnt_access_incident_app"/>
+                        <field name="pnt_scales_ids"
+                               attrs="{'invisible': [('pnt_access_incident_app', '!=', True)],}"
+                        >
+                            <tree create="false" edit="false" delete="false">
+                                <field name="name"/>
+                                <field name="pnt_warehouse_id"/>
+                            </tree>
+                        </field>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+    <record id="pnt_hr_fleet_view_employee_form" model="ir.ui.view">
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr_fleet.view_employee_form"/>
+        <field name="arch" type="xml">
+            <field name="mobility_card" position="after">
+                <field name="pnt_circulation_permit_class_id" attrs="{'invisible': [('pnt_is_driver', '!=', True)]}"/>
+            </field>
+            <xpath expr="//group[@name='identification_group']" position="after">
+                <group name="pnt_expire_dates" string="Expire Dates"
+                       attrs="{'invisible': [('pnt_is_driver', '!=', True)]}">
+                    <field name="pnt_due_date_circulation_permit"/>
+                    <field name="pnt_due_date_cpa"/>
+                    <field name="pnt_due_date_tachograph"/>
+                    <field name="pnt_due_date_adr"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

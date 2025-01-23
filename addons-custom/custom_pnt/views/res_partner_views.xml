@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="act_res_partner_agreement_agreement" model="ir.actions.act_window">
+        <field name="name">Agreements</field>
+        <field name="res_model">pnt.agreement.agreement</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_pnt_holder_id': active_id,
+            'default_pnt_holder_id': active_id}
+        </field>
+        <field name="domain">[
+            ('state', 'in', ('done', 'active', 'to_renew')),
+            ]
+        </field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new agreement, the first step of a new Single Document SD!
+            </p>
+        </field>
+    </record>
+    <record id="act_res_partner_agreement_pickup_agreement" model="ir.actions.act_window">
+        <field name="name">Agreements</field>
+        <field name="res_model">pnt.agreement.agreement</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_pnt_partner_pickup_ids': active_id,
+            'default_pnt_partner_pickup_ids': active_id,}
+        </field>
+        <field name="domain">[
+            ('state', 'in', ('done', 'active', 'to_renew')),
+            ]
+        </field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new agreement, the first step of a new Single Document SD!
+            </p>
+        </field>
+    </record>
+    <record id="act_res_partner_single_document" model="ir.actions.act_window">
+        <field name="name">Single documents</field>
+        <field name="res_model">pnt.single.document</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_pnt_du_partner_id': active_id,
+            'default_pnt_du_partner_id': active_id}
+        </field>
+        <field name="domain">[
+            ('state', 'in', ('done', 'active', 'plant', 'received', 'finished')),
+            ]
+        </field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new single document...
+            </p>
+        </field>
+    </record>
+    <record id="pnt_view_partner_form" model="ir.ui.view">
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <button class="oe_stat_button" type="object" name="action_view_agreement_registration"
+                    groups="custom_pnt.group_pnt_agreement_user"
+                    icon="fa-list-alt">
+                    <field string="A. T." name="pnt_agreement_registration_count" widget="statinfo"/>
+                </button>
+                <button class="oe_stat_button"
+                        type="action"
+                        name="%(custom_pnt.act_res_partner_agreement_pickup_agreement)d"
+                        attrs="{'invisible': [('type', '!=', 'delivery'),],}"
+                        icon="fa-tachometer">
+                    <field string="Agreements"
+                           name="pnt_agreement_pickup_registration_count"
+                           widget="statinfo"/>
+                </button>
+                <button class="oe_stat_button"
+                        type="action"
+                        name="%(custom_pnt.act_res_partner_agreement_agreement)d"
+                        attrs="{'invisible': [('company_type', '!=', 'company'),],}"
+                        icon="fa-tachometer">
+                    <field string="Agreements"
+                           name="pnt_agreement_count"
+                           widget="statinfo"/>
+                </button>
+                <button class="oe_stat_button" type="action"
+                        name="%(custom_pnt.act_res_partner_single_document)d"
+                        attrs="{'invisible': [('company_type', '!=', 'company'),],}"
+                        icon="fa-list-alt">
+                    <field string="Single documents" name="pnt_du_count"
+                           widget="statinfo"/>
+                </button>
+            </div>
+            <xpath expr="//field[@name='type']" position="before">
+                <field name="pnt_is_lead" string="Lead"/>
+            </xpath>
+            <field name="name" position="attributes">
+                <attribute name="attrs">{'required':[("is_company","=",True),("pnt_is_lead","=",True)]}</attribute>
+            </field>
+            <field name="street" position="attributes">
+                <attribute name="attrs">{'required':[("is_company","=",True),("pnt_is_lead","=",True)]}</attribute>
+            </field>
+            <field name="phone" position="attributes">
+                <attribute name="attrs">{'required':[("is_company","=",True),("pnt_is_lead","=",True)]}</attribute>
+            </field>
+            <field name="email" position="attributes">
+                <attribute name="attrs">{'required':[("is_company","=",True),("pnt_is_lead","=",True)]}</attribute>
+            </field>
+            <xpath expr="//page[@name='sales_purchases']//field[@name='user_id']" position="attributes">
+                <attribute name="attrs">{'required':[("is_company","=",True),("pnt_is_lead","=",False)]}</attribute>
+            </xpath>
+            <field name="vat" position="attributes">
+                <attribute name="attrs">{'required':[("is_company","=",True),("pnt_is_lead","=",False)]}</attribute>
+            </field>
+            <field name="state_id" position="attributes">
+                <attribute name="attrs">
+                    {'required':[('pnt_is_lead', '=', False),]}
+                </attribute>
+            </field>
+            <field name="zip" position="attributes">
+                <attribute name="attrs">
+                    {'required':[('pnt_is_lead', '=', False),]}
+                </attribute>
+            </field>
+            <field name="country_id" position="attributes">
+                <attribute name="attrs">
+                    {'required':[('pnt_is_lead', '=', False),]}
+                </attribute>
+            </field>
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="pnt_id_type"
+                       attrs="{'required': [('company_type', '=', 'company'),
+                                            ('pnt_is_lead', '=', False),]}"/>
+                <field name="pnt_create_date"/>
+                <field name="pnt_dni_date_validity"/>
+                <field name="pnt_dni_image"
+                       widget="image"
+                />
+                <field name="pnt_dni_image_reverse"
+                       widget="image"
+                />
+            </xpath>
+            <xpath expr="//field[@name='website']" position="before">
+                <field name="pnt_send_du_signed"
+                       attrs="{'invisible': [('type', '!=', 'contact')]}"
+                />
+            </xpath>
+            <xpath expr="//field[@name='type']" position="before">
+                <field name="pnt_variable_direction" groups="base.group_no_one"
+                       attrs="{'invisible': [('type', '!=', 'delivery')], 'readonly': [('user_ids', '!=', [])]}"/>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page name="pnt_waste" string="Waste Management">
+                    <label for="pnt_cnae" string="CNAE"/>
+                    <field name="pnt_cnae"/>
+                    <group string="Transport" name="pnt_partner_transport">
+                        <group string="Fleet" name="pnt_partner_fleet">
+                            <field name="pnt_flag_is_driver" invisible="1"/>
+                            <field name="pnt_is_driver"
+                                   attrs="{'invisible': [('pnt_flag_is_driver', '!=', True)]}"/>
+                            <field name="pnt_favorite_driver_asign"
+                                   attrs="{'invisible': [('pnt_is_driver', '!=', True)]}"/>
+                            <field name="pnt_is_end_mgm" invisible="1"/>
+                        </group>
+                        <group string="NIMA" name="pnt_nima_transport"
+                               attrs="{'invisible': [('pnt_flag_nima', '!=', True)]}">
+                            <field name="pnt_flag_nima" invisible="1"/>
+                            <field name="pnt_waste_nima_code_ids"
+                                   context="{'default_pnt_partner_id': active_id}"
+                                   nolabel="1" colspan="2">
+                                <tree>
+                                    <field name="display_name" string="NIMA Code"/>
+                                </tree>
+                                <form string="NIMA Code">
+                                    <sheet>
+                                        <group>
+                                            <group>
+                                                <field name="name" required="1"/>
+                                                <field name="pnt_duplicate_nima_message"
+                                                       string="Nima duplicado"
+                                                       attrs="{'invisible': [('pnt_duplicate_nima_message', '=', False)]}"/>
+                                            </group>
+                                            <group>
+                                                <field name="pnt_partner_id"
+                                                       invisible="1"/>
+                                            </group>
+                                        </group>
+                                        <group string="Authorization Code">
+                                            <group colspan="4">
+                                                <field
+                                                    name="pnt_waste_authorization_code_ids"
+                                                    nolabel="1" colspan="2">
+                                                    <tree>
+                                                        <field name="display_name"
+                                                               string="Authorization Code"/>
+                                                        <field
+                                                            name="pnt_authorization_code_type"/>
+                                                        <field
+                                                            name="pnt_product_tmpl_waste_ler_ids"
+                                                            widget="many2many_tags"/>
+                                                    </tree>
+                                                    <form string="Authorization Code">
+                                                        <sheet>
+                                                            <group>
+                                                                <group>
+                                                                    <field name="name"/>
+                                                                    <field
+                                                                        name="pnt_nima_code_id"
+                                                                        invisible="1"/>
+                                                                </group>
+                                                                <group>
+                                                                    <field
+                                                                        name="pnt_authorization_code_type"/>
+                                                                    <field
+                                                                        name="pnt_operator_type_id"
+                                                                        options='{"no_create": True}'
+                                                                        domain="[('pnt_type_code', '=', pnt_authorization_code_type)]"/>
+                                                                </group>
+                                                            </group>
+                                                            <group>
+                                                                <group string="LER"
+                                                                       colspan="4">
+                                                                    <field
+                                                                        name="pnt_product_tmpl_waste_ler_ids"
+                                                                        nolabel="1"
+                                                                        widget="many2many_tags"/>
+                                                                </group>
+                                                            </group>
+                                                        </sheet>
+                                                    </form>
+                                                </field>
+                                            </group>
+                                        </group>
+                                    </sheet>
+                                </form>
+                            </field>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Sign" name="pnt_sign" attrs="{'invisible': [('type', '!=', 'delivery')]}">
+                            <field name="pnt_sign_image" widget="image"/>
+                        </group>
+                    </group>
+                    <!--                    <group attrs="{'invisible': [('pnt_is_end_mgm', '!=', True)]}">-->
+                    <!--                        <group name="pnt_partner_table" string="Tables" colspan="4">-->
+                    <!--                            <field name="pnt_partner_waste_table_ids" nolabel="1">-->
+                    <!--                                <tree editable="bottom">-->
+                    <!--                                    <field name="pnt_product_tmpl_id" required="1" context="{'default_pnt_is_waste': True}"/>-->
+                    <!--                                    <field name="pnt_waste_ler_id"/>-->
+                    <!--                                    <field name="pnt_waste_table1_ids" widget="many2many_tags"/>-->
+                    <!--                                    <field name="pnt_waste_table2_ids" widget="many2many_tags"/>-->
+                    <!--                                    <field name="pnt_waste_table3_ids" widget="many2many_tags"/>-->
+                    <!--                                    <field name="pnt_waste_table4_ids" widget="many2many_tags"/>-->
+                    <!--                                    <field name="pnt_waste_table5_ids" widget="many2many_tags"/>-->
+                    <!--                                    <field name="pnt_waste_table6_ids" widget="many2many_tags"/>-->
+                    <!--                                    <field name="pnt_waste_table7_ids" widget="many2many_tags"/>-->
+                    <!--                                </tree>-->
+                    <!--                            </field>-->
+                    <!--                        </group>-->
+                    <!--                    </group>-->
+                </page>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page name="pnt_functional_unit" string="Functional Units">
+                    <group string="Functional Units">
+                        <group colspan="4">
+                            <field name="pnt_functional_unit_ids" nolabel="1"
+                                   colspan="2">
+                                <tree editable="bottom">
+                                    <field name="name" string="Code"/>
+                                    <field name="description"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page name="pnt_schedules" string="Schedules">
+                    <group>
+                        <label for="pnt_resource_pick_id"/>
+                        <div class="oe_inline" id="pnt_resource_calendar">
+                            <field name="pnt_resource_pick_id"
+                                   context="{'default_pnt_external': 1, 'default_pnt_partner_id': active_id}"/>
+                            <button name="action_resource_calendar_attendance"
+                                    attrs="{'invisible': [('pnt_resource_pick_id', '=', False),],}"
+                                    icon="fa-calendar"
+                                    type="object"/>
+                        </div>
+                    </group>
+                </page>
+            </xpath>
+            <page name="internal_notes" position="inside">
+                <!--                <group colspan="2" col="2" groups="sale.group_warning_sale">-->
+                <group colspan="2" col="2">
+                    <separator string="Warning on DU" colspan="4"/>
+                    <field name="du_warn" nolabel="1"/>
+                    <field name="du_warn_msg" colspan="3" nolabel="1"
+                           attrs="{'required':[('du_warn', '!=', False), ('du_warn','!=','no-message')], 'invisible':[('du_warn','in',(False,'no-message'))]}"/>
+                    <separator string="Warning on Agreements" colspan="4"/>
+                    <field name="agreement_warn" nolabel="1"/>
+                    <field name="agreement_warn_msg" colspan="3" nolabel="1"
+                           attrs="{'required':[('agreement_warn', '!=', False), ('agreement_warn','!=','no-message')], 'invisible':[('agreement_warn','in',(False,'no-message'))]}"/>
+                </group>
+            </page>
+            <field name="ref" position="after">
+                <field name="pnt_portal_agreement_type_id"
+                       groups="account.group_account_user"
+                />
+                <field name="pnt_portal_agreement_specific_id"
+                       groups="account.group_account_user"
+                       domain="[('pnt_holder_id', '=', id),
+                                ('pnt_agreement_type' , '=' , 'portali'),
+                                ('state', 'in' , ['done','active'])]"
+                />
+                <field name="pnt_property_ref_customer"
+                       groups="account.group_account_user"/>
+                <field name="pnt_property_ref_supplier"
+                       groups="account.group_account_user"/>
+                <field name="pnt_property_ref_creditor"
+                       groups="account.group_account_user"/>
+            </field>
+
+            <xpath expr="//sheet//field[@name='category_id']" position="after">
+                <field name="pnt_is_contact_person"/>
+                <field name="pnt_is_boat" attrs="{'invisible': [('type','!=', 'delivery')]}"/>
+                <field name="pnt_check_number_certificate" attrs="{'invisible': [('company_type','=', 'person')]}"/>
+            </xpath>
+            <xpath expr="//field[@name='child_ids']//form//field[@name='title']" position="after">
+                <field name="pnt_is_contact_person" attrs="{'invisible': [('type','!=', 'contact')]}"/>
+            </xpath>
+            <xpath expr="//field[@name='child_ids']//kanban//field[@name='id']"
+                   position="before">
+                <field name="pnt_is_contact_person" invisible="1"/>
+            </xpath>
+            <xpath
+                expr="//notebook//page[@name='contact_addresses']//field[@name='type']"
+                position="before">
+                <field name="user_id" invisible="1"/>
+            </xpath>
+            <xpath
+                expr="//notebook//page[@name='contact_addresses']//field[@name='child_ids']"
+                position="attributes">
+                <attribute name="context">{'default_parent_id': active_id,
+                    'default_street': street, 'default_street2': street2,
+                    'default_city': city, 'default_state_id': state_id, 'default_zip':
+                    zip, 'default_country_id': country_id, 'default_lang': lang,
+                    'default_user_id': user_id, 'default_type': 'delivery'}
+                </attribute>
+            </xpath>
+            <xpath
+                expr="//notebook//page[@name='contact_addresses']//field[@name='child_ids']//form//field[@name='name']"
+                position="replace">
+                <field name="name" string="Contact Name"
+                       attrs="{'required' : [('type', '=', 'contact')], 'invisible' : [('type', '!=', 'contact')]}"/>
+                <field name="name" string="Name"
+                       attrs="{'required' : [('type', '=', 'contact')], 'invisible' : [('type', '=', 'contact')]}"/>
+            </xpath>
+            <xpath
+                expr="//field[@name='child_ids']/form//field[@name='email']"
+                position="after"
+            >
+                <field name="pnt_send_du_signed"
+                       attrs="{'invisible': [('type', '!=', 'contact')]}"
+                />
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="Boat" name="boat"
+                      attrs="{'invisible': ['|', ('type', '!=', 'delivery'), ('pnt_is_boat', '=', False)]}">
+                    <group>
+                        <group>
+                            <field name="pnt_num_imo"/>
+                            <field name="pnt_gross_tonnage"/>
+                            <field name="pnt_boat_type_id"/>
+                            <field name="pnt_ship_owner"/>
+                        </group>
+                        <group>
+                            <field name="pnt_distributive_number_or_letters"/>
+                            <field name="pnt_flag_state"/>
+                            <field name="pnt_boat_type"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="res_partner_address_type_delivery" model="ir.translation">
+        <field name="name">res.partner.address.type</field>
+        <field name="src">delivery</field>
+        <field name="value" eval="'Dirección de recogida'"/>
+    </record>
+
+    <record id="pnt_view_tag_partner_form" model="ir.ui.view">
+        <field name="model">res.partner.category</field>
+        <field name="inherit_id" ref="base.view_partner_category_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="pnt_type"
+                       readonly="0"
+                />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_res_partner_filter_pnt" model="ir.ui.view">
+        <field name="name">view.res.partner.filter.pnt</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="arch" type="xml">
+            <field name="parent_id" position="after">
+                <field name="vat"/>
+            </field>
+        </field>
+    </record>
+</odoo>

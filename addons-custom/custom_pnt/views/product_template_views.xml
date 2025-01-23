@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="pnt_product_template_search_view" model="ir.ui.view">
+        <field name="name">pnt.product.template.search.view</field>
+        <field name="model">product.template</field>
+        <field name="groups_id" eval="[(4, ref('group_pnt_waste_user'))]" />
+        <field name="inherit_id" ref="product.product_template_search_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='pricelist_id']" position="after">
+                <separator/>
+                <field name="pnt_waste_ler_id" filter_domain="[('pnt_waste_ler_id.name', 'ilike', self)]" groups="custom_pnt.group_pnt_waste_user"/>
+                <field name="pnt_marpol_waste_category_id" filter_domain="[('pnt_marpol_waste_category_id.name', 'ilike', self)]" groups="custom_pnt.group_pnt_waste_user"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="pnt_product_template_waste_form_view" model="ir.ui.view">
+        <field name="name">pnt.product.template.waste.form</field>
+        <field name="model">product.template</field>
+        <field name="groups_id" eval="[(4, ref('group_pnt_waste_user'))]" />
+        <field name="inherit_id" ref="product.product_template_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='options']/div[2]" position="replace">
+                <span class="d-inline-block">
+                    <field name="purchase_ok"/>
+                    <label for="purchase_ok"/>
+                </span>
+            </xpath>
+            <xpath expr="//div[@name='options']/div[1]" position="replace">
+                <span class="d-inline-block">
+                    <field name="sale_ok"/>
+                    <label for="sale_ok"/>
+                </span>
+            </xpath>
+            <xpath expr="//div[@name='options']" position="inside">
+                <span class="d-inline-block">
+                    <field name="pnt_is_waste"/>
+                    <label for="pnt_is_waste"/>
+                </span>
+                <span class="d-inline-block" attrs="{'invisible': [('pnt_is_waste', '!=', True)]}">
+                    <field name="pnt_is_marpol_waste"/>
+                    <label for="pnt_is_marpol_waste"/>
+                </span>
+            </xpath>
+            <xpath expr="//div[@name='options']" position="inside">
+                <span class="d-inline-block">
+                    <field name="pnt_is_sanitary"/>
+                    <label for="pnt_is_sanitary"/>
+                    <field name="pnt_is_container"/>
+                    <label for="pnt_is_container"/>
+                    <field name="pnt_rental"/>
+                    <label for="pnt_rental"/>
+                    <field name="pnt_recurrence"/>
+                    <label for="pnt_recurrence"/>
+                </span>
+            </xpath>
+            <xpath expr="//field[@name='categ_id']" position="after">
+                <field name="pnt_is_waste_manipulation"/>
+                <field name="pnt_is_product_incidence"/>
+                <field name="pnt_container_movement_type" readonly="0"/>
+                <field name="pnt_product_tmpl_container_ids" attrs="{'invisible': ['|', ('type', '!=', 'service'), ('pnt_rental', '!=', True)]}"/>
+                <field name="pnt_container_color"
+                       readonly="0"
+                       widget="color_picker"
+                       string="Color container type"
+                       attrs="{'invisible': [('pnt_is_container', '=', False)]}"
+                />
+            </xpath>
+            <xpath expr="//page[last()]" position="after">
+                <page name="pnt_waste"
+                      string="Waste"
+                      attrs="{'invisible': ['|', ('type', '!=', 'product'), ('pnt_is_waste', '=', False)]}">
+                    <group name="pnt_other_waste">
+                        <group>
+                        </group>
+                        <group></group>
+                    </group>
+                    <group name="pnt_waste">
+                        <group name="pnt_table" string="Tables">
+                            <field name="pnt_waste_table1_ids" widget="many2many_tags" context="{'default_pnt_table_type': 'table1'}"/>
+                            <field name="pnt_waste_table2_ids" widget="many2many_tags" context="{'default_pnt_table_type': 'table2'}"/>
+                            <field name="pnt_waste_table3_ids" widget="many2many_tags" context="{'default_pnt_table_type': 'table3'}"/>
+                            <field name="pnt_waste_table4_ids" widget="many2many_tags" context="{'default_pnt_table_type': 'table4'}"/>
+                            <field name="pnt_waste_table5_ids" widget="many2many_tags" context="{'default_pnt_table_type': 'table5'}"/>
+                            <field name="pnt_waste_table6_ids" widget="many2many_tags" context="{'default_pnt_table_type': 'table6'}"/>
+                            <field name="pnt_waste_table7_ids" widget="many2many_tags" context="{'default_pnt_table_type': 'table7'}"/>
+                        </group>
+                        <group name="pnt_other_date" string="Other datas">
+                            <field name="pnt_label_name"/>
+                            <field name="pnt_waste_ler_id"/>
+                            <field name="pnt_product_tmpl_container_ids" widget="many2many_tags"
+                                   attrs="{'invisible': [('pnt_is_container', '!=', False)]}"/>
+                            <field name="pnt_acceptance_waste_condition"/>
+                            <field name="pnt_more_relevant_info"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group name="pnt_marpol_waste" string="Annexes and Categories Marpol"
+                               attrs="{'invisible': ['|', ('type', '!=', 'product'), ('pnt_is_marpol_waste', '=', False)]}">
+                            <field name="pnt_marpol_waste_annex_id"/>
+                            <field name="pnt_marpol_waste_category_domain_ids" invisible="1"/>
+                            <field name="pnt_marpol_waste_category_id" domain="[('id', 'in', pnt_marpol_waste_category_domain_ids)]"/>
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+            <group name="group_standard_price" position="inside">
+                <field name="pnt_invisible_monetary_waste" invisible="1"/>
+                <field name="pnt_monetary_waste"
+                       attrs="{
+                       'required': ['|', '|', ('pnt_is_waste', '=', True),  ('pnt_is_sanitary', '=', True), ('pnt_is_container', '=', True)],
+                       }"/>
+            </group>
+        </field>
+    </record>
+    <record id="pnt_product_template_hr_personal_equipment_form_view" model="ir.ui.view">
+        <field name="name">product.template.form (in hr_personal_equipment_request)</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="hr_personal_equipment_request.product_template_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='options']/div" position="replace">
+                <span class="d-inline-block">
+                    <field name="is_personal_equipment" />
+                    <label for="is_personal_equipment" />
+                </span>
+            </xpath>
+        </field>
+    </record>
+    <record id="pnt_product_template_adr_form_view" model="ir.ui.view">
+        <field name="name">pnt.product.template.adr.form</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="l10n_eu_product_adr.product_template_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='options']/div" position="replace">
+                <span class="d-inline-block">
+                    <field name="is_dangerous"/>
+                    <label
+                        string="Is ADR"
+                        for="is_dangerous"
+                    />
+                </span>
+            </xpath>
+        </field>
+    </record>
+    <record id="pnt_product_template_waste_kanban_view" model="ir.ui.view">
+        <field name="name">pnt.product.template.waste.kanban</field>
+        <field name="model">product.template</field>
+        <field name="groups_id" eval="[(4, ref('group_pnt_waste_user'))]" />
+        <field name="inherit_id" ref="product.product_template_kanban_view" />
+        <field name="arch" type="xml">
+            <field name="activity_state" position="after">
+                <field name="pnt_waste_table2_ids"/>
+                <field name="pnt_waste_table5_ids"/>
+            </field>
+            <xpath expr="//div[@class='oe_kanban_details']" position="inside">
+                <div>
+                    <field name="pnt_waste_ler_id"/>
+                </div>
+                <div class="o_kanban_tags_section">
+                    <field name="pnt_waste_table2_ids" widget="many2many_tags"/>
+                </div>
+                <div class="o_kanban_tags_section">
+                    <field name="pnt_waste_table5_ids" widget="many2many_tags"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+    <record id="pnt_product_template_waste_tree_view" model="ir.ui.view">
+        <field name="name">pnt.product.template.waste.tree</field>
+        <field name="model">product.template</field>
+        <field name="groups_id" eval="[(4, ref('group_pnt_waste_user'))]" />
+        <field name="inherit_id" ref="product.product_template_tree_view" />
+        <field name="arch" type="xml">
+            <field name="uom_id" position="after">
+                <field name="pnt_waste_table2_ids" optional="show" widget="many2many_tags"/>
+                <field name="pnt_waste_table5_ids" optional="show" widget="many2many_tags"/>
+                <field name="pnt_waste_ler_id" optional="show"/>
+            </field>
+        </field>
+    </record>
+    <record id="pnt_product_category_waste_form_view" model="ir.ui.view">
+        <field name="name">pnt.product.category.waste.form</field>
+        <field name="model">product.category</field>
+        <field name="inherit_id" ref="product.product_category_form_view" />
+        <field name="arch" type="xml">
+            <field name="parent_id" position="after">
+                <field name="pnt_service"/>
+                <field name="pnt_parent_is_sanitary" invisible="1"/>
+                <field name="pnt_is_sanitary" attrs="{'readonly': [('pnt_parent_is_sanitary', '=', True)]}"/>
+                <field name="pnt_order_budget_format"/>
+                <field name="pnt_parent_is_container" invisible="1"/>
+                <field name="pnt_is_container" attrs="{'readonly': [('pnt_parent_is_container', '=', True)]}"/>
+            </field>
+        </field>
+    </record>
+</odoo>

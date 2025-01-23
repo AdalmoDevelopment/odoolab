@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- pnt.general.conditions : views -->
+    <record id="pnt_general_conditions_view_form" model="ir.ui.view">
+        <field name="name">pnt.general.conditions.form</field>
+        <field name="model">pnt.general.conditions</field>
+        <field name="arch" type="xml">
+            <form string="General Conditions (product category)">
+                <sheet>
+                        <group>
+                            <field name="name" string="Code"/>
+                        </group>
+                        <group>
+                            <field name="pnt_category_ids"
+                                       widget="many2many_tags"
+                            />
+                        </group>
+                        <group>
+                            <field name="pnt_general_conditions"/>
+                        </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="pnt_general_conditions_view_tree" model="ir.ui.view">
+        <field name="name">pnt.general.conditions.tree</field>
+        <field name="model">pnt.general.conditions</field>
+        <field name="arch" type="xml">
+            <tree string="General conditions (product category)">
+                <field name="display_name" string="Code"/>
+            </tree>
+        </field>
+    </record>
+    <record id="pnt_general_conditions_view_search" model="ir.ui.view">
+        <field name="name">pnt.general.conditions.search</field>
+        <field name="model">pnt.general.conditions</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <field name="name" string="Code" filter_domain="[('name','ilike',self)]"/>
+            </search>
+        </field>
+    </record>
+    <!-- pnt.general.conditions : actions -->
+    <record id="pnt_general_conditions_action" model="ir.actions.act_window">
+        <field name="name">General conditions (product category)</field>
+        <field name="res_model">pnt.general.conditions</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="pnt_general_conditions_view_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new general condition template for product category
+            </p>
+        </field>
+    </record>
+    <!-- pnt.general.conditions : menu -->
+    <menuitem id="menu_pnt_general_conditions"
+        name="General conditions (product category)"
+        parent="menu_pnt_agreement_config"
+        action="pnt_general_conditions_action"
+        sequence="99"/>
+
+</odoo>

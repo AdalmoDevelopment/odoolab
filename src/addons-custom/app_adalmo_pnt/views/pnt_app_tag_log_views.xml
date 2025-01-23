@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--  TREE  -->
+    <record id="pnt_app_tag_log_tree_view" model="ir.ui.view">
+        <field name="name">pnt.app.tog.log.tree</field>
+        <field name="model">pnt.app.tag.log</field>
+        <field name="arch" type="xml">
+            <tree string="Tag Log"
+                  default_order="create_date desc"
+            >
+                <field name="create_date" readonly="1"/>
+                <field name="name" readonly="1"/>
+                <field name="company_id"
+                       readonly="1"
+                       optional="hidden"
+                />
+                <field name="pnt_partner_id"
+                       readonly="1"
+                />
+                <field name="pnt_functional_unit_id"
+                       readonly="1"
+                />
+                <field name="pnt_single_document_id"
+                       readonly="1"
+                />
+                <field name="pnt_single_document_line_id"
+                       readonly="1"
+                />
+                <field name="pnt_app_du_id"
+                       readonly="1"
+                />
+                <field name="pnt_tag_log_type"
+                       readonly="1"
+                />
+                <field name="pnt_move_type"
+                       readonly="1"
+                />
+            </tree>
+        </field>
+    </record>
+    <!-- FORM -->
+    <record id="pnt_app_tag_log_form_view" model="ir.ui.view">
+        <field name="name">pnt.app.tag.log.form</field>
+        <field name="model">pnt.app.tag.log</field>
+        <field name="priority">100</field>
+        <field name="arch" type="xml">
+            <form string="Tag Log">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            QR code:
+                            <field name="name"
+                                   readonly="0"
+                                   required="1"
+                            />
+                        </h1>
+                    </div>
+                    <group name="pnt_app_tag_log_header">
+                        <group>
+                            <field name="create_date" readonly="1"/>
+                            <field name="company_id"
+                                   invisible="1"
+                            />
+                            <field name="pnt_partner_id"
+                                   readonly="0"
+                                   required="1"
+                                   domain="[('company_id', '=', company_id)]"
+                            />
+                            <field name="pnt_functional_unit_id"
+                                   readonly="0"
+                            />
+                        </group>
+                        <group>
+                            <field name="pnt_single_document_id"
+                                   readonly="1"
+                            />
+                            <field name="pnt_single_document_line_id"
+                                   readonly="0"
+                                   required="1"
+                                   domain="[('company_id', '=', company_id)]"
+                            />
+                            <field name="pnt_app_du_id"
+                                   readonly="1"
+                            />
+                            <field name="pnt_tag_log_type"
+                                   readonly="0"
+                                   required="1"
+                            />
+                            <field name="pnt_move_type"
+                                   readonly="0"
+                                   required="1"
+                            />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <!-- ACTIONS -->
+    <record id="action_app_tag_log_menu_pnt" model="ir.actions.act_window">
+        <field name="name">Tag Logs</field>
+        <field name="res_model">pnt.app.tag.log</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_pnt_app_tag_log"
+              name="Tag Logs"
+              action="action_app_tag_log_menu_pnt"
+              parent="app_adalmo_pnt.menu_pnt_app_du_config"
+              sequence="99"
+              groups="base.group_user"
+    />
+
+</odoo>

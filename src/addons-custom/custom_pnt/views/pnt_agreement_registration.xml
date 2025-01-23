@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Acción de servidor para actualizar el campo N CT -->
+    <record id="action_update_num_at" model="ir.actions.server">
+        <field name="name">Update Number AT</field>
+        <field name="model_id" ref="custom_pnt.model_pnt_agreement_registration"/>
+        <field name="binding_model_id" ref="custom_pnt.model_pnt_agreement_registration"/>
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">action = records._update_num_at()</field>
+    </record>
+
+
+    <record id="pnt_agreement_registration_view_form" model="ir.ui.view">
+        <field name="name">pnt.agreement.registration.view.form</field>
+        <field name="model">pnt.agreement.registration</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="pnt_state" widget="statusbar"/>
+                </header>
+                <group>
+                    <group>
+                        <field name="company_id" invisible="1"/>
+                        <field name="pnt_auto_generate" invisible="1"/>
+                        <field name="pnt_agreement_sequence"/>
+                        <field name="pnt_agreement_date"/>
+                        <field name="pnt_agreement_registration_type" required="1"
+                               attrs="{'readonly': [('pnt_auto_generate', '=', True),]}"/>
+                    </group>
+                    <group>
+                        <field name="pnt_pickup_id"
+                               attrs="{'invisible': [('pnt_agreement_registration_type', '!=', 'mgm')], 'readonly': [('pnt_auto_generate', '=', True),]}"
+                               domain="[('type', '=', 'delivery')]"
+                               string="Manager"/>
+                        <field name="pnt_pickup_id"
+                               domain="[('type', '=', 'delivery')]"
+                               attrs="{'invisible': [('pnt_agreement_registration_type', '=', 'mgm')], 'readonly': [('pnt_auto_generate', '=', True),]}"/>
+                        <field name="pnt_real_producer_id"
+                               domain="[('type', '=', 'delivery')]"
+                               attrs="{'invisible': [('pnt_agreement_registration_type', '!=', 'mgm')]}"
+                               readonly="0"
+                        />
+                        <field name="pnt_real_producer_id"
+                               domain="[('type', '=', 'delivery')]"
+                               attrs="{'invisible': [('pnt_agreement_registration_type', '=', 'mgm')]}"
+                               string="Manager"
+                               readonly="0"
+                        />
+                        <field name="pnt_product_id"
+                               domain="[('pnt_is_waste', '=', True)]"
+                               attrs="{'readonly': [('pnt_auto_generate', '=', True),]}"/>
+                        <field name="pnt_qty_to_transport"/>
+                        <field name="pnt_ler_id"/>
+                        <field name="pnt_nima"/>
+                        <field name="pnt_document" filename="pnt_filename" widget="binary"/>
+                        <field name="pnt_filename" force_save="1" invisible="1"/>
+                    </group>
+                </group>
+                <notebook>
+                    <page name="pnt_pn" string="Previus notifications">
+                        <field name="pnt_waste_transfer_document_ids"
+                               context="{
+                               'default_pnt_partner_id': pnt_pickup_id,
+                               'default_pnt_product_id': pnt_product_id,
+                               'default_pnt_document_type': 'nt',
+                               'default_pnt_type': 'other',
+                               }">
+                            <tree>
+                                <field name="name"/>
+                                <field name="pnt_date"/>
+                                <field name="pnt_end_date"/>
+                                <field name="pnt_qty"/>
+                                <field name="pnt_uom_id"/>
+                            </tree>
+                        </field>
+                    </page>
+                    <page name="pnt_waste_talbe" string="Tables"
+                          attrs="{'invisible': [('pnt_agreement_registration_type', '=', 'producer')]}">
+                        <group name="pnt_waste">
+                            <group name="pnt_table" string="Tables">
+                                <field name="pnt_waste_table1_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                                <field name="pnt_waste_table2_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                                <field name="pnt_waste_table3_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                                <field name="pnt_waste_table4_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                                <field name="pnt_waste_table5_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                                <field name="pnt_waste_table6_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                                <field name="pnt_waste_table7_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                            </group>
+                            <group name="pnt_end_mgm" string="Advance notice">
+                                <field name="pnt_end_mgm_waste_table2_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                                <field name="pnt_comments" attrs="{'invisible': [('pnt_agreement_registration_type', '!=', 'end_mgm')]}"/>
+                            </group>
+                        </group>
+                    </page>
+                </notebook>
+            </form>
+        </field>
+    </record>
+
+    <record id="pnt_agreement_registration_view_tree" model="ir.ui.view">
+        <field name="name">pnt.agreement.registration.view.tree</field>
+        <field name="model">pnt.agreement.registration</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="company_id" invisible="1"/>
+                <field name="pnt_agreement_sequence"/>
+                <field name="pnt_agreement_date"/>
+                <field name="pnt_pickup_id"/>
+                <field name="pnt_product_id"/>
+                <field name="pnt_qty_to_transport"/>
+                <field name="pnt_ler_id"/>
+                <field name="pnt_nima"/>
+                <field name="pnt_document" filename="pnt_filename" widget="binary"/>
+                <field name="pnt_filename" invisible="1"/>
+                <field name="pnt_state"/>
+                <field name="pnt_state_tn"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="pnt_agreement_registration_action" model="ir.actions.act_window">
+        <field name="name">Agreement Registration</field>
+        <field name="res_model">pnt.agreement.registration</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No items created.</p>
+        </field>
+    </record>
+
+    <record id="pnt_agreement_registration_act_view_tree" model="ir.actions.act_window.view">
+        <field name="sequence">10</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="pnt_agreement_registration_view_tree"/>
+        <field name="act_window_id" ref="pnt_agreement_registration_action"/>
+    </record>
+
+    <record id="pnt_agreement_registration_act_view_form" model="ir.actions.act_window.view">
+        <field name="sequence">20</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="pnt_agreement_registration_view_form"/>
+        <field name="act_window_id" ref="pnt_agreement_registration_action"/>
+    </record>
+
+    <record id="pnt_agreement_registration_menu" model="ir.ui.menu">
+        <field name="name">Agreement Registration</field>
+        <field name="action" ref="pnt_agreement_registration_action"/>
+        <field name="parent_id" ref="custom_pnt.menu_pnt_agreement_agreement"/>
+        <field name="sequence">80</field>
+    </record>
+</odoo>

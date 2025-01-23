@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--FORM-->
+    <record id="pnt_app_du_form_view" model="ir.ui.view">
+        <field name="name">pnt.app.du.form</field>
+        <field name="model">pnt.app.du</field>
+        <field name="arch" type="xml">
+            <form create="false"
+                  string="App du"
+                  delete="true"
+            >
+                <header>
+                    <button name="proces_app_du"
+                            id="proces_app_du"
+                            string="Proces App DU record"
+                            class="btn-primary"
+                            type="object"
+                            invisible="1"
+                    />
+                    <field name="pnt_processed" invisible="1"/>
+                    <button name="change_app_du"
+                            id="change_app_du"
+                            string="Change DU in record"
+                            class="btn-primary"
+                            type="object"
+                            attrs="{'invisible': [('pnt_processed', '=', True)]}"
+                    />
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button
+                                name="action_view_app_du_lines"
+                                class="oe_stat_button"
+                                icon="fa-mobile"
+                                type="object"
+                                attrs="{'invisible': [('app_du_lines_count', '=', 0)]}"
+                        >
+                            <field
+                                    string="App DU LInes"
+                                    name="app_du_lines_count"
+                                    widget="statinfo"
+                            />
+                        </button>
+                        <button
+                                name="action_view_app_du_fotos"
+                                class="oe_stat_button"
+                                icon="fa-camera-retro"
+                                type="object"
+                                attrs="{'invisible': [('app_du_fotos_count', '=', 0)]}"
+                        >
+                            <field
+                                    string="App DU Fotos"
+                                    name="app_du_fotos_count"
+                                    widget="statinfo"
+                            />
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="transfer_id" readonly="1"/>
+                            <field name="fecha_creacion" readonly="1"/>
+                            <field name="company_id"
+                                   readonly="1"
+                            />
+                            <field name="pnt_single_document_id"
+                                   readonly="0"
+                            />
+                            <field name="pnt_partner_pickup_id"
+                                   readonly="1"
+                            />
+                            <field name="app_application_id"
+                                   readonly="1"
+                            />
+                            <field name="refserie"
+                                   readonly="1"
+                                   invisible="1"
+                            />
+                            <field name="refnum"
+                                   readonly="1"
+                                   invisible="1"
+                            />
+                            <field name="grpid"
+                                   readonly="1"
+                                   invisible="1"
+                            />
+                            <field name="justificanteg2"
+                                   readonly="1"
+                            />
+                            <field name="justificanteg3"
+                                   readonly="1"
+                            />
+                            <field name="justificantegx"
+                                   readonly="1"
+                            />
+                            <field name="justificantegp"
+                                   readonly="1"
+                            />
+                            <field name="firmanombre"
+                                   readonly="1"
+                            />
+                            <field name="firmadni"
+                                   readonly="1"
+                            />
+                            <field name="firmaimagentext"
+                                   readonly="1"
+                                   widget="image"
+                                   class="oe_avatar"
+                            />
+                        </group>
+                        <group>
+                            <field name="pnt_processed"/>
+                            <field name="pnt_processed_date"
+                                   readonly="1"
+                                   force_save="1"
+                            />
+                            <field name="pnt_incidence"/>
+                            <field name="pnt_incidence_date"
+                                   readonly="1"
+                                   force_save="1"
+                            />
+                            <field name="pnt_incidence_text"
+                                   readonly="1"
+                                   force_save="1"
+                            />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="pnt_app_du_lineas_form_view" model="ir.ui.view">
+        <field name="name">pnt.app.du.lineas.form</field>
+        <field name="model">pnt.app.du.lineas</field>
+        <field name="arch" type="xml">
+            <form create="false"
+                  string="App du lineas"
+                  delete="true"
+            >
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="transfer_id"
+                                   readonly="1"
+                            />
+                            <field name="fecha_creacion"
+                                   readonly="1"
+                            />
+                            <field name="company_id"
+                                   readonly="1"
+                            />
+                            <field name="refserie"
+                                   readonly="1"
+                            />
+                            <field name="refnum"
+                                   readonly="1"
+                            />
+                            <field name="grpid"
+                                   readonly="1"
+                                   optional="hidden"
+                            />
+                            <field name="pnt_single_document_id"
+                                   readonly="1"
+                                   force_save="1"
+                            />
+                            <field name="pnt_partner_pickup_id"
+                                   readonly="1"
+                            />
+                            <field name="articulo"
+                                   readonly="1"
+                            />
+                            <field name="tipocontenido"
+                                   readonly="1"
+                            />
+                            <field name="esresiduo"
+                                   readonly="1"
+                            />
+                            <field name="qr"
+                                   readonly="1"
+                            />
+                            <field name="kg"
+                                   readonly="0"
+                            />
+                            <field name="fecha_creacion"
+                                   readonly="1"
+                            />
+                            <field name="cantidad"
+                                   readonly="1"
+                            />
+                        </group>
+                        <group>
+                            <field name="pnt_processed"/>
+                            <field name="pnt_processed_date"
+                                   readonly="1"
+                            />
+                            <field name="pnt_incidence"/>
+                            <field name="pnt_incidence_date"
+                                   readonly="1"
+                            />
+                            <field name="pnt_incidence_text"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="pnt_app_du_fotos_form_view" model="ir.ui.view">
+        <field name="name">pnt.app.du.fotos.form</field>
+        <field name="model">pnt.app.du.fotos</field>
+        <field name="arch" type="xml">
+            <form create="false"
+                  string="App du fotos"
+                  delete="true"
+            >
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="transfer_id"
+                                   readonly="1"
+                            />
+                            <field name="fecha_creacion"
+                                   readonly="1"
+                            />
+                            <field name="company_id"
+                                   readonly="1"
+                            />
+                            <field name="refserie"
+                                   readonly="1"
+                            />
+                            <field name="refnum"
+                                   readonly="1"
+                            />
+                            <field name="grpid"
+                                   readonly="1"
+                                   optional="hidden"
+                            />
+                            <field name="pnt_single_document_id"
+                                   readonly="1"
+                                   force_save="1"
+                            />
+                            <field name="pnt_partner_pickup_id"
+                                   readonly="1"
+                            />
+                        </group>
+                        <group>
+                            <field name="foto"
+                                   readonly="1"
+                                   widget="image"
+                            />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!--  TREE  -->
+    <record id="pnt_app_du_tree_view" model="ir.ui.view">
+        <field name="name">pnt.app.du.tree</field>
+        <field name="model">pnt.app.du</field>
+        <field name="arch" type="xml">
+            <tree create="false"
+                  string="App du"
+                  delete="false"
+                  default_order="fecha_creacion desc"
+            >
+                <field name="id"
+                       string="App DU Reference"
+                       readonly="1"
+                       optional="hidden"
+                />
+                <field name="transfer_id" readonly="1"/>
+                <field name="fecha_creacion"
+                       readonly="1"
+                />
+                <field name="company_id"
+                       readonly="1"
+                       optional="hidden"
+                />
+                <field name="pnt_single_document_id"
+                       readonly="1"
+                />
+                <field name="pnt_partner_pickup_id"
+                       readonly="1"
+                />
+                <field name="refserie"
+                       readonly="1"
+                       optional="hidden"
+                />
+                <field name="refnum"
+                       readonly="1"
+                       optional="hidden"
+                />
+                <field name="grpid"
+                       readonly="1"
+                       optional="hidden"
+                />
+                <field name="justificanteg2"
+                       readonly="1"
+                       optional="hidden"
+                />
+                <field name="justificanteg3"
+                       readonly="1"
+                       optional="hidden"
+                />
+                <field name="justificantegx"
+                       readonly="1"
+                       optional="hidden"
+                />
+                <field name="justificantegp"
+                       readonly="1"
+                       optional="hidden"
+                />
+                <field name="firmanombre"
+                       readonly="1"
+                       optional="hidden"
+                />
+                <field name="firmadni"
+                       readonly="1"
+                       optional="hidden"
+                />
+                <field name="app_application_id"
+                       readonly="1"
+                />
+                <field name="pnt_processed"/>
+                <field name="pnt_processed_date"
+                       readonly="1"
+                />
+                <field name="pnt_incidence"/>
+                <field name="pnt_incidence_date"
+                       readonly="1"
+                />
+                <field name="pnt_incidence_text"/>
+            </tree>
+        </field>
+    </record>
+    <record id="pnt_app_du_fotos_tree_view" model="ir.ui.view">
+        <field name="name">pnt.app.du.fotos.tree</field>
+        <field name="model">pnt.app.du.fotos</field>
+        <field name="arch" type="xml">
+            <tree create="false"
+                  string="App du"
+                  delete="false"
+                  default_order="fecha_creacion desc"
+            >
+                <field name="transfer_id"
+                       readonly="1"
+                />
+                <field name="fecha_creacion"
+                       readonly="1"
+                />
+                <field name="company_id"
+                       readonly="1"
+                       optional="hidden"
+                />
+                <field name="refserie"
+                       readonly="1"
+                       optional="hidden"
+                />
+                <field name="refnum"
+                       readonly="1"
+                       optional="hidden"
+                />
+                <field name="grpid"
+                       readonly="1"
+                       optional="hidden"
+                />
+                <field name="pnt_single_document_id"
+                       readonly="1"
+                />
+                <field name="pnt_partner_pickup_id"
+                       readonly="1"
+                />
+                <field name="foto"
+                       readonly="1"
+                       widget="image"
+                />
+            </tree>
+        </field>
+    </record>
+    <record id="pnt_app_du_lineas_tree_view" model="ir.ui.view">
+        <field name="name">pnt.app.du.lineas.tree</field>
+        <field name="model">pnt.app.du.lineas</field>
+        <field name="arch" type="xml">
+            <tree create="false"
+                  string="App du"
+                  delete="true"
+                  default_order="fecha_creacion desc"
+            >
+                <field name="transfer_id"
+                       readonly="1"
+                />
+                <field name="fecha_creacion"
+                       readonly="1"
+                />
+                <field name="company_id"
+                       readonly="1"
+                       optional="hidden"
+                />
+                <field name="refserie"
+                       readonly="1"
+                       optional="hidden"
+                />
+                <field name="refnum"
+                       readonly="1"
+                       optional="hidden"
+                />
+                <field name="grpid"
+                       readonly="1"
+                       optional="hidden"
+                />
+                <field name="pnt_single_document_id"
+                       readonly="1"
+                />
+                <field name="pnt_partner_pickup_id"
+                       readonly="1"
+                />
+                <field name="articulo"
+                       readonly="1"
+                />
+                <field name="tipocontenido"
+                       readonly="1"
+                />
+                <field name="esresiduo"
+                       readonly="1"
+                />
+                <field name="qr"
+                       readonly="1"
+                />
+                <field name="kg"
+                       readonly="1"
+                />
+                <field name="cantidad"
+                       readonly="1"
+                />
+                <field name="pnt_processed"/>
+                <field name="pnt_processed_date"
+                       readonly="1"
+                />
+                <field name="pnt_incidence"/>
+                <field name="pnt_incidence_date"
+                       readonly="1"
+                />
+                <field name="pnt_incidence_text"/>
+            </tree>
+        </field>
+    </record>
+    <!-- ACTIONS -->
+    <record id="action_app_du_menu_pnt" model="ir.actions.act_window">
+        <field name="name">Log DU management</field>
+        <field name="res_model">pnt.app.du</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="action_app_du_fotos_menu_pnt" model="ir.actions.act_window">
+        <field name="name">App DU fotografias</field>
+        <field name="res_model">pnt.app.du.fotos</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="action_app_du_lineas_menu_pnt" model="ir.actions.act_window">
+        <field name="name">App DU Lineas</field>
+        <field name="res_model">pnt.app.du.lineas</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="action_pnt_proces_app_du" model="ir.actions.server">
+        <field name="name">[PNT] Proess app records</field>
+        <field name="model_id" ref="app_adalmo_pnt.model_pnt_app_du"/>
+        <field name="binding_model_id" ref="app_adalmo_pnt.model_pnt_app_du"/>
+        <field name="state">code</field>
+        <field name="code">
+            for record in records:
+            record.proces_record_app_du()
+        </field>
+    </record>
+
+    <!-- MENU -->
+    <menuitem id="menu_pnt_app_du"
+              name="Adalmo App management"
+              action="action_app_du_menu_pnt"
+              web_icon="app_adalmo_pnt,static/description/Adalmo.png"
+              sequence="32"
+              groups="base.group_user"
+    />
+    <menuitem id="menu_pnt_app_du_records"
+              name="App log traspasos"
+              parent="app_adalmo_pnt.menu_pnt_app_du"
+              sequence="01"
+              groups="base.group_user"
+    />
+    <menuitem id="menu_pnt_app_du_log"
+              name="App DU logs"
+              action="action_app_du_menu_pnt"
+              parent="app_adalmo_pnt.menu_pnt_app_du_records"
+              sequence="01"
+              groups="base.group_user"
+    />
+    <menuitem id="menu_pnt_app_du_lineas"
+              name="App DU Logs Lineas"
+              action="action_app_du_lineas_menu_pnt"
+              parent="app_adalmo_pnt.menu_pnt_app_du_records"
+              sequence="02"
+              groups="base.group_user"
+    />
+    <menuitem id="menu_pnt_app_du_fotos"
+              name="App DU Logs Fotos"
+              action="action_app_du_fotos_menu_pnt"
+              parent="app_adalmo_pnt.menu_pnt_app_du_records"
+              sequence="03"
+              groups="base.group_user"
+    />
+    <menuitem id="menu_pnt_app_du_config"
+              name="Settings"
+              parent="app_adalmo_pnt.menu_pnt_app_du"
+              sequence="99"
+              groups="base.group_user"
+    />
+
+</odoo>

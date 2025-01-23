@@ -1,0 +1,702 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* automatic_payment_machine_pnt
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-04 10:26+0000\n"
+"PO-Revision-Date: 2024-01-04 11:27+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 3.0.1\n"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__access_warning
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record__access_warning
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_type__access_warning
+msgid "Access warning"
+msgstr "Url Documentación"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__message_needaction
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record__message_needaction
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_type__message_needaction
+msgid "Action Needed"
+msgstr "Acción Necesaria"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__active
+msgid "Active"
+msgstr "Activa"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__activity_ids
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record__activity_ids
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_type__activity_ids
+msgid "Activities"
+msgstr "Actividades"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__activity_exception_decoration
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record__activity_exception_decoration
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_type__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "Siguiente plazo de actividad"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__activity_state
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record__activity_state
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_type__activity_state
+msgid "Activity State"
+msgstr "Estado de la actividad"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__activity_type_icon
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record__activity_type_icon
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_type__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "Siguiente tipo de actividad"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record__pnt_amount
+msgid "Amount"
+msgstr "Importe"
+
+#. module: automatic_payment_machine_pnt
+#: model_terms:ir.ui.view,arch_db:automatic_payment_machine_pnt.pnt_payment_machine_form_view
+msgid "Archived"
+msgstr "Archivado"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__message_attachment_count
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record__message_attachment_count
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_type__message_attachment_count
+msgid "Attachment Count"
+msgstr "Archivos adjuntos"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__pnt_machine_manufacturer
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_type__pnt_machine_manufacturer
+msgid "Automatic payment machine manufacturer"
+msgstr "Fabricante"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__campaign_id
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record__campaign_id
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_type__campaign_id
+msgid "Campaign"
+msgstr ""
+
+#. module: automatic_payment_machine_pnt
+#: code:addons/automatic_payment_machine_pnt/models/pnt_payment_machine_type.py:0
+#: model:ir.model.fields.selection,name:automatic_payment_machine_pnt.selection__pnt_payment_machine_type__pnt_machine_manufacturer__cashguard
+#, python-format
+msgid "CashGuard"
+msgstr ""
+
+#. module: automatic_payment_machine_pnt
+#: model_terms:ir.ui.view,arch_db:automatic_payment_machine_pnt.pnt_payment_machine_form_view
+msgid "Close Payment Machine"
+msgstr "Cerrar máquina de cobro automático"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__company_id
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record__company_id
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_type__company_id
+msgid "Company"
+msgstr "Compañía"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__create_uid
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record__create_uid
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_type__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__create_date
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record__create_date
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_type__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record__currency_id
+msgid "Currency"
+msgstr ""
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine__access_url
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine_record__access_url
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine_type__access_url
+msgid "Customer Portal URL"
+msgstr "Url Licitación"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__pnt_description
+msgid "Description"
+msgstr "Descripción"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_account_payment_register__display_name
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__display_name
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record__display_name
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_type__display_name
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_single_document__display_name
+msgid "Display Name"
+msgstr "Mostrar nombre"
+
+#. module: automatic_payment_machine_pnt
+#: code:addons/automatic_payment_machine_pnt/models/pnt_payment_machine.py:0
+#, python-format
+msgid ""
+"El dispositivo CashGuard no ha podido realizar el pago. Revise si está "
+"Disponible"
+msgstr ""
+
+#. module: automatic_payment_machine_pnt
+#: code:addons/automatic_payment_machine_pnt/models/pnt_payment_machine.py:0
+#, python-format
+msgid ""
+"El dispositivo CashGuard no ha podido realizar el pago. Revise si tiene "
+"Efecivo suficiente"
+msgstr ""
+
+#. module: automatic_payment_machine_pnt
+#: code:addons/automatic_payment_machine_pnt/models/pnt_payment_machine.py:0
+#, python-format
+msgid "El dispositivo ya se encuentra cerrado"
+msgstr ""
+
+#. module: automatic_payment_machine_pnt
+#: code:addons/automatic_payment_machine_pnt/models/pnt_payment_machine.py:0
+#, python-format
+msgid "Esta utilidad solo está disponible para dispositivos de tipo CashGuard"
+msgstr ""
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__message_follower_ids
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record__message_follower_ids
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_type__message_follower_ids
+msgid "Followers"
+msgstr "Seguidores"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__message_channel_ids
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record__message_channel_ids
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_type__message_channel_ids
+msgid "Followers (Channels)"
+msgstr "Seguidores (Canales)"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__message_partner_ids
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record__message_partner_ids
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_type__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Seguidores (Empresas)"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine__activity_type_icon
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine_record__activity_type_icon
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine_type__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_account_payment_register__id
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__id
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record__id
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_type__id
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_single_document__id
+msgid "ID"
+msgstr "Identificación"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__activity_exception_icon
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record__activity_exception_icon
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_type__activity_exception_icon
+msgid "Icon"
+msgstr "Siguiente tipo de actividad"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine__activity_exception_icon
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine_record__activity_exception_icon
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine_type__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "Siguiente plazo de actividad"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine__message_needaction
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine__message_unread
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine_record__message_needaction
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine_record__message_unread
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine_type__message_needaction
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine_type__message_unread
+msgid "If checked, new messages require your attention."
+msgstr "Si está marcado, hay nuevos mensajes que requieren su atención."
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine__message_has_error
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine__message_has_sms_error
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine_record__message_has_error
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine_record__message_has_sms_error
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine_type__message_has_error
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine_type__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Si se encuentra marcado, algunos mensajes tienen error de envío."
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__message_is_follower
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record__message_is_follower
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_type__message_is_follower
+msgid "Is Follower"
+msgstr "Es un seguidor"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__pnt_journal_id
+msgid "Journal"
+msgstr "Diario"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_account_payment_register____last_update
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine____last_update
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record____last_update
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_type____last_update
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_single_document____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__write_uid
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record__write_uid
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_type__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__write_date
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record__write_date
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_type__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__pnt_machine_type
+msgid "Machine Type"
+msgstr "Tipo"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__pnt_machine_url
+msgid "Machine URL"
+msgstr "URL"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_type__pnt_webapi
+msgid "Machine WebAPI"
+msgstr "WebAPI"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__pnt_machine_port
+msgid "Machine port"
+msgstr "Puerto"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__pnt_machine_user
+msgid "Machine user"
+msgstr "Usuario"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__pnt_machine_user_pwd
+msgid "Machine user password"
+msgstr "Contraseña"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__message_main_attachment_id
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record__message_main_attachment_id
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_type__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "Adjuntos principales"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__medium_id
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record__medium_id
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_type__medium_id
+msgid "Medium"
+msgstr ""
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__message_has_error
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record__message_has_error
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_type__message_has_error
+msgid "Message Delivery error"
+msgstr "Error de Envío de Mensaje"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__message_ids
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record__message_ids
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_type__message_ids
+msgid "Messages"
+msgstr "Mensajes"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__my_activity_date_deadline
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record__my_activity_date_deadline
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_type__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "Siguiente plazo de actividad"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__name
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record__name
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_type__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: automatic_payment_machine_pnt
+#: model_terms:ir.ui.view,arch_db:automatic_payment_machine_pnt.pnt_payment_machine_rocord_form_view
+msgid "Name:"
+msgstr "Código:"
+
+#. module: automatic_payment_machine_pnt
+#: code:addons/automatic_payment_machine_pnt/models/pnt_payment_machine_record.py:0
+#, python-format
+msgid "New"
+msgstr ""
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__activity_date_deadline
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record__activity_date_deadline
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_type__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Siguiente plazo de actividad"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__activity_summary
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record__activity_summary
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_type__activity_summary
+msgid "Next Activity Summary"
+msgstr "Resumen de la siguiente actividad"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__activity_type_id
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record__activity_type_id
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_type__activity_type_id
+msgid "Next Activity Type"
+msgstr "Siguiente tipo de actividad"
+
+#. module: automatic_payment_machine_pnt
+#: code:addons/automatic_payment_machine_pnt/models/pnt_payment_machine.py:0
+#, python-format
+msgid "No puede realizarse el pago porque el importe es 0"
+msgstr ""
+
+#. module: automatic_payment_machine_pnt
+#: code:addons/automatic_payment_machine_pnt/models/pnt_payment_machine.py:0
+#, python-format
+msgid "No se ha podido cerrar el dispositivo CashGuard: "
+msgstr ""
+
+#. module: automatic_payment_machine_pnt
+#: code:addons/automatic_payment_machine_pnt/wizards/account_payment_register.py:0
+#, python-format
+msgid "No se ha podido realizar el pago con la Máquina de cobro automático: "
+msgstr ""
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__message_needaction_counter
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record__message_needaction_counter
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_type__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Número de acciones"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__message_has_error_counter
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record__message_has_error_counter
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_type__message_has_error_counter
+msgid "Number of errors"
+msgstr "Número de acciones"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine__message_needaction_counter
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine_record__message_needaction_counter
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine_type__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "Número de mensajes que requieren una acción"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine__message_has_error_counter
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine_record__message_has_error_counter
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine_type__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Número de mensajes con error de envío"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine__message_unread_counter
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine_record__message_unread_counter
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine_type__message_unread_counter
+msgid "Number of unread messages"
+msgstr "Número de mensajes no leidos"
+
+#. module: automatic_payment_machine_pnt
+#: code:addons/automatic_payment_machine_pnt/models/pnt_payment_machine_type.py:0
+#: model:ir.model.fields.selection,name:automatic_payment_machine_pnt.selection__pnt_payment_machine_type__pnt_machine_manufacturer__other
+#, python-format
+msgid "Others"
+msgstr "Otros"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record__pnt_partner_id
+msgid "Partner pickup"
+msgstr "Contacto"
+
+#. module: automatic_payment_machine_pnt
+#: model_terms:ir.ui.view,arch_db:automatic_payment_machine_pnt.pnt_single_document_machine_form_view
+msgid "Pay with payment machine"
+msgstr "Pagar con Máquina cobro automático"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record__pnt_account_payment_id
+msgid "Payment"
+msgstr "Cobro\\Pago"
+
+#. module: automatic_payment_machine_pnt
+#: model:res.groups,name:automatic_payment_machine_pnt.group_pnt_payment_machine_admin
+msgid "Payment Machine Administrator"
+msgstr "Administrador de máquina de cobro automático"
+
+#. module: automatic_payment_machine_pnt
+#: model_terms:ir.ui.view,arch_db:automatic_payment_machine_pnt.pnt_payment_machine_form_view
+msgid "Payment Machine Name:"
+msgstr "Nombre:"
+
+#. module: automatic_payment_machine_pnt
+#: model:res.groups,name:automatic_payment_machine_pnt.group_pnt_payment_machine_user
+msgid "Payment Machine User"
+msgstr "Usuario de máquina de cobro automático"
+
+#. module: automatic_payment_machine_pnt
+#: model_terms:ir.ui.view,arch_db:automatic_payment_machine_pnt.pnt_payment_machine_type_form_view
+msgid "Payment Machine type Name:"
+msgstr "Nombre:"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record__pnt_payment_type
+msgid "Payment Type"
+msgstr "Tipo"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.actions.act_window,name:automatic_payment_machine_pnt.action_payment_machine_menu_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record__pnt_payment_machine_id
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_single_document__pnt_payment_machine_id
+#: model:ir.ui.menu,name:automatic_payment_machine_pnt.menu_pnt_payment_machine
+#: model_terms:ir.ui.view,arch_db:automatic_payment_machine_pnt.pnt_payment_machine_form_view
+#: model_terms:ir.ui.view,arch_db:automatic_payment_machine_pnt.pnt_payment_machine_tree_view
+msgid "Payment machine"
+msgstr "Máquina de cobro automático"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.actions.act_window,name:automatic_payment_machine_pnt.action_payment_machine_record_menu_pnt
+#: model:ir.ui.menu,name:automatic_payment_machine_pnt.menu_pnt_payment_machine_record
+#: model_terms:ir.ui.view,arch_db:automatic_payment_machine_pnt.pnt_payment_machine_record_tree_view
+#: model_terms:ir.ui.view,arch_db:automatic_payment_machine_pnt.pnt_payment_machine_rocord_form_view
+msgid "Payment machine record"
+msgstr "Máquina de cobro automático. Registro"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.actions.act_window,name:automatic_payment_machine_pnt.action_payment_machine_type_menu_pnt
+#: model:ir.ui.menu,name:automatic_payment_machine_pnt.menu_pnt_payment_machine_type
+#: model_terms:ir.ui.view,arch_db:automatic_payment_machine_pnt.pnt_payment_machine_type_form_view
+#: model_terms:ir.ui.view,arch_db:automatic_payment_machine_pnt.pnt_payment_machine_type_tree_view
+msgid "Payment machine type"
+msgstr "Máquina de cobro automático. Tipo"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model,name:automatic_payment_machine_pnt.model_pnt_payment_machine
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_account_payment_register__pnt_payment_machine_id
+msgid "Pnt Payment Machine"
+msgstr "Máquina de cobro automático"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model,name:automatic_payment_machine_pnt.model_pnt_payment_machine_record
+msgid "Pnt Payment Machine Record"
+msgstr "Máquina de cobro automático. Registro"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model,name:automatic_payment_machine_pnt.model_pnt_payment_machine_type
+msgid "Pnt Payment Machine Type"
+msgstr "Máquina de cobro automático. Tipo"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model,name:automatic_payment_machine_pnt.model_pnt_single_document
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_account_payment_register__pnt_single_document_id
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record__pnt_single_document_id
+msgid "Pnt Single Document"
+msgstr "DU"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__access_url
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record__access_url
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_type__access_url
+msgid "Portal Access URL"
+msgstr "Url Documentación"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model,name:automatic_payment_machine_pnt.model_account_payment_register
+msgid "Register Payment"
+msgstr "Registrar pago"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__activity_user_id
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record__activity_user_id
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_type__activity_user_id
+msgid "Responsible User"
+msgstr "Usuario responsable"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__message_has_sms_error
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record__message_has_sms_error
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_type__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "Error de Envío de Mensaje"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__access_token
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record__access_token
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_type__access_token
+msgid "Security Token"
+msgstr ""
+
+#. module: automatic_payment_machine_pnt
+#: code:addons/automatic_payment_machine_pnt/models/pnt_payment_machine.py:0
+#, python-format
+msgid "Solo puede realizar el pago si el dispositivo es tipo CashGuard"
+msgstr ""
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__source_id
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record__source_id
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_type__source_id
+msgid "Source"
+msgstr "Origen"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine__activity_state
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine_record__activity_state
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine_type__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"Estado basado en actividades\n"
+"Vencida: la fecha tope ya ha pasado\n"
+"Hoy: La fecha tope es hoy\n"
+"Planificada: futuras actividades."
+
+#. module: automatic_payment_machine_pnt
+#: model_terms:ir.ui.view,arch_db:automatic_payment_machine_pnt.pnt_payment_machine_form_view
+msgid ""
+"The device must be closed if you have to interact with it from the console"
+msgstr ""
+"Debe cerrarse el dispositivo en caso de tener que interactuar con él desde "
+"la consola"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine_record__currency_id
+msgid "The payment's currency."
+msgstr ""
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine__campaign_id
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine_record__campaign_id
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine_type__campaign_id
+msgid ""
+"This is a name that helps you keep track of your different campaign "
+"efforts, e.g. Fall_Drive, Christmas_Special"
+msgstr ""
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine__medium_id
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine_record__medium_id
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine_type__medium_id
+msgid "This is the method of delivery, e.g. Postcard, Email, or Banner Ad"
+msgstr ""
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine__source_id
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine_record__source_id
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine_type__source_id
+msgid ""
+"This is the source of the link, e.g. Search Engine, another domain, or name "
+"of email list"
+msgstr ""
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine__activity_exception_decoration
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine_record__activity_exception_decoration
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine_type__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "Siguiente tipo de actividad."
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__message_unread
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record__message_unread
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_type__message_unread
+msgid "Unread Messages"
+msgstr "Mensajes por leer"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__message_unread_counter
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record__message_unread_counter
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_type__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr "Contador de mensajes sin leer"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__pnt_warehouse_id
+msgid "Warehouse"
+msgstr "Almacén"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__website_message_ids
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record__website_message_ids
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_type__website_message_ids
+msgid "Website Messages"
+msgstr "Mensajes del sitio web"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine__website_message_ids
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine_record__website_message_ids
+#: model:ir.model.fields,help:automatic_payment_machine_pnt.field_pnt_payment_machine_type__website_message_ids
+msgid "Website communication history"
+msgstr "Historial de comunicaciones del sitio web"
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__pnt_locid
+msgid "locid"
+msgstr ""
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__pnt_msgid
+msgid "msgid"
+msgstr ""
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__activity_team_user_ids
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_record__activity_team_user_ids
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine_type__activity_team_user_ids
+msgid "test field"
+msgstr ""
+
+#. module: automatic_payment_machine_pnt
+#: model:ir.model.fields,field_description:automatic_payment_machine_pnt.field_pnt_payment_machine__pnt_tid
+msgid "tid"
+msgstr ""

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--  TREE  -->
+    <record id="pnt_waste_transfer_document_tree_view" model="ir.ui.view">
+        <field name="name">pnt.waste.transfer.document.tree</field>
+        <field name="model">pnt.waste.transfer.document</field>
+        <field name="arch" type="xml">
+            <tree string="Waste transfer document" default_order="create_date desc">
+                <field name="name" readonly="1"/>
+                <field name="pnt_legal_code" readonly="1"/>
+                <field name="pnt_legal_code_hist"
+                       readonly="1"
+                       optional="hidden"
+                       string="Legal code (hist)"
+                />
+                <field name="company_id"
+                       readonly="1"
+                       optional="hidden"
+                />
+                <field name="pnt_single_document_id"
+                       readonly="1"
+                />
+                <field name="pnt_partner_id"
+                       readonly="1"
+                />
+                <field name="pnt_single_document_line_ids"
+                       widget="many2many_tags"
+                       readonly="1"
+                />
+                <field name="pnt_product_id"
+                       readonly="1"
+                />
+                <field name="pnt_product_id_hist"
+                       readonly="1"
+                       optional="hidden"
+                       string="Product (hist)"
+                />
+                <field name="pnt_document_type"
+                       readonly="1"
+                />
+                <field name="pnt_type"
+                       readonly="1"
+                />
+                <field name="pnt_date"
+                       readonly="1"
+                />
+            </tree>
+        </field>
+    </record>
+    <!-- FORM -->
+    <record id="pnt_waste_transfer_document_form_view" model="ir.ui.view">
+        <field name="name">pnt.waste.transfer.document.form</field>
+        <field name="model">pnt.waste.transfer.document</field>
+        <field name="priority">100</field>
+        <field name="arch" type="xml">
+            <form string="Waste transfer document">
+                <sheet>
+                    <field name="active" invisible="1"/>
+                    <widget name="web_ribbon" title="Archived"
+                            bg_color="bg-danger"
+                            attrs="{'invisible': [('active', '=', True)]}"/>
+                    <div class="oe_title">
+                        <label for="name" string="Nº NT" attrs="{'invisible': [('pnt_document_type', '=', 'di')]}"/>
+                        <label for="name" string="Nº DI" attrs="{'invisible': [('pnt_document_type', '=', 'nt')]}"/>
+                        <h1>
+                            <field name="pnt_legal_code"
+                                   readonly="0"
+                                   force_save="1"
+                                   attrs="{'invisible': [('active', '=', False)]}"
+                            />
+                            <field name="pnt_legal_code_hist"
+                                   readonly="0"
+                                   force_save="1"
+                                   attrs="{'invisible': [('active', '=', True)]}"
+                            />
+                        </h1>
+                    </div>
+                    <group name="pnt_waste_trasnfer_document_header">
+                        <group>
+                            <field name="name"
+                                   readonly="1"
+                            />
+                            <field name="company_id"
+                                   readonly="1"
+                            />
+                            <field name="pnt_single_document_id"
+                                   readonly="1"
+                                   invisible="1"
+                                   force_save="1"
+                            />
+                            <field name="pnt_partner_id"
+                                   readonly="1"
+                                   force_save="1"
+                            />
+                            <label for="pnt_qty"/>
+                            <div class="o_row">
+                                <field name="pnt_qty"
+                                       readonly="0"
+                                />
+                                <field name="pnt_uom_id"
+                                       groups="uom.group_uom" class="oe_no_button"/>
+                            </div>
+                        </group>
+                        <group>
+                            <field name="pnt_product_id"
+                                   readonly="1"
+                                   force_save="1"
+                                   attrs="{'invisible': [('active', '=', False)]}"
+                            />
+                            <field name="pnt_product_id_hist"
+                                   readonly="1"
+                                   force_save="1"
+                                   attrs="{'invisible': [('active', '=', True)]}"
+                            />
+                            <field name="pnt_document_type"
+                                   readonly="0"
+                            />
+                            <field name="pnt_date"
+                                   readonly="0"
+                            />
+                            <field name="pnt_end_date"
+                                   readonly="0"
+                                   attrs="{'invisible': [('pnt_document_type', '!=', 'nt')], 'required': [('pnt_document_type', '=', 'nt')]}"
+                            />
+                            <field name="pnt_type"
+                                   readonly="0"
+                            />
+                            <field name="pnt_single_document_line_ids"
+                                   attrs="{'invisible': [('pnt_document_type',  '!=', 'di'),]}"
+                                   widget="many2many_tags"/>
+                            <field name="pnt_sent"
+                                   readonly="0"
+                            />
+                            <field name="pnt_pdf_generated"
+                                   attrs="{'invisible': [('pnt_sent',  '=', False),]}"
+                            />
+                            <field name="pnt_xml_generated"
+                                   attrs="{'invisible': [('pnt_sent',  '=', False),]}"
+                            />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <!-- ACTIONS -->
+    <record id="action_waste_transfer_document_menu_pnt" model="ir.actions.act_window">
+        <field name="name">Waste transfer document</field>
+        <field name="res_model">pnt.waste.transfer.document</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="action_waste_transfer_document_tree_pnt" model="ir.actions.act_window">
+        <field name="name">Waste transfer document</field>
+        <field name="res_model">pnt.waste.transfer.document</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_pnt_waste_transfer_document"
+              name="Waste transfer document"
+              action="action_waste_transfer_document_menu_pnt"
+              parent="custom_pnt.menu_pnt_single_document"
+              sequence="32"
+              groups="base.group_user"
+    />
+</odoo>

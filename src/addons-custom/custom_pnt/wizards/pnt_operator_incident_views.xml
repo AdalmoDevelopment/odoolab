@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_form_pnt_operator_incident">
+        <field name="model">pnt.operator.incident</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="company_id"
+                               required="1"
+                               readonly="1"
+                               invisible="1"
+                        />
+                        <field name="pnt_state"
+                               required="1"
+                               readonly="1"
+                               force_save="1"
+                               invisible="1"
+                        />
+                        <field name="pnt_employee_id"
+                               options="{'no_quick_create':True,'no_create':True,'no_create_edit':True,'no_open': True,}"
+                               required="1"
+                        />
+                        <field name="pnt_date"
+                               required="1"
+                        />
+                        <field name="pnt_single_document_domain_ids"
+                               invisible="1"
+                        />
+                        <field name="pnt_single_document_id"
+                               options="{'no_quick_create':True,'no_create':True,'no_create_edit':True,'no_open': True,}"
+                               attrs="{'readonly': [('pnt_state', '!=', 'oi_new')],}"
+                               required="1"
+                               domain="[('id', 'in', pnt_single_document_domain_ids)]"
+                               context="{'order': 'pnt_date_to_plant DESC','pnt_change_name':True}"
+                        />
+                    </group>
+                    <group>
+                        <field name="pnt_holder_id"
+                               readonly="1"
+                               options="{'no_open': True,}"
+                        />
+                        <field name="pnt_partner_pickup_id"
+                               readonly="1"
+                               options="{'no_open': True,}"
+                        />
+                    </group>
+                    <group attrs="{'invisible': [('pnt_state', 'not in', ['oi_waste','oi_new'])],}">
+                        <field name="pnt_line_ids"
+                               mode="kanban"
+                               nolabel="0"
+                        >
+                            <kanban edit="1" delete="0" create="1">
+                                <field name="id"/>
+                                <field name="pnt_product_id"/>
+                                <field name="pnt_container_id"/>
+                                <field name="pnt_product_uom_qty"/>
+                                <field name="pnt_product_uom"/>
+                                <field name="pnt_has_incidence"/>
+                                <templates>
+                                    <t t-name="kanban-box">
+                                        <div class="oe_kanban_card">
+                                            <div class="oe_kanban_details">
+                                                <strong><field name="pnt_product_id"/></strong>
+                                                <div>
+                                                    <strong>Envase:</strong>
+                                                    <field name="pnt_container_id"/>
+                                                </div>
+                                                <div>
+                                                    <strong>Peso:</strong>
+                                                    <field name="pnt_product_uom_qty"/>
+                                                    <field name="pnt_product_uom"/>
+                                                </div>
+                                                <div>
+                                                    <t t-if="record.pnt_has_incidence.raw_value">
+                                                        <span style="color:red;font-size:18px;">
+                                                            <strong>Tiene incidencias</strong>
+                                                        </span>
+                                                    </t>
+                                                </div>
+                                                <div class="container o_kanban_card_content">
+                                                    <div class="row mb16">
+                                                        <div class="col-6 o_kanban_primary_left">
+                                                            <div class="btn-group" name="o_wo">
+                                                                <button name="pnt_set_line"
+                                                                        string="Select"
+                                                                        class="btn-success btn-lg"
+                                                                        type="object"
+                                                                        title="Selected line"
+                                                                >
+                                                                    <span>Seleccionar</span>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </t>
+                                </templates>
+                            </kanban>
+                        </field>
+                    </group>
+                    <group attrs="{'invisible': [('pnt_state', '=', 'oi_new')],}">
+                        <field name="pnt_line_id"
+                               readonly="1"
+                               force_save="1"
+                               invisible="1"
+                        />
+                        <field name="pnt_single_document_line_id"
+                               readonly="1"
+                               force_save="1"
+                               invisible="1"
+                        />
+                        <field name="pnt_product_id"
+                               readonly="1"
+                               force_save="1"
+                               options="{'no_open': True,}"
+                        />
+                        <field name="pnt_container_id"
+                               readonly="1"
+                               force_save="1"
+                               options="{'no_open': True,}"
+                        />
+                        <field name="pnt_product_uom_qty"
+                               readonly="1"
+                               force_save="1"
+                               options="{'no_open': True,}"
+                               class="oe_inline"
+                        />
+                        <field name="pnt_product_uom"
+                               readonly="1"
+                               force_save="1"
+                               options="{'no_open': True,}"
+                               class="oe_inline"
+                        />
+                    </group>
+                    <group attrs="{'invisible': [('pnt_state', '!=', 'oi_images')],}">
+                        <field name="pnt_image_1"
+                               widget="image"
+                               class="oe_avatar oe_left"
+                        />
+                        <field name="pnt_image_2"
+                               widget="image"
+                               class="oe_avatar oe_left"
+                        />
+                        <field name="pnt_image_3"
+                               widget="image"
+                               class="oe_avatar oe_left"
+                        />
+                        <button name="pnt_return_to_waste"
+                                type="object"
+                                icon="fa-backward"
+                                string="Return waste"
+                                class="oe_highlight oe_inline"
+                                style="font-size:10pt;"
+                        />
+                        <button name="pnt_confirm_images"
+                                type="object"
+                                icon="fa-check-square-o"
+                                string="Confirm images"
+                                class="oe_highlight oe_inline"
+                                style="font-size:10pt;"
+                        />
+                    </group>
+                    <group attrs="{'invisible': [('pnt_state', '!=', 'oi_reclas')],}">
+                        <button name="pnt_add_product_waste_manipulation"
+                                type="object"
+                                icon="fa-plus-square-o"
+                                string="Add waste manipulation"
+                                class="oe_highlight oe_inline"
+                                style="font-size:10pt;"
+                                invisible="1"
+                        />
+                        <field name="pnt_waste_reclassified_ids">
+                            <tree
+                                    delete="true"
+                            >
+                                <field name="pnt_waste_id"
+                                       readonly="0"
+                                />
+                                <field name="pnt_weight" widget="number" options="{'inputmode': 'numeric'}"/>
+                            </tree>
+                            <form>
+                                <sheet>
+                                    <gruup>
+                                        <group>
+                                            <field name="pnt_is_waste_manipulation"
+                                                   invisible="1"
+                                            />
+                                            <field name="pnt_waste_domain_ids"
+                                                   invisible="1"/>
+                                            <field name="pnt_waste_id"
+                                                   domain="[('id', 'in', pnt_waste_domain_ids)]"
+                                                   widget="selection"
+                                                   attrs="{'invisible': [('pnt_is_waste_manipulation', '!=', False)],}"
+                                            />
+                                            <field name="pnt_is_waste_description"
+                                                   readonly="1"
+                                                   attrs="{'invisible': [('pnt_is_waste_manipulation', '!=', True)],}"
+                                            />
+                                        </group>
+                                        <group>
+                                            <field name="pnt_weight"
+                                                   options="{'type':'number'}"
+                                            />
+                                        </group>
+                                    </gruup>
+                                </sheet>
+                            </form>
+                        </field>
+                        <button name="pnt_return_to_images"
+                                type="object"
+                                icon="fa-backward"
+                                string="Return images"
+                                class="oe_highlight oe_inline"
+                                style="font-size:10pt;"
+                        />
+                        <button name="pnt_confirm_reclas"
+                                type="object"
+                                icon="fa-check-square-o"
+                                string="Confirm reclasification"
+                                class="oe_highlight oe_inline"
+                                style="font-size:10pt;"
+                        />
+                    </group>
+                    <group attrs="{'invisible': [('pnt_state', '!=', 'oi_mani')],}">
+                        <field name="pnt_manipulation"/>
+                        <button name="pnt_return_to_reclas"
+                                type="object"
+                                icon="fa-backward"
+                                string="Return reclasification"
+                                class="oe_highlight oe_inline"
+                                style="font-size:10pt;"
+                        />
+                        <button name="pnt_change_waste"
+                                type="object"
+                                icon="fa-backward"
+                                string="Change waste"
+                                class="oe_highlight oe_inline"
+                                style="font-size:10pt;"
+                        />
+                    </group>
+                    <group>
+                        <button name="pnt_cancel"
+                                type="object"
+                                icon="fa-times"
+                                string="Cancel"
+                                class="oe_highlight"
+                                style="font-size:10pt;"
+                                attrs="{'invisible': [('pnt_state', '=', 'oi_finished')],}"
+                        />
+                        <button name="create_incidences"
+                                type="object"
+                                icon="fa-check-square-o"
+                                string="Create incidences"
+                                class="oe_highlight"
+                                style="font-size:10pt;"
+                                attrs="{'invisible': [('pnt_state', '!=', 'oi_mani')],}"
+                        />
+                    </group>
+                </sheet>
+                <footer>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+   <record id="action_pnt_operator_incident" model="ir.actions.act_window">
+        <field name="name">Operator incidences</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pnt.operator.incident</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_form_pnt_operator_incident"/>
+        <field name="target">current</field>
+    </record>
+
+    <menuitem id="menu_pnt_operator_incident"
+          name="Operator incidences"
+          action="action_pnt_operator_incident"
+          web_icon="custom_pnt,static/description/icon_incid.png"
+          sequence="32"/>
+</odoo>

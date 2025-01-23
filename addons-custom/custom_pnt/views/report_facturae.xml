@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="pnt_template_facturae"
+              inherit_id="l10n_es_facturae.template_facturae">
+
+        <xpath expr="//InvoiceLine//ReceiverContractReference" position="attributes">
+            <attribute name="t-if">move.pnt_face_order_number</attribute>
+            <attribute name="t-esc">move.pnt_face_order_number</attribute>
+        </xpath>
+        <xpath expr="//InvoiceLine//AdditionalLineItemInformation" position="attributes">
+            <attribute name="t-if">move.pnt_face_additional_info</attribute>
+            <attribute name="t-esc">move.pnt_face_additional_info</attribute>
+        </xpath>
+    </template>
+
+</odoo>

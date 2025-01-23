@@ -1,0 +1,12 @@
+<odoo>
+
+    <template id="pnt_portal_my_invoices" inherit_id="account.portal_my_invoices" priority="99">
+        <xpath expr="//th[@class='d-none d-md-table-cell']" position="after">
+            <th>Move Type</th>
+        </xpath>
+        <xpath expr="//td[@class='d-none d-md-table-cell']" position="after">
+            <td class='d-none d-md-table-cell'><span t-field="invoice.move_type"/></td>
+        </xpath>
+    </template>
+
+</odoo>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--  TREE  -->
+    <record id="pnt_payment_machine_tree_view" model="ir.ui.view">
+        <field name="name">pnt.payment.machine.tree</field>
+        <field name="model">pnt.payment.machine</field>
+        <field name="arch" type="xml">
+            <tree string="Payment machine">
+                <field name="name" readonly="1"/>
+                <field name="company_id"
+                       readonly="1"
+                       optional="hidden"
+                />
+                <field name="pnt_description"
+                       readonly="1"
+                />
+                <field name="pnt_machine_type"
+                       readonly="1"
+                />
+                <field name="pnt_machine_manufacturer"
+                       readonly="1"
+                />
+                <field name="pnt_journal_id"
+                       readonly="1"
+                />
+                <field name="pnt_machine_user"
+                       readonly="1"
+                />
+                <field name="pnt_machine_url"
+                       readonly="1"
+                />
+                <field name="pnt_machine_port"
+                       readonly="1"
+                />
+                <field name="pnt_tid"
+                       readonly="1"
+                />
+                <field name="pnt_msgid"
+                       readonly="1"
+                />
+                <field name="pnt_locid"
+                       readonly="1"
+                />
+                <field name="pnt_warehouse_id"
+                       readonly="1"
+                />
+            </tree>
+        </field>
+    </record>
+    <!-- FORM -->
+    <record id="pnt_payment_machine_form_view" model="ir.ui.view">
+        <field name="name">pnt.payment.machine.form</field>
+        <field name="model">pnt.payment.machine</field>
+        <field name="priority">100</field>
+        <field name="arch" type="xml">
+            <form string="Payment machine">
+                <header>
+                    <button name="close_payment_machine"
+                            id="close_payment_machine"
+                            string="Close Payment Machine"
+                            type="object"
+                            help="The device must be closed if you have to interact with it from the console"
+                    />
+                </header>
+                <sheet>
+                    <field name="active" invisible="1"/>
+                    <widget name="web_ribbon" title="Archived"
+                            bg_color="bg-danger"
+                            attrs="{'invisible': [('active', '=', True)]}"/>
+                    <div class="oe_title">
+                        <h1>
+                            Payment Machine Name:
+                            <field name="name" readonly="0"/>
+                        </h1>
+                    </div>
+                    <group name="pnt_payment_machine_header">
+                        <group>
+                            <field name="pnt_description"
+                                   readonly="0"
+                            />
+                            <field name="pnt_machine_type"
+                                   readonly="0"
+                            />
+                            <field name="pnt_machine_manufacturer"
+                                   readonly="1"
+                            />
+                            <field name="pnt_journal_id"
+                                   readonly="0"
+                            />
+                            <field name="pnt_machine_user"
+                                   readonly="0"
+                            />
+                            <field name="pnt_machine_user_pwd"
+                                   readonly="0"
+                            />
+                        </group>
+                        <group>
+                            <field name="company_id"
+                                   readonly="1"
+                            />
+                            <field name="pnt_machine_url"
+                                   readonly="0"
+                            />
+                            <field name="pnt_machine_port"
+                                   readonly="0"
+                            />
+                            <field name="pnt_tid"
+                                   readonly="0"
+                            />
+                            <field name="pnt_msgid"
+                                   readonly="0"
+                            />
+                            <field name="pnt_locid"
+                                   readonly="0"
+                            />
+                            <field name="pnt_warehouse_id"
+                                   readonly="0"
+                            />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <!-- ACTIONS -->
+    <record id="action_payment_machine_menu_pnt" model="ir.actions.act_window">
+        <field name="name">Payment machine</field>
+        <field name="res_model">pnt.payment.machine</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_pnt_payment_machine"
+              name="Payment machine"
+              action="action_payment_machine_menu_pnt"
+              parent="custom_pnt.menu_pnt_single_document_config"
+              sequence="84"
+              groups="base.group_user"
+    />
+
+</odoo>

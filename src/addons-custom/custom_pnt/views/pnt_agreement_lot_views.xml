@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="pnt_agreement_lot_search_view" model="ir.ui.view">
+        <field name="name">pnt.agreement.lot.search</field>
+        <field name="model">pnt.agreement.lot</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="pnt_partner_pickup_id"/>
+                <field name="pnt_agreement_id"/>
+                <field name="pnt_holder_id"/>
+                <group expand="1" string="Group By">
+                    <filter string="Category" name="category" context="{'group_by':'pnt_category_id'}"/>
+                    <filter string="Pick Up" name="pickup" context="{'group_by':'pnt_pickup_id'}"/>
+                    <filter string="Route" name="route" context="{'group_by':'pnt_logistic_route_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="pnt_agreement_lot_tree_view" model="ir.ui.view">
+        <field name="name">pnt.agreement.lot.tree</field>
+        <field name="model">pnt.agreement.lot</field>
+        <field name="arch" type="xml">
+            <tree string="Agreement lot">
+                <field name="name" optional="show" string="Lot number"/>
+                <field name="pnt_holder_id" optional="show"/>
+                <field name="pnt_agreement_id" optional="show"/>
+                <field name="pnt_pickup_id" optional="show"/>
+                <field name="pnt_logistic_route_id" optional="show"/>
+                <field name="pnt_category_id" optional="show"/>
+                <field name="state"
+                       decoration-success="state == 'done'"
+                       decoration-info="state == 'active'"
+                       widget="badge"/>
+                <field name="pnt_type" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="pnt_agreement_lot_form_view" model="ir.ui.view">
+        <field name="name">pnt.agreement.lot.form</field>
+        <field name="model">pnt.agreement.lot</field>
+        <field name="priority">100</field>
+        <field name="arch" type="xml">
+            <form string="Agreement lot">
+                <header>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group name="pnt_lot">
+                        <group>
+                            <field name="pnt_field_readonly" invisible="1"/>
+                            <field name="pnt_agreement_id" required="1" invisible="context.get('hidden', False)"/>
+                            <field name="pnt_agreement_pickup_ids" invisible="1"/>
+                            <field name="pnt_pickup_id"
+                                   required="1"
+                                   attrs="{'readonly': [('pnt_field_readonly', '=', True)]}"
+                                   domain="[('id', 'in', pnt_agreement_pickup_ids),]"
+                            />
+                            <field name="pnt_type"
+                                   required="1"
+                                   attrs="{'readonly': [('pnt_field_readonly', '=', True)]}"
+                            />
+                            <field name="pnt_interval"
+                                   attrs="{
+                                   'invisible': [('pnt_type', '=', False),],
+                                   'required': [('pnt_type', '!=', False),],
+                                   'readonly': [('pnt_field_readonly', '=', True)]
+                                   }"
+                            />
+                            <field name="pnt_visibility_previous_days" invisible="1"/>
+                            <field name="pnt_previous_days"
+                                   attrs="{
+                                   'invisible': [('pnt_visibility_previous_days', '=', False),],
+                                   'readonly': [('pnt_field_readonly', '=', True)]
+                                   }"
+                            />
+                            <field name="pnt_category_id" required="1" attrs="{'readonly': [('pnt_field_readonly', '=', True)]}"/>
+                            <field attrs="{'readonly': [('pnt_field_readonly', '=', True)]}" name="pnt_resource_calendar_id"/>
+                        </group>
+                        <group>
+                            <field name="pnt_week_day_ids"
+                                   attrs="{
+                                   'invisible': [('pnt_type', '!=', 'weekly'),],
+                                   }"
+                                   widget="many2many_tags"
+                            />
+                            <field name="pnt_week_day_month_ids"
+                                   colspan="2"
+                                   attrs="{
+                                   'invisible': [('pnt_type', '!=', 'monthly'),],
+                                   }"
+                                   nolabel="1"
+                            >
+                                <tree>
+                                    <field name="pnt_week_month_ids"
+                                           widget="many2many_tags"/>
+                                    <field name="pnt_week_day_ids"
+                                           widget="many2many_tags"/>
+                                    <field name="pnt_day_order_ids" widget="many2many_tags"/>
+                                </tree>
+                            </field>
+                            <field name="pnt_month_year_ids"
+                                   attrs="{
+                                   'invisible': [('pnt_type', '!=', 'yearly'),],
+                                   }"
+                                   widget="many2many_tags"
+                            />
+                            <field name="pnt_logistic_route_id"
+                                   domain="[('pnt_category_id', '=', pnt_category_id),]"
+                                   groups="custom_pnt.group_pnt_agreement_manager"
+                            />
+                            <field name="pnt_driver_id"
+                                   domain="[('pnt_is_driver', '=', True), '|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]"
+                                   groups="custom_pnt.group_pnt_agreement_manager"
+                            />
+                            <field name="pnt_fleet_id" groups="custom_pnt.group_pnt_agreement_manager"/>
+                            <field name="pnt_hour"
+                                   widget="float_time"
+                                   attrs="{'readonly': [('pnt_field_readonly', '=', True)]}"
+                            />
+
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="pnt_lot_products" string="Products">
+                            <button name="pnt_programing_draft" string="Programing"
+                                    type="object"
+                                    attrs="{'invisible': [('pnt_product_delivered_ids', '=', [])]}"
+                                    groups="custom_pnt.group_pnt_agreement_manager"
+                            />
+                            <field name="pnt_product_delivered_ids" nolabel="1">
+                                <tree editable="bottom">
+                                    <field name="pnt_domain_product_ids" invisible="1"/>
+                                    <field name="pnt_agreement_id" invisible="1"/>
+                                    <field name="pnt_waste_ids" invisible="1"/>
+                                    <field name="pnt_container_ids" invisible="1"/>
+                                    <field name="pnt_product_id" context="{'search_view_ref': 'custom_pnt.pnt_agreement_line_view_search', 'line_lot': True}" domain="[('id', 'in', pnt_domain_product_ids)]" required="1"/>
+                                    <field name="pnt_container_id" domain="[('id', 'in', pnt_container_ids)]"/>
+                                    <field name="pnt_waste_id" domain="[('id', 'in', pnt_waste_ids)]"/>
+                                    <field name="pnt_estimated_amount_qty"/>
+                                    <field name="pnt_estimated_economic_uom" optional="show" readonly="1" force_save="1"/>
+                                    <field name="pnt_partner_delivery_id" required="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page name="pnt_lot_lines" string="Lines" groups="custom_pnt.group_pnt_agreement_manager">
+                            <button name="button_remove_lines"
+                                    string="Remove lines without DU"
+                                    class="oe_highlight"
+                                    type="object"
+                                    confirm="Are you sure you want to remove the lines without DU?"
+                                    attrs="{'invisible': [('pnt_agreement_lot_line_ids', '=', [])]}"/>
+                            <field name="pnt_agreement_lot_line_ids" nolabel="1">
+                                <tree decoration-danger="pnt_is_leave == True">
+                                    <field name="name" invisible="1"/>
+                                    <field name="pnt_previous_date"/>
+                                    <field name="pnt_datetime"/>
+                                    <field name="pnt_sd_id"/>
+                                    <field name="pnt_is_leave" invisible="1"/>
+                                    <button name="pnt_sd_create" string="New SD"
+                                            type="object"
+                                            attrs="{'invisible': [('pnt_sd_id','!=', False),],}"
+                                    />
+                                    <field name="pnt_cron_error"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="pnt_agreement_lot_week_day_month_line_tree_view" model="ir.ui.view">
+        <field name="name">pnt.agreement.lot.week.day.month.tree</field>
+        <field name="model">pnt.agreement.lot.week.day.month.line</field>
+        <field name="arch" type="xml">
+            <tree string="Agreement lot week day month">
+                <field name="name" optional="show" string="Name"/>
+                <field name="pnt_week_month_ids" optional="show" string="Interval"
+                       widget="many2many_tags"/>
+                <field name="pnt_week_day_ids" optional="show" string="Days"
+                       widget="many2many_tags"/>
+                <field name="pnt_day_order_ids" widget="many2many_tags" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="pnt_agreement_lot_week_day_month_line_form_view" model="ir.ui.view">
+        <field name="name">pnt.agreement.lot.week.day.month.line.form</field>
+        <field name="model">pnt.agreement.lot.week.day.month.line</field>
+        <field name="priority">100</field>
+        <field name="arch" type="xml">
+            <form string="Agreement lot week day month">
+                <sheet>
+                    <group name="pnt_lot_week_day_month">
+                        <group>
+                            <field name="pnt_day_order_ids" widget="many2many_tags"/>
+                            <field name="pnt_week_day_ids" widget="many2many_tags"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="pnt_agreement_lot_line_search_view" model="ir.ui.view">
+        <field name="name">pnt.agreement.lot.line.search.view</field>
+        <field name="model">pnt.agreement.lot.line</field>
+        <field name="arch" type="xml">
+            <search string="Product">
+                <field name="name" string="Line"
+                       filter_domain="[('name', 'ilike', self),]"/>
+                <field name="pnt_agreement_id" string="Agreement"
+                       filter_domain="[('pnt_agreement_id', 'ilike', raw_value),]"/>
+                <field name="pnt_agreement_lot_id" string="Lot"
+                       filter_domain="[('pnt_agreement_lot_id', 'ilike', raw_value),]"/>
+                <field name="pnt_partner_pickup_id" string="Pickup"
+                       filter_domain="[('pnt_partner_pickup_id', 'ilike', raw_value),]"/>
+                <separator/>
+                <filter string="Earring" name="filter_earring"
+                        domain="[('pnt_sd_id','=',False)]"/>
+                <separator/>
+                <filter string="Leave" name="filter_leave"
+                        domain="[('pnt_is_leave','=',True)]"/>
+                <group expand="1" string="Group By">
+                    <filter string="Agreement" name="pnt_agreement_id"
+                            context="{'group_by':'pnt_agreement_id'}"/>
+                    <filter string="Lot" name="pnt_agreement_lot_id"
+                            context="{'group_by':'pnt_agreement_lot_id'}"/>
+                    <filter string="Pickup" name="pnt_partner_pickup_id"
+                            context="{'group_by':'pnt_partner_pickup_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="pnt_agreement_lot_line_tree_view" model="ir.ui.view">
+        <field name="name">pnt.agreement.lot.line.tree</field>
+        <field name="model">pnt.agreement.lot.line</field>
+        <field name="arch" type="xml">
+            <tree string="Agreement lot week day month" create="0" edit="0">
+                <field name="pnt_agreement_lot_id" readonly="1"/>
+                <field name="pnt_previous_date" optional="hidden"
+                       string="Previous date"/>
+                <field name="pnt_agreement_id" optional="hidden"/>
+                <field name="pnt_agreement_lot_id" optional="hidden"/>
+                <field name="pnt_partner_pickup_id"/>
+                <field name="pnt_datetime" string="Service datetime"/>
+                <field name="pnt_sd_id" optional="hidden" string="SD"/>
+                <button name="pnt_sd_create" type="object" string="NEW SD"
+                        attrs="{'invisible': [('pnt_sd_id','!=', False),],}"/>
+                <field name="pnt_cron_error" optional="hidden"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="pnt_agreement_lot_line_form_view" model="ir.ui.view">
+        <field name="name">pnt.agreement.lot.line.form</field>
+        <field name="model">pnt.agreement.lot.line</field>
+        <field name="priority">100</field>
+        <field name="arch" type="xml">
+            <form string="Agreement lot week day month">
+                <!--                <header>-->
+                <!--                </header>-->
+                <sheet>
+                    <group name="pnt_agreement_lot_line">
+                        <group>
+                            <field name="pnt_previous_date"
+                                   required="1"
+                            />
+                            <field name="pnt_datetime"
+                                   required="1"
+                            />
+                        </group>
+                        <group>
+                            <field name="pnt_sd_id"
+                                   readonly="1"/>
+                            <field name="pnt_cron_error"/>
+                            <field name="pnt_error" attrs="{'invisible': [('pnt_cron_error', '=', False)]}" readonly="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="pnt_agreement_lot_product_delivered_line_form_view" model="ir.ui.view">
+        <field name="name">pnt.lot.product.delivered.form</field>
+        <field name="model">pnt.lot.product.delivered</field>
+        <field name="priority">100</field>
+        <field name="arch" type="xml">
+            <form string="Agreement lot product delivered">
+                <sheet>
+                    <group name="pnt_agreement_lot_product_delivered">
+                        <group>
+                            <field name="pnt_agreement_id" invisible="1"/>
+                            <field name="pnt_domain_product_ids" invisible="1"/>
+                            <field name="pnt_waste_ids" invisible="1"/>
+                            <field name="pnt_container_ids" invisible="1"/>
+                            <field name="pnt_product_id" context="{'search_view_ref': 'custom_pnt.pnt_agreement_line_view_search'}" domain="[('id', 'in', pnt_domain_product_ids)]" required="1"/>
+                            <field name="pnt_container_id"
+                                   domain="[('id', 'in', pnt_container_ids)]"/>
+                            <field name="pnt_waste_id"
+                                   domain="[('id', 'in', pnt_waste_ids)]"/>
+                            <field name="pnt_estimated_amount_qty"/>
+                            <field name="pnt_estimated_economic_uom"
+                                   optional="show"
+                                   readonly="1"
+                                   force_save="1"
+                            />
+                            <field name="pnt_partner_delivery_id"
+                                   required="1"
+                            />
+                        </group>
+                        <group></group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="pnt_agreement_lot_product_delivered_line_tree_view" model="ir.ui.view">
+        <field name="name">pnt.lot.product.delivered.tree</field>
+        <field name="model">pnt.lot.product.delivered</field>
+        <field name="arch" type="xml">
+            <tree string="Agreement lot products delivered">
+                <field name="pnt_product_id"
+                       optional="show"
+                       string="Product"
+                />
+                <field name="pnt_estimated_amount_qty" optional="show"/>
+                <field name="pnt_estimated_economic_uom"
+                       optional="show"
+                       readonly="1"
+                       force_save="1"
+                />
+                <field name="pnt_partner_delivery_id" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_pnt_agreement_lot_line" model="ir.actions.act_window">
+        <field name="name">Agreement lot line</field>
+        <field name="res_model">pnt.agreement.lot.line</field>
+        <field
+            name="view_ids"
+            eval="[(5, 0, 0),
+                  (0, 0, {'view_mode': 'tree', 'view_id': ref('custom_pnt.pnt_agreement_lot_line_tree_view')}),
+                  (0, 0, {'view_mode': 'form', 'view_id': ref('custom_pnt.pnt_agreement_lot_line_form_view')})
+                  ]"
+        />
+        <field name="context">{}</field>
+        <field name="domain">[]</field>
+    </record>
+
+    <record id="action_pnt_create_new_SD" model="ir.actions.server">
+        <field name="name">[PNT] Create new SD</field>
+        <field name="model_id" ref="custom_pnt.model_pnt_agreement_lot_line"/>
+        <field name="binding_model_id" ref="custom_pnt.model_pnt_agreement_lot_line"/>
+        <field name="state">code</field>
+        <field name="code">
+            for record in records:
+            record.pnt_sd_create()
+        </field>
+    </record>
+
+    <menuitem id="menu_pnt_agreement_lot_line"
+              name="Agreement lot line"
+              action="action_pnt_agreement_lot_line"
+              parent="menu_pnt_single_document"
+              groups="custom_pnt.group_pnt_agreement_manager"
+              sequence="20"/>
+</odoo>

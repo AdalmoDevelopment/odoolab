@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="pnt_signature_invoice_template" xml:space="preserve">
+    <t t-name="SignatureInvoiceButton">
+        <div id="SignatureInvoiceButton">
+            <div class="row">
+                <div class="oe_edit_only">
+                    <button name="signbutton" class="o_signature_invoice btn btn-primary">Firmar</button>
+                    <canvas id="cnv" name="cnv" width="500" height="100" class="o_signature_invoice"></canvas>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

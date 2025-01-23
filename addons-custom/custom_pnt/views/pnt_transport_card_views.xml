@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--  TREE  -->
+    <record id="pnt_transport_card_tree_view" model="ir.ui.view">
+        <field name="name">pnt.transport.card.tree</field>
+        <field name="model">pnt.transport.card</field>
+        <field name="arch" type="xml">
+            <tree string="Transport Card">
+                <field name="pnt_vehicle_ids" widget="many2many_tags"/>
+                <field name="pnt_tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                <field name="pnt_next_assignation_date"/>
+                <field name="display_name"/>
+                <field name="pnt_date_of_affiliation"/>
+            </tree>
+        </field>
+    </record>
+    <!-- FORM -->
+    <record id="pnt_transport_card_form_view" model="ir.ui.view">
+        <field name="name">pnt.transport.card.form</field>
+        <field name="model">pnt.transport.card</field>
+        <field name="priority">100</field>
+        <field name="arch" type="xml">
+            <form string="Transport Card">
+                <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger"
+                            attrs="{'invisible': [('active', '=', True)]}"/>
+                    <group>
+                        <group>
+                            <field name="active" invisible="1"/>
+                            <field name="name" required="1"/>
+                            <field name="pnt_tag_ids" widget="many2many_tags"
+                                   options="{'color_field': 'color', 'no_create_edit': True}"/>
+                        </group>
+                        <group>
+                            <field name="pnt_date_of_affiliation" required="1"/>
+                            <field name="pnt_vehicle_ids" widget="many2many_tags"/>
+                            <field name="pnt_license_plate" attrs="{'invisible': [('pnt_vehicle_ids', '=', False)]}"/>
+                            <field name="pnt_next_assignation_date"
+                                   attrs="{'invisible': [('pnt_vehicle_ids', '=', False)]}"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- ACTIONS -->
+    <record id="action_pnt_transport_card" model="ir.actions.act_window">
+        <field name="name">Transport Card</field>
+        <field name="res_model">pnt.transport.card</field>
+        <field name="context">{}</field>
+        <field name="domain">[]</field>
+    </record>
+    <!-- MENU -->
+    <menuitem
+            id="menu_pnt_transport_card"
+            name="Transport Card"
+            action="action_pnt_transport_card"
+            parent="fleet.fleet_configuration"
+            sequence="10"/>
+</odoo>

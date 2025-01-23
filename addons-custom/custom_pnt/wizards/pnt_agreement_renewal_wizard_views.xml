@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="pnt_agreement_renewal_wizard_form" model="ir.ui.view">
+        <field name="model">pnt.agreement.renewal.wizard</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Renewal">
+                <group>
+                    <group>
+                        <field name="pnt_start_date" required="1"/>
+                        <field name="pnt_end_date"/>
+                        <field name="pnt_agreement_id" invisible="1" readonly="1"/>
+                    </group>
+                </group>
+                <footer>
+                    <button class="oe_highlight" string="Renew"
+                            name="do_process" type="object"/>
+                    <button class="oe_link" string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="pnt_action_agreement_agreement_wizard" model="ir.actions.act_window">
+        <field name="name">Renew Agreement</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pnt.agreement.renewal.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="pnt_agreement_renewal_wizard_form"/>
+        <field name="target">new</field>
+    </record>
+</odoo>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--  TREE  -->
+    <record id="pnt_carrier_zone_tree_view" model="ir.ui.view">
+        <field name="name">pnt.carrier.zone.tree</field>
+        <field name="model">pnt.carrier.zone</field>
+        <field name="arch" type="xml">
+            <tree string="Carrier Zones">
+                <field name="name" readonly="1"/>
+                <field name="company_id"
+                       readonly="1"
+                       optional="hidden"
+                />
+                <field name="city_id"
+                       widget="selection"
+                />
+                <field name="state_id"
+                       widget="selection"
+                />
+                <field name="zip"/>
+                <field name="country_id"
+                       widget="selection"
+                />
+            </tree>
+        </field>
+    </record>
+    <!-- FORM -->
+    <record id="pnt_carrier_zone_form_view" model="ir.ui.view">
+        <field name="name">pnt.carrier.zone.form</field>
+        <field name="model">pnt.carrier.zone</field>
+        <field name="priority">100</field>
+        <field name="arch" type="xml">
+            <form string="Carrier zone">
+                <sheet>
+                    <field name="active" invisible="1"/>
+                    <widget name="web_ribbon" title="Archived"
+                            bg_color="bg-danger"
+                            attrs="{'invisible': [('active', '=', True)]}"/>
+                    <div class="oe_title">
+                        <h1>
+                            <label for="name" class="oe_edit_only"/>
+                            <field name="name" readonly="0"/>
+                        </h1>
+                    </div>
+                    <group name="pnt_zone_header">
+                        <group>
+                            <field name="zip_id"
+                                   options="{'create_name_field': 'city', 'no_open': True, 'no_create': True}"
+                                   placeholder="Location completion"
+                                   class="oe_edit_only"
+                            />
+                            <field name="city_id"
+                                   readonly="1"
+                                   widget="selection"
+                            />
+                            <field name="state_id"
+                                   readonly="1"
+                                   widget="selection"
+                            />
+                            <field name="zip"
+                                   readonly="1"
+                            />
+                            <field name="country_id"
+                                   readonly="1"
+                                   widget="selection"
+                            />
+                        </group>
+                        <group>
+                            <field name="company_id"
+                                   readonly="1"
+                                   invisible="1"
+                            />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <!-- ACTIONS -->
+    <record id="action_carrier_zone_menu_pnt" model="ir.actions.act_window">
+        <field name="name">Carrier zone</field>
+        <field name="res_model">pnt.carrier.zone</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+        <menuitem id="menu_pnt_carrier_settings"
+              name="Carrier settings"
+              parent="custom_pnt.menu_pnt_single_document_config"
+              sequence="96"
+              groups="base.group_user"
+        />
+    <menuitem id="menu_pnt_Carrier_zone"
+              name="Carrier zone"
+              action="action_carrier_zone_menu_pnt"
+              parent="custom_pnt.menu_pnt_carrier_settings"
+              sequence="1"
+              groups="base.group_user"
+    />
+</odoo>

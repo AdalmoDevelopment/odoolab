@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2021 Creu Blanca
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record model="ir.ui.view" id="view_picking_form_pnt">
+        <field name="name">stock.picking.form.pnt</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form//header" position="after">
+                <field name="pnt_single_document_state" invisible="1"/>
+            </xpath>
+            <xpath expr="//form//header//button[@name='415']" position="attributes">
+                <attribute name="attrs">
+                    {'invisible': [('pnt_single_document_id', '!=', False),
+                    ('state', 'in', ['assigned', 'done', 'cancel']),
+                    ('pnt_single_document_state', 'in', ['received', 'finished'])]}
+                </attribute>
+            </xpath>
+            <xpath
+                    expr="//page[@name='extra']//group//field[@name='company_id']"
+                    position="before"
+            >
+                <field name="pnt_single_document_id"/>
+                <field name="pnt_single_document_type"/>
+            </xpath>
+            <xpath
+                    expr="//field[@name='move_ids_without_package']/tree/field[@name='product_id']"
+                    position="after"
+            >
+                <field name="pnt_single_document_line_id"
+                       optional="hidden"
+                />
+                <field name="pnt_single_document_type"
+                       optional="hidden"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>

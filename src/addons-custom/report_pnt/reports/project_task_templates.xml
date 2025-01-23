@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="pnt_report_task_incident">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="report_pnt.pnt_report_incident"/>
+                </t>
+            </t>
+        </template>
+
+        <record id="pnt_du_report_task_incident" model="ir.actions.report">
+            <field name="name">Task incident</field>
+            <field name="model">project.task</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">report_pnt.pnt_report_task_incident</field>
+            <field name="paperformat_id" ref="report_pnt.pnt_report_du_format"/>
+            <field name="binding_type">report</field>
+            <field name="binding_model_id" ref="project.model_project_task"/>
+        </record>
+
+        <template id="pnt_report_incident">
+            <t t-call="web.basic_layout">
+                <div class="page">
+                    <table style="width:100%;font-size:26px">
+                        <td style="width:30%;">
+                            <t t-if="doc.company_id.logo">
+                                <img t-att-src="'data:image/png;base64,%s' % to_text(doc.company_id.logo)"
+                                     style="max-height:2cm; max-width:8cm;"/>
+                            </t>
+                        </td>
+                        <td style="width:45%; text-align:center;">
+                            <strong><p>INCIDENCIAS</p></strong>
+                        </td>
+                        <td style="width:25%;"/>
+                    </table>
+                    <br/>
+                    <br/>
+                    <table style="width:100%;font-size:13px">
+                        <td style="width:60%;"/>
+                        <td style="width:40%;">
+                            <article style="font-size:13px">
+                                <div class="row">
+                                    <div class="col-8"><span t-field="doc.partner_id.name"/></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-8">
+                                        <span t-field="doc.partner_id.street"/>
+                                        <span t-if="doc.partner_id.street2">, </span><span t-field="doc.partner_id.street2"/>
+                                        <span t-if="doc.partner_id.city">, </span><span t-field="doc.partner_id.city"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-8">
+                                        <span t-field="doc.partner_id.zip"/>
+                                        <span t-if="doc.partner_id.state_id">, </span><span t-field="doc.partner_id.state_id.name"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-8"><span t-field="doc.partner_id.country_id.name"/></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-8"><span t-field="doc.partner_id.vat"/></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-8"><span t-field="doc.partner_id.email"/></div>
+                                </div>
+                            </article>
+                        </td>
+                    </table>
+                    <br/>
+                    <br/>
+                    <table style="width:60%;font-size:13px">
+                        <thead >
+                            <tr class="custom_table">
+                                <th name="th_du"><strong>Documento Único</strong></th>
+                                <th name="th_date"><strong>Fecha</strong></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                             <td name="td_du" style="width:50%">
+                                <span t-field="doc.pnt_single_document_id.name"/>
+                            </td>
+                             <td name="td_du" style="width:50%">
+                                <span t-field="doc.pnt_single_document_id.pnt_effective_date"/>
+                            </td>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <br/>
+                    <table style="width:100%;font-size:13px">
+                        <thead >
+                            <tr class="custom_table">
+                                <th name="th_waste"><strong>Residuo</strong></th>
+                                <th name="th_container"><strong>Envase</strong></th>
+                                <th name="th_declared_weight"><strong>Peso neto declarado</strong></th>
+                                <th name="th_real_weight"><strong>Peso real</strong></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                             <td name="td_waste" style="width:30%">
+                                <span t-field="doc.pnt_product_id.display_name"/>
+                            </td>
+                             <td name="td_container" style="width:30%">
+                                <span t-field="doc.pnt_container_id.display_name"/>
+                            </td>
+                             <td name="td_container" style="width:20%">
+                                <span t-field="doc.pnt_input_weight"
+                                      t-options="{'widget': 'float', 'precision': 2}"
+                                />
+                            </td>
+                             <td name="td_container" style="width:20%">
+                                <span t-field="doc.pnt_output_weight"
+                                      t-options="{'widget': 'float', 'precision': 2}"
+                                />
+                            </td>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <br/>
+                    <table style="width:100%;font-size:13px">
+                        <thead>
+                            <tr class="custom_table">
+                                <th name="th_lwaste" style="padding-left:2px;"><strong>Residuo</strong></th>
+                                <th name="th_lweight" t-attf-class="text-right"><strong>Peso</strong></th>
+                                <th name="th_lprice" t-attf-class="text-right" style="padding-right:2px;"><strong>Precio unitario</strong></th>
+                                <th name="th_ludm" style="padding-left:2px;"><strong>UdM</strong></th>
+                                <th name="th_ltotal" t-attf-class="text-right" style="padding-right:2px;"><strong>Subtotal</strong></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="doc.pnt_waste_reclassified_ids" t-as="line">
+                                <td name="td_lwaste" style="width:50%;padding-left:2px;">
+                                    <span t-field="line.pnt_waste_id.display_name"/>
+                                </td>
+                                <td name="td_lweight" style="width:14%" t-attf-class="text-right">
+                                    <span t-field="line.pnt_weight"
+                                          t-options="{'widget': 'float', 'precision': 2}"
+                                    />
+                                </td>
+                                <td name="td_lprice" style="width:14%;padding-right:2px" t-attf-class="text-right">
+                                    <span t-field="line.pnt_price_unit"
+                                          t-options="{'widget': 'float', 'precision': 3}"
+                                    />
+                                    <span t-esc="doc.company_id.currency_id.symbol" />
+                                </td>
+                                <td name="td_ludm" style="width:8%;padding-left:2px">
+                                    <span t-field="line.pnt_uom_id.name"/>
+                                </td>
+                                <td name="td_ltotal" style="width:14%;padding-right:2px;" t-attf-class="text-right">
+                                    <span t-field="line.pnt_subtotal"
+                                          t-options="{'widget': 'float', 'precision': 3}"
+                                    />
+                                    <span t-esc="doc.company_id.currency_id.symbol" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <br/>
+                    <table style="width:100%;font-size:13px;">
+                        <tr>
+                            <td name="td_image1" style="text-align:center; width:30%; padding-left:10px; padding-right:10px; max-height:50mm; max-width:50mm;">
+                                <img t-att-src="'data:image/png;base64,%s' % to_text(doc.pnt_image_1_256)"/>
+                            </td>
+                            <td name="td_image2" style="text-align:center; width:30%; padding-left:10px; padding-right:10px; max-height:50mm; max-width:50mm;">
+                                <img t-att-src="'data:image/png;base64,%s' % to_text(doc.pnt_image_2_256)"/>
+                            </td>
+                            <td name="td_image3" style="text-align:center; width:30%; padding-left:10px; padding-right:10px; max-height:50mm; max-width:50mm;">
+                                <img t-att-src="'data:image/png;base64,%s' % to_text(doc.pnt_image_3_256)"/>
+                            </td>
+                        </tr>
+                    </table>
+                    <br/>
+                    <br/>
+                    <table style="width:100%;font-size:13px">
+                        <td style="padding-left:2px;">
+                            <article style="font-size:13px">
+                                <div class="row">
+                                    <div class="col-8"><span t-translation="off"><strong>Observaciones:</strong></span></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-8"><span t-raw="doc.description"/></div>
+                                </div>
+                            </article>
+                        </td>
+                    </table>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

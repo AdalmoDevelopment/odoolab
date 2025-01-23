@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="portal_pnt_agreement_registration" name="Unique Document">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Contratos de tratamiento</t>
+            </t>
+            <t t-if="not pnt_agreement_registrations">
+                <div class="alert alert-warning mt8" role="alert">
+                    <p>No se han encontrado contratos de tratamiento.</p>
+                </div>
+            </t>
+            <t t-if="pnt_agreement_registrations" t-call="website_custom_pnt.portal_pnt_agreement_registration_list"/>
+        </t>
+    </template>
+
+    <template id="portal_pnt_agreement_registration_list" name="Unique Document">
+        <t t-call="portal.portal_table">
+            <thead>
+                <tr t-attf-class="thead-light">
+                    <th class="text-left">Nº C.T.</th>
+                    <th class="text-left">Date</th>
+                    <th class="text-left">Productor</th>
+                    <th class="text-left">Residuo</th>
+                    <th class="text-left">LER</th>
+                    <th class="text-left">Document</th>
+                    <th class="text-left">Table 2</th>
+                    <th class="text-left">Table 5</th>
+                </tr>
+            </thead>
+            <t t-foreach="pnt_agreement_registrations" t-as="pnt_agreement_registration">
+                <tbody>
+                    <tr>
+                        <td class="text-left">
+                            <span t-esc="pnt_agreement_registration.pnt_agreement_sequence"/>
+                        </td>
+                        <td class="text-left">
+                            <span t-esc="pnt_agreement_registration.pnt_agreement_date" t-options='{"widget": "date","format": "dd-MM-yyyy"}'/>
+                        </td>
+                        <td class="text-left">
+                            <span t-esc="pnt_agreement_registration.pnt_pickup_id.name"/>
+                        </td>
+                        <td class="text-left">
+                            <span t-esc="pnt_agreement_registration.pnt_product_id.display_name"/>
+                        </td>
+                        <td class="text-left">
+                            <span t-esc="pnt_agreement_registration.pnt_ler_id.name"/>
+                        </td>
+                        <td class="text-left">
+                            <a t-if="pnt_agreement_registration.pnt_document" t-att-href="'/web/content?model=%s&amp;field=%s&amp;filename_field=%s&amp;id=%s'%('pnt.agreement.registration', 'pnt_document', 'pnt_filename', pnt_agreement_registration.id)"  t-att-download="pnt_agreement_registration.pnt_filename" target="download">
+                                <span>Download</span>
+                            </a>
+                        </td>
+                        <td class="text-left">
+                            <span t-esc="pnt_agreement_registration.pnt_get_table2_to_portal()"/>
+                        </td>
+                        <td class="text-left">
+                            <span t-esc="pnt_agreement_registration.pnt_get_table5_to_portal()"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </t>
+        </t>
+    </template>
+
+</odoo>

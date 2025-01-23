@@ -1,0 +1,75 @@
+@font-face {
+  font-family: 'DistillaBold';
+  src: url('../font/DistillaBold.ttf') format('opentype');
+}
+@font-face {
+  font-family: 'DistillaBold';
+  src: url('../font/DistillaBold.ttf');
+  src: url('../font/DistillaBold.ttf?3ocs8m') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Distilla_Bold';
+  src: local('Distilla_Bold'), url('../font/Distilla_Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'DistillaLight';
+  src: local('DistillaLight'), url('../font/DistillaLight.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'heldustry-cg';
+  src: local('heldustry-cg'), url('../font/heldustry-cg.otf') format('truetype');
+}
+
+*{
+    font-family: 'heldustry-cg';
+    font-size:14px;
+}
+
+thead th{
+    font-family: 'DistillaLight';
+}
+
+.row-info-detail:nth-child(odd){
+    /*background: #ededed;*/
+    line-height: 50px;
+    padding-left:10px;
+}
+
+.row-info-detail td{
+    line-height:50px;
+}
+
+.table-total{
+    background:#ededed;
+    line-height:40px;
+    padding-left: 10px;
+    padding-right: 30px;
+    width:30%;
+    margin-left: 70%;
+}
+
+.table-total strong{
+    /*color:#5c5c4f;*/
+}
+
+.text-title{
+    color:#dd7008!important;
+    font-family:'DistillaBold'!important;
+}
+.text-great{
+    font-size:13px;color:#5c5c4f;
+    font-family: 'DistillaBold';
+}
+.text-medium{
+    font-size:10px;
+    padding-left:5px;
+    color:#5c5c4f
+}
+.text-footer{
+    font-size:9px;color:#5c5c4f;
+}

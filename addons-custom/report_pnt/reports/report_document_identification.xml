@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="0">
+    <template id="report_document_identification_document">
+        <div class="page">
+            <h3 t-translation="off" class="text-center" style="font-weight:bold">DOCUMENTO DE IDENTIFICACIÓN</h3>
+            <p t-translation="off" class="text-center" style="font-size:12px">(Artículo 6 y Anexo I del RD 553/2020, de 2 de junio, por el que se regula el traslado de residuos en el interior del territorio del Estado)</p>
+            <table>
+                <tr style="border: 1px solid black">
+                    <td t-translation="off" style="padding-left:2px;padding-right:2px">Nº DI: <span t-field="di.pnt_legal_code"/></td>
+                </tr>
+                <tr style="border: 1px solid black">
+                    <td t-translation="off" style="padding-left:2px;padding-right:2px">
+                        Nº NT:
+                        <t t-if="di.get_active_nt_of_current_di()">
+                            <span t-esc="di.get_active_nt_of_current_di().pnt_legal_code"/>
+                        </t>
+                    </td>
+                </tr>
+                <tr style="border: 1px solid black">
+                    <td t-translation="off" style="padding-left:2px;padding-right:2px">Fecha inicio traslado: <span t-field="du.pnt_effective_date" t-options="{'format': 'dd/MM/yyyy'}"/></td>
+                </tr>
+            </table>
+            <section t-translation="off" style="margin-top:8px;background-color:#e0e0e0;font-weight:bold;border:1px solid black"
+                     class="text-center">OPERADOR DE TRASLADO</section>
+            <article style="font-size:13px">
+                <div class="row">
+                    <div class="col-8"><span t-translation="off">Razón social: </span><span t-field="du.pnt_operator_id"/></div>
+                    <div class="col-4"><span t-translation="off">CIF/NIF: </span><span t-field="du.pnt_operator_id.vat"/></div>
+                </div>
+                <div class="row">
+                    <div class="col-8"><span t-translation="off">Nombre del centro: </span><span t-field="du.pnt_operator_id"/></div>
+                    <div class="col-4"><span t-translation="off">CP: </span><span t-field="du.pnt_operator_id.zip"/></div>
+                </div>
+                <div class="row">
+                    <div class="col-8"><span t-translation="off">Municipio: </span><span t-field="du.pnt_operator_id.city"/></div>
+                    <div class="col-4"><span t-translation="off">Provincia: </span><span t-field="du.pnt_operator_id.state_id.name"/></div>
+                </div>
+                <div class="row">
+                    <div class="col-12" >
+                        <span t-translation="off">Dirección: </span>
+                        <span t-field="du.pnt_operator_id.street"/>
+                        <span t-if="du.pnt_operator_id.street2">, </span><span t-field="du.pnt_operator_id.street2"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4"><span t-translation="off">Teléfono/FAX: </span>
+                        <span t-field="du.pnt_operator_id.phone"/><span t-if="du.pnt_operator_id.mobile">, </span><span t-field="du.pnt_operator_id.mobile"/>
+                    </div>
+                    <div class="col-4"><span t-translation="off">Correo-e: </span><span t-field="du.pnt_operator_id.email"/></div>
+                    <div class="col-4"><span t-translation="off">Cnae: </span><span t-field="du.pnt_operator_id.pnt_cnae"/></div>
+                </div>
+                <div class="row">
+                    <div class="col-8"><span t-translation="off">Tipo de Operador: </span><span t-esc="get_type_operator(du.pnt_operator_id, 'agent', di.pnt_product_id.pnt_waste_ler_id)"/></div>
+                    <div class="col-4"><span t-translation="off">NIMA: </span><span t-esc="get_nima(du.pnt_operator_id, 'agent', di.pnt_product_id.pnt_waste_ler_id)"/></div>
+                </div>
+                <div class="row">
+                    <div class="col-12"><span t-translation="off">Nº inscripción Registro de PyGR: </span><span t-esc="get_pgr(du.pnt_operator_id, 'agent', di.pnt_product_id.pnt_waste_ler_id)"/></div>
+                </div>
+            </article>
+            <t t-set="origin" t-value="du.pnt_single_document_type == 'output' and du.pnt_partner_delivery_id or du.pnt_partner_pickup_id"/>
+            <t t-set="destino" t-value="du.pnt_single_document_type == 'output' and du.pnt_partner_pickup_id or du.pnt_partner_delivery_id"/>
+            <section t-translation="off" style="margin-top:8px;background-color:#e0e0e0;font-weight:bold;border:1px solid black"
+                     class="text-center">ORIGEN DEL TRASLADO</section>
+            <article style="font-size:13px">
+                <div class="row">
+                    <div class="col-8"><span t-translation="off">Razón social: </span><span t-esc="origin.display_name"/></div>
+                    <div class="col-4"><span t-translation="off">CIF/NIF: </span><span t-field="origin.vat"/></div>
+                </div>
+                <div class="row">
+                    <div class="col-8"><span t-translation="off">Nombre del centro: </span><span t-esc="origin.display_name"/></div>
+                    <div class="col-4"><span t-translation="off">CP: </span><span t-field="origin.zip"/></div>
+                </div>
+                <div class="row">
+                    <div class="col-8"><span t-translation="off">Municipio: </span><span t-field="origin.city"/></div>
+                    <div class="col-4"><span t-translation="off">Provincia: </span><span t-field="origin.state_id.name"/></div>
+                </div>
+                <div class="row">
+                    <div class="col-12" >
+                        <span t-translation="off">Dirección: </span>
+                        <span t-field="origin.street"/>
+                        <span t-if="origin.street2">, </span><span t-field="origin.street2"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4"><span t-translation="off">Teléfono/FAX: </span>
+                        <span t-field="du.pnt_partner_pickup_id.phone"/><span t-if="origin.mobile">, </span><span t-field="origin.mobile"/>
+                    </div>
+                    <div class="col-4"><span t-translation="off">Correo-e: </span><span t-field="origin.email"/></div>
+                    <div class="col-4"><span t-translation="off">Cnae: </span><span t-field="origin.pnt_cnae"/></div>
+                </div>
+                <div class="row">
+                    <t t-if="du.pnt_single_document_type == 'output'">
+                        <div class="col-8"><span t-translation="off">Nº inscripción Registro de PyGR: </span><span t-esc="get_pgr(origin, 'end_mgm', di.pnt_product_id.pnt_waste_ler_id, 'origin')"/></div>
+                    </t>
+                    <t t-else="">
+                        <div class="col-8"><span t-translation="off">Nº inscripción Registro de PyGR: </span><span t-esc="get_pgr(origin, 'producer', di.pnt_product_id.pnt_waste_ler_id, 'origin')"/></div>
+                    </t>
+                    <t t-if="du.pnt_single_document_type == 'output'">
+                        <div class="col-4"><span t-translation="off">NIMA: </span><span t-esc="get_nima(origin, 'end_mgm', di.pnt_product_id.pnt_waste_ler_id, 'origin')"/></div>
+                    </t>
+                    <t t-else="">
+                        <div class="col-4"><span t-translation="off">NIMA: </span><span t-esc="get_nima(origin, 'producer', di.pnt_product_id.pnt_waste_ler_id, 'origin')"/></div>
+                    </t>
+                </div>
+            </article>
+            <section t-translation="off" style="margin-top:8px;background-color:#e0e0e0;font-weight:bold;border:1px solid black"
+                     class="text-center">DESTINO DEL TRASLADO</section>
+            <article style="font-size:13px">
+                <div class="row">
+                    <div class="col-8"><span t-translation="off">Razón social: </span><span t-esc="destino.display_name"/></div>
+                    <div class="col-4"><span t-translation="off">CIF/NIF: </span><span t-field="destino.vat"/></div>
+                </div>
+                <div class="row">
+                    <div class="col-8"><span t-translation="off">Nombre del centro: </span><span t-esc="destino.display_name"/></div>
+                    <div class="col-4"><span t-translation="off">CP: </span><span t-field="destino.zip"/></div>
+                </div>
+                <div class="row">
+                    <div class="col-8"><span t-translation="off">Municipio: </span><span t-field="destino.city"/></div>
+                    <div class="col-4"><span t-translation="off">Provincia: </span><span t-field="destino.state_id.name"/></div>
+                </div>
+                <div class="row">
+                    <div class="col-12" >
+                        <span t-translation="off">Dirección: </span>
+                        <span t-field="destino.street"/>
+                        <span t-if="destino.street2">, </span><span t-field="destino.street2"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4"><span t-translation="off">Teléfono/FAX: </span>
+                        <span t-field="destino.phone"/><span t-if="destino.mobile">, </span><span t-field="destino.mobile"/>
+                    </div>
+                    <div class="col-4"><span t-translation="off">Correo-e: </span><span t-field="destino.email"/></div>
+                    <div class="col-4"><span t-translation="off">Cnae: </span><span t-field="destino.pnt_cnae"/></div>
+                </div>
+                <div class="row">
+                    <div class="col-8"><span t-translation="off">Nº inscripción Registro de PyGR: </span><span t-esc="get_pgr(destino, 'end_mgm', di.pnt_product_id.pnt_waste_ler_id)"/></div>
+                    <div class="col-4"><span t-translation="off">NIMA: </span><span t-esc="get_nima(destino, 'end_mgm', di.pnt_product_id.pnt_waste_ler_id)"/></div>
+                </div>
+            </article>
+            <section t-translation="off" style="margin-top:8px;background-color:#e0e0e0;font-weight:bold;border:1px solid black"
+                     class="text-center">CARACTERÍSTICAS DEL RESIDUO QUE SE TRASLADA</section>
+            <article style="font-size:13px">
+                <t t-set="single_line_id" t-value="di.pnt_single_document_line_ids[:1]"/>
+                <div class="row">
+                    <div class="col-12"><span t-translation="off">Código LER: </span><span t-field="di.pnt_product_id.pnt_waste_ler_id"/> <span t-field="di.pnt_product_id.pnt_label_name"/></div>
+                </div>
+                <div class="row">
+                    <div class="col-12"><span t-translation="off">Descripción: </span><span t-field="di.pnt_product_id.pnt_waste_ler_id"/> <span t-field="single_line_id.pnt_description_line"/></div>
+<!--                    <div class="col-12"><span t-translation="off">Descripción: </span><span t-field="di.pnt_product_id.pnt_waste_ler_id"/> <span t-field="single_line_id.pnt_supplier_name"/></div>-->
+                </div>
+                <div class="row">
+                    <t t-set="table" t-value="di.get_waste_table(du)"/>
+                    <t t-if="di.get_active_nt_of_current_di()">
+                        <div class="col-4"><span t-translation="off">Características de peligrosidad: </span><span t-esc="', '.join(di.get_active_nt_of_current_di().pnt_agreement_registration_id.pnt_waste_table5_ids.mapped('name'))"/></div>
+                        <div class="col-4"><span t-translation="off">Tratamiento: </span><span t-esc="', '.join(di.get_active_nt_of_current_di().pnt_agreement_registration_id.pnt_waste_table2_ids.mapped('name'))"/></div>
+                    </t>
+                    <t t-else="">
+                        <div class="col-4"><span t-translation="off">Características de peligrosidad: </span><span t-esc="', '.join(table[1].mapped('name'))"/></div>
+                        <div class="col-4"><span t-translation="off">Tratamiento: </span><span t-esc="', '.join(table[0].mapped('name'))"/></div>
+                    </t>
+                    <div class="col-4"><span t-translation="off">Cantidad (Kg): </span><span t-esc="di.get_di_qty()" t-options="{'widget': 'float', 'precision': 3}"/></div>
+                </div>
+            </article>
+            <section t-translation="off" style="margin-top:8px;background-color:#e0e0e0;font-weight:bold;border:1px solid black"
+                     class="text-center">TRANSPORTISTA</section>
+            <article style="font-size:13px">
+                <div class="row">
+                    <div class="col-8"><span t-translation="off">Razón social: </span><span t-field="du.pnt_carrier_id"/></div>
+                    <div class="col-4"><span t-translation="off">CIF/NIF: </span><span t-field="du.pnt_carrier_id.vat"/></div>
+                </div>
+                <div class="row">
+                    <div class="col-8"><span t-translation="off">Nombre del centro: </span><span t-field="du.pnt_carrier_id"/></div>
+                    <div class="col-4"><span t-translation="off">CP: </span><span t-field="du.pnt_carrier_id.zip"/></div>
+                </div>
+                <div class="row">
+                    <div class="col-8"><span t-translation="off">Municipio: </span><span t-field="du.pnt_carrier_id.city"/></div>
+                    <div class="col-4"><span t-translation="off">Provincia: </span><span t-field="du.pnt_carrier_id.state_id.name"/></div>
+                </div>
+                <div class="row">
+                    <div class="col-8" >
+                        <span t-translation="off">Dirección: </span>
+                        <span t-field="du.pnt_carrier_id.street"/>
+                        <span t-if="du.pnt_carrier_id.street2">, </span><span t-field="du.pnt_carrier_id.street2"/>
+                    </div>
+<!--                    <div class="col-4"><span t-translation="off">Vehículo: </span><span t-field="du.pnt_vehicle_id.name"/></div>-->
+                    <div class="col-4"><span t-translation="off">Matrícula: </span>
+                        <span t-if="du.pnt_vehicle_id" t-field="du.pnt_vehicle_id.license_plate"/>
+                        <t t-if="du.pnt_vehicle_second_registration">
+                            -
+                            <span t-field="du.pnt_vehicle_second_registration"/>
+                        </t>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4"><span t-translation="off">Teléfono/FAX: </span>
+                        <span t-field="du.pnt_carrier_id.phone"/><span t-if="du.pnt_carrier_id.mobile">, </span><span t-field="du.pnt_carrier_id.mobile"/>
+                    </div>
+                    <div class="col-4"><span t-translation="off">Correo-e: </span><span t-field="du.pnt_carrier_id.email"/></div>
+                    <div class="col-4"><span t-translation="off">Cnae: </span><span t-field="du.pnt_carrier_id.pnt_cnae"/></div>
+                </div>
+                <div class="row">
+                    <div class="col-8"><span t-translation="off">Nº inscripción Registro de PyGR: </span><span t-esc="get_pgr(du.pnt_carrier_id, 'transport', di.pnt_product_id.pnt_waste_ler_id)"/></div>
+                    <div class="col-4"><span t-translation="off">NIMA: </span><span t-esc="get_nima(du.pnt_carrier_id, 'transport', di.pnt_product_id.pnt_waste_ler_id)"/></div>
+                </div>
+            </article>
+            <t t-if="du.pnt_holder_id.pnt_is_scrap()">
+                <section t-translation="off" style="margin-top:8px;background-color:#e0e0e0;font-weight:bold;border:1px solid black"
+                         class="text-center">SRAP (SISTEMA DE RESPONSABILIDAD AMPLIADA DEL PRODUCTOR)</section>
+                <article style="font-size:13px">
+                    <div class="row">
+                        <div class="col-8"><span t-translation="off">Razón social: </span><span t-field="du.pnt_holder_id"/></div>
+                        <div class="col-4"><span t-translation="off">CIF/NIF: </span><span t-field="du.pnt_holder_id.vat"/></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8"><span t-translation="off">Nombre del centro: </span><span t-field="du.pnt_holder_id"/></div>
+                        <div class="col-4"><span t-translation="off">CP: </span><span t-field="du.pnt_holder_id.zip"/></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8"><span t-translation="off">Municipio: </span><span t-field="du.pnt_holder_id.city"/></div>
+                        <div class="col-4"><span t-translation="off">Provincia: </span><span t-field="du.pnt_holder_id.state_id.name"/></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8" >
+                            <span t-translation="off">Dirección: </span>
+                            <span t-field="du.pnt_holder_id.street"/>
+                            <span t-if="du.pnt_holder_id.street2">, </span><span t-field="du.pnt_holder_id.street2"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4"><span t-translation="off">Teléfono/FAX: </span>
+                            <span t-field="du.pnt_holder_id.phone"/><span t-if="du.pnt_holder_id.mobile">, </span><span t-field="du.pnt_holder_id.mobile"/>
+                        </div>
+                        <div class="col-4"><span t-translation="off">Correo-e: </span><span t-field="du.pnt_holder_id.email"/></div>
+                        <div class="col-4"><span t-translation="off">Cnae: </span><span t-field="du.pnt_holder_id.pnt_cnae"/></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8"><span t-translation="off">Tipo de Operador: </span><span t-esc="get_type_operator(du.pnt_holder_id, 'scrap', di.pnt_product_id.pnt_waste_ler_id)"/></div>
+                        <div class="col-4"><span t-translation="off">NIMA: </span><span t-esc="get_nima(du.pnt_holder_id, 'scrap', di.pnt_product_id.pnt_waste_ler_id)"/></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12"><span t-translation="off">Nº inscripción Registro de PyGR: </span><span t-esc="get_pgr(du.pnt_holder_id, 'scrap', di.pnt_product_id.pnt_waste_ler_id)"/></div>
+                    </div>
+                </article>
+            </t>
+            <section t-translation="off" style="margin-top:8px;background-color:#e0e0e0;font-weight:bold;border:1px solid black"
+                     class="text-center">DATOS DE ACEPTACIÓN O RECHAZO</section>
+            <article style="font-size:13px">
+                <div class="row">
+                    <div class="col-8"><span t-translation="off">Fecha de entrega de residuos:</span>
+                        <t t-if="du.pnt_single_document_type != 'output'">
+                            <span t-field="du.pnt_effective_date" t-options="{'format': 'dd/MM/yyyy'}"/>
+                        </t>
+                    </div>
+                    <div class="col-4"><span t-translation="off">Cantidad (Kg):</span>
+                        <t t-if="du.pnt_single_document_type != 'output'">
+                            <span t-esc="di.get_di_qty()" t-options="{'widget': 'float', 'precision': 3}"/>
+                        </t>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-8"><span t-translation="off">Aceptación o rechazo de residuos: </span>
+                        <t t-if="du.pnt_single_document_type != 'output'">
+                            Aceptado
+                        </t>
+                    </div>
+                    <div class="col-4"><span t-translation="off">Fecha:</span>
+                        <t t-if="du.pnt_single_document_type != 'output'">
+                            <span t-field="du.pnt_du_end_date" t-options="{'format': 'dd/MM/yyyy'}"/>
+                        </t>
+                    </div>
+                </div>
+            </article>
+            <article style="font-size:13px;margin-top:20px">
+                <div class="row">
+                    <div class="col-7"><span t-translation="off">Firma responsable envío:</span>
+                        <t t-if="du.pnt_partner_delivery_id.pnt_sign_image and du.pnt_single_document_type == 'output'">
+                            <br/>
+                            <img t-att-src="'data:image/png;base64,%s' % to_text(du.pnt_partner_delivery_id.pnt_sign_image)"
+                                 style="max-height:2cm; max-width:8cm;"/>
+<!--                            <img t-att-src="'data:image/png;base64,%s' % to_text(du.pnt_partner_pickup_id.pnt_sign_image)"-->
+<!--                                 style="max-height:2cm; max-width:8cm;"/>-->
+                        </t>
+                    </div>
+                    <div class="col-5"><span t-translation="off">Firma responsable destino:</span>
+                        <t t-if="du.pnt_partner_delivery_id.pnt_sign_image and du.pnt_single_document_type != 'output'">
+                            <br/>
+                            <img t-att-src="'data:image/png;base64,%s' % to_text(du.pnt_partner_delivery_id.pnt_sign_image)"
+                                 style="max-height:2cm; max-width:8cm;"/>
+                        </t>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </template>
+
+    <template id="report_document_identification">
+        <t t-foreach="docs" t-as="du">
+            <t t-foreach="du.pnt_di_ids" t-as="di">
+                <t t-call="web.basic_layout">
+                    <t t-call="report_pnt.report_document_identification_document"/>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="paperformat_report_document_identification" model="report.paperformat">
+        <field name="name">A4</field>
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">20</field>
+        <field name="margin_bottom">20</field>
+        <field name="margin_left">20</field>
+        <field name="margin_right">20</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">15</field>
+        <field name="dpi">100</field>
+    </record>
+
+    <record id="action_report_document_identification" model="ir.actions.report">
+        <field name="name">Document Identification (DI)</field>
+        <field name="model">pnt.single.document</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">report_pnt.report_document_identification</field>
+        <field name="binding_model_id" ref="custom_pnt.model_pnt_single_document"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="paperformat_report_document_identification"/>
+    </record>
+</odoo>

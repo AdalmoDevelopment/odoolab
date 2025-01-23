@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--  HEADER y FOOTER común -->
+    <template id="external_layout_boxed" inherit_id="web.external_layout_boxed">
+        <xpath expr="//div[@t-attf-class='header o_company_#{company.id}_layout']//div" position="replace">
+            <div class="o_boxed_header">
+                <div class="row mb8">
+                    <div class="col-8">
+                        <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" alt="Logo"/>
+<!--                        <br/>-->
+                        <t t-foreach="company.pnt_logo_ids" t-as="logos">
+                            <img t-if="logos.pnt_logo" t-att-src="image_data_uri(logos.pnt_logo)" alt="Logo"
+                                 style="max-width: 40px; max-height: 30px;"/>
+                        </t>
+                    </div>
+                    <div class="col-4 text-left mb4">
+                        <h4 class="mt0" t-field="company.report_header"/>
+                        <div name="company_address" class="float-right mb4">
+                            <span class="company_address" t-field="company.partner_id"
+                                t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//div[@t-attf-class='footer o_boxed_footer o_company_#{company.id}_layout']//div" position="replace">
+            <div t-translation="off" t-if="o._name == 'account.move' and o.move_type in ('in_invoice', 'in_refund')" style="font-size:14px;">
+                Declaro bajo mi responsabilidad que todos los materiales entregados a
+                <span t-translation="off" t-field="company.name"/>
+                son de procedencia lícita, se corresponden con las características de los residuos enumerados en esta factura y son de mi propiedad
+                <br/>
+                y/o procedencia legítima, autorizando a
+                <span t-translation="off" t-field="company.name"/>
+                a su destrucción si fuera necesario. Las normas de seguridad de las instalaciones de
+                <span t-translation="off" t-field="company.name"/>
+                se encuentran expuestas en sitio visible en las mismas, las
+                <br/>
+                cuales reconozco conocer y dar cumplimiento con la firma de este documento, a su vez manifiesto hallarme al corriente de cuantas autorizaciones, comunicaciones, registros y /o permisos resultan precisos para la recogida,
+                <br/>
+                almacenamiento, tratamiento, gestión, transporte y entrega de los residuos según la normativa vigente. En el caso de litigio el tribunal competente es el de Palma de Mallorca.
+            </div>
+            <div style="font-size:14px;">
+                <strong t-translation="off">CONFIDENCIALIDAD</strong>
+            </div>
+            <div t-translation="off" style="font-size:14px;">
+                En cumplimiento de lo dispuesto en la Ley Orgánica 3/2018, de protección de datos de carácter personal, de 5 de diciembre, le informamos que todos los datos de carácter personal que usted suministre verbalmente,
+                <br/>
+                por escrito, o por cualquier otra vía a nuestros empleados podrán ser incluidos en uno o varios ficheros cuya responsabilidad corresponde a la entidad
+                <span t-field="company.name"/>
+                , con el fin de llevar a cabo la gestión administrativa
+                <br/>
+                y facturación de nuestros proveedores. Por último, le informamos que el Responsable de los ficheros y quienes intervengan en cualquier fase del tratamiento de datos están obligados a guardar el debido secreto profesional sobre
+                <br/>
+                los mismos, así como que goza usted de la posibilidad de ejercitar gratuitamente los derechos de acceso, rectificación, cancelación y oposición con relación a dichos datos y los ficheros que los contienen, para lo que podrá
+                <br/>
+                dirigirse a
+                <span t-field="company.name"/>
+                sita en la
+                <span t-field="company.street"/>
+                ,
+                de
+                <span t-field="company.city"/>
+                (
+                <span t-field="company.zip"/>
+                ), entidad Responsable de los ficheros.
+            </div>
+            <br/>
+            <div style="font-size:14px;">
+                <span t-field="company.company_registry"/>
+            </div>
+            <br/>
+            <div class="text-center">
+
+                <ul class="list-inline">
+                    <li t-if="company.phone" class="list-inline-item">Tel: <span class="o_force_ltr" t-field="company.phone"/></li>
+                    <li t-if="company.email" class="list-inline-item">Mail: <span t-field="company.email"/></li>
+                    <li t-if="company.website" class="list-inline-item">Web: <span t-field="company.website"/></li>
+                    <li t-if="company.vat" class="list-inline-item"><t t-esc="company.country_id.vat_label or 'Tax ID'"/>: <span t-field="company.vat"/></li>
+                </ul>
+                <div t-field="company.report_footer"/>
+                <br></br>
+<!--                <div t-field="company.company_registry"/>-->
+                <div t-if="report_type == 'pdf'">
+                    Page: <span class="page"/> / <span class="topage"/>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>

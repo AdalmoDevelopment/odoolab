@@ -1,0 +1,59 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* signature_invoice_pnt
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-05-09 07:32+0000\n"
+"PO-Revision-Date: 2023-05-09 09:34+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 3.0.1\n"
+
+#. module: signature_invoice_pnt
+#: model:ir.model.fields,field_description:signature_invoice_pnt.field_account_bank_statement_line__rawdata
+#: model:ir.model.fields,field_description:signature_invoice_pnt.field_account_move__rawdata
+#: model:ir.model.fields,field_description:signature_invoice_pnt.field_account_payment__rawdata
+msgid "Biometric data"
+msgstr "Datos biométricos"
+
+#. module: signature_invoice_pnt
+#: model:ir.model.fields,field_description:signature_invoice_pnt.field_account_move__display_name
+msgid "Display Name"
+msgstr "Mostrar nombre"
+
+#. module: signature_invoice_pnt
+#: model:ir.model.fields,field_description:signature_invoice_pnt.field_account_bank_statement_line__imagedata
+#: model:ir.model.fields,field_description:signature_invoice_pnt.field_account_move__imagedata
+#: model:ir.model.fields,field_description:signature_invoice_pnt.field_account_payment__imagedata
+msgid "Dígital signature"
+msgstr "Firma digital"
+
+#. module: signature_invoice_pnt
+#. openerp-web
+#: code:addons/signature_invoice_pnt/static/src/xml/template.xml:0
+#, python-format
+msgid "Firmar"
+msgstr ""
+
+#. module: signature_invoice_pnt
+#: model:ir.model.fields,field_description:signature_invoice_pnt.field_account_move__id
+msgid "ID"
+msgstr "Identificación"
+
+#. module: signature_invoice_pnt
+#: model:ir.model,name:signature_invoice_pnt.model_account_move
+msgid "Journal Entry"
+msgstr "Asiento contable"
+
+#. module: signature_invoice_pnt
+#: model:ir.model.fields,field_description:signature_invoice_pnt.field_account_move____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"

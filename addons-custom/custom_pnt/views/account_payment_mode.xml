@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="account_payment_mode_form" model="ir.ui.view">
+        <field name="model">account.payment.mode</field>
+        <field name="inherit_id" ref="account_payment_mode.account_payment_mode_form"/>
+        <field name="arch" type="xml">
+            <field name="payment_type" position="after">
+                <field name="pnt_limit_cash_confirm_invoice_supplier"/>
+                <field name="pnt_is_giro"/>
+            </field>
+        </field>
+    </record>
+</odoo>

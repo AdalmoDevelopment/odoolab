@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="pnt_single_document_line_app_tree_view" model="ir.ui.view">
+        <field name="name">pnt.single.document.line.app.tree</field>
+        <field name="model">pnt.single.document.line</field>
+        <field name="inherit_id" ref="custom_pnt.pnt_single_document_line_tree_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='pnt_product_id']" position="after">
+                <field name="pnt_tag_app"
+                       optional="hidden"
+                       attrs="{'readonly': [('state', 'in', ['finished'])]}"
+                />
+                <field name="pnt_app_tag_id"
+                       optional="hidden"
+                       attrs="{'readonly': [('state', 'in', ['finished'])]}"
+                />
+                <field name="pnt_functional_unit_id"
+                       optional="hidden"
+                       attrs="{'readonly': [('state', 'in', ['finished'])]}"
+                />
+            </xpath>
+        </field>
+    </record>
+    <record id="pnt_single_document_app_form_view" model="ir.ui.view">
+        <field name="name">pnt.single.document.app.form</field>
+        <field name="model">pnt.single.document</field>
+        <field name="inherit_id" ref="custom_pnt.pnt_single_document_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='pnt_group_lines']" position="after">
+                <field name="pnt_app_du_id"
+                       attrs="{'readonly': [('state', 'in', ['finished'])]}"
+                />
+            </xpath>
+            <xpath expr="//sheet/notebook/page[@name='pnt_single_document_lines']/field[@name='pnt_single_document_line_ids']/tree/field[@name='pnt_product_id']" position="after">
+                <field name="pnt_tag_app"
+                       optional="hidden"
+                       attrs="{'readonly': [('state', 'in', ['finished'])]}"
+                />
+                <field name="pnt_app_tag_id"
+                       optional="hidden"
+                       attrs="{'readonly': [('state', 'in', ['finished'])]}"
+                />
+                <field name="pnt_functional_unit_id"
+                       optional="hidden"
+                       attrs="{'readonly': [('state', 'in', ['finished'])]}"
+                />
+            </xpath>
+            <xpath expr="//button[@name='create_invoice']" position="after">
+                <button name="action_app_send"
+                        string="Send by Email (app DU)"
+                        type="object"
+                        attrs="{'invisible': ['|',
+                                              ('pnt_app_du_id', '=', False),
+                                              ('state', 'not in', ('finished', 'received')),
+                                              ]}"
+                        groups="base.group_user"
+                />
+                <button name="action_generate_tag"
+                        string="Generate Tags (Dangerous)"
+                        type="object"
+                        attrs="{'invisible': [('state', 'not in', ('done')),]}"
+                        groups="base.group_user"
+                />
+                <button name="action_generate_tag_no_dangerous"
+                        string="Generate Tags (No Dangerous)"
+                        type="object"
+                        attrs="{'invisible': [('state', 'not in', ('done')),]}"
+                        groups="base.group_user"
+                />
+                <button name="action_generate_tag_sanitary"
+                        string="Generate Tags (Sanitary)"
+                        type="object"
+                        attrs="{'invisible': [('state', 'not in', ('done')),]}"
+                        groups="base.group_user"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>

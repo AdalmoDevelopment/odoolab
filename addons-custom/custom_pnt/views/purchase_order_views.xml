@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="purchase_order_view_form_du_inherit" model="ir.ui.view">
+        <field name="name">purchase.order.form.du.inherit</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form" />
+        <field name="arch" type="xml">
+            <field name="partner_id" position="attributes">
+                <attribute name="domain">['|',
+                                           ('company_id','=',False),
+                                           ('company_id','=',company_id),
+                                           ('pnt_is_lead','=',False),]
+                </attribute>
+            </field>
+            <field name="user_id" position="after">
+                <field name="project_task_id"
+                       readonly="1"
+                />
+                <field name="pnt_sd_effective_date"
+                       readonly="1"
+                />
+                <field name="pnt_single_document_id"
+                       readonly="1"
+                />
+                <field name="pnt_partner_pickup_id"
+                       readonly="1"
+                />
+                <field name="pnt_single_document_type"
+                       invisible="1"
+                />
+                <field name="pnt_agreement_reference"
+                       readonly="1"
+                />
+                <field name="pnt_order_reference"
+                       readonly="1"
+                />
+            </field>
+            <xpath expr="//sheet/notebook/page[1]/field[@name='order_line']/tree/field[@name='product_id']" position="after">
+                  <field name="pnt_single_document_line_id"
+                       optional="hidden"
+                  />
+            </xpath>
+            <xpath expr="//sheet/notebook/page[1]/field[@name='order_line']/tree/field[@name='qty_received']" position="after">
+                <field name="pnt_m3"
+                       invisible="1"
+                />
+            </xpath>
+            <xpath expr="//sheet/notebook" position="inside">
+                <page name="marpol"
+                      string="Marpol"
+                      attrs="{'invisible': [('pnt_single_document_type', '!=', 'marpol')]}"
+                >
+                    <group>
+                        <field name="pnt_ship_scale_num"/>
+                        <field name="pnt_control_sheet_ids">
+                            <tree editable="bottom">
+                                <field name="pnt_name"/>
+                            </tree>
+                        </field>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="purchase_order_view_tree" model="ir.ui.view">
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_view_tree" />
+        <field name="arch" type="xml">
+            <field name="date_approve" position="after">
+                <field name="pnt_sd_effective_date" optional="hide"/>
+                <field name="pnt_single_document_id"/>
+            </field>
+            <xpath expr="//field[@name='origin']" position="replace">
+                <field name="origin" invisible="1" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="purchase_order_tree" model="ir.ui.view">
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_tree" />
+        <field name="arch" type="xml">
+            <field name="date_approve" position="after">
+                <field name="pnt_sd_effective_date" optional="hide"/>
+                <field name="pnt_single_document_id"/>
+            </field>
+            <xpath expr="//field[@name='origin']" position="replace">
+                <field name="origin" invisible="1" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_purchase_order_type_form_pnt" model="ir.ui.view">
+        <field name="name">view.purchase.order.type.form.pnt</field>
+        <field name="model">purchase.order.type</field>
+        <field name="inherit_id" ref="purchase_order_type.view_purchase_order_type_form" />
+        <field name="arch" type="xml">
+            <field name="sequence_id" position="before">
+                <field name="pnt_is_DU"
+                />
+            </field>
+        </field>
+    </record>
+    <record id="view_purchase_order_type_tree_pnt" model="ir.ui.view">
+        <field name="name">view.purchase.order.type.tree.pnt</field>
+        <field name="model">purchase.order.type</field>
+        <field name="inherit_id" ref="purchase_order_type.view_purchase_order_type_tree" />
+        <field name="arch" type="xml">
+            <field name="sequence_id" position="before">
+                <field name="pnt_is_DU"
+                />
+            </field>
+        </field>
+    </record>
+
+    <record id="pnt_action_purchase_tree_all" model="ir.actions.act_window">
+            <field name="name">Purchases</field>
+            <field name="res_model">purchase.order</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,kanban,form,calendar</field>
+            <field name="domain"></field>
+            <field name="context">{'contact_display': 'partner_address', 'default_company_id': allowed_company_ids[0]}</field>
+            <field name="search_view_id" ref="purchase.purchase_order_view_search"/>
+<!--            <field name="help" type="html">-->
+<!--                <p class="o_view_nocontent_smiling_face">-->
+<!--                    No purchase found. Let's create one!-->
+<!--                </p><p>-->
+<!--                    Purchases allow you to move products from one location to another.-->
+<!--                </p>-->
+<!--            </field>-->
+    </record>
+    <record id="purchase_order_view_pnt_search" model="ir.ui.view">
+        <field name="name">purchase.order.view.pnt.search</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_view_search" />
+        <field name="arch" type="xml">
+            <field name="product_id" position="after">
+                <field name="pnt_partner_pickup_id"
+                       string="Pickup"
+                       filter_domain="[('pnt_partner_pickup_id', 'ilike', self)]"/>
+            </field>
+            <group expand="0" position="inside">
+                <filter string="Pickup"
+                        name="pnt_partner_pickup_id"
+                        context="{'group_by':'pnt_partner_pickup_id'}"/>
+            </group>
+        </field>
+    </record>
+
+    <record id="pnt_purchase_order_line_invoice_tree" model="ir.ui.view">
+        <field name="name">purchase.order.line.tree</field>
+        <field name="model">purchase.order.line</field>
+        <field name="inherit_id" ref="purchase.purchase_order_line_tree" />
+        <field name="arch" type="xml">
+            <field name="price_subtotal" position="after">
+                <field name="pnt_sd_effective_date"/>
+                <field name="pnt_single_document_id"/>
+                <field name="qty_to_invoice"/>
+            </field>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_pnt_view_purchase_order_line_invoice_tree">
+        <field name="name">Purchase Lines</field>
+        <field name="res_model">purchase.order.line</field>
+        <field name="view_mode">tree,pivot</field>
+        <field
+            name="view_ids"
+            eval="[(5, 0, 0),
+                  (0, 0, {'view_mode': 'tree', 'view_id': ref('pnt_purchase_order_line_invoice_tree')}),
+                  (0, 0, {'view_mode': 'pivot',}),
+                  (0, 0, {'view_mode': 'form',})
+                  ]"
+        />
+        <field name="context">
+            {'search_default_purchase_order': 1}
+        </field>
+        <field name="domain">
+            [
+                ('display_type', '=', False),
+                ('order_id.force_invoiced', '=', False),
+            ]
+        </field>
+    </record>
+
+    <record id="action_create_invoice_from_purchase_lines" model="ir.actions.server">
+        <field name="name">Create Invoice</field>
+        <field name="model_id" ref="purchase.model_purchase_order_line"/>
+        <field name="binding_model_id" ref="purchase.model_purchase_order_line"/>
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">action = records.action_create_invoice_from_lines()</field>
+    </record>
+
+    <menuitem id="pnt_menu_purchase_to_invoice"
+              name="To invoice"
+              parent="purchase.menu_purchase_root"
+              sequence="1"
+    />
+
+    <menuitem id="pnt_menu_purchase_order_line"
+              name="Purchase lines"
+              parent="custom_pnt.pnt_menu_purchase_to_invoice"
+              action="custom_pnt.action_pnt_view_purchase_order_line_invoice_tree"
+              sequence="70"
+    />
+
+</odoo>

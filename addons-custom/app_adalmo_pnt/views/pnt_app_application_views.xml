@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--  TREE  -->
+    <record id="pnt_app_application_tree_view" model="ir.ui.view">
+        <field name="name">pnt.app.application.tree</field>
+        <field name="model">pnt.app.application</field>
+        <field name="arch" type="xml">
+            <tree string="App applications">
+                <field name="name" readonly="1"/>
+                <field name="company_id"
+                       readonly="1"
+                       optional="hidden"
+                />
+                <field name="id_application"
+                       readonly="1"
+                />
+            </tree>
+        </field>
+    </record>
+    <!-- FORM -->
+    <record id="pnt_app_application_form_view" model="ir.ui.view">
+        <field name="name">pnt.app.application.form</field>
+        <field name="model">pnt.app.application</field>
+        <field name="priority">100</field>
+        <field name="arch" type="xml">
+            <form string="App application">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            Application Name:
+                            <field name="name"
+                                   readonly="0"
+                                   required="1"
+                            />
+                        </h1>
+                    </div>
+                    <group name="pnt_app_application_header">
+                        <group>
+                            <field name="id_application"
+                                   readonly="0"
+                                   required="1"
+                            />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <!-- ACTIONS -->
+    <record id="action_app_application_menu_pnt" model="ir.actions.act_window">
+        <field name="name">App applications</field>
+        <field name="res_model">pnt.app.application</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_pnt_app_application"
+              name="App applications"
+              action="action_app_application_menu_pnt"
+              parent="app_adalmo_pnt.menu_pnt_app_du_config"
+              sequence="10"
+              groups="base.group_user"
+    />
+
+</odoo>

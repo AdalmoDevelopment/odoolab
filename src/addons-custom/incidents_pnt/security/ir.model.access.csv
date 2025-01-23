@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+user_pnt_incidence,manager.pnt.incidence,model_pnt_incidence,incidents_pnt.group_incidents_user,1,0,0,0
+manager_pnt_incidence,manager.pnt.incidence,model_pnt_incidence,incidents_pnt.group_incidents_manager,1,1,1,1
+access_pnt_incidence_reclassified_user,access_pnt_incidence_reclassified_user,model_pnt_incidence_reclassified,incidents_pnt.group_incidents_user,1,0,0,0
+access_pnt_incidence_reclassified_manager,access_pnt_incidence_reclassified_manager,model_pnt_incidence_reclassified,incidents_pnt.group_incidents_manager,1,1,1,1

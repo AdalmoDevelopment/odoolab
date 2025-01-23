@@ -1,0 +1,1851 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* app_adalmo_pnt
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-08-08 08:12+0000\n"
+"PO-Revision-Date: 2024-08-08 10:13+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 3.0.1\n"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du__app_du_fotos_count
+msgid "# App DU Fotos"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du__app_du_lines_count
+msgid "# App DU lines"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_report_app_tag_sanitary_document
+msgid ""
+") Nº ONU:\n"
+"                                <br/>"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_report_app_tag_sanitary_document
+msgid "<b>Centro Productor</b>"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_report_app_tag_sanitary_document
+msgid ""
+"<br/>\n"
+"                                Fecha cierre:\n"
+"                                <br/>"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_report_app_tag_sanitary_document
+msgid ""
+"<br/>\n"
+"                                Localidad:"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_report_app_tag_sanitary_document
+msgid ""
+"<br/>\n"
+"                                NIMA:"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_report_app_tag_document
+msgid ""
+"<strong style=\"align:right;\">Nº ONU:</strong>\n"
+"                                    <br/>"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_report_app_tag_document
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_report_app_tag_sanitary_document
+msgid "<strong style=\"font-size: 64px;\">UN</strong>"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_report_app_tag_document
+msgid "<strong style=\"margin-left:10px;\">Etiqueta Residuo</strong>"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_report_app_tag_sanitary_document
+msgid ""
+"<strong>GESTOR RESIDUO</strong>\n"
+"                                        <br/>\n"
+"                                        C/ Fonoll 9-15\n"
+"                                        <br/>\n"
+"                                        07110 P.I. Ses Veles (Bunyola)\n"
+"                                        <br/>\n"
+"                                        Telf.: 971 606 470 - Fax: 971 606 "
+"414\n"
+"                                        <br/>\n"
+"                                        logistica@adalmo.com"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_application__access_warning
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_session__access_warning
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__access_warning
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log__access_warning
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_user__access_warning
+msgid "Access warning"
+msgstr "Alerta de acceso"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_application__message_needaction
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_session__message_needaction
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__message_needaction
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log__message_needaction
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_user__message_needaction
+msgid "Action Needed"
+msgstr "Acción Necesaria"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_application__activity_ids
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_session__activity_ids
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__activity_ids
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log__activity_ids
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_user__activity_ids
+msgid "Activities"
+msgstr "Actividades"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_application__activity_exception_decoration
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_session__activity_exception_decoration
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__activity_exception_decoration
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log__activity_exception_decoration
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_user__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "Siguiente plazo de actividad"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_application__activity_state
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_session__activity_state
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__activity_state
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log__activity_state
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_user__activity_state
+msgid "Activity State"
+msgstr "Estado de la actividad"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_application__activity_type_icon
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_session__activity_type_icon
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__activity_type_icon
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log__activity_type_icon
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_user__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "Siguiente tipo de actividad"
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.view_form_pnt_app_du_change
+msgid "Actualizar DU en registro app (lineas y fotos)"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.ui.menu,name:app_adalmo_pnt.menu_pnt_app_du
+msgid "Adalmo App management"
+msgstr "Gestión app Adalmo"
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.view_form_pnt_app_tag_manual
+msgid "Add a product"
+msgstr "Añadir un residuo"
+
+#. module: app_adalmo_pnt
+#: code:addons/app_adalmo_pnt/wizards/pnt_app_tag_manual.py:0
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_manual__pnt_agreement_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_manual_line__pnt_agreement_id
+#: model:ir.model.fields.selection,name:app_adalmo_pnt.selection__pnt_app_tag_manual__pnt_type__agreement
+#, python-format
+msgid "Agreement"
+msgstr "Contrato"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du__aplicacion
+msgid "Aplicación"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: code:addons/app_adalmo_pnt/models/pnt_app_tag.py:0
+#: code:addons/app_adalmo_pnt/models/pnt_app_tag_log.py:0
+#: model:ir.model.fields.selection,name:app_adalmo_pnt.selection__pnt_app_tag__pnt_tag_log_type__app
+#: model:ir.model.fields.selection,name:app_adalmo_pnt.selection__pnt_app_tag_log__pnt_tag_log_type__app
+#, python-format
+msgid "App"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_product_template_app_form_view
+msgid "App Adalmo"
+msgstr "Gestión app Adalmo"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du__app_application_id
+msgid "App Application"
+msgstr "App"
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_view_partner_form
+msgid "App DU"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:res.groups,name:app_adalmo_pnt.group_pnt_app_du_admin
+msgid "App DU Administrator"
+msgstr "Administrador gestión app Adalmo"
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_app_du_form_view
+msgid "App DU Fotos"
+msgstr "Fotos (App DU)"
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_app_du_form_view
+msgid "App DU LInes"
+msgstr "Lineas (App DU)"
+
+#. module: app_adalmo_pnt
+#: model:ir.actions.act_window,name:app_adalmo_pnt.action_app_du_lineas_menu_pnt
+msgid "App DU Lineas"
+msgstr "App du lineas"
+
+#. module: app_adalmo_pnt
+#: model:ir.ui.menu,name:app_adalmo_pnt.menu_pnt_app_du_fotos
+msgid "App DU Logs Fotos"
+msgstr "Log DU. Fotos"
+
+#. module: app_adalmo_pnt
+#: model:ir.ui.menu,name:app_adalmo_pnt.menu_pnt_app_du_lineas
+msgid "App DU Logs Lineas"
+msgstr "Log DU. Líneas"
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_app_du_tree_view
+msgid "App DU Reference"
+msgstr "Id Traspaso"
+
+#. module: app_adalmo_pnt
+#: model:res.groups,name:app_adalmo_pnt.group_pnt_app_du_user
+msgid "App DU User"
+msgstr "Usuario gestión app Adalmo"
+
+#. module: app_adalmo_pnt
+#: model:ir.actions.act_window,name:app_adalmo_pnt.action_app_du_fotos_menu_pnt
+msgid "App DU fotografias"
+msgstr "App du fotos"
+
+#. module: app_adalmo_pnt
+#: model:ir.ui.menu,name:app_adalmo_pnt.menu_pnt_app_du_log
+msgid "App DU logs"
+msgstr "Log DU. Cabeceras"
+
+#. module: app_adalmo_pnt
+#: model:ir.actions.report,name:app_adalmo_pnt.pnt_app_tag_report
+msgid "App Tag"
+msgstr "Etiqueta residuos peligrosos"
+
+#. module: app_adalmo_pnt
+#: model:ir.actions.report,name:app_adalmo_pnt.pnt_app_tag_sanitary_report
+msgid "App Tag Sanitary"
+msgstr "Etiqueta residuos sanitarios"
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_app_application_form_view
+msgid "App application"
+msgstr "Aplicación app"
+
+#. module: app_adalmo_pnt
+#: model:ir.actions.act_window,name:app_adalmo_pnt.action_app_application_menu_pnt
+#: model:ir.ui.menu,name:app_adalmo_pnt.menu_pnt_app_application
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_app_application_tree_view
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_app_user_tree_view
+msgid "App applications"
+msgstr "Aplicaciones app"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_product_product__pnt_app_container_imege_txt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_product_template__pnt_app_container_imege_txt
+msgid "App container image"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_app_du_form_view
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_app_du_fotos_tree_view
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_app_du_lineas_tree_view
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_app_du_tree_view
+msgid "App du"
+msgstr "App DU"
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_app_du_fotos_form_view
+msgid "App du fotos"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_app_du_lineas_form_view
+msgid "App du lineas"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.ui.menu,name:app_adalmo_pnt.menu_pnt_app_du_records
+msgid "App log traspasos"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_user__pnt_password
+msgid "App password"
+msgstr "Contraseña app"
+
+#. module: app_adalmo_pnt
+#: model:ir.actions.act_window,name:app_adalmo_pnt.action_app_session_menu_pnt
+#: model:ir.ui.menu,name:app_adalmo_pnt.menu_pnt_app_session
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_app_session_form_view
+msgid "App session"
+msgstr "Sesiones App"
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_app_session_tree_view
+msgid "App sessions"
+msgstr "Sesiones app"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_user__name
+msgid "App user"
+msgstr "Usuario app"
+
+#. module: app_adalmo_pnt
+#: model:ir.actions.act_window,name:app_adalmo_pnt.action_app_user_menu_pnt
+#: model:ir.ui.menu,name:app_adalmo_pnt.menu_pnt_app_user
+msgid "App users"
+msgstr "Usuarios app"
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_app_application_form_view
+msgid "Application Name:"
+msgstr "Nombre:"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_product_product__pnt_apply_gross_weight
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_product_template__pnt_apply_gross_weight
+msgid "Apply gross weight (Quiron)"
+msgstr "Aplicar peso bruto (no descontar TARA | Clinica Quiron)"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_product_product__pnt_apply_gross_weight_se
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_product_template__pnt_apply_gross_weight_se
+msgid "Apply gross weight (Son Espases)"
+msgstr "Aplicar peso bruto (no descontar TARA | Son Espases)"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_product_product__pnt_apply_gross_weight_ib
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_product_template__pnt_apply_gross_weight_ib
+msgid "Apply gross weight (ibSalut)"
+msgstr "Aplicar peso bruto (no descontar TARA | Ib Salut)"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_lineas__articulo
+msgid "Articulo"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_application__message_attachment_count
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_session__message_attachment_count
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__message_attachment_count
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log__message_attachment_count
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_user__message_attachment_count
+msgid "Attachment Count"
+msgstr "Archivos adjuntos"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_user__pnt_applications_ids
+msgid "Authorized applications"
+msgstr "Aplicaciones autorizadas"
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_report_app_tag_document
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_report_app_tag_sanitary_document
+msgid "Barcode"
+msgstr "Código de barras"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_application__campaign_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_session__campaign_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__campaign_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log__campaign_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_user__campaign_id
+msgid "Campaign"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.view_form_pnt_app_du_change
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.view_form_pnt_app_tag_manual
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_lineas__cantidad
+msgid "Cantidad"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_product_product__pnt_app_capacity
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_product_template__pnt_app_capacity
+msgid "Capacity (Liters)"
+msgstr "Capacidad (Litros)"
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_app_du_form_view
+msgid "Change DU in record"
+msgstr "Cambiar DU en registro app"
+
+#. module: app_adalmo_pnt
+#: code:addons/app_adalmo_pnt/models/pnt_app_du.py:0
+#: model:ir.actions.act_window,name:app_adalmo_pnt.action_pnt_app_du_change
+#, python-format
+msgid "Change DU in record app"
+msgstr "Cambiar DU en registro app"
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_report_app_tag_document
+msgid "Clase ADR:"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_application__company_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du__company_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_change__company_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_fotos__company_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_lineas__company_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_session__company_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__company_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log__company_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_manual__company_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_manual_line__company_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_user__company_id
+msgid "Company"
+msgstr "Compañía"
+
+#. module: app_adalmo_pnt
+#: code:addons/app_adalmo_pnt/models/pnt_single_document.py:0
+#, python-format
+msgid "Compose Email"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model,name:app_adalmo_pnt.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_application__create_uid
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du__create_uid
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_change__create_uid
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_fotos__create_uid
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_lineas__create_uid
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_session__create_uid
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__create_uid
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log__create_uid
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_manual__create_uid
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_manual_line__create_uid
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_user__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_application__create_date
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du__create_date
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_change__create_date
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_fotos__create_date
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_lineas__create_date
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_session__create_date
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__create_date
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log__create_date
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_manual__create_date
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_manual_line__create_date
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_user__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_report_app_tag_document
+msgid "Cta:"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_change__pnt_current_single_document_id
+msgid "Current single document"
+msgstr "DU actual"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_application__access_url
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_session__access_url
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_tag__access_url
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_tag_log__access_url
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_user__access_url
+msgid "Customer Portal URL"
+msgstr "Url Licitación"
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_report_app_tag_sanitary_document
+msgid "Código (Según Reg 1357/2014):"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_report_app_tag_document
+msgid "Código Identificación (Según Reg 1357/2014):"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_report_app_tag_document
+msgid "Código L.E.R.:"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: code:addons/app_adalmo_pnt/models/pnt_app_tag.py:0
+#: code:addons/app_adalmo_pnt/models/pnt_app_tag_log.py:0
+#: model:ir.model.fields.selection,name:app_adalmo_pnt.selection__pnt_app_tag__pnt_tag_log_type__du
+#: model:ir.model.fields.selection,name:app_adalmo_pnt.selection__pnt_app_tag_log__pnt_tag_log_type__du
+#, python-format
+msgid "DU"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log__pnt_app_du_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_single_document__pnt_app_du_id
+msgid "DU app record"
+msgstr "Registro App"
+
+#. module: app_adalmo_pnt
+#: code:addons/app_adalmo_pnt/wizards/pnt_app_tag_manual.py:0
+#: model:ir.model.fields.selection,name:app_adalmo_pnt.selection__pnt_app_tag_manual__pnt_tag_type__dangerous
+#, python-format
+msgid "Dangerous"
+msgstr "Peligrosos"
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_report_app_tag_document
+msgid "Datos del Residuo"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_report_app_tag_document
+msgid "Datos del centro productor"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_report_app_tag_document
+msgid "Datos transporte"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: code:addons/app_adalmo_pnt/wizards/pnt_app_tag_manual.py:0
+#, python-format
+msgid "Debe introducir residuos para poder generar las etiquetas"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_report_app_tag_document
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_report_app_tag_sanitary_document
+msgid "Dirección:"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_application__display_name
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du__display_name
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_change__display_name
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_fotos__display_name
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_lineas__display_name
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_session__display_name
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__display_name
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log__display_name
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_manual__display_name
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_manual_line__display_name
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_user__display_name
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_single_document__display_name
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_single_document_line__display_name
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_product_product__display_name
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_product_template__display_name
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_report_app_adalmo_pnt_pnt_report_app_tag__display_name
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_res_partner__display_name
+msgid "Display Name"
+msgstr "Mostrar nombre"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_res_partner__pnt_dont_send_email_app_ref
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_res_users__pnt_dont_send_email_app_ref
+msgid "Do not use sector reference center emails for app"
+msgstr ""
+"No utilice correos electrónicos del centro de referencia del sector para la "
+"app"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_session__pnt_transport_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_user__pnt_transport_id
+msgid "Driver"
+msgstr "Chofer"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_lineas__esresiduo
+msgid "Es residuo"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du__fecha_creacion
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_fotos__fecha_creacion
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_lineas__fecha_creacion
+msgid "Fecha creacion"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_report_app_tag_document
+msgid "Fecha de envasado:"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_session__fin
+msgid "Fin"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du__firmadni
+msgid "Firma: DNI"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du__firmaimagen
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du__firmaimagentext
+msgid "Firma: Imagen"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du__firmanombre
+msgid "Firma: Nombre"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_application__message_follower_ids
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_session__message_follower_ids
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__message_follower_ids
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log__message_follower_ids
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_user__message_follower_ids
+msgid "Followers"
+msgstr "Seguidores"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_application__message_channel_ids
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_session__message_channel_ids
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__message_channel_ids
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log__message_channel_ids
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_user__message_channel_ids
+msgid "Followers (Channels)"
+msgstr "Seguidores (Canales)"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_application__message_partner_ids
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_session__message_partner_ids
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__message_partner_ids
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log__message_partner_ids
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_user__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Seguidores (Empresas)"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_application__activity_type_icon
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_session__activity_type_icon
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_tag__activity_type_icon
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_tag_log__activity_type_icon
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_user__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr "Icono de Font Awesome ej. fa-tasks"
+
+#. module: app_adalmo_pnt
+#: model:ir.model,name:app_adalmo_pnt.model_report_app_adalmo_pnt_pnt_report_app_tag
+msgid "Format for app tag"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_fotos__foto
+msgid "Foto"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__pnt_functional_unit_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log__pnt_functional_unit_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_manual__pnt_functional_unit_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_single_document_line__pnt_functional_unit_id
+msgid "Functional unit"
+msgstr "Unidad funcional"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du__grpid
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_fotos__grpid
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_lineas__grpid
+msgid "GRP_ID"
+msgstr "Identificación"
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.view_form_pnt_app_tag_manual
+msgid "Gemerar etiquetas (app QR)"
+msgstr "Generar etiquetas (app QR)"
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_single_document_app_form_view
+msgid "Generate Tags (Dangerous)"
+msgstr "Etiquetas (peligrosos)"
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_single_document_app_form_view
+msgid "Generate Tags (No Dangerous)"
+msgstr "Etiquetas (no peligrosos)"
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_single_document_app_form_view
+msgid "Generate Tags (Sanitary)"
+msgstr "Etiquetas (sanitarios)"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_manual__pnt_holder_id
+msgid "Holder"
+msgstr "Titular"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_application__id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du__id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_change__id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_fotos__id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_lineas__id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_session__id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log__id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_manual__id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_manual_line__id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_user__id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_single_document__id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_single_document_line__id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_product_product__id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_product_template__id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_report_app_adalmo_pnt_pnt_report_app_tag__id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_res_partner__id
+msgid "ID"
+msgstr "Identificación"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_application__activity_exception_icon
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_session__activity_exception_icon
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__activity_exception_icon
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log__activity_exception_icon
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_user__activity_exception_icon
+msgid "Icon"
+msgstr "Icono"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_application__activity_exception_icon
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_session__activity_exception_icon
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_tag__activity_exception_icon
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_tag_log__activity_exception_icon
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_user__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "Icono para indicar una actividad de excepción."
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_application__id_application
+msgid "Id application"
+msgstr "Id aplicación"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_application__message_needaction
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_application__message_unread
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_session__message_needaction
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_session__message_unread
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_tag__message_needaction
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_tag__message_unread
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_tag_log__message_needaction
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_tag_log__message_unread
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_user__message_needaction
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_user__message_unread
+msgid "If checked, new messages require your attention."
+msgstr "Si está marcado, hay nuevos mensajes que requieren su atención."
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_application__message_has_error
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_application__message_has_sms_error
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_session__message_has_error
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_session__message_has_sms_error
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_tag__message_has_error
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_tag__message_has_sms_error
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_tag_log__message_has_error
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_tag_log__message_has_sms_error
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_user__message_has_error
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_user__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Si se encuentra marcado, algunos mensajes tienen error de envío."
+
+#. module: app_adalmo_pnt
+#: code:addons/app_adalmo_pnt/models/pnt_app_tag.py:0
+#: code:addons/app_adalmo_pnt/models/pnt_app_tag_log.py:0
+#: model:ir.model.fields.selection,name:app_adalmo_pnt.selection__pnt_app_tag__pnt_tag_log_type__imported
+#: model:ir.model.fields.selection,name:app_adalmo_pnt.selection__pnt_app_tag_log__pnt_tag_log_type__imported
+#, python-format
+msgid "Imported"
+msgstr "Importado"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du__pnt_incidence
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_lineas__pnt_incidence
+msgid "Incidencia"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du__pnt_incidence_text
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_lineas__pnt_incidence_text
+msgid "Incidencia. Descripcion"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du__pnt_incidence_date
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_lineas__pnt_incidence_date
+msgid "Incidencia. Fecha"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: code:addons/app_adalmo_pnt/models/pnt_app_tag.py:0
+#: code:addons/app_adalmo_pnt/models/pnt_app_tag_log.py:0
+#: model:ir.model.fields.selection,name:app_adalmo_pnt.selection__pnt_app_tag__pnt_move_type__incoming
+#: model:ir.model.fields.selection,name:app_adalmo_pnt.selection__pnt_app_tag_log__pnt_move_type__incoming
+#, python-format
+msgid "Incoming"
+msgstr "Entrada"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_session__inicio
+msgid "Inicio"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_application__message_is_follower
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_session__message_is_follower
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__message_is_follower
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log__message_is_follower
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_user__message_is_follower
+msgid "Is Follower"
+msgstr "Es un seguidor"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_product_product__pnt_is_dangerous
+msgid "Is dangerous"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du__justificanteg2
+msgid "Justificante G2"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du__justificanteg3
+msgid "Justificante G3"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du__justificantegp
+msgid "Justificante GP"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du__justificantegx
+msgid "Justificante GX"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_product_product__pnt_keep_in_du_quiron
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_product_template__pnt_keep_in_du_quiron
+msgid "Keep product in DU (Quiron)"
+msgstr "Mantener articulo en DU (Clinica Quiron)"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_lineas__kg
+msgid "Kg"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_report_app_tag_sanitary_document
+msgid "L.E.R.:"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_application____last_update
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du____last_update
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_change____last_update
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_fotos____last_update
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_lineas____last_update
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_session____last_update
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag____last_update
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log____last_update
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_manual____last_update
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_manual_line____last_update
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_user____last_update
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_single_document____last_update
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_single_document_line____last_update
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_product_product____last_update
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_product_template____last_update
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_report_app_adalmo_pnt_pnt_report_app_tag____last_update
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_res_partner____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_application__write_uid
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du__write_uid
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_change__write_uid
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_fotos__write_uid
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_lineas__write_uid
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_session__write_uid
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__write_uid
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log__write_uid
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_manual__write_uid
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_manual_line__write_uid
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_user__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_application__write_date
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du__write_date
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_change__write_date
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_fotos__write_date
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_lineas__write_date
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_session__write_date
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__write_date
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log__write_date
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_manual__write_date
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_manual_line__write_date
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_user__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_report_app_tag_document
+msgid "Localidad:"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.actions.act_window,name:app_adalmo_pnt.action_app_du_menu_pnt
+msgid "Log DU management"
+msgstr "App du"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_application__message_main_attachment_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_session__message_main_attachment_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__message_main_attachment_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log__message_main_attachment_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_user__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "Adjuntos principales"
+
+#. module: app_adalmo_pnt
+#: code:addons/app_adalmo_pnt/models/pnt_app_tag.py:0
+#: code:addons/app_adalmo_pnt/models/pnt_app_tag_log.py:0
+#: code:addons/app_adalmo_pnt/wizards/pnt_app_tag_manual.py:0
+#: model:ir.model.fields.selection,name:app_adalmo_pnt.selection__pnt_app_tag__pnt_tag_log_type__manual
+#: model:ir.model.fields.selection,name:app_adalmo_pnt.selection__pnt_app_tag_log__pnt_tag_log_type__manual
+#: model:ir.model.fields.selection,name:app_adalmo_pnt.selection__pnt_app_tag_manual__pnt_type__manual
+#, python-format
+msgid "Manual"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_session__matricula
+msgid "Matrícula"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_application__medium_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_session__medium_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__medium_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log__medium_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_user__medium_id
+msgid "Medium"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_application__message_has_error
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_session__message_has_error
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__message_has_error
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log__message_has_error
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_user__message_has_error
+msgid "Message Delivery error"
+msgstr "Error de Envío de Mensaje"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_application__message_ids
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_session__message_ids
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__message_ids
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log__message_ids
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_user__message_ids
+msgid "Messages"
+msgstr "Mensajes"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__pnt_move_type
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log__pnt_move_type
+msgid "Move type"
+msgstr "Tipo de movimiento"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_application__my_activity_date_deadline
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_session__my_activity_date_deadline
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__my_activity_date_deadline
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log__my_activity_date_deadline
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_user__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "Siguiente plazo de actividad"
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_report_app_tag_document
+msgid "NIMA:"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_report_app_tag_document
+msgid "NIMA: 0700000002"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_application__name
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du__name
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_fotos__name
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_lineas__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_app_user_form_view
+msgid "Name:"
+msgstr "Nombre:"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_change__pnt_new_single_document_id
+msgid "New single document"
+msgstr "Nuevo DU"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_application__activity_date_deadline
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_session__activity_date_deadline
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__activity_date_deadline
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log__activity_date_deadline
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_user__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Siguiente plazo de actividad"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_application__activity_summary
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_session__activity_summary
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__activity_summary
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log__activity_summary
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_user__activity_summary
+msgid "Next Activity Summary"
+msgstr "Resumen de la siguiente actividad"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_application__activity_type_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_session__activity_type_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__activity_type_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log__activity_type_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_user__activity_type_id
+msgid "Next Activity Type"
+msgstr "Siguiente tipo de actividad"
+
+#. module: app_adalmo_pnt
+#: code:addons/app_adalmo_pnt/models/pnt_single_document.py:0
+#, python-format
+msgid "No hay etiquetas de NO PELIGROSOS en el DU activo"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: code:addons/app_adalmo_pnt/models/pnt_single_document.py:0
+#, python-format
+msgid "No hay etiquetas de PELIGROSOS en el DU activo"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: code:addons/app_adalmo_pnt/models/pnt_single_document.py:0
+#, python-format
+msgid "No hay etiquetas de SANITARIOS en el DU activo"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: code:addons/app_adalmo_pnt/models/pnt_app_du.py:0
+#, python-format
+msgid ""
+"No puede lanzarse el proceso si el registro ha sido PROCESADO o tiene "
+"INCIDENCIAS. Desmarque estas opciones y vuelva a procesarlo"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: code:addons/app_adalmo_pnt/wizards/pnt_app_tag_manual.py:0
+#, python-format
+msgid "No se ha encontrado contrato activo para "
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_report_app_tag_document
+msgid "Nombre del Residuo"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_report_app_tag_document
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_report_app_tag_sanitary_document
+msgid "Nombre:"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: code:addons/app_adalmo_pnt/wizards/pnt_app_tag_manual.py:0
+#: model:ir.model.fields.selection,name:app_adalmo_pnt.selection__pnt_app_tag_manual__pnt_tag_type__notdangerous
+#, python-format
+msgid "Not Dangerous"
+msgstr "No peligrosos"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_application__message_needaction_counter
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_session__message_needaction_counter
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__message_needaction_counter
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log__message_needaction_counter
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_user__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Número de acciones"
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.view_form_pnt_app_tag_manual
+msgid "Number of active contracts"
+msgstr "Número de contratos activos"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_manual__pnt_agreement_count
+msgid "Number of agreements"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_application__message_has_error_counter
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_session__message_has_error_counter
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__message_has_error_counter
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log__message_has_error_counter
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_user__message_has_error_counter
+msgid "Number of errors"
+msgstr "Número de acciones"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_application__message_needaction_counter
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_session__message_needaction_counter
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_tag__message_needaction_counter
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_tag_log__message_needaction_counter
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_user__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "Número de mensajes que requieren una acción"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_application__message_has_error_counter
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_session__message_has_error_counter
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_tag__message_has_error_counter
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_tag_log__message_has_error_counter
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_user__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Número de mensajes con error de envío"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_application__message_unread_counter
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_session__message_unread_counter
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_tag__message_unread_counter
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_tag_log__message_unread_counter
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_user__message_unread_counter
+msgid "Number of unread messages"
+msgstr "Número de mensajes no leidos"
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_report_app_tag_sanitary_document
+msgid ""
+"Nº REG PRODUCTOR:\n"
+"                                <br/>\n"
+"                                <br/>\n"
+"                                Fecha apertura:\n"
+"                                <br/>\n"
+"                                Datos ADR (Clase"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du__observaciones
+msgid "Observaciones"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: code:addons/app_adalmo_pnt/models/pnt_app_tag.py:0
+#: code:addons/app_adalmo_pnt/models/pnt_app_tag_log.py:0
+#: model:ir.model.fields.selection,name:app_adalmo_pnt.selection__pnt_app_tag__pnt_tag_log_type__others
+#: model:ir.model.fields.selection,name:app_adalmo_pnt.selection__pnt_app_tag_log__pnt_tag_log_type__others
+#, python-format
+msgid "Others"
+msgstr "Otros"
+
+#. module: app_adalmo_pnt
+#: code:addons/app_adalmo_pnt/models/pnt_app_tag.py:0
+#: code:addons/app_adalmo_pnt/models/pnt_app_tag_log.py:0
+#: model:ir.model.fields.selection,name:app_adalmo_pnt.selection__pnt_app_tag__pnt_move_type__outgoing
+#: model:ir.model.fields.selection,name:app_adalmo_pnt.selection__pnt_app_tag_log__pnt_move_type__outgoing
+#, python-format
+msgid "Outgoing"
+msgstr "Salida"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__pnt_holder_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__pnt_partner_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log__pnt_partner_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_manual__pnt_partner_id
+msgid "Partner"
+msgstr "Contacto"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du__pnt_partner_pickup_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_fotos__pnt_partner_pickup_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_lineas__pnt_partner_pickup_id
+msgid "Partner pickup"
+msgstr "Recogida"
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.view_form_pnt_app_tag_manual
+msgid "Pickup"
+msgstr "Recogida"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_manual__pnt_agreement_domain_ids
+msgid "Pnt Agreement Domain"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model,name:app_adalmo_pnt.model_pnt_app_application
+msgid "Pnt App Application"
+msgstr "Aplicación app"
+
+#. module: app_adalmo_pnt
+#: model:ir.model,name:app_adalmo_pnt.model_pnt_app_du
+msgid "Pnt App Du"
+msgstr "Pnt App DU"
+
+#. module: app_adalmo_pnt
+#: model:ir.model,name:app_adalmo_pnt.model_pnt_app_du_fotos
+msgid "Pnt App Du Fotos"
+msgstr "Du Fotos"
+
+#. module: app_adalmo_pnt
+#: model:ir.model,name:app_adalmo_pnt.model_pnt_app_du_lineas
+msgid "Pnt App Du Lineas"
+msgstr "Du Fotos"
+
+#. module: app_adalmo_pnt
+#: model:ir.model,name:app_adalmo_pnt.model_pnt_app_session
+msgid "Pnt App Session"
+msgstr "Prioridad"
+
+#. module: app_adalmo_pnt
+#: model:ir.model,name:app_adalmo_pnt.model_pnt_app_tag
+msgid "Pnt App Tag"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model,name:app_adalmo_pnt.model_pnt_app_tag_log
+msgid "Pnt App Tag Log"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_manual_line__pnt_app_tag_manual_id
+msgid "Pnt App Tag Manual"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model,name:app_adalmo_pnt.model_pnt_app_user
+msgid "Pnt App User"
+msgstr "Usuario app"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_manual__pnt_holder_domain_ids
+msgid "Pnt Holder Domain"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_manual__pnt_partner_pickup_domain_ids
+msgid "Pnt Partner Pickup Domain"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_manual_line__pnt_products_domain_ids
+msgid "Pnt Products Domain"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model,name:app_adalmo_pnt.model_pnt_single_document
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du__pnt_single_document_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_fotos__pnt_single_document_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_lineas__pnt_single_document_id
+msgid "Pnt Single Document"
+msgstr "DU"
+
+#. module: app_adalmo_pnt
+#: model:ir.model,name:app_adalmo_pnt.model_pnt_single_document_line
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__pnt_single_document_line_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log__pnt_single_document_line_id
+msgid "Pnt Single Document Line"
+msgstr "Líneas de Documento único"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_manual__pnt_tag_waste_ids
+msgid "Pnt Tag Waste"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_application__access_url
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_session__access_url
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__access_url
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log__access_url
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_user__access_url
+msgid "Portal Access URL"
+msgstr "Url Documentación"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_product_product__pnt_print_tag
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_product_template__pnt_print_tag
+msgid "Print Tag (Not dangerous)"
+msgstr "Imprimir etiqueta (no peligrosos)"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_manual__pnt_print_date
+msgid "Print date"
+msgstr "Imprimir fecha"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_res_partner__pnt_print_date_on_labels
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_res_users__pnt_print_date_on_labels
+msgid "Print date on labels"
+msgstr "Imprimir fecha en las etiquetas"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__pnt_print_tag
+msgid "Print tag"
+msgstr "Imprimir etiqueta"
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_app_tag_form_view
+msgid "Print tag (app QR)"
+msgstr "Imprimir etiqueta (app QR)"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__pnt_print_tag_date
+msgid "Print tag date"
+msgstr "Imprimir fecha de la etiqueta"
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_app_du_form_view
+msgid "Proces App DU record"
+msgstr "Procesar registro app DU"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du__pnt_processed
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_lineas__pnt_processed
+msgid "Procesado"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du__pnt_processed_date
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_lineas__pnt_processed_date
+msgid "Procesado. Fecha"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model,name:app_adalmo_pnt.model_product_product
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__pnt_product_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_manual_line__pnt_product_id
+msgid "Product"
+msgstr "Producto"
+
+#. module: app_adalmo_pnt
+#: model:ir.model,name:app_adalmo_pnt.model_product_template
+msgid "Product Template"
+msgstr "Plantilla de producto"
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.view_form_pnt_app_tag_manual
+msgid "Product tags"
+msgstr "Etiquetas (residuos)"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_lineas__qr
+msgid "QR"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_product_product__pnt_qr_app_code
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_product_template__pnt_qr_app_code
+msgid "QR app code"
+msgstr "Código residuo app Peligrosos (QR)"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_product_product__pnt_qr_app_code_number
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_product_template__pnt_qr_app_code_number
+msgid "QR app code number"
+msgstr "Contador residuo app Peligrosos (QR)"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__name
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_manual__name
+msgid "QR code"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_app_tag_form_view
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_app_tag_log_form_view
+msgid "QR code:"
+msgstr "Código QR:"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_manual_line__pnt_quantity
+msgid "Quantity"
+msgstr "Cantidad etiquetas"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du__refnum
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_fotos__refnum
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_lineas__refnum
+msgid "RefNum"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du__refserie
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_fotos__refserie
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_lineas__refserie
+msgid "RefSerie"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_manual__pnt_related_holder_id
+msgid "Related Holder"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_application__activity_user_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_session__activity_user_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__activity_user_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log__activity_user_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_user__activity_user_id
+msgid "Responsible User"
+msgstr "Usuario responsable"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_application__message_has_sms_error
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_session__message_has_sms_error
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__message_has_sms_error
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log__message_has_sms_error
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_user__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "Error de Envío de Mensaje"
+
+#. module: app_adalmo_pnt
+#: code:addons/app_adalmo_pnt/wizards/pnt_app_tag_manual.py:0
+#: model:ir.model.fields.selection,name:app_adalmo_pnt.selection__pnt_app_tag_manual__pnt_tag_type__sanitary
+#, python-format
+msgid "Sanitary"
+msgstr "Sanitarios"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_application__access_token
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_session__access_token
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__access_token
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log__access_token
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_user__access_token
+msgid "Security Token"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_single_document_app_form_view
+msgid "Send by Email (app DU)"
+msgstr "Enviar por correo (app DU)"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_res_partner__pnt_send_email_app
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_res_users__pnt_send_email_app
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_view_partner_form
+msgid "Send email app"
+msgstr "Enviar servicio app a este correo"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_res_partner__pnt_send_email_app_ref
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_res_users__pnt_send_email_app_ref
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_view_partner_form
+msgid "Send email app (Reference center)"
+msgstr ""
+"Enviar servicio app a este correo (Centro de Referencia y envios directos "
+"contacto servicio app)"
+
+#. module: app_adalmo_pnt
+#: model:ir.ui.menu,name:app_adalmo_pnt.menu_pnt_app_du_config
+msgid "Settings"
+msgstr "Ajustes"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_user__pnt_show_password
+msgid "Show password"
+msgstr "Contraseña app"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log__pnt_single_document_id
+msgid "Single Document Reference"
+msgstr "DU"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.constraint,message:app_adalmo_pnt.constraint_pnt_app_user_pnt_transport_id_uniq
+msgid "Solo puede existir un USUARIO de APP por Transportista."
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_application__source_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_session__source_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__source_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log__source_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_user__source_id
+msgid "Source"
+msgstr "Origen"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_application__activity_state
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_session__activity_state
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_tag__activity_state
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_tag_log__activity_state
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_user__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"Estado basado en actividades\n"
+"Vencida: la fecha tope ya ha pasado\n"
+"Hoy: La fecha tope es hoy\n"
+"Planificada: futuras actividades."
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log__name
+msgid "Tag"
+msgstr "Etiqueta"
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_app_tag_log_form_view
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_app_tag_log_tree_view
+msgid "Tag Log"
+msgstr "Registro etiqueta QR"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__pnt_tag_log_type
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log__pnt_tag_log_type
+msgid "Tag Log type"
+msgstr "Tipo de registro"
+
+#. module: app_adalmo_pnt
+#: model:ir.actions.act_window,name:app_adalmo_pnt.action_app_tag_log_menu_pnt
+#: model:ir.ui.menu,name:app_adalmo_pnt.menu_pnt_app_tag_log
+msgid "Tag Logs"
+msgstr "Registro etiquetas QR"
+
+#. module: app_adalmo_pnt
+#: model:ir.actions.act_window,name:app_adalmo_pnt.action_app_tag_menu_pnt
+#: model:ir.ui.menu,name:app_adalmo_pnt.menu_pnt_app_tag
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_app_tag_form_view
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_app_tag_tree_view
+msgid "Tag QR"
+msgstr "Etiquetas (app QR)"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_single_document_line__pnt_app_tag_id
+msgid "Tag app"
+msgstr "Etiqueta App"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_single_document_line__pnt_tag_app
+msgid "Tag app text"
+msgstr "Etiqueta App (Texto)"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__pnt_date
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_manual__pnt_date
+msgid "Tag date"
+msgstr "Fecha etiquetas"
+
+#. module: app_adalmo_pnt
+#: model:ir.actions.act_window,name:app_adalmo_pnt.action_pnt_app_tag_manual
+#: model:ir.ui.menu,name:app_adalmo_pnt.menu_pnt_app_tag_manual
+msgid "Tag manual"
+msgstr "Generar etiquetas manuales (app QR)"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_manual__pnt_tag_type
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_manual_line__pnt_tag_type
+msgid "Tag type"
+msgstr "Tipo de etiqueta"
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_report_app_tag_document
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_report_app_tag_sanitary_document
+msgid "Telf.:"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_session__telefono
+msgid "Teléfono"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_application__campaign_id
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_session__campaign_id
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_tag__campaign_id
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_tag_log__campaign_id
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_user__campaign_id
+msgid ""
+"This is a name that helps you keep track of your different campaign "
+"efforts, e.g. Fall_Drive, Christmas_Special"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_application__medium_id
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_session__medium_id
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_tag__medium_id
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_tag_log__medium_id
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_user__medium_id
+msgid "This is the method of delivery, e.g. Postcard, Email, or Banner Ad"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_application__source_id
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_session__source_id
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_tag__source_id
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_tag_log__source_id
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_user__source_id
+msgid ""
+"This is the source of the link, e.g. Search Engine, another domain, or name "
+"of email list"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,help:app_adalmo_pnt.field_product_product__pnt_is_dangerous
+msgid "This product belongs to a dangerous class"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_lineas__tipocontenido
+msgid "Tipo contenido"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_session__token
+msgid "Token"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_app_session_form_view
+msgid "Token:"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du__transfer_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_change__transfer_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_fotos__transfer_id
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du_lineas__transfer_id
+msgid "Transfer Id"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_manual__pnt_type
+msgid "Type"
+msgstr "Tipo"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_application__activity_exception_decoration
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_session__activity_exception_decoration
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_tag__activity_exception_decoration
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_tag_log__activity_exception_decoration
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_user__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "Siguiente tipo de actividad."
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_report_app_tag_document
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_report_app_tag_sanitary_document
+msgid "Ubicación:"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_application__message_unread
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_session__message_unread
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__message_unread
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log__message_unread
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_user__message_unread
+msgid "Unread Messages"
+msgstr "Mensajes por leer"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_application__message_unread_counter
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_session__message_unread_counter
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__message_unread_counter
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log__message_unread_counter
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_user__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr "Contador de mensajes sin leer"
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_view_partner_form
+msgid "Use emails from your own contacts when sending from the app"
+msgstr ""
+"Utilice correos electrónicos de sus propios contactos al enviar desde la app"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_product_product__pnt_use_quiron
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_product_template__pnt_use_quiron
+msgid "Use in clinica quiron"
+msgstr "Utilizar en Clinica Quiron"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_product_product__pnt_use_ibsalut
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_product_template__pnt_use_ibsalut
+msgid "Use in ibsalut"
+msgstr "Utilizar en Contrato Ib Salut"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_product_product__pnt_use_sonespases
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_product_template__pnt_use_sonespases
+msgid "Use in son espases"
+msgstr "Utilizar en Son Espases"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_product_product__pnt_use_tag_quiron
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_product_template__pnt_use_tag_quiron
+msgid "Use tag in clinica quiron"
+msgstr "Etiquetas Clinica Quiron"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_product_product__pnt_use_tag_sonespases
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_product_template__pnt_use_tag_sonespases
+msgid "Use tag in son espases"
+msgstr "Etiquetas Son Espases"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_product_product__pnt_use_tag_ibsalut
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_product_template__pnt_use_tag_ibsalut
+msgid "Use tag in son ibsalut"
+msgstr "Etiquetas ibSalut"
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_app_session_form_view
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_app_session_tree_view
+msgid "User"
+msgstr "Usuario"
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_app_user_form_view
+msgid "User application"
+msgstr "Aplicación app"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du__varefnum
+msgid "VA RefNum"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_du__varefserie
+msgid "VA RefSerie"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_product_product__pnt_waste_app_code
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_product_template__pnt_waste_app_code
+msgid "Waste app code"
+msgstr "Código residuo app"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_product_product__pnt_waste_app_code_number
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_product_template__pnt_waste_app_code_number
+msgid "Waste app code number"
+msgstr "Contador código residuo (QR)"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_application__website_message_ids
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_session__website_message_ids
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__website_message_ids
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log__website_message_ids
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_user__website_message_ids
+msgid "Website Messages"
+msgstr "Mensajes del sitio web"
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_application__website_message_ids
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_session__website_message_ids
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_tag__website_message_ids
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_tag_log__website_message_ids
+#: model:ir.model.fields,help:app_adalmo_pnt.field_pnt_app_user__website_message_ids
+msgid "Website communication history"
+msgstr "Historial de comunicaciones del sitio web"
+
+#. module: app_adalmo_pnt
+#: model:ir.actions.server,name:app_adalmo_pnt.action_pnt_proces_app_du
+msgid "[PNT] Proess app records"
+msgstr "[PNT] Procesar registros app"
+
+#. module: app_adalmo_pnt
+#: model:ir.actions.server,name:app_adalmo_pnt.pnt_ir_cron_proces_app_du_ir_actions_server
+msgid "[Pnt] Process App DU record"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.actions.server,name:app_adalmo_pnt.pnt_ir_cron_proces_record_app_du_ir_actions_server
+#: model:ir.cron,cron_name:app_adalmo_pnt.pnt_ir_cron_proces_record_app_du
+#: model:ir.cron,name:app_adalmo_pnt.pnt_ir_cron_proces_record_app_du
+msgid "[Pnt] Process Records App DU"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model_terms:ir.ui.view,arch_db:app_adalmo_pnt.pnt_report_app_tag_document
+msgid "e-mail:"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_session__id_usuario
+msgid "id_usuario"
+msgstr "Usuario"
+
+#. module: app_adalmo_pnt
+#: model:ir.model,name:app_adalmo_pnt.model_pnt_app_du_change
+msgid "pnt.app.du.change"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model,name:app_adalmo_pnt.model_pnt_app_tag_manual
+msgid "pnt.app.tag.manual"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model,name:app_adalmo_pnt.model_pnt_app_tag_manual_line
+msgid "pnt.app.tag.manual.line"
+msgstr ""
+
+#. module: app_adalmo_pnt
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_application__activity_team_user_ids
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_session__activity_team_user_ids
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag__activity_team_user_ids
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_tag_log__activity_team_user_ids
+#: model:ir.model.fields,field_description:app_adalmo_pnt.field_pnt_app_user__activity_team_user_ids
+msgid "test field"
+msgstr ""

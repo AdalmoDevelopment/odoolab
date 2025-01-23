@@ -1,0 +1,750 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* incidents_pnt
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-03 09:48+0000\n"
+"PO-Revision-Date: 2024-01-03 10:52+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. module: incidents_pnt
+#: model:ir.model.fields,field_description:incidents_pnt.field_pnt_single_document__incidence_count
+msgid "# Incidences"
+msgstr "# Incidencias"
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__00:0
+msgid "00:00"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__00:15
+msgid "00:15"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__00:30
+msgid "00:30"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__00:45
+msgid "00:45"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__01:0
+msgid "01:00"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__01:15
+msgid "01:15"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__01:30
+msgid "01:30"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__01:45
+msgid "01:45"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__02:0
+msgid "02:00"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__02:15
+msgid "02:15"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__02:30
+msgid "02:30"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__02:45
+msgid "02:45"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__03:0
+msgid "03:00"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__03:15
+msgid "03:15"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__03:30
+msgid "03:30"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__03:45
+msgid "03:45"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__04:0
+msgid "04:00"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__04:15
+msgid "04:15"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__04:30
+msgid "04:30"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__04:45
+msgid "04:45"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__05:0
+msgid "05:00"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__05:15
+msgid "05:15"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__05:30
+msgid "05:30"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__05:45
+msgid "05:45"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__06:0
+msgid "06:00"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__06:15
+msgid "06:15"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__06:30
+msgid "06:30"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__06:45
+msgid "06:45"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__07:0
+msgid "07:00"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__07:15
+msgid "07:15"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__07:30
+msgid "07:30"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__07:45
+msgid "07:45"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__08:0
+msgid "08:00"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__08:15
+msgid "08:15"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__08:30
+msgid "08:30"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__08:45
+msgid "08:45"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__09:0
+msgid "09:00"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__09:15
+msgid "09:15"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__09:30
+msgid "09:30"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__09:45
+msgid "09:45"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__10:0
+msgid "10:00"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__10:15
+msgid "10:15"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__10:30
+msgid "10:30"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__10:45
+msgid "10:45"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__11:0
+msgid "11:00"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__11:15
+msgid "11:15"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__11:30
+msgid "11:30"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__11:45
+msgid "11:45"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__12:0
+msgid "12:00"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__12:15
+msgid "12:15"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__12:30
+msgid "12:30"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__12:45
+msgid "12:45"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__13:0
+msgid "13:00"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__13:15
+msgid "13:15"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__13:30
+msgid "13:30"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__13:45
+msgid "13:45"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__14:0
+msgid "14:00"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__14:15
+msgid "14:15"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__14:30
+msgid "14:30"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__14:45
+msgid "14:45"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__15:0
+msgid "15:00"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__15:15
+msgid "15:15"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__15:30
+msgid "15:30"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__15:45
+msgid "15:45"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__16:0
+msgid "16:00"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__16:15
+msgid "16:15"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__16:30
+msgid "16:30"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__16:45
+msgid "16:45"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__17:0
+msgid "17:00"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__17:15
+msgid "17:15"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__17:30
+msgid "17:30"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__17:45
+msgid "17:45"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__18:0
+msgid "18:00"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__18:15
+msgid "18:15"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__18:30
+msgid "18:30"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__18:45
+msgid "18:45"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__19:0
+msgid "19:00"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__19:15
+msgid "19:15"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__19:30
+msgid "19:30"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__19:45
+msgid "19:45"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__20:0
+msgid "20:00"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__20:15
+msgid "20:15"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__20:30
+msgid "20:30"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__20:45
+msgid "20:45"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__21:0
+msgid "21:00"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__21:15
+msgid "21:15"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__21:30
+msgid "21:30"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__21:45
+msgid "21:45"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__22:0
+msgid "22:00"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__22:15
+msgid "22:15"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__22:30
+msgid "22:30"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__22:45
+msgid "22:45"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__23:0
+msgid "23:00"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__23:15
+msgid "23:15"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__23:30
+msgid "23:30"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields.selection,name:incidents_pnt.selection__pnt_incidence__manipulation__23:45
+msgid "23:45"
+msgstr ""
+
+#. module: incidents_pnt
+#: model:ir.model.fields,field_description:incidents_pnt.field_pnt_incidence__comment
+msgid "Comment"
+msgstr "Comentario"
+
+#. module: incidents_pnt
+#: model:ir.model.fields,field_description:incidents_pnt.field_pnt_incidence__commercial_account_id
+msgid "Commercial account"
+msgstr "Cuenta comercial"
+
+#. module: incidents_pnt
+#: model:ir.model.fields,field_description:incidents_pnt.field_pnt_incidence__company_id
+#, fuzzy
+msgid "Company"
+msgstr "Compañia"
+
+#. module: incidents_pnt
+#: model:ir.model.fields,field_description:incidents_pnt.field_pnt_incidence__create_uid
+#: model:ir.model.fields,field_description:incidents_pnt.field_pnt_incidence_reclassified__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: incidents_pnt
+#: model:ir.model.fields,field_description:incidents_pnt.field_pnt_incidence__create_date
+#: model:ir.model.fields,field_description:incidents_pnt.field_pnt_incidence_reclassified__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: incidents_pnt
+#: model:ir.model.fields,field_description:incidents_pnt.field_pnt_incidence__currency_id
+msgid "Currency"
+msgstr "Divisa"
+
+#. module: incidents_pnt
+#: model:ir.model.fields,field_description:incidents_pnt.field_pnt_incidence__customer_id
+msgid "Customer"
+msgstr "Cliente"
+
+#. module: incidents_pnt
+#: model:ir.model.fields,field_description:incidents_pnt.field_pnt_incidence__date
+msgid "Date"
+msgstr "Fecha"
+
+#. module: incidents_pnt
+#: model:ir.model.fields,field_description:incidents_pnt.field_pnt_incidence__input_weight
+msgid "Declared net weight"
+msgstr "Peso neto declarado"
+
+#. module: incidents_pnt
+#: model:ir.model.fields,field_description:incidents_pnt.field_pnt_incidence__display_name
+#: model:ir.model.fields,field_description:incidents_pnt.field_pnt_incidence_reclassified__display_name
+#: model:ir.model.fields,field_description:incidents_pnt.field_pnt_single_document__display_name
+#: model:ir.model.fields,field_description:incidents_pnt.field_pnt_single_document_line__display_name
+#: model:ir.model.fields,field_description:incidents_pnt.field_project_task__display_name
+msgid "Display Name"
+msgstr "Mostrar nombre"
+
+#. module: incidents_pnt
+#: model:ir.model.fields,field_description:incidents_pnt.field_pnt_incidence__equipment_id
+msgid "Equipment"
+msgstr "Equipo"
+
+#. module: incidents_pnt
+#: model:ir.model.fields,field_description:incidents_pnt.field_pnt_incidence__id
+#: model:ir.model.fields,field_description:incidents_pnt.field_pnt_incidence_reclassified__id
+#: model:ir.model.fields,field_description:incidents_pnt.field_pnt_single_document__id
+#: model:ir.model.fields,field_description:incidents_pnt.field_pnt_single_document_line__id
+#: model:ir.model.fields,field_description:incidents_pnt.field_project_task__id
+msgid "ID"
+msgstr "Identificación"
+
+#. module: incidents_pnt
+#: model:ir.model.fields,field_description:incidents_pnt.field_pnt_incidence__pnt_image_1
+msgid "Image 1"
+msgstr "Imagen 1"
+
+#. module: incidents_pnt
+#: model:ir.model.fields,field_description:incidents_pnt.field_pnt_incidence__pnt_image_2
+msgid "Image 2"
+msgstr "Imagen 2"
+
+#. module: incidents_pnt
+#: model:ir.model.fields,field_description:incidents_pnt.field_pnt_incidence__pnt_image_3
+msgid "Image 3"
+msgstr "Imagen 3"
+
+#. module: incidents_pnt
+#: model:ir.model,name:incidents_pnt.model_pnt_incidence
+#: model:ir.model.fields,field_description:incidents_pnt.field_pnt_incidence_reclassified__pnt_incidence_id
+#: model:ir.model.fields,field_description:incidents_pnt.field_pnt_single_document__pnt_incidence_ids
+#: model:ir.model.fields,field_description:incidents_pnt.field_pnt_single_document_line__pnt_incidence_ids
+#: model_terms:ir.ui.view,arch_db:incidents_pnt.pnt_pnt_single_document_form_view
+msgid "Incidence"
+msgstr "Incidencia"
+
+#. module: incidents_pnt
+#: model:ir.model.fields,field_description:incidents_pnt.field_pnt_incidence__incidence_cost
+msgid "Incidence cost €"
+msgstr "Costes incidencia €"
+
+#. module: incidents_pnt
+#: code:addons/incidents_pnt/models/pnt_single_document.py:0
+#: model:ir.model.fields,field_description:incidents_pnt.field_project_task__pnt_incidence_ids
+#, python-format
+msgid "Incidences"
+msgstr "Incidencias"
+
+#. module: incidents_pnt
+#: model:ir.actions.act_window,name:incidents_pnt.action_pnt_incidence
+#: model_terms:ir.ui.view,arch_db:incidents_pnt.pnt_pnt_single_document_form_view
+msgid "Incidencias"
+msgstr "Incidencias"
+
+#. module: incidents_pnt
+#: model_terms:ir.ui.view,arch_db:incidents_pnt.view_task_form2
+msgid "Incidents Data"
+msgstr "Incidencias"
+
+#. module: incidents_pnt
+#: model:res.groups,name:incidents_pnt.group_incidents_manager
+msgid "Incidents Manager"
+msgstr "Responsable"
+
+#. module: incidents_pnt
+#: model:res.groups,name:incidents_pnt.group_incidents_user
+msgid "Incidents User"
+msgstr "Usuario"
+
+#. module: incidents_pnt
+#: model:ir.model.fields,field_description:incidents_pnt.field_pnt_incidence____last_update
+#: model:ir.model.fields,field_description:incidents_pnt.field_pnt_incidence_reclassified____last_update
+#: model:ir.model.fields,field_description:incidents_pnt.field_pnt_single_document____last_update
+#: model:ir.model.fields,field_description:incidents_pnt.field_pnt_single_document_line____last_update
+#: model:ir.model.fields,field_description:incidents_pnt.field_project_task____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: incidents_pnt
+#: model:ir.model.fields,field_description:incidents_pnt.field_pnt_incidence__write_uid
+#: model:ir.model.fields,field_description:incidents_pnt.field_pnt_incidence_reclassified__write_uid
+msgid "Last Updated by"
+msgstr "Actualizado por"
+
+#. module: incidents_pnt
+#: model:ir.model.fields,field_description:incidents_pnt.field_pnt_incidence__write_date
+#: model:ir.model.fields,field_description:incidents_pnt.field_pnt_incidence_reclassified__write_date
+msgid "Last Updated on"
+msgstr "Actualizado el"
+
+#. module: incidents_pnt
+#: model:ir.model.fields,field_description:incidents_pnt.field_pnt_incidence__pnt_single_document_line_id
+#: model:ir.model.fields,field_description:incidents_pnt.field_project_task__pnt_single_document_line_id
+msgid "Lines DU"
+msgstr "Líneas DU"
+
+#. module: incidents_pnt
+#: model:ir.model.fields,field_description:incidents_pnt.field_pnt_incidence__manipulation
+msgid "Manipulation"
+msgstr "Manipulación"
+
+#. module: incidents_pnt
+#: model:ir.model.fields,field_description:incidents_pnt.field_pnt_incidence__material_id
+msgid "Material"
+msgstr "Material"
+
+#. module: incidents_pnt
+#: model:ir.model.fields,field_description:incidents_pnt.field_pnt_incidence__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: incidents_pnt
+#: model:ir.model.fields,field_description:incidents_pnt.field_pnt_incidence__delivery_note_number
+msgid "Nº Delivery note"
+msgstr "Nº Albarán"
+
+#. module: incidents_pnt
+#: model:ir.model,name:incidents_pnt.model_pnt_single_document_line
+msgid "Pnt Single Document Line"
+msgstr "Líneas de Documento único"
+
+#. module: incidents_pnt
+#: model:ir.model,name:incidents_pnt.model_pnt_single_document
+msgid "Pnt single document"
+msgstr "Documento único"
+
+#. module: incidents_pnt
+#: model:ir.model.fields,field_description:incidents_pnt.field_pnt_incidence__output_weight
+msgid "Real weight"
+msgstr "Peso real"
+
+#. module: incidents_pnt
+#: model:ir.model,name:incidents_pnt.model_pnt_incidence_reclassified
+msgid "Reclassified Incidence"
+msgstr "Incidencias reclasificados"
+
+#. module: incidents_pnt
+#: model:ir.model.fields,field_description:incidents_pnt.field_pnt_incidence__pnt_waste_reclassified_ids
+msgid "Reclassified Waste"
+msgstr "Residuos reclasificados"
+
+#. module: incidents_pnt
+#: model_terms:ir.ui.view,arch_db:incidents_pnt.pnt_incidence_view_form
+msgid "Save"
+msgstr "Guardar"
+
+#. module: incidents_pnt
+#: model:ir.model.fields,field_description:incidents_pnt.field_pnt_incidence__pnt_single_document_id
+msgid "Single document"
+msgstr "Documento único"
+
+#. module: incidents_pnt
+#: model:ir.model,name:incidents_pnt.model_project_task
+#: model:ir.model.fields,field_description:incidents_pnt.field_pnt_incidence__pnt_task_id
+msgid "Task"
+msgstr "Tarea"
+
+#. module: incidents_pnt
+#: model:ir.model.fields,help:incidents_pnt.field_pnt_incidence__commercial_account_id
+msgid "The internal user in charge of this contact."
+msgstr "El usuario interno a cargo de este contacto."
+
+#. module: incidents_pnt
+#: code:addons/incidents_pnt/models/pnt_incidence.py:0
+#, python-format
+msgid "There can be only one incidence per DU line."
+msgstr "Solo puede haber una incidencia por línea de DU."
+
+#. module: incidents_pnt
+#: model:ir.model.fields,field_description:incidents_pnt.field_pnt_incidence_reclassified__pnt_waste_id
+msgid "Waste"
+msgstr "Residuo"
+
+#. module: incidents_pnt
+#: model:ir.model.constraint,message:incidents_pnt.constraint_pnt_incidence_reclassified_name_uniq
+msgid "Waste reclassified already exist."
+msgstr "Los residuos reclasificados no pueden repetirse."
+
+#. module: incidents_pnt
+#: model:ir.model.fields,field_description:incidents_pnt.field_pnt_incidence_reclassified__pnt_weight
+msgid "Weight"
+msgstr "Peso"
+
+#. module: incidents_pnt
+#: model_terms:ir.ui.view,arch_db:incidents_pnt.pnt_incidence_view_form
+msgid "total"
+msgstr "total"

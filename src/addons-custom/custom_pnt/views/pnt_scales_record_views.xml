@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--  TREE  -->
+    <record id="pnt_scales_record_tree_view" model="ir.ui.view">
+        <field name="name">pnt.scales.record.tree</field>
+        <field name="model">pnt.scales.record</field>
+        <field name="arch" type="xml">
+            <tree create="false"
+                  string="Scales"
+                  delete="false"
+                  default_order="create_date desc"
+            >
+                <field name="name" readonly="1"/>
+                <field name="company_id"
+                       readonly="1"
+                       optional="hidden"
+                />
+                <field name="pnt_single_document_id"
+                    readonly="1"
+                />
+                <field name="pnt_product_id"
+                    readonly="1"
+                />
+                <field name="pnt_first_weighing_qty"
+                    readonly="1"
+                />
+                <field name="pnt_first_weighing_uom"
+                       readonly="1"
+                />
+                <field name="pnt_first_weighing_date"
+                       readonly="1"
+                />
+                <field name="pnt_second_weighing_qty"
+                    readonly="1"
+                />
+                <field name="pnt_second_weighing_uom"
+                       readonly="1"
+                />
+                <field name="pnt_second_weighing_date"
+                       readonly="1"
+                />
+                <field name="pnt_weighing_qty"
+                       readonly="1"
+                />
+                <field name="pnt_weighing_uom"
+                       readonly="1"
+                />
+
+            </tree>
+        </field>
+    </record>
+    <!-- FORM -->
+    <record id="pnt_scales_record_form_view" model="ir.ui.view">
+        <field name="name">pnt.scales.record.form</field>
+        <field name="model">pnt.scales.record</field>
+        <field name="priority">100</field>
+        <field name="arch" type="xml">
+            <form create="false"
+                  string="Scales record"
+                  delete="false"
+            >
+                <header>
+                </header>
+                <sheet>
+                    <field name="active" invisible="1"/>
+                    <widget name="web_ribbon" title="Archived"
+                            bg_color="bg-danger"
+                            attrs="{'invisible': [('active', '=', True)]}"/>
+                    <div class="oe_title">
+                        <h1>
+                            Code:
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <div/>
+                    <group name="pnt_scales_record_header">
+                        <group>
+                            <field name="company_id"
+                                   readonly="1"
+                                   invisible="1"
+                            />
+                            <field name="pnt_single_document_line_id"
+                                   readonly="1"
+                            />
+                            <field name="pnt_holder_id"
+                                   readonly="1"
+                            />
+                        </group>
+                        <group>
+<!--                            <label for="pnt_single_document_id"/>-->
+                            <div class="o_row">
+                                <b>Referencia de DU:</b>
+                                <field name="pnt_single_document_id"
+                                       readonly="1"
+                                />
+                                 | <b>Estado DU:</b>
+                                <field name="pnt_single_document_state"
+                                       readonly="1"
+                                />
+                                 | <b>Producto:</b>
+                                <field name="pnt_product_id"
+                                       readonly="1"
+                                />
+
+                            </div>
+                        </group>
+                        <group>
+                            <field name="pnt_scales_domain_ids" invisible="1"/>
+                            <field name="pnt_first_weighing_scales_id"
+                                   readonly="0"
+                                   domain="[('id', 'in', pnt_scales_domain_ids)]"
+                            />
+                            <label for="pnt_first_weighing_qty"/>
+                            <div class="o_row">
+                                <field name="pnt_first_weighing_qty"
+                                />
+                                <field name="pnt_first_weighing_uom"
+                                       readonly="1"
+                                       force_save="1"
+                                />
+                                <button name="scale_read_first"
+                                        type="object"
+                                        string="Leer peso"
+                                        icon="fa-dashboard"
+                                        class="oe_read_only"
+                                />
+
+                            </div>
+                        </group>
+                        <group>
+<!--                            <label for="pnt_first_weighing_qty"/>-->
+                            <div class="o_row">
+
+<!--                                <b>Báscula:</b>-->
+<!--                                <field name="pnt_first_weighing_scales_id"-->
+<!--                                       readonly="0"-->
+<!--                                />-->
+                                <b>Fecha:</b>
+                                <field name="pnt_first_weighing_date"
+                                       readonly="1"
+                                       force_save="1"
+                                />
+                                | <b>Usuario:</b>
+                                <field name="pnt_first_weighing_user_id"
+                                       readonly="1"
+                                       force_save="1"
+                                />
+
+                            </div>
+                        </group>
+                        <group>
+                            <field name="pnt_second_weighing_scales_id"
+                                   readonly="0"
+                                   domain="[('id', 'in', pnt_scales_domain_ids)]"
+                            />
+                            <label for="pnt_second_weighing_qty"/>
+                            <div class="o_row">
+                                <field name="pnt_second_weighing_qty"
+                                />
+                                <field name="pnt_second_weighing_uom"
+                                       readonly="1"
+                                       force_save="1"
+                                />
+                                <button name="scale_read_second"
+                                        type="object"
+                                        string="Leer peso"
+                                        icon="fa-dashboard"
+                                        class="oe_read_only"
+                                />
+                            </div>
+                        </group>
+                        <group>
+<!--                            <label for="pnt_second_weighing_qty"/>-->
+                            <div class="o_row">
+
+<!--                                <b>Báscula:</b>-->
+<!--                                <field name="pnt_second_weighing_scales_id"-->
+<!--                                       readonly="0"-->
+<!--                                />-->
+                                <b>Fecha:</b>
+                                <field name="pnt_second_weighing_date"
+                                       readonly="1"
+                                       force_save="1"
+                                />
+                                | <b>Usuario:</b>
+                                <field name="pnt_second_weighing_user_id"
+                                       readonly="1"
+                                       force_save="1"
+                                />
+
+                            </div>
+                        </group>
+                        <group>
+                            <label for="pnt_weighing_qty"/>
+                            <div class="o_row">
+                                <field name="pnt_weighing_qty"
+                                       readonly="1"
+                                       force_save="1"
+                                />
+                                <field name="pnt_weighing_uom"
+                                       readonly="1"
+                                       force_save="1"
+                                />
+                            </div>
+                        </group>
+                        <field name="pnt_show_warning"
+                               invisible="1"
+                        />
+                        <field name="pnt_weight_warning"
+                               style="color:red;font-size:20px"
+                               readonly="1"
+                               attrs="{'invisible': [('pnt_show_warning', '=', False)],}"
+                        />
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <!-- ACTIONS -->
+    <record id="action_scales_record_menu_pnt" model="ir.actions.act_window">
+        <field name="name">Scales record</field>
+        <field name="res_model">pnt.scales.record</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_pnt_scales_record"
+              name="Scales record"
+              action="action_scales_record_menu_pnt"
+              parent="custom_pnt.menu_pnt_single_document_config"
+              sequence="81"
+              groups="base.group_user"
+    />
+
+</odoo>

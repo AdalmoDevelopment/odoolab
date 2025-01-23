@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--  TREE  -->
+    <record id="pnt_container_movement_tree_view" model="ir.ui.view">
+        <field name="name">pnt.container.movement.tree</field>
+        <field name="model">pnt.container.movement</field>
+        <field name="arch" type="xml">
+            <tree create="false"
+                  string="Container movement"
+                  delete="false"
+                  default_order="create_date desc"
+            >
+                <field name="name" readonly="1"/>
+                <field name="company_id"
+                       readonly="1"
+                       optional="hidden"
+                />
+                <field name="pnt_single_document_id"
+                    readonly="1"
+                />
+                <field name="pnt_pickup_date"
+                    readonly="1"
+                />
+                <field name="pnt_container_movement_type"
+                    readonly="1"
+                />
+                <field name="pnt_container_delivery_id"
+                       readonly="1"
+                />
+                <field name="pnt_container_delivery_code"
+                       readonly="1"
+                />
+                <field name="pnt_container_removal_id"
+                       readonly="1"
+                />
+                <field name="pnt_container_removal_code"
+                       readonly="1"
+                />
+            </tree>
+        </field>
+    </record>
+    <!-- FORM -->
+    <record id="pnt_container_movement_form_view" model="ir.ui.view">
+        <field name="name">pnt.container.movement.form</field>
+        <field name="model">pnt.container.movement</field>
+        <field name="priority">100</field>
+        <field name="arch" type="xml">
+            <form create="false"
+                  string="Scales record"
+                  delete="false"
+            >
+                <header>
+                </header>
+                <sheet>
+                    <field name="active" invisible="1"/>
+                    <widget name="web_ribbon" title="Archived"
+                            bg_color="bg-danger"
+                            attrs="{'invisible': [('active', '=', True)]}"/>
+                    <div class="oe_title">
+                        <h1>
+                            Code:
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <div/>
+                    <group name="pnt_container_movement_header">
+                        <group>
+                            <field name="company_id"
+                                   readonly="1"
+                                   invisible="1"
+                            />
+                            <field name="pnt_single_document_line_id"
+                                   readonly="1"
+                            />
+                        </group>
+                        <group>
+                            <div class="o_row">
+                                <b>Referencia de DU:</b>
+                                <field name="pnt_single_document_id"
+                                       readonly="1"
+                                />
+                                 | <b>Estado DU:</b>
+                                <field name="pnt_single_document_state"
+                                       readonly="1"
+                                />
+                                 | <b>Producto:</b>
+                                <field name="pnt_product_id"
+                                       readonly="1"
+                                />
+                                 | <b>Fecha:</b>
+                                <field name="pnt_pickup_date"
+                                    readonly="1"
+                                />
+
+                            </div>
+                        </group>
+                        <group>
+                            <field name="pnt_container_movement_type"
+                                   readonly="1"
+                            />
+                            <field name="pnt_container_delivery_id"
+                                   readonly="0"
+                                   attrs="{'invisible': [('pnt_container_movement_type', 'in', ['removal']),
+                                                        ]
+                                          }"
+                            />
+                            <field name="pnt_container_delivery_code"
+                                   readonly="0"
+                                   attrs="{'invisible': [('pnt_container_movement_type', 'in', ['removal']),
+                                                        ]
+                                          }"
+                            />
+                            <field name="pnt_container_removal_id"
+                                   readonly="0"
+                                   attrs="{'invisible': [('pnt_container_movement_type', 'in', ['delivery']),
+                                                        ]
+                                          }"
+                            />
+                            <field name="pnt_container_removal_code"
+                                   readonly="0"
+                                   attrs="{'invisible': [('pnt_container_movement_type', 'in', ['delivery']),
+                                                        ]
+                                          }"
+                            />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <!-- ACTIONS -->
+    <record id="action_container_movement_menu_pnt" model="ir.actions.act_window">
+        <field name="name">Container movement</field>
+        <field name="res_model">pnt.container.movement</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_pnt_container_movement"
+              name="Container movement"
+              action="action_container_movement_menu_pnt"
+              parent="custom_pnt.menu_pnt_single_document_config"
+              sequence="82"
+              groups="base.group_user"
+    />
+
+</odoo>

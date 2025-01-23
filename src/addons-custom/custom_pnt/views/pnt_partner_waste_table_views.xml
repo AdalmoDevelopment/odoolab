@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- partner.waste.table : views -->
+    <record id="pnt_view_partner_waste_table_form" model="ir.ui.view">
+        <field name="name">pnt.view.partner.waste.table.form</field>
+        <field name="model">pnt.partner.waste.table</field>
+        <field name="arch" type="xml">
+            <form string="Partner Waste Table Mgm">
+                <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+                    <field name="active" invisible="1"/>
+                    <group>
+                        <group>
+                            <field name="name" invisible="1"/>
+                            <field name="pnt_partner_id" required="1"/>
+                        </group>
+                        <group>
+                            <field name="pnt_product_tmpl_id" required="1"/>
+                        </group>
+                    </group>
+                    <group name="pnt_waste">
+                        <group name="pnt_table" string="Tables">
+                            <field name="pnt_waste_table1_ids" widget="many2many_tags" context="{'default_pnt_table_type': 'table1'}"/>
+                            <field name="pnt_waste_table2_ids" widget="many2many_tags" context="{'default_pnt_table_type': 'table2'}"/>
+                            <field name="pnt_waste_table3_ids" widget="many2many_tags" context="{'default_pnt_table_type': 'table3'}"/>
+                            <field name="pnt_waste_table4_ids" widget="many2many_tags" context="{'default_pnt_table_type': 'table4'}"/>
+                            <field name="pnt_waste_table5_ids" widget="many2many_tags" context="{'default_pnt_table_type': 'table5'}"/>
+                            <field name="pnt_waste_table6_ids" widget="many2many_tags" context="{'default_pnt_table_type': 'table6'}"/>
+                            <field name="pnt_waste_table7_ids" widget="many2many_tags" context="{'default_pnt_table_type': 'table7'}"/>
+                        </group>
+                        <group name="pnt_other_date" string="Other datas">
+                            <field name="pnt_label_name"/>
+                            <field name="pnt_waste_ler_id"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="pnt_view_partner_waste_table_tree" model="ir.ui.view">
+        <field name="name">pnt.view.partner.waste.table.tree</field>
+        <field name="model">pnt.partner.waste.table</field>
+        <field eval="6" name="priority"/>
+        <field name="arch" type="xml">
+            <tree string="Partner Waste Table">
+                <field name="pnt_partner_id"/>
+                <field name="pnt_product_tmpl_id"/>
+                <field name="pnt_waste_ler_id" optional="show"/>
+                <field name="pnt_waste_table2_ids" optional="show" widget="many2many_tags"/>
+                <field name="pnt_waste_table5_ids" optional="show" widget="many2many_tags"/>
+            </tree>
+        </field>
+    </record>
+    <!-- partner.waste.table : actions -->
+    <record id="pnt_partner_waste_table_action" model="ir.actions.act_window">
+        <field name="name">Partner Waste Table</field>
+        <field name="res_model">pnt.partner.waste.table</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="pnt_view_partner_waste_table_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new partner waste table
+            </p>
+        </field>
+    </record>
+    <!-- partner.waste.table : menu -->
+    <menuitem id="menu_pnt_partner_waste_table"
+        name="Partner Waste Tables"
+        parent="custom_pnt.menu_pnt_contact_waste"
+        action="pnt_partner_waste_table_action"
+        sequence="20"/>
+</odoo>

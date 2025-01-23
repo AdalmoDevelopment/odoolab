@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="account_fiscal_position_form_inherit_pnt" model="ir.ui.view">
+        <field name="name">account.fiscal.position.form.inherit.pnt</field>
+        <field name="model">account.fiscal.position</field>
+        <field name="inherit_id" ref="account.view_account_position_form"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="pnt_default_in_partner" readonly="0"/>
+                <field name="pnt_intra_extra_community"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_account_position_tree_pnt" model="ir.ui.view">
+        <field name="name">account.fiscal.position.tree.pnt</field>
+        <field name="model">account.fiscal.position</field>
+        <field name="inherit_id" ref="account.view_account_position_tree" />
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="pnt_default_in_partner" optional="show" />
+            </field>
+        </field>
+    </record>
+</odoo>

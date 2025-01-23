@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="pnt_report_budget_contract_format" model="report.paperformat">
+            <field name="name">Custom A4 format</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">20</field>
+            <field name="margin_bottom">20</field>
+            <field name="margin_left">7</field>
+            <field name="margin_right">7</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">40</field>
+            <field name="dpi">90</field>
+        </record>
+        <record id="pnt_report_budget_contract_format_footer" model="report.paperformat">
+            <field name="name">Custom A4 format footer</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">20</field>
+            <field name="margin_bottom">60</field>
+            <field name="margin_left">7</field>
+            <field name="margin_right">7</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">40</field>
+            <field name="dpi">90</field>
+        </record>
+        <record id="pnt_report_budget_contract_format_custom" model="report.paperformat">
+            <field name="name">Custom ticket format</field>
+            <field name="default" eval="True"/>
+            <field name="format">custom</field>
+            <field name="page_height">70</field>
+            <field name="page_width">55</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">6</field>
+            <field name="margin_bottom">8</field>
+            <field name="margin_left">6</field>
+            <field name="margin_right">3</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">0</field>
+            <field name="dpi">96</field>
+        </record>
+        <record id="pnt_budget_contract_report" model="ir.actions.report">
+            <field name="name">Contrato de tratamiento de Residuo</field>
+            <field name="model">pnt.agreement.agreement</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">report_pnt.pnt_report_budget_contract</field>
+            <field name="paperformat_id" ref="report_pnt.pnt_report_budget_contract_format"/>
+            <field name="binding_model_id" ref="custom_pnt.model_pnt_agreement_agreement"/>
+            <field name="binding_type">report</field>
+        </record>
+        <record id="pnt_budget_contract_report" model="ir.actions.report">
+            <field name="name">Imprimir contrato</field>
+            <field name="model">pnt.agreement.agreement</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">report_pnt.pnt_report_budget_contract</field>
+            <field name="report_file">report_pnt.pnt_report_budget_contract</field>
+            <field name="paperformat_id" ref="report_pnt.pnt_report_budget_contract_format_footer"/>
+            <field name="binding_type">report</field>
+        </record>
+        <record id="pnt_budget_contract_report_2" model="ir.actions.report">
+            <field name="name">Imprimir contrato sin valorar</field>
+            <field name="model">pnt.agreement.agreement</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">report_pnt.pnt_report_budget_contract_1</field>
+            <field name="report_file">report_pnt.pnt_report_budget_contract_1</field>
+            <field name="paperformat_id" ref="report_pnt.pnt_report_budget_contract_format_footer"/>
+            <field name="binding_type">report</field>
+            <field name="binding_model_id" ref="custom_pnt.model_pnt_agreement_agreement"/>
+        </record>
+        <template id="pnt_report_budget_contract_document">
+            <t t-call="web.basic_layout">
+                <div class="page" style="page-break-after:always;">
+                    <style>
+                        .custom_table{
+                        background-color:<t t-esc="doc.company_id.color_navbar_bg"/>;
+                        color:white;
+                        }
+                        .custom_table_bordered {
+                        border: 1.2px solid<t t-esc="doc.company_id.color_navbar_bg"/>;
+                        }
+                        .custom_letter_color {
+                        color:<t t-esc="doc.company_id.color_navbar_bg"/>;
+                        }
+                    </style>
+                    <!-- CABECERA -->
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td style="width:25%">
+                                    <img t-att-src="image_data_uri (doc.company_id.logo)"
+                                         style="max-height: 85px;"/>
+                                </td>
+                                <td style="width:50%; align-text:center;padding: 0 100px; font-size:25px">
+                                    <p>PRESUPUESTO/CONTRATO</p>
+                                </td>
+                                <td style="width:25%;font-size:13px">
+                                    <p>
+                                        <span t-field="doc.company_id.street"/>
+                                        <br/>
+                                        T.
+                                        <span t-field="doc.company_id.phone"/>
+                                        |
+                                        <span t-field="doc.company_id.website"/>
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- Nº de oferta y fecha del presupuesto -->
+                    <table style="width:100%;font-size:13px; font-weight:bold; color:#8e7296">
+                        <td style="width:50%;">
+                            <table style="width:100%;">
+                                <td>
+                                    <table class="custom_letter_color" style="width:100%">
+                                        <td style="width:66%; padding: 10px 10px 0 10px">
+                                            <strong>Nº oferta:</strong>
+                                            <span t-field="doc.name"/>
+                                        </td>
+                                        <td style="width:33%">
+                                            <strong style="margin-left: 10px 10px 0 10px">Fecha:</strong>
+                                            <span t-field="doc.pnt_date_budget"
+                                                  t-options='{"widget": "date","format": "dd-MM-yyyy"}'/>
+                                        </td>
+                                    </table>
+                                </td>
+                            </table>
+                        </td>
+                    </table>
+                    <!-- DATOS DEL CLIENTE -->
+                    <table class="table table-sm custom_table_bordered"
+                           style="width:100%;font-size:15px">
+                        <!-- In case we want to repeat the header, remove "display: table-row-group" -->
+                        <thead style="display: table-row-group">
+                            <tr class="custom_table">
+                                <th class="custom_table_bordered" style="font-size: 17px;
+                                        color: white">
+                                    Datos del cliente
+                                </th>
+                                <th class="custom_table_bordered"></th>
+                                <th class="custom_table_bordered"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="custom_table_bordered" style="width:66%; padding: 10px">
+                                    <strong>Nombre:</strong>
+                                    <span t-field="doc.pnt_holder_id.name"/>
+                                    <br/>
+                                    <strong>Persona de contacto:</strong>
+                                    <span t-if="doc.pnt_holder_id._get_contact_person()"
+                                          t-esc="doc.pnt_holder_id._get_contact_person().name"/>
+                                    <br/>
+                                    <strong>Email:</strong>
+                                    <span t-field="doc.pnt_holder_id.email"/>
+                                </td>
+                                <td class="custom_table_bordered" style="width:33%; border-right: 1.2px solid white">
+                                    <strong style="margin-left: 5px">Teléfono:</strong>
+                                    <span t-field="doc.pnt_holder_id.phone"/>
+                                    <br/>
+                                    <strong style="margin-left: 5px">Dirección:</strong>
+                                    <span t-esc="doc.pnt_holder_id._get_default_address_format()"/>
+                                </td>
+                                <td class="custom_table_bordered" style="width:1%"></td>
+                            </tr>
+                            <tr>
+                                <td style="width:33%; padding: 10px">
+                                    <strong>Comercial asignado:</strong>
+                                    <span t-field="doc.pnt_user_id.name"/>
+                                </td>
+                                <td class="custom_table_bordered" style="width:33%; padding: 10px;">
+                                    <strong>Teléfono:</strong>
+                                    <span t-field="doc.pnt_user_id.phone"/>
+                                </td>
+                                <td class="custom_table_bordered" style="width:33%; padding: 10px">
+                                    <strong>Email:</strong>
+                                    <t t-if="doc.pnt_use_company_email">
+                                        <span t-field="doc.company_id.email"/>
+                                    </t>
+                                    <t t-else="">
+                                        <span t-field="doc.pnt_user_id.email"/>
+                                    </t>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- MENSAJE DE OFERTA -->
+                    <table>
+                        <td style="width:100%; font-size:13px">
+                            <p>
+                                Estimados señores:
+                                <br/>
+                                Según conversación mantenida con ustedes, nos es grato proporcionarles nuestra mejor
+                                oferta
+                                para la gestión de los siguientes residuos:
+                            </p>
+                        </td>
+                    </table>
+                    <!-- LISTA DE PRODUCTOS -->
+                    <table class="table table-sm" style="font-size:13px">
+                        <thead style="display: table-row-group">
+                            <tr class="custom_table">
+                                <th name="th_code" class="text-left">Code</th>
+                                <th name="th_product" class="text-left">Product</th>
+                                <th name="th_product" class="text-left">Envase</th>
+                                <th name="th_ler_code" class="text-left">Código LER</th>
+                                <th t-if="money" name="th_qty" class="text-right">Cantidad estimada</th>
+                                <th name="th_unit" class="text-left">Ud.</th>
+                                <th name="th_priceunit" class="text-right">Unit Price</th>
+                                <th t-if="money" name="th_pricestimated" class="text-right">Estimado sin IVA</th>
+                            </tr>
+                        </thead>
+                        <tbody class="sale_tbody">
+                            <t t-set="total_presup" t-value="0"/>
+                            <t t-set="product_types" t-value="doc._get_agreement_line_product_types()"/>
+                            <tr t-foreach="product_types" t-as="type">
+                                <tr>
+                                    <td>
+                                        <strong>
+                                            <t t-esc="type"/>
+                                        </strong>
+                                    </td>
+                                </tr>
+                                <t t-set="product_lines" t-value="doc._get_lines_with_product_type(type)"/>
+                                <tr t-foreach="product_lines" t-as="product">
+                                    <t t-set="total_line" t-value="0"/>
+                                    <t t-if="product.pnt_monetary_waste == 'outbound'">
+                                        <t t-set="total_line"
+                                           t-value="product._get_contract_price() * (-1)"
+                                        />
+                                    </t>
+                                    <t t-else="">
+                                        <t t-set="total_line"
+                                           t-value="product._get_contract_price()"
+                                        />
+                                    </t>
+                                    <t t-set="total_presup"
+                                       t-value="total_presup + (total_line * product.pnt_product_uom_qty)"/>
+                                    <td>
+                                        <t t-esc="product.pnt_product_id.code"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="product.pnt_contract_product_name()"/>
+                                        <t t-if="product.pnt_observations_agreement">
+                                            <br/>
+                                            <t t-esc="product.pnt_observations_agreement"/>
+                                        </t>
+                                    </td>
+                                    <td>
+                                        <t t-esc="product.pnt_container_id.name"/>
+                                    </td>
+                                    <td>
+                                        <t t-if="product.pnt_product_id.product_tmpl_id.pnt_is_waste"
+                                           t-esc="product.pnt_product_id.product_tmpl_id.pnt_waste_ler_id.name"/>
+                                    </td>
+                                    <td t-if="money" class="text-right">
+                                        <t t-esc="product.pnt_product_uom_qty"
+                                           t-options='{"widget": "float", "precision": 0}'
+                                        />
+                                    </td>
+                                    <td>
+                                        <t t-esc="product.pnt_product_economic_uom.name"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <t t-if="product.pnt_monetary_waste == 'outbound'">
+                                            <t t-esc="product._get_contract_price() * (-1)"
+                                               t-options='{"widget": "float", "precision": 3}'
+                                            />
+                                        </t>
+                                        <t t-else="">
+                                            <t t-esc="product._get_contract_price()"
+                                               t-options='{"widget": "float", "precision": 3}'
+                                            />
+                                        </t>
+                                        <t t-esc="doc.company_id.currency_id.symbol" />
+                                    </td>
+                                    <td t-if="money" class="text-right">
+                                        <t t-if="product.pnt_monetary_waste == 'outbound'">
+                                            <t t-esc="(product._get_contract_price() * (-1)) * product.pnt_product_uom_qty"
+                                               t-options='{"widget": "float", "precision": 2}'
+                                            />
+                                        </t>
+                                        <t t-else="">
+                                            <t t-esc="product._get_contract_price() * product.pnt_product_uom_qty"
+                                               t-options='{"widget": "float", "precision": 2}'
+                                            />
+                                        </t>
+                                        <t t-esc="doc.company_id.currency_id.symbol" />
+                                    </td>
+                                </tr>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <t t-if="money">
+                        <table class="table table-sm" style="font-size:13px,font-weight: bold">
+                            <td class="text-right">
+                                Total estimado sin IVA
+                                <t t-esc="total_presup"
+                                   t-options="{'widget': 'monetary', 'display_currency': doc.company_id.currency_id}"
+                                />
+                            </td>
+                        </table>
+                    </t>
+                </div>
+
+                <div class="footer">
+                    <div class="text-center">
+                        <div style="page-break-inside: avoid;">
+                        <!-- OBSERVACIONES SOBRE LOS PRECIOS -->
+                            <table>
+                                <td style="width:100%; font-size:13px">
+                                    <p>
+                                        Los precios no incluyen el IVA vigente u otros impuestos aplicables. Si surgiera alguna
+                                        modificación de precios relativa a tarifas públicas estas se repercutiran
+                                        directamente al cliente.
+                                        <br/>
+                                        Validez de la oferta 3 meses.
+                                        <br/>
+                                        En el caso de aceptación rogamos nos remitan estos documentos firmados y sellados.
+                                        <br/>
+                                        Agradecemos la confianza depositada en nosotros y quedamos a su disposición para
+                                        cualquier consulta o aclaración sobre el presente presupuesto
+                                    </p>
+                                </td>
+                            </table>
+                            <style>
+                                .custom_table{
+                                background-color:<t
+                                t-esc="doc.company_id.color_navbar_bg"/>;
+                                color:white;
+                                }
+                                .custom_table_bordered {
+                                border: 1.2px solid<t
+                                t-esc="doc.company_id.color_navbar_bg"/>;
+                                }
+                                .custom_letter_color {
+                                color:<t t-esc="doc.company_id.color_navbar_bg"/>;
+                                }
+                            </style>
+                            <!-- FIRMAS -->
+                            <div class="row" style="margin-left: 5px;">
+                                <table class="table table-sm custom_table_bordered" style="font-size:13px; margin-right:10px;
+                                    width:47% !important;">
+                                    <thead class="custom_table" style="display: table-row-group !important;">
+                                        <tr>
+                                            <th>Firma
+                                                <span t-field="doc.company_id.name"/>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td style="width: 450px; height: 75px;">
+                                                <img
+                                                    t-if="doc.pnt_user_id.pnt_sign_vendor_contract"
+                                                    t-att-src="image_data_uri(doc.pnt_user_id.pnt_sign_vendor_contract)"
+                                                    style="width: 150px; height: 60px; text-center; margin-top: 15px"/>
+<!--                                                <img t-if="doc.company_id.pnt_sign_general_conditions"-->
+<!--                                                     t-att-src="image_data_uri(doc.company_id.pnt_sign_general_conditions)"-->
+<!--                                                     alt="pnt_sign_general_conditions" style="max-width: 75px;"/>-->
+<!--                                                <img t-if="doc.company_id.pnt_seal_general_conditions"-->
+<!--                                                     t-att-src="image_data_uri(doc.company_id.pnt_seal_general_conditions)"-->
+<!--                                                     alt="pnt_seal_general_conditions" style="max-width: 75px;"/>-->
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table table-sm custom_table_bordered" style="font-size:13px;
+                            width:50% !important;">
+                                    <thead class="custom_table" style="display: table-row-group !important;">
+                                        <tr>
+                                            <th>Aceptación cliente (Fecha, firma y sello)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td style="width: 450px; height: 75px;">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="text-center">
+                                <t t-foreach="doc.company_id.pnt_logo_ids" t-as="logo">
+                                    <img t-att-src="image_data_uri (logo.pnt_logo)"
+                                         style="max-height: 45px; margin-right: 20px"/>
+                                </t>
+                                <div class="text-center" style="font-size:5px">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </t>
+        </template>
+        <template id="pnt_report_budget_contract">
+            <t t-call="web.html_container">
+                <t t-set="docs_count"/>
+                <t t-set="doc_number" t-value="0"/>
+                <t t-foreach="docs" t-as="doc">
+                    <t t-set="doc_number" t-value="doc_number+1"/>
+                    <t t-set="money" t-value="True"/>
+
+                    <t t-call="report_pnt.pnt_report_budget_contract_document"/>
+                </t>
+            </t>
+        </template>
+
+        <template id="pnt_report_budget_contract_1">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-set="money" t-value="False"/>
+                    <t t-call="report_pnt.pnt_report_budget_contract_document"/>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

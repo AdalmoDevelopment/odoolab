@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+<odoo>
+    <record id="view_users_form_pnt" model="ir.ui.view">
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='journal_ids']" position="before">
+                <field name="pnt_holder_id"
+                       readonly="0"
+                       string="Related Holder"
+                />
+            </xpath>
+            <xpath expr="//field[@name='company_id']" position="after">
+                <field name="pnt_scales_id"
+                       readonly="0"
+                       domain="[('id', 'in', pnt_scales_ids)]"
+                />
+                <field name="pnt_scales_ids"
+                       readonly="0">
+                    <tree create="false" edit="false" delete="false">
+                        <field name="name"/>
+                        <field name="pnt_warehouse_id"/>
+                    </tree>
+                </field>
+            </xpath>
+            <xpath expr="//form//notebook//page[@name='references']" position="inside">
+                <group>
+                    <field name="pnt_sign_vendor_contract" widget="image"/>
+                </group>
+            </xpath>
+            <group name="messaging" position="after">
+                <group>
+                    <group>
+                        <field name="pnt_default_chofer" widget="many2many_tags"/>
+                    </group>
+                </group>
+            </group>
+        </field>
+    </record>
+</odoo>

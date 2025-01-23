@@ -1,0 +1,1750 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="pnt_report_du_format"
+                model="report.paperformat">
+            <field name="name">Custom A4 format</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">8</field>
+            <field name="margin_bottom">35</field>
+            <field name="margin_left">8</field>
+            <field name="margin_right">8</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">0</field>
+            <field name="dpi">96</field>
+        </record>
+
+        <record id="pnt_report_ticket_du_format_custom" model="report.paperformat">
+            <field name="name">Custom ticket format</field>
+            <field name="default" eval="True"/>
+            <field name="format">custom</field>
+            <field name="page_height">75</field>
+            <field name="page_width">55</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">4</field>
+            <field name="margin_bottom">0</field>
+            <field name="margin_left">4</field>
+            <field name="margin_right">0</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">0</field>
+            <field name="dpi">96</field>
+        </record>
+
+        <record id="pnt_report_ticket_weight_du_format_custom" model="report.paperformat">
+            <field name="name">Custom ticket format</field>
+            <field name="default" eval="True"/>
+            <field name="format">custom</field>
+            <field name="page_height">110</field>
+            <field name="page_width">70</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">4</field>
+            <field name="margin_bottom">0</field>
+            <field name="margin_left">4</field>
+            <field name="margin_right">0</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">0</field>
+            <field name="dpi">96</field>
+        </record>
+
+        <record id="pnt_ticket_du_report" model="ir.actions.report">
+            <field name="name">Ticket DU</field>
+            <field name="model">pnt.single.document</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">report_pnt.pnt_report_ticket_du</field>
+            <field name="report_file">report_pnt.pnt_report_ticket_du</field>
+            <field name="paperformat_id" ref="report_pnt.pnt_report_ticket_du_format_custom"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="pnt_ticket_weight_du_report" model="ir.actions.report">
+            <field name="name">Ticket DU with weight</field>
+            <field name="model">pnt.single.document</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">report_pnt.pnt_report_ticket_weight_du</field>
+            <field name="report_file">report_pnt.pnt_report_ticket_weight_du</field>
+            <field name="paperformat_id" ref="report_pnt.pnt_report_ticket_weight_du_format_custom"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="pnt_du_report" model="ir.actions.report">
+            <field name="name">Format DU</field>
+            <field name="model">pnt.single.document</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">report_pnt.pnt_report_du</field>
+            <field name="report_file">report_pnt.pnt_report_du</field>
+            <field name="paperformat_id" ref="report_pnt.pnt_report_du_format"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="pnt_du_report_html" model="ir.actions.report">
+            <field name="name">Format DU</field>
+            <field name="model">pnt.single.document</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">report_pnt.pnt_report_du</field>
+            <field name="report_file">report_pnt.pnt_report_du</field>
+            <field name="paperformat_id" ref="report_pnt.pnt_report_du_format"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="pnt_du_report_grouped" model="ir.actions.report">
+            <field name="name">Format DU (grouped by product)</field>
+            <field name="model">pnt.single.document</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">report_pnt.pnt_report_du_grouped</field>
+            <field name="report_file">report_pnt.pnt_report_du_grouped</field>
+            <field name="paperformat_id" ref="report_pnt.pnt_report_du_format"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <template id="pnt_report_ticket_du_document">
+            <t t-call="web.basic_layout">
+                <div class="page">
+                    <div>
+                        <b><span t-field="doc.company_id.name"/></b>
+                        <br/>
+                        <br/>
+                        <b>Nombre: </b>
+                        <t t-if="doc.pnt_partner_pickup_id.display_name">
+                            <span t-field="doc.pnt_partner_pickup_id.display_name"/>
+                        </t>
+                        <t t-else="">
+                            <span t-field="doc.pnt_partner_pickup_id.name"/>
+                        </t>
+                        <br/>
+                        <b>Fecha: </b>
+                        <span t-esc="doc.get_ticket_date()"/>
+                        <br/>
+                        <br/>
+                        <b>Número DU:</b>
+                    </div>
+                    <div style="width: 100%;height: 140px;float:left;">
+                        <table style="width: 100%;page-break-inside:avoid;">
+                            <tr>
+                                <td class="text-center align-middle" style="height: 6rem;">
+                                    <t t-if="doc.name">
+                                        <img alt="Barcode" t-if="len(doc.name) == 13" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN13', quote_plus(doc.name or ''), 600, 150)" style="width:100%;height:4rem;"/>
+                                        <img alt="Barcode" t-elif="len(doc.name) == 8" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN8', quote_plus(doc.name or ''), 600, 150)" style="width:100%;height:4rem;"/>
+                                        <img alt="Barcode" t-else="" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', quote_plus(doc.name or ''), 600, 150)" style="width:100%;height:4rem"/>
+                                        <span t-field="doc.name"/>
+                                    </t>
+                                    <t t-else=""><span class="text-muted">No barcode available</span></t>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <template id="pnt_report_ticket_weight_du_document">
+            <t t-call="web.basic_layout">
+                <div class="page">
+                    <div style="font-size:14px">
+                        <b><span t-field="doc.company_id.name" style="font-size:20px"/></b>
+                        <br/>
+                        <br/>
+                        <b>Fecha: </b>
+                        <span t-esc="doc.get_ticket_date()"/>
+                        <br/>
+                        <b>Nombre: </b>
+                        <t t-if="doc.pnt_partner_pickup_id.display_name">
+                            <span t-field="doc.pnt_partner_pickup_id.display_name"/>
+                        </t>
+                        <t t-else="">
+                            <span t-field="doc.pnt_partner_pickup_id.name"/>
+                        </t>
+                        <t t-if="doc.pnt_transport_id">
+                            <br/>
+                            <b>Chofer: </b>
+                            <span t-field="doc.pnt_transport_id.name"/>
+                        </t>
+                        <t t-if="doc.pnt_vehicle_id">
+                            <br/>
+                            <b>Martícula: </b>
+                            <span t-field="doc.pnt_vehicle_id.name"/>
+                        </t>
+                        <br/>
+                        <b>Número DU: </b>
+                    </div>
+                    <div style="width: 100%;height: 140px;float:left;">
+                        <table style="width: 100%;page-break-inside:avoid;">
+                            <tr>
+                                <td class="text-center align-middle" style="height: 6rem;">
+                                    <t t-if="doc.name">
+                                        <img alt="Barcode" t-if="len(doc.name) == 13" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN13', quote_plus(doc.name or ''), 600, 150)" style="width:100%;height:4rem;"/>
+                                        <img alt="Barcode" t-elif="len(doc.name) == 8" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN8', quote_plus(doc.name or ''), 600, 150)" style="width:100%;height:4rem;"/>
+                                        <img alt="Barcode" t-else="" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', quote_plus(doc.name or ''), 600, 150)" style="width:100%;height:4rem"/>
+                                        <span t-field="doc.name"/>
+                                    </t>
+                                    <t t-else=""><span class="text-muted">No barcode available</span></t>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <table style="width: 100%;font-size:12px;">
+                        <tr style="background-color:#C4C4C4;">
+                            <th style="width: 25%;">Articulo</th>
+                            <th style="width: 25%; text-align:right;">Bruto (kg)</th>
+                            <th style="width: 25%; text-align:right;">Tara (kg)</th>
+                            <th style="width: 25%; text-align:right;">Peso (kg)</th>
+                        </tr>
+                        <tr t-foreach="doc.pnt_single_document_line_ids" t-as="line">
+                            <t t-if="line.pnt_product_uom_qty >= 0">
+                                <td>
+                                    <span t-esc="line.pnt_product_id.get_product_name_ticket()"/>
+                                </td>
+                                <t t-if="not line.pnt_scales_record_id">
+                                    <td style="text-align:right;">
+                                        <span t-field="line.pnt_product_uom_qty"/>
+                                    </td>
+                                    <td style="text-align:right;">
+                                        0.000
+                                    </td>
+                                </t>
+                                <t t-else="">
+                                    <t t-if="line.pnt_scales_record_id.pnt_first_weighing_qty > line.pnt_scales_record_id.pnt_second_weighing_qty">
+                                        <td style="text-align:right;">
+                                            <span t-field="line.pnt_scales_record_id.pnt_first_weighing_qty"/>
+                                        </td>
+                                        <td style="text-align:right;">
+                                            <span t-field="line.pnt_scales_record_id.pnt_second_weighing_qty"/>
+                                        </td>
+                                    </t>
+                                    <t t-else="">
+                                        <td style="text-align:right;">
+                                            <span t-field="line.pnt_scales_record_id.pnt_second_weighing_qty"/>
+                                        </td>
+                                        <td style="text-align:right;">
+                                            <span t-field="line.pnt_scales_record_id.pnt_first_weighing_qty"/>
+                                        </td>
+                                    </t>
+                                </t>
+                                <td style="text-align:right;">
+                                    <span t-field="line.pnt_product_uom_qty"/>
+                                </td>
+                            </t>
+                        </tr>
+                    </table>
+                </div>
+            </t>
+        </template>
+
+        <template id="pnt_report_du_document">
+            <t t-call="web.basic_layout">
+                <div class="page">
+                    <style>
+                        .custom_table{
+                        background-color:<t t-esc="doc.company_id.color_navbar_bg"/>;
+                        color:white;
+                        }
+                    </style>
+                    <table style="width:100%;font-size:26px">
+                        <td style="width:30%;">
+                            <t t-if="doc.company_id.logo">
+                                <img t-att-src="'data:image/png;base64,%s' % to_text(doc.company_id.logo)"
+                                     style="max-height:2cm; max-width:8cm;"/>
+                            </t>
+                        </td>
+                        <td style="width:45%; text-align:center;">
+                            <strong><p>DOCUMENTO DE TRANSPORTE</p></strong>
+                        </td>
+                        <td style="width:25%;">
+                            <t t-if="doc.name">
+                                <img alt="Barcode" t-if="len(doc.name) == 13" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN13', quote_plus(doc.name or ''), 600, 150)" style="width:100%;height:4rem;"/>
+                                <img alt="Barcode" t-elif="len(doc.name) == 8" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN8', quote_plus(doc.name or ''), 600, 150)" style="width:100%;height:4rem;"/>
+                                <img alt="Barcode" t-else="" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', quote_plus(doc.name or ''), 600, 150)" style="width:100%;height:4rem"/>
+                            </t>
+                        </td>
+                    </table>
+                    <table style="width:100%;">
+                        <td style="width:25%;">
+                            <strong>Nº </strong>
+                            <span t-field="doc.name"/>
+                        </td>
+                        <td style="width:25%;">
+                            <strong>Fecha </strong>
+                            <span t-if="doc.task_id" t-field="doc.task_id.date_deadline"
+                                  t-options='{"format": "dd/MM/yyyy"}'/>
+                            <span t-else="" t-field="doc.pnt_pickup_date"
+                                  t-options='{"format": "dd/MM/yyyy"}'/>
+                        </td>
+                        <td style="width:30%;">
+                            <t t-if="doc.pnt_order_reference">
+                                <strong>Ref. Pedido</strong>
+                                <span t-field="doc.pnt_order_reference"/>
+                            </t>
+                        </td>
+                        <td style="width:20%;">
+                            <t t-if="doc.pnt_agreement_reference">
+                                <strong>Ref. Contrato</strong>
+                                <span t-field="doc.pnt_agreement_reference"/>
+                            </t>
+                        </td>
+                    </table>
+                    <table style="width:100%;font-size:13px">
+                        <td style="width:50%;">
+                            <table style="width:98%;border: 1px solid black;">
+                                <thead style="color:white !important;" >
+                                    <tr class="custom_table">
+                                        <td style="width:100%;">
+                                            <strong>Titular</strong>
+                                        </td>
+                                    </tr>
+                                </thead>
+                                <td>
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td>
+                                                <strong>Nombre</strong>
+                                                <span t-if="doc.pnt_du_partner_id.name" t-esc="doc.pnt_du_partner_id.name[0:30]"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>NIF</strong>
+                                                <span t-field="doc.pnt_du_partner_id.vat"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <strong>Dirección</strong>
+                                    <span t-if="doc.pnt_du_partner_id.street" t-esc="doc.pnt_du_partner_id.street[0:30]"/>
+                                    <span t-if="doc.pnt_du_partner_id.street2" t-esc="doc.pnt_du_partner_id.street2[0:30]"/>
+                                    <br/>
+                                    <span t-field="doc.pnt_du_partner_id.zip_id"/>
+                                    <br/>
+                                    <table style="width:100%;">
+                                        <td style="width:40%;">
+                                            <strong>Teléfono</strong>
+                                            <span t-if="doc.pnt_du_partner_id.phone" t-esc="doc.pnt_du_partner_id.phone[0:16]"/>
+                                        </td>
+                                        <td style="width:60%;">
+                                            <strong>Mail</strong>
+                                            <span t-if="doc.pnt_du_partner_id.email"
+                                                  t-esc="doc.pnt_du_partner_id.email[0:35]"/>
+                                        </td>
+                                    </table>
+                                    <table style="width:100%;">
+                                        <td style="width:40%;">
+                                            <strong>Móvil</strong>
+                                            <span t-if="doc.pnt_du_partner_id.mobile" t-esc="doc.pnt_du_partner_id.mobile[0:16]"/>
+                                        </td>
+                                        <td style="width:60%;">
+                                            <strong>Comercial</strong>
+                                            <span t-if="doc.pnt_du_partner_id.user_id.name" t-esc="doc.pnt_du_partner_id.user_id.name[0:35]"/>
+                                        </td>
+                                    </table>
+                                    <br/>
+                                </td>
+                            </table>
+                        </td>
+                        <td style="width:50%;">
+                            <table style="width:98%;border: 1px solid black;">
+                                <thead style="color:white !important;" >
+                                    <tr class="custom_table">
+                                        <th style="width:100%;">
+                                            <strong>Transportista</strong>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <td>
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td style="width:65%;">
+                                                <strong>Nombre</strong>
+                                                <span t-if="doc.pnt_carrier_id.parent_id" t-esc="doc.pnt_carrier_id.parent_id.name[0:30]"/>
+                                                <span t-if="not doc.pnt_carrier_id.parent_id and doc.pnt_carrier_id.name" t-esc="doc.pnt_carrier_id.name[0:30]"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:35%;">
+                                                <strong>NIF</strong>
+                                                <t t-if="doc.pnt_carrier_id.parent_id">
+                                                    <span t-field="doc.pnt_carrier_id.parent_id.vat"/>
+                                                </t>
+                                                <t t-if="not doc.pnt_carrier_id.parent_id">
+                                                    <span t-field="doc.pnt_carrier_id.vat"/>
+                                                </t>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <strong>Dirección</strong>
+                                    <span t-if="doc.pnt_carrier_id.parent_id"
+                                          t-esc="doc.pnt_carrier_id.parent_id.street[0:30]"/>
+                                    <span t-if="not doc.pnt_carrier_id.parent_id and doc.pnt_carrier_id.street"
+                                          t-esc="doc.pnt_carrier_id.street[0:30]"/>
+                                    <span t-if="doc.pnt_carrier_id.parent_id and doc.pnt_carrier_id.parent_id.street2"
+                                          t-esc="doc.pnt_carrier_id.parent_id.street2[0:30]"/>
+                                    <span t-if="not doc.pnt_carrier_id.parent_id and doc.pnt_carrier_id.street2"
+                                          t-esc="doc.pnt_carrier_id.street2"/>
+                                    <br/>
+                                    <span t-if="doc.pnt_carrier_id.parent_id"
+                                          t-field="doc.pnt_carrier_id.parent_id.zip_id"/>
+                                    <span t-if="not doc.pnt_carrier_id.parent_id"
+                                          t-field="doc.pnt_carrier_id.zip_id"/>
+                                    <br/>
+                                    <table style="width:100%;">
+                                        <td style="width:40%;">
+                                            <strong>Teléfono</strong>
+                                            <span t-if="doc.pnt_carrier_id.parent_id and doc.pnt_carrier_id.parent_id.phone"
+                                                  t-esc="doc.pnt_carrier_id.parent_id.phone[0:16]"/>
+                                            <span t-if="not doc.pnt_carrier_id.parent_id and doc.pnt_carrier_id.phone"
+                                                  t-esc="doc.pnt_carrier_id.phone[0:16]"/>
+                                        </td>
+                                        <td style="width:60%;">
+                                            <strong>Mail</strong>
+                                           <span  t-if="doc.pnt_carrier_id.parent_id and doc.pnt_carrier_id.parent_id.email"
+                                                  t-esc="doc.pnt_carrier_id.parent_id.email[0:35]"/>
+                                            <span t-if="not doc.pnt_carrier_id.parent_id and doc.pnt_carrier_id.email"
+                                                  t-esc="doc.pnt_carrier_id.email[0:35]"/>
+                                        </td>
+                                    </table>
+                                    <table style="width:100%;">
+                                        <td style="width:40%;">
+                                            <strong>NIMA</strong>
+                                            <t t-esc="doc.get_partner_waste_codes('nima','transport',0,doc.pnt_single_document_line_ids)"/>
+                                        </td>
+                                        <td style="width:60%;">
+                                            <strong>Cod. Aut.</strong>
+                                            <t t-esc="doc.get_partner_waste_codes('rpgr','transport',0,doc.pnt_single_document_line_ids)"/>
+                                        </td>
+                                    </table>
+                                    <table style="width:100%;">
+                                        <td style="width:65%;">
+                                            <strong>Chofer</strong>
+                                            <span t-if="doc.pnt_transport_id.name" t-esc="doc.pnt_transport_id.name[0:35]"/>
+                                        </td>
+                                        <td style="width:35%;">
+                                            <strong>Matrícula</strong>
+                                            <span t-if="doc.pnt_vehicle_id" t-field="doc.pnt_vehicle_id.license_plate"/>
+                                            <t t-if="doc.pnt_vehicle_second_registration">
+                                                -
+                                                <span t-field="doc.pnt_vehicle_second_registration"/>
+                                            </t>
+
+                                        </td>
+                                    </table>
+                                </td>
+                            </table>
+                        </td>
+                    </table>
+                    <br/>
+                    <table style="width:100%;font-size:13px">
+                        <td style="width:50%;">
+                            <table style="width:99%;border: 1px solid black;">
+                                <thead style="color:white !important;" >
+                                    <tr class="custom_table">
+                                        <th style="width:100%;">
+                                            <strong>Productor</strong>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <td>
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td>
+                                                <strong>Nombre</strong>
+                                                <t t-if="doc.pnt_single_document_type == 'output'">
+                                                    <t t-if="doc.pnt_partner_delivery_id.display_name">
+                                                        <span t-field="doc.pnt_partner_delivery_id.display_name"/>
+                                                    </t>
+                                                    <t t-if="not doc.pnt_partner_delivery_id.display_name">
+                                                        <span t-field="doc.pnt_partner_delivery_id.name"/>
+                                                    </t>
+                                                </t>
+                                                <t t-else="">
+                                                    <t t-if="doc.pnt_partner_pickup_id.display_name">
+                                                        <span t-field="doc.pnt_partner_pickup_id.display_name"/>
+                                                    </t>
+                                                    <t t-if="not doc.pnt_partner_pickup_id.display_name">
+                                                        <span t-field="doc.pnt_partner_pickup_id.name"/>
+                                                    </t>
+                                                </t>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>NIF</strong>
+                                                <t t-if="doc.pnt_single_document_type == 'output'">
+                                                    <span t-field="doc.pnt_partner_delivery_id.vat"/>
+                                                </t>
+                                                <t t-else="">
+                                                    <span t-field="doc.pnt_producer_id.vat"/>
+                                                </t>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <strong>Dirección</strong>
+                                    <t t-if="doc.pnt_single_document_type == 'output'">
+                                        <span t-if="doc.pnt_partner_delivery_id.street"
+                                              t-esc="doc.pnt_partner_delivery_id.street[0:30]"/>
+                                        <span t-if="not doc.pnt_partner_delivery_id.street and doc.pnt_partner_delivery_id.parent_id.street"
+                                              t-esc="doc.pnt_partner_delivery_id.parent_id.street[0:30]"/>
+                                        <span t-if="doc.pnt_partner_delivery_id.street2"
+                                              t-esc="doc.pnt_partner_delivery_id.street2[0:30]"/>
+                                        <span t-if="not doc.pnt_partner_delivery_id.street2 and doc.pnt_partner_delivery_id.parent_id.street2"
+                                              t-esc="doc.pnt_partner_delivery_id.parent_id.street2[0:30]"/>
+                                        <br/>
+                                        <t t-if="doc.pnt_partner_delivery_id.zip_id">
+                                            <span t-field="doc.pnt_partner_delivery_id.zip_id"/>
+                                        </t>
+                                        <t t-if="not doc.pnt_partner_delivery_id.zip_id">
+                                            <span t-field="doc.pnt_partner_delivery_id.parent_id.zip_id"/>
+                                        </t>
+                                        <br/>
+                                        <table style="width:100%;">
+                                            <td style="width:40%;">
+                                                <strong>Teléfono</strong>
+                                                <span t-if="doc.pnt_partner_delivery_id.phone"
+                                                      t-esc="doc.pnt_partner_delivery_id.phone[0:16]"/>
+                                                <span t-if="not doc.pnt_partner_delivery_id.phone and doc.pnt_partner_delivery_id.parent_id.phone"
+                                                      t-esc="doc.pnt_partner_delivery_id.parent_id.phone[0:16]"/>
+                                            </td>
+                                            <td style="width:60%;">
+                                                <strong>Mail</strong>
+                                                <span t-if="doc.pnt_partner_delivery_id.email"
+                                                      t-esc="doc.pnt_partner_delivery_id.email[0:35]"/>
+                                                <span t-if="not doc.pnt_partner_delivery_id.email and doc.pnt_partner_delivery_id.parent_id.email"
+                                                      t-esc="doc.pnt_partner_delivery_id.parent_id.email[0:35]"/>
+                                            </td>
+                                        </table>
+                                        <table style="width:100%;">
+                                            <td style="width:40%;">
+                                                <strong>Móvil</strong>
+                                                <span
+                                                    t-if="doc.pnt_partner_delivery_id.mobile"
+                                                    t-esc="doc.pnt_partner_delivery_id.mobile[0:16]"/>
+                                                <span
+                                                    t-if="not doc.pnt_partner_delivery_id.mobile and doc.pnt_partner_delivery_id.parent_id.mobile"
+                                                    t-esc="doc.pnt_partner_delivery_id.parent_id.mobile[0:16]"/>
+                                            </td>
+                                        </table>
+                                        <table style="width:100%;">
+                                            <tr>
+                                                <td style="width:40%;">
+                                                    <strong>NIMA</strong>
+                                                    <t t-esc="doc.get_partner_waste_codes('nima','end_mgm',doc.pnt_partner_delivery_id.id,doc.pnt_single_document_line_ids)"/>
+                                                </td>
+                                                <td style="width:60%;">
+                                                    <strong>Cod. Aut.</strong>
+                                                    <t t-esc="doc.get_partner_waste_codes('rpgr','end_mgm',doc.pnt_partner_delivery_id.id,doc.pnt_single_document_line_ids)"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><br/></td>
+                                            </tr>
+                                        </table>
+                                    </t>
+                                    <t t-else="">
+                                        <span t-if="doc.street" t-esc="doc.street[0:30]"/>
+                                        <span t-if="doc.street2" t-esc="doc.street2[0:30]"/>
+                                        <br/>
+                                        <span t-field="doc.zip"/>
+                                        ,
+                                        <span t-field="doc.city"/>
+                                        ,
+                                        <span t-field="doc.state_id"/>
+                                        ,
+                                        <span t-field="doc.country_id"/>
+                                        <br/>
+                                        <table style="width:100%;">
+                                            <td style="width:40%;">
+                                                <strong>Teléfono</strong>
+                                                <span t-if="doc.pnt_partner_pickup_id.phone" t-esc="doc.pnt_partner_pickup_id.phone[0:16]"/>
+                                            </td>
+                                            <td style="width:60%;">
+                                                <strong>Mail</strong>
+                                                <span t-if="doc.pnt_partner_pickup_id.email"
+                                                      t-esc="doc.pnt_partner_pickup_id.email[0:35]"/>
+                                            </td>
+                                        </table>
+                                        <table style="width:100%;">
+                                            <td style="width:40%;">
+                                                <strong>Móvil</strong>
+                                                <span
+                                                    t-if="doc.pnt_partner_pickup_id.mobile"
+                                                    t-esc="doc.pnt_partner_pickup_id.mobile[0:16]"/>
+                                            </td>
+                                        </table>
+                                        <table style="width:100%;">
+                                            <td style="width:40%;">
+                                                <strong>NIMA</strong>
+                                                <t t-esc="doc.get_partner_waste_codes('nima','producer',0,doc.pnt_single_document_line_ids)"/>
+                                            </td>
+                                            <td style="width:60%;">
+                                                <strong>Cod. Aut.</strong>
+                                                <t t-esc="doc.get_partner_waste_codes('rpgr','producer',0,doc.pnt_single_document_line_ids)"/>
+                                            </td>
+                                        </table>
+                                        <strong>Horario</strong>
+                                    </t>
+                                </td>
+                            </table>
+                        </td>
+                        <td style="width:50%;">
+                            <table style="width:99%;border: 1px solid black;">
+                                <thead style="color:white !important;" >
+                                    <tr class="custom_table">
+                                        <th style="width:100%;">
+                                            <strong>Operador</strong>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <td>
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td>
+                                                <strong>Nombre</strong>
+                                                <t t-if="doc.pnt_operator_id">
+                                                    <span t-field="doc.pnt_operator_id.name"/>
+                                                </t>
+                                                <t t-if="not doc.pnt_operator_id">
+                                                    <span t-field="doc.company_id.partner_id.name"/>
+                                                </t>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>NIF</strong>
+                                                <t t-if="doc.pnt_operator_id">
+                                                    <span t-field="doc.pnt_operator_id.vat"/>
+                                                </t>
+                                                <t t-if="not doc.pnt_operator_id">
+                                                    <span t-field="doc.company_id.partner_id.vat"/>
+                                                </t>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <strong>Dirección</strong>
+                                        <t t-if="doc.pnt_operator_id">
+                                            <span t-if="doc.pnt_operator_id.street" t-esc="doc.pnt_operator_id.street[0:30]"/>
+                                            <span t-if="doc.pnt_operator_id.street2" t-esc="doc.pnt_operator_id.street2[0:30]"/>
+                                            <br/>
+                                            <span t-field="doc.pnt_operator_id.zip_id"/>
+                                        </t>
+                                        <t t-if="not doc.pnt_operator_id">
+                                            <span t-if="doc.company_id.partner_id.street"
+                                                  t-esc="doc.company_id.partner_id.street[0:30]"/>
+                                            <span t-if="doc.company_id.partner_id.street2"
+                                                  t-esc="doc.company_id.partner_id.street2[0:30]"/>
+                                            <br/>
+                                            <span t-field="doc.company_id.partner_id.zip_id"/>
+                                        </t>
+                                    <br/>
+                                    <table style="width:100%;">
+                                        <td style="width:40%;">
+                                            <strong>Teléfono</strong>
+                                            <t t-if="doc.pnt_operator_id">
+                                                <span t-if="doc.pnt_operator_id.phone" t-esc="doc.pnt_operator_id.phone[0:16]"/>
+                                            </t>
+                                            <t t-if="not doc.pnt_operator_id">
+                                                <span t-if="doc.company_id.partner_id.phone" t-esc="doc.company_id.partner_id.phone[0:16]"/>
+                                            </t>
+                                        </td>
+                                        <td style="width:60%;">
+                                            <strong>Mail</strong>
+                                            <t t-if="doc.pnt_operator_id">
+                                                <span t-if="doc.pnt_operator_id.email"
+                                                      t-esc="doc.pnt_operator_id.email[0:35]"/>
+                                            </t>
+                                            <t t-if="not doc.pnt_operator_id">
+                                                <span t-if="doc.company_id.partner_id.email"
+                                                      t-esc="doc.company_id.partner_id.email[0:35]"/>
+                                            </t>
+                                        </td>
+                                    </table>
+                                    <table style="width:100%;">
+                                        <td style="width:40%;">
+                                            <strong>NIMA</strong>
+                                            <t t-esc="doc.get_partner_waste_codes('nima','agent',0,doc.pnt_single_document_line_ids)"/>
+                                        </td>
+                                        <td style="width:60%;">
+                                            <strong>Cod. Aut.</strong>
+                                            <t t-esc="doc.get_partner_waste_codes('rpgr','agent',0,doc.pnt_single_document_line_ids)"/>
+                                        </td>
+                                    </table>
+                                    <strong>Tipo operador</strong>
+                                    <t t-esc="doc.get_partner_waste_codes('srap','agent',0,doc.pnt_single_document_line_ids)"/>
+                                </td>
+                            </table>
+                        </td>
+                    </table>
+                    <br/>
+                    <div t-if="doc.pnt_observations" style="width:99%;border: 1px solid black;font-size:13px">
+                        <strong>Observaciones</strong>
+                        <span t-field="doc.pnt_observations"/>
+                        <br/>
+                    </div>
+                    <table style="width:99%;border: 1px solid black;font-size:13px">
+                    </table>
+                    <table style="width:99%;font-size:13px">
+                        <tbody name="delivery_tbody">
+                            <t t-set="partner_delivery" t-value="[]"/>
+                            <t t-foreach="doc.pnt_single_document_line_ids" t-as="l">
+                                <t t-set="partner_delivery" t-value="partner_delivery+[l.pnt_partner_delivery_id]"/>
+                            </t>
+                            <tr t-foreach="set(partner_delivery)" t-as="delivery">
+                                <table style="width:99%;border: 1px solid black;font-size:13px">
+                                    <thead style="color:white !important;" >
+                                        <tr class="custom_table">
+                                            <th name="th_descripcion">[Código] Descripción</th>
+                                            <t t-if="doc.pnt_single_document_type == 'marpol'">
+                                                <th name="th_m3">M3</th>
+                                            </t>
+                                            <th name="th_ler">LER</th>
+                                            <th name="th_peligrosidad">Pelig.</th>
+                                            <th name="th_tratamiento">Trat.</th>
+                                            <th name="th_peso"  class="text-center">Peso(Kg)</th>
+                                            <th name="th_unidades"  class="text-center">Unidades</th>
+                                            <th name="th_realizada"  class="text-center">Cant. Realiz.</th>
+                                            <th name="th_envase">Envase</th>
+                                            <th name="th_di">NºDI</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr t-foreach="doc.pnt_single_document_line_ids" t-as="line">
+                                            <t t-if="delivery.id==line.pnt_partner_delivery_id.id">
+                                                <td name="td_description" style="font-size:12px">
+                                                    <span t-field="line.pnt_description_line"/>
+                                                </td>
+                                                <t t-if="doc.pnt_single_document_type == 'marpol'">
+                                                    <td name="td_m3" style="font-size:12px">
+                                                        <span t-field="line.pnt_m3"/>
+                                                    </td>
+                                                </t>
+                                                <td name="td_ler" style="font-size:12px">
+                                                    <span t-field="line.pnt_waste_ler_id.name"/>
+                                                </td>
+                                                <td name="td_peligrosidad" style="font-size:12px">
+                                                    <t t-if="line.pnt_product_id.pnt_waste_table5_ids">
+                                                        <span t-field="line.pnt_product_id.pnt_waste_table5_ids"/>
+                                                    </t>
+                                                </td>
+                                                <td name="td_tratamiento" style="font-size:12px">
+                                                    <t t-if="line.pnt_product_id.pnt_waste_table2_ids">
+                                                        <span t-field="line.pnt_product_id.pnt_waste_table2_ids"/>
+                                                    </t>
+                                                </td>
+                                                <td name="td_peso"  class="text-right" style="font-size:12px;">
+                                                    <span t-field="line.pnt_product_uom_qty"/>
+                                                </td>
+                                                <td name="td_unidades"  class="text-right" style="font-size:12px;">
+                                                    <t t-if="line.pnt_container_qty != 0">
+                                                        <span t-field="line.pnt_container_qty"/>
+                                                    </t>
+                                                </td>
+                                                <td name="td_realizada" class="text-right" style="border: 1px solid black;font-size:12px"/>
+                                                <td name="td_envase"  style="font-size:12px;">
+                                                    <span t-field="line.pnt_container_id.display_name"/>
+                                                </td>
+                                                <td name="td_di" style="font-size:12px">
+                                                    <span t-esc="(line.pnt_waste_transfer_document_id[:1].pnt_legal_code or '')[-7:]"/>
+                                                </td>
+                                            </t>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table style="width:100%;font-size:13px">
+                                    <td style="width:50%;">
+                                        <table style="width:99%;border: 1px solid black;">
+                                            <thead style="color:white !important;" >
+                                                <tr class="custom_table">
+                                                    <th style="width:100%;">
+                                                        <strong>Gestor</strong>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <td>
+                                                <table style="width:100%;">
+                                                    <tr>
+                                                        <td style="width:65%;">
+                                                            <strong>Nombre</strong>
+                                                            <t t-if="doc.pnt_single_document_type == 'output'">
+                                                                <span t-if="doc.pnt_partner_pickup_id.name"
+                                                                      t-esc="doc.pnt_partner_pickup_id.name[0:30]"/>
+                                                                <span t-if="not doc.pnt_partner_pickup_id.name and doc.pnt_partner_pickup_id.display_name"
+                                                                      t-esc="doc.pnt_partner_pickup_id.display_name[0:30]"/>
+                                                            </t>
+                                                            <t t-else="">
+                                                                <span t-if="delivery.name"
+                                                                      t-esc="delivery.display_name[0:30]"/>
+                                                                <span t-if="not delivery.name and delivery.display_name"
+                                                                      t-esc="delivery.display_name[0:30]"/>
+                                                            </t>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width:35%;">
+                                                        <strong>NIF</strong>
+                                                        <t t-if="doc.pnt_single_document_type == 'output'">
+                                                            <span t-field="doc.pnt_partner_pickup_id.vat"/>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <span t-field="delivery.vat"/>
+                                                        </t>
+                                                    </td>
+                                                    </tr>
+                                                </table>
+                                                <strong>Dirección</strong>
+                                                <t t-if="doc.pnt_single_document_type == 'output'">
+                                                    <span t-if="doc.pnt_partner_pickup_id.street"
+                                                          t-esc="doc.pnt_partner_pickup_id.street[0:30]"/>
+                                                    <span t-if="not doc.pnt_partner_pickup_id.street"
+                                                          t-esc="doc.pnt_partner_pickup_id.parent_id.street[0:30]"/>
+                                                    <span t-if="doc.pnt_partner_pickup_id.street2"
+                                                          t-esc="doc.pnt_partner_pickup_id.street2[0:30]"/>
+                                                    <span t-if="not doc.pnt_partner_pickup_id.street2 and doc.pnt_partner_pickup_id.parent_id.street2"
+                                                          t-esc="doc.pnt_partner_pickup_id.parent_id.street2[0:30]"/>
+                                                    <br/>
+                                                    <t t-if="doc.pnt_partner_pickup_id.zip">
+                                                        <span t-field="doc.pnt_partner_pickup_id.zip"/>,
+                                                        <span t-field="doc.pnt_partner_pickup_id.city"/>,
+                                                        <span t-field="doc.pnt_partner_pickup_id.state_id"/>
+                                                    </t>
+                                                    <t t-if="not doc.pnt_partner_pickup_id.zip">
+                                                        <span t-field="doc.pnt_partner_pickup_id.parent_id.zip_id"/>
+                                                    </t>
+                                                    <br/>
+                                                    <table style="width:100%;">
+                                                        <td style="width:40%;">
+                                                            <strong>Teléfono</strong>
+                                                            <span t-if="doc.pnt_partner_pickup_id.phone" t-esc="doc.pnt_partner_pickup_id.phone[0:16]"/>
+                                                            <span t-if="not doc.pnt_partner_pickup_id.phone" t-esc="doc.pnt_partner_pickup_id.parent_id.phone[0:16]"/>
+                                                        </td>
+                                                        <td style="width:60%;">
+                                                            <strong>Mail</strong>
+                                                            <span t-if="doc.pnt_partner_pickup_id.email"
+                                                                  t-esc="doc.pnt_partner_pickup_id.email[0:35]"/>
+                                                            <span t-if="not doc.pnt_partner_pickup_id.email and doc.pnt_partner_pickup_id.parent_id.email"
+                                                                  t-esc="doc.pnt_partner_pickup_id.parent_id.email[0:35]"/>
+                                                        </td>
+                                                    </table>
+                                                    <table style="width:100%;">
+                                                        <td style="width:40%;">
+                                                            <strong>NIMA</strong>
+                                                            <t t-esc="doc.get_partner_waste_codes('nima','end_mgm',doc.pnt_partner_pickup_id.id,doc.pnt_single_document_line_ids)"/>
+                                                        </td>
+                                                        <td style="width:60%;">
+                                                            <strong>Cod. Aut.</strong>
+                                                            <t t-esc="doc.get_partner_waste_codes('rpgr','end_mgm',doc.pnt_partner_pickup_id.id,doc.pnt_single_document_line_ids)"/>
+                                                        </td>
+                                                    </table>
+                                                </t>
+                                                <t t-else="">
+                                                    <span t-if="delivery.street"
+                                                          t-esc="delivery.street[0:30]"/>
+                                                    <span t-if="not delivery.street and delivery.parent_id.street"
+                                                          t-esc="delivery.parent_id.street[0:30]"/>
+                                                    <span t-if="delivery.street2"
+                                                          t-esc="delivery.street2[0:30]"/>
+                                                    <span t-if="not delivery.street2 and delivery.parent_id.street2"
+                                                          t-esc="delivery.parent_id.street2"/>
+                                                    <br/>
+                                                    <t t-if="delivery.zip_id">
+                                                        <span t-field="delivery.zip_id"/>
+                                                    </t>
+                                                    <t t-if="not delivery.zip_id">
+                                                        <span t-field="delivery.parent_id.zip_id"/>
+                                                    </t>
+                                                    <br/>
+                                                    <table style="width:100%;">
+                                                        <td style="width:40%;">
+                                                            <strong>Teléfono</strong>
+                                                            <span t-if="delivery.phone"
+                                                                  t-esc="delivery.phone[0:16]"/>
+                                                            <span t-if="not delivery.phone and delivery.parent_id.phone"
+                                                                  t-esc="delivery.parent_id.phone[0:16]"/>
+                                                        </td>
+                                                        <td style="width:60%;">
+                                                            <strong>Mail</strong>
+                                                            <span t-if="delivery.email"
+                                                                  t-esc="delivery.email[0:35]"/>
+                                                            <span t-if="not delivery.email and delivery.parent_id.email"
+                                                                  t-esc="delivery.parent_id.email[0:35]"/>
+                                                        </td>
+                                                    </table>
+                                                    <table style="width:100%;">
+                                                        <td style="width:40%;">
+                                                            <strong>NIMA</strong>
+                                                            <t t-esc="doc.get_partner_waste_codes('nima','end_mgm',delivery.id,doc.pnt_single_document_line_ids)"/>
+                                                        </td>
+                                                        <td style="width:60%;">
+                                                            <strong>Cod. Aut.</strong>
+                                                            <t t-esc="doc.get_partner_waste_codes('rpgr','end_mgm',delivery.id,doc.pnt_single_document_line_ids)"/>
+                                                        </td>
+                                                    </table>
+                                                </t>
+                                            </td>
+                                        </table>
+                                    </td>
+                                    <td style="width:50%;">
+                                        <table style="width:98%;border: 1px solid black;">
+                                            <thead style="color:white !important;" >
+                                                <tr class="custom_table">
+                                                    <th style="width:100%;">
+                                                        <strong>Firma Gestor</strong>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <td class="text-center">
+                                                <t t-if="delivery.pnt_sign_image and doc.company_id == 1">
+                                                    <br />
+                                                    <img t-att-src="'data:image/png;base64,%s' % to_text(delivery.pnt_sign_image)"
+                                                         style="max-height:2cm; max-width:8cm;"/>
+                                                    <br/>
+                                                    <br/>
+                                                </t>
+                                                <t t-else="">
+                                                    <br/>
+                                                    <br/>
+                                                    <br/>
+                                                    <br/>
+                                                    <br/>
+                                                    <br/>
+                                                </t>
+                                            </td>
+                                        </table>
+                                    </td>
+                                </table>
+                                <br/>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <div t-attf-class="footer">
+                        <style>
+                            .custom_table{
+                            background-color:<t t-esc="doc.company_id.color_navbar_bg"/>;
+                            color:white;
+                            }
+                        </style>
+                        <table style="width:100%;font-size:13px">
+                            <td style="width:50%;">
+                                <table style="width:99%;border: 1px solid black;">
+                                    <thead style="color:white !important;" >
+                                        <tr class="custom_table">
+                                            <th style="width:100%;">
+                                                <strong>Firma Productor</strong>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <td>
+                                        <t t-set="app" t-value="doc.sudo().get_app_sd()"/>
+                                        <t t-if="app">
+                                            <strong>Nombre:</strong>
+                                            <span t-esc="app.firmanombre"/>
+                                            <br/>
+                                            <strong>Firma:</strong>
+                                            <t t-if="app.firmaimagentext">
+                                                <img t-att-src="'data:image/png;base64,%s' % to_text(app.firmaimagentext)"
+                                                     style="max-height:2cm; max-width:8cm;"/>
+                                            </t>
+                                            <strong>DNI:</strong>
+                                            <span t-esc="app.firmadni"/>
+                                        </t>
+                                        <t t-else="">
+                                            <strong>Nombre:</strong>
+                                            <br/>
+                                            <strong>Firma:</strong>
+                                            <br/>
+                                            <br/>
+                                            <br/>
+                                            <strong>DNI:</strong>
+                                            <br/>
+                                        </t>
+                                    </td>
+                                </table>
+                            </td>
+                            <td style="width:50%;" class="text-right">
+                                <span>Tiempo servicio&amp;nbsp;&amp;nbsp;</span>
+                                <input type="text"/>
+                            </td>
+                        </table>
+                        <div style="font-size:9px;">
+                            El cliente certifica que los residuos entregados a
+                            <span t-field="doc.company_id.name"/>
+                            son de procedencia lícita
+                        </div>
+                        <div style="font-size:11px;">
+                            *Pendiente revisar la naturaleza del residuo. Si el residuo es distinto o no está recogido en el presupuesto, se facturaré a precio de tarifa de
+                            <span t-field="doc.company_id.name"/>
+                        </div>
+                        <div style="font-size:11px;">
+                            Documento de identificación (RD 553/2020, de 2 de Junio). Documento de control de mercancias transportadas (ORDEN FOM/2861/2012, DE 13 DE DICIEMBRE).
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+
+        <template id="pnt_report_du_document_grouped">
+            <t t-call="web.basic_layout">
+                <div class="page">
+                    <style>
+                        .custom_table{
+                        background-color:<t t-esc="doc.company_id.color_navbar_bg"/>;
+                        color:white;
+                        }
+                    </style>
+                    <table style="width:100%;font-size:26px">
+                        <td style="width:30%;">
+                            <t t-if="doc.company_id.logo">
+                                <img t-att-src="'data:image/png;base64,%s' % to_text(doc.company_id.logo)"
+                                     style="max-height:2cm; max-width:8cm;"/>
+                            </t>
+                        </td>
+                        <td style="width:45%; text-align:center;">
+                            <strong><p>DOCUMENTO DE TRANSPORTE</p></strong>
+                        </td>
+                        <td style="width:25%;">
+                            <t t-if="doc.name">
+                                <img alt="Barcode" t-if="len(doc.name) == 13" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN13', quote_plus(doc.name or ''), 600, 150)" style="width:100%;height:4rem;"/>
+                                <img alt="Barcode" t-elif="len(doc.name) == 8" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN8', quote_plus(doc.name or ''), 600, 150)" style="width:100%;height:4rem;"/>
+                                <img alt="Barcode" t-else="" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', quote_plus(doc.name or ''), 600, 150)" style="width:100%;height:4rem"/>
+                            </t>
+                        </td>
+                    </table>
+                    <table style="width:100%;">
+                        <td style="width:25%;">
+                            <strong>Nº </strong>
+                            <span t-field="doc.name"/>
+                        </td>
+                        <td style="width:25%;">
+                            <strong>Fecha </strong>
+                            <span t-if="doc.task_id" t-field="doc.task_id.date_deadline"
+                                  t-options='{"format": "dd/MM/yyyy"}'/>
+                            <span t-else="" t-field="doc.pnt_pickup_date"
+                                  t-options='{"format": "dd/MM/yyyy"}'/>
+                        </td>
+                        <td style="width:30%;">
+                            <t t-if="doc.pnt_order_reference">
+                                <strong>Ref. Pedido</strong>
+                                <span t-field="doc.pnt_order_reference"/>
+                            </t>
+                        </td>
+                        <td style="width:20%;">
+                            <t t-if="doc.pnt_agreement_reference">
+                                <strong>Ref. Contrato</strong>
+                                <span t-field="doc.pnt_agreement_reference"/>
+                            </t>
+                        </td>
+                    </table>
+                    <table style="width:100%;font-size:13px">
+                        <td style="width:50%;">
+                            <table style="width:98%;border: 1px solid black;">
+                                <thead style="color:white !important;" >
+                                    <tr class="custom_table">
+                                        <td style="width:100%;">
+                                            <strong>Titular</strong>
+                                        </td>
+                                    </tr>
+                                </thead>
+                                <td>
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td>
+                                                <strong>Nombre</strong>
+                                                <span t-if="doc.pnt_du_partner_id.name" t-esc="doc.pnt_du_partner_id.name[0:30]"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>NIF</strong>
+                                                <span t-field="doc.pnt_du_partner_id.vat"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <strong>Dirección</strong>
+                                    <span t-if="doc.pnt_du_partner_id.street" t-esc="doc.pnt_du_partner_id.street[0:30]"/>
+                                    <span t-if="doc.pnt_du_partner_id.street2" t-esc="doc.pnt_du_partner_id.street2[0:30]"/>
+                                    <br/>
+                                    <span t-field="doc.pnt_du_partner_id.zip_id"/>
+                                    <br/>
+                                    <table style="width:100%;">
+                                        <td style="width:40%;">
+                                            <strong>Teléfono</strong>
+                                            <span t-if="doc.pnt_du_partner_id.phone" t-esc="doc.pnt_du_partner_id.phone[0:16]"/>
+                                        </td>
+                                        <td style="width:60%;">
+                                            <strong>Mail</strong>
+                                            <span t-if="doc.pnt_du_partner_id.email"
+                                                  t-esc="doc.pnt_du_partner_id.email[0:35]"/>
+                                        </td>
+                                    </table>
+                                    <table style="width:100%;">
+                                        <td style="width:40%;">
+                                            <strong>Móvil</strong>
+                                            <span t-if="doc.pnt_du_partner_id.mobile" t-esc="doc.pnt_du_partner_id.mobile[0:16]"/>
+                                        </td>
+                                        <td style="width:60%;">
+                                            <strong>Comercial</strong>
+                                            <span t-if="doc.pnt_du_partner_id.user_id.name" t-esc="doc.pnt_du_partner_id.user_id.name[0:35]"/>
+                                        </td>
+                                    </table>
+                                    <br/>
+                                </td>
+                            </table>
+                        </td>
+                        <td style="width:50%;">
+                            <table style="width:98%;border: 1px solid black;">
+                                <thead style="color:white !important;" >
+                                    <tr class="custom_table">
+                                        <th style="width:100%;">
+                                            <strong>Transportista</strong>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <td>
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td style="width:65%;">
+                                                <strong>Nombre</strong>
+                                                <span t-if="doc.pnt_carrier_id.parent_id" t-esc="doc.pnt_carrier_id.parent_id.name[0:30]"/>
+                                                <span t-if="not doc.pnt_carrier_id.parent_id and doc.pnt_carrier_id.name" t-esc="doc.pnt_carrier_id.name[0:30]"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:35%;">
+                                                <strong>NIF</strong>
+                                                <t t-if="doc.pnt_carrier_id.parent_id">
+                                                    <span t-field="doc.pnt_carrier_id.parent_id.vat"/>
+                                                </t>
+                                                <t t-if="not doc.pnt_carrier_id.parent_id">
+                                                    <span t-field="doc.pnt_carrier_id.vat"/>
+                                                </t>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <strong>Dirección</strong>
+                                    <span t-if="doc.pnt_carrier_id.parent_id"
+                                          t-esc="doc.pnt_carrier_id.parent_id.street[0:30]"/>
+                                    <span t-if="not doc.pnt_carrier_id.parent_id and doc.pnt_carrier_id.street"
+                                          t-esc="doc.pnt_carrier_id.street[0:30]"/>
+                                    <span t-if="doc.pnt_carrier_id.parent_id and doc.pnt_carrier_id.parent_id.street2"
+                                          t-esc="doc.pnt_carrier_id.parent_id.street2[0:30]"/>
+                                    <span t-if="not doc.pnt_carrier_id.parent_id and doc.pnt_carrier_id.street2"
+                                          t-esc="doc.pnt_carrier_id.street2"/>
+                                    <br/>
+                                    <span t-if="doc.pnt_carrier_id.parent_id"
+                                          t-field="doc.pnt_carrier_id.parent_id.zip_id"/>
+                                    <span t-if="not doc.pnt_carrier_id.parent_id"
+                                          t-field="doc.pnt_carrier_id.zip_id"/>
+                                    <br/>
+                                    <table style="width:100%;">
+                                        <td style="width:40%;">
+                                            <strong>Teléfono</strong>
+                                            <span t-if="doc.pnt_carrier_id.parent_id and doc.pnt_carrier_id.parent_id.phone"
+                                                  t-esc="doc.pnt_carrier_id.parent_id.phone[0:16]"/>
+                                            <span t-if="not doc.pnt_carrier_id.parent_id and doc.pnt_carrier_id.phone"
+                                                  t-esc="doc.pnt_carrier_id.phone[0:16]"/>
+                                        </td>
+                                        <td style="width:60%;">
+                                            <strong>Mail</strong>
+                                           <span  t-if="doc.pnt_carrier_id.parent_id and doc.pnt_carrier_id.parent_id.email"
+                                                  t-esc="doc.pnt_carrier_id.parent_id.email[0:35]"/>
+                                            <span t-if="not doc.pnt_carrier_id.parent_id and doc.pnt_carrier_id.email"
+                                                  t-esc="doc.pnt_carrier_id.email[0:35]"/>
+                                        </td>
+                                    </table>
+                                    <table style="width:100%;">
+                                        <td style="width:40%;">
+                                            <strong>NIMA</strong>
+                                            <t t-esc="doc.get_partner_waste_codes('nima','transport',0,doc.pnt_single_document_line_ids)"/>
+                                        </td>
+                                        <td style="width:60%;">
+                                            <strong>Cod. Aut.</strong>
+                                            <t t-esc="doc.get_partner_waste_codes('rpgr','transport',0,doc.pnt_single_document_line_ids)"/>
+                                        </td>
+                                    </table>
+                                    <table style="width:100%;">
+                                        <td style="width:65%;">
+                                            <strong>Chofer</strong>
+                                            <span t-if="doc.pnt_transport_id.name" t-esc="doc.pnt_transport_id.name[0:35]"/>
+                                        </td>
+                                        <td style="width:35%;">
+                                            <strong>Matrícula</strong>
+                                            <span t-if="doc.pnt_vehicle_id" t-field="doc.pnt_vehicle_id.license_plate"/>
+                                            <t t-if="doc.pnt_vehicle_second_registration">
+                                                -
+                                                <span t-field="doc.pnt_vehicle_second_registration"/>
+                                            </t>
+                                        </td>
+                                    </table>
+                                </td>
+                            </table>
+                        </td>
+                    </table>
+                    <br/>
+                    <table style="width:100%;font-size:13px">
+                        <td style="width:50%;">
+                            <table style="width:99%;border: 1px solid black;">
+                                <thead style="color:white !important;" >
+                                    <tr class="custom_table">
+                                        <th style="width:100%;">
+                                            <strong>Productor</strong>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <td>
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td>
+                                                <strong>Nombre</strong>
+                                                <t t-if="doc.pnt_single_document_type == 'output'">
+                                                    <t t-if="doc.pnt_partner_delivery_id.display_name">
+                                                        <span t-field="doc.pnt_partner_delivery_id.display_name"/>
+                                                    </t>
+                                                    <t t-if="not doc.pnt_partner_delivery_id.display_name">
+                                                        <span t-field="doc.pnt_partner_delivery_id.name"/>
+                                                    </t>
+                                                </t>
+                                                <t t-else="">
+                                                    <t t-if="doc.pnt_partner_pickup_id.display_name">
+                                                        <span t-field="doc.pnt_partner_pickup_id.display_name"/>
+                                                    </t>
+                                                    <t t-if="not doc.pnt_partner_pickup_id.display_name">
+                                                        <span t-field="doc.pnt_partner_pickup_id.name"/>
+                                                    </t>
+                                                </t>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>NIF</strong>
+                                                <t t-if="doc.pnt_single_document_type == 'output'">
+                                                    <span t-field="doc.pnt_partner_delivery_id.vat"/>
+                                                </t>
+                                                <t t-else="">
+                                                    <span t-field="doc.pnt_producer_id.vat"/>
+                                                </t>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <strong>Dirección</strong>
+                                    <t t-if="doc.pnt_single_document_type == 'output'">
+                                        <span t-if="doc.pnt_partner_delivery_id.street"
+                                              t-esc="doc.pnt_partner_delivery_id.street[0:30]"/>
+                                        <span t-if="not doc.pnt_partner_delivery_id.street and doc.pnt_partner_delivery_id.parent_id.street"
+                                              t-esc="doc.pnt_partner_delivery_id.parent_id.street[0:30]"/>
+                                        <span t-if="doc.pnt_partner_delivery_id.street2"
+                                              t-esc="doc.pnt_partner_delivery_id.street2[0:30]"/>
+                                        <span t-if="not doc.pnt_partner_delivery_id.street2 and doc.pnt_partner_delivery_id.parent_id.street2"
+                                              t-esc="doc.pnt_partner_delivery_id.parent_id.street2[0:30]"/>
+                                        <br/>
+                                        <t t-if="doc.pnt_partner_delivery_id.zip_id">
+                                            <span t-field="doc.pnt_partner_delivery_id.zip_id"/>
+                                        </t>
+                                        <t t-if="not doc.pnt_partner_delivery_id.zip_id">
+                                            <span t-field="doc.pnt_partner_delivery_id.parent_id.zip_id"/>
+                                        </t>
+                                        <br/>
+                                        <table style="width:100%;">
+                                            <td style="width:40%;">
+                                                <strong>Teléfono</strong>
+                                                <span t-if="doc.pnt_partner_delivery_id.phone"
+                                                      t-esc="doc.pnt_partner_delivery_id.phone[0:16]"/>
+                                                <span t-if="not doc.pnt_partner_delivery_id.phone and doc.pnt_partner_delivery_id.parent_id.phone"
+                                                      t-esc="doc.pnt_partner_delivery_id.parent_id.phone[0:16]"/>
+                                            </td>
+                                            <td style="width:60%;">
+                                                <strong>Mail</strong>
+                                                <span t-if="doc.pnt_partner_delivery_id.email"
+                                                      t-esc="doc.pnt_partner_delivery_id.email[0:35]"/>
+                                                <span t-if="not doc.pnt_partner_delivery_id.email and doc.pnt_partner_delivery_id.parent_id.email"
+                                                      t-esc="doc.pnt_partner_delivery_id.parent_id.email[0:35]"/>
+                                            </td>
+                                        </table>
+                                        <table style="width:100%;">
+                                            <tr>
+                                                <td style="width:40%;">
+                                                    <strong>NIMA</strong>
+                                                    <t t-esc="doc.get_partner_waste_codes('nima','end_mgm',doc.pnt_partner_delivery_id.id,doc.pnt_single_document_line_ids)"/>
+                                                </td>
+                                                <td style="width:60%;">
+                                                    <strong>Cod. Aut.</strong>
+                                                    <t t-esc="doc.get_partner_waste_codes('rpgr','end_mgm',doc.pnt_partner_delivery_id.id,doc.pnt_single_document_line_ids)"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><br/></td>
+                                            </tr>
+                                        </table>
+                                    </t>
+                                    <t t-else="">
+                                        <span t-if="doc.street" t-esc="doc.street[0:30]"/>
+                                        <span t-if="doc.street2" t-esc="doc.street2[0:30]"/>
+                                        <br/>
+                                        <span t-field="doc.zip"/>
+                                        ,
+                                        <span t-field="doc.city"/>
+                                        ,
+                                        <span t-field="doc.state_id"/>
+                                        ,
+                                        <span t-field="doc.country_id"/>
+                                        <br/>
+                                        <table style="width:100%;">
+                                            <td style="width:40%;">
+                                                <strong>Teléfono</strong>
+                                                <span t-if="doc.pnt_partner_pickup_id.phone" t-esc="doc.pnt_partner_pickup_id.phone[0:16]"/>
+                                            </td>
+                                            <td style="width:60%;">
+                                                <strong>Mail</strong>
+                                                <span t-if="doc.pnt_partner_pickup_id.email"
+                                                      t-esc="doc.pnt_partner_pickup_id.email[0:35]"/>
+                                            </td>
+                                        </table>
+                                        <table style="width:100%;">
+                                            <td style="width:40%;">
+                                                <strong>NIMA</strong>
+                                                <t t-esc="doc.get_partner_waste_codes('nima','producer',0,doc.pnt_single_document_line_ids)"/>
+                                            </td>
+                                            <td style="width:60%;">
+                                                <strong>Cod. Aut.</strong>
+                                                <t t-esc="doc.get_partner_waste_codes('rpgr','producer',0,doc.pnt_single_document_line_ids)"/>
+                                            </td>
+                                        </table>
+                                        <strong>Horario</strong>
+                                    </t>
+                                </td>
+                            </table>
+                        </td>
+                        <td style="width:50%;">
+                            <table style="width:99%;border: 1px solid black;">
+                                <thead style="color:white !important;" >
+                                    <tr class="custom_table">
+                                        <th style="width:100%;">
+                                            <strong>Operador</strong>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <td>
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td>
+                                                <strong>Nombre</strong>
+                                                <t t-if="doc.pnt_operator_id">
+                                                    <span t-field="doc.pnt_operator_id.name"/>
+                                                </t>
+                                                <t t-if="not doc.pnt_operator_id">
+                                                    <span t-field="doc.company_id.partner_id.name"/>
+                                                </t>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>NIF</strong>
+                                                <t t-if="doc.pnt_operator_id">
+                                                    <span t-field="doc.pnt_operator_id.vat"/>
+                                                </t>
+                                                <t t-if="not doc.pnt_operator_id">
+                                                    <span t-field="doc.company_id.partner_id.vat"/>
+                                                </t>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <strong>Dirección</strong>
+                                        <t t-if="doc.pnt_operator_id">
+                                            <span t-if="doc.pnt_operator_id.street" t-esc="doc.pnt_operator_id.street[0:30]"/>
+                                            <span t-if="doc.pnt_operator_id.street2" t-esc="doc.pnt_operator_id.street2[0:30]"/>
+                                            <br/>
+                                            <span t-field="doc.pnt_operator_id.zip_id"/>
+                                        </t>
+                                        <t t-if="not doc.pnt_operator_id">
+                                            <span t-if="doc.company_id.partner_id.street"
+                                                  t-esc="doc.company_id.partner_id.street[0:30]"/>
+                                            <span t-if="doc.company_id.partner_id.street2"
+                                                  t-esc="doc.company_id.partner_id.street2[0:30]"/>
+                                            <br/>
+                                            <span t-field="doc.company_id.partner_id.zip_id"/>
+                                        </t>
+                                    <br/>
+                                    <table style="width:100%;">
+                                        <td style="width:40%;">
+                                            <strong>Teléfono</strong>
+                                            <t t-if="doc.pnt_operator_id">
+                                                <span t-if="doc.pnt_operator_id.phone" t-esc="doc.pnt_operator_id.phone[0:16]"/>
+                                            </t>
+                                            <t t-if="not doc.pnt_operator_id">
+                                                <span t-if="doc.company_id.partner_id.phone" t-esc="doc.company_id.partner_id.phone[0:16]"/>
+                                            </t>
+                                        </td>
+                                        <td style="width:60%;">
+                                            <strong>Mail</strong>
+                                            <t t-if="doc.pnt_operator_id">
+                                                <span t-if="doc.pnt_operator_id.email"
+                                                      t-esc="doc.pnt_operator_id.email[0:35]"/>
+                                            </t>
+                                            <t t-if="not doc.pnt_operator_id">
+                                                <span t-if="doc.company_id.partner_id.email"
+                                                      t-esc="doc.company_id.partner_id.email[0:35]"/>
+                                            </t>
+                                        </td>
+                                    </table>
+                                    <table style="width:100%;">
+                                        <td style="width:40%;">
+                                            <strong>NIMA</strong>
+                                            <t t-esc="doc.get_partner_waste_codes('nima','agent',0,doc.pnt_single_document_line_ids)"/>
+                                        </td>
+                                        <td style="width:60%;">
+                                            <strong>Cod. Aut.</strong>
+                                            <t t-esc="doc.get_partner_waste_codes('rpgr','agent',0,doc.pnt_single_document_line_ids)"/>
+                                        </td>
+                                    </table>
+                                    <strong>Tipo operador</strong>
+                                    <t t-esc="doc.get_partner_waste_codes('srap','agent',0,doc.pnt_single_document_line_ids)"/>
+                                </td>
+                            </table>
+                        </td>
+                    </table>
+                    <br/>
+                    <div t-if="doc.pnt_observations" style="width:99%;border: 1px solid black;font-size:13px">
+                        <strong>Observaciones</strong>
+                        <span t-field="doc.pnt_observations"/>
+                        <br/>
+                    </div>
+                    <table style="width:99%;border: 1px solid black;font-size:13px">
+                    </table>
+                    <table style="width:99%;font-size:13px">
+                        <tbody name="delivery_tbody">
+                            <t t-set="partner_delivery" t-value="[]"/>
+                            <t t-foreach="doc.pnt_single_document_line_ids" t-as="l">
+                                <t t-set="partner_delivery" t-value="partner_delivery+[l.pnt_partner_delivery_id]"/>
+                            </t>
+                            <tr t-foreach="set(partner_delivery)" t-as="delivery">
+                                <table style="width:99%;border: 1px solid black;font-size:13px">
+                                    <thead style="color:white !important;" >
+                                        <tr class="custom_table">
+                                            <th name="th_descripcion">[Código] Descripción</th>
+                                            <th name="th_ler">LER</th>
+                                            <th name="th_peligrosidad">Pelig.</th>
+                                            <th name="th_tratamiento">Trat.</th>
+                                            <th name="th_peso"  class="text-center">Peso(Kg)</th>
+                                            <th name="th_unidades"  class="text-center">Unidades</th>
+                                            <th name="th_envase">Envase</th>
+                                            <th name="th_di">NºDI</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-set="order_group" t-value="doc.lines_grouped_by_product()"/>
+                                        <tr t-foreach="order_group" t-as="line">
+                                            <t t-if="delivery.id==line[7]">
+                                                <td name="td_description" style="font-size:12px">
+                                                    <span t-esc="line[0]"/>
+                                                </td>
+                                                <td name="td_ler" style="font-size:12px">
+                                                    <span t-esc="line[1]"/>
+                                                </td>
+                                                <td name="td_peligrosidad" style="font-size:12px">
+                                                    <span t-esc="line[2]"/>
+                                                </td>
+                                                <td name="td_tratamiento" style="font-size:12px">
+                                                    <span t-esc="line[3]"/>
+                                                </td>
+                                                <td name="td_peso"  class="text-right" style="font-size:12px;">
+                                                    <span t-esc="line[4]"
+                                                          t-options="{'widget': 'float', 'precision': 3}"
+                                                    />
+                                                </td>
+                                                <td name="td_unidades"  class="text-right" style="font-size:12px;">
+                                                    <t t-if="line[5] != 0">
+                                                        <span t-esc="line[5]"
+                                                              t-options="{'widget': 'float', 'precision': 3}"
+                                                        />
+                                                    </t>
+                                                </td>
+                                                <td name="td_envase"  style="font-size:12px;padding-left: 15px;">
+                                                    <span t-esc="line[6]"/>
+                                                </td>
+                                                <td name="td_di"  style="font-size:12px;padding-left: 5px;">
+                                                    <span t-esc="line[8]"/>
+                                                </td>
+                                            </t>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table style="width:100%;font-size:13px">
+                                    <td style="width:50%;">
+                                        <table style="width:99%;border: 1px solid black;">
+                                            <thead style="color:white !important;" >
+                                                <tr class="custom_table">
+                                                    <th style="width:100%;">
+                                                        <strong>Gestor</strong>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <td>
+                                                <table style="width:100%;">
+                                                    <tr>
+                                                        <td style="width:65%;">
+                                                            <strong>Nombre</strong>
+                                                            <t t-if="doc.pnt_single_document_type == 'output'">
+                                                                <span t-if="doc.pnt_partner_pickup_id.name"
+                                                                      t-esc="doc.pnt_partner_pickup_id.name[0:30]"/>
+                                                                <span t-if="not doc.pnt_partner_pickup_id.name and doc.pnt_partner_pickup_id.display_name"
+                                                                      t-esc="doc.pnt_partner_pickup_id.display_name[0:30]"/>
+                                                            </t>
+                                                            <t t-else="">
+                                                                <span t-if="delivery.name"
+                                                                      t-esc="delivery.display_name[0:30]"/>
+                                                                <span t-if="not delivery.name and delivery.display_name"
+                                                                      t-esc="delivery.display_name[0:30]"/>
+                                                            </t>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width:35%;">
+                                                        <strong>NIF</strong>
+                                                        <t t-if="doc.pnt_single_document_type == 'output'">
+                                                            <span t-field="doc.pnt_partner_pickup_id.vat"/>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <span t-field="delivery.vat"/>
+                                                        </t>
+                                                    </td>
+                                                    </tr>
+                                                </table>
+                                                <strong>Dirección</strong>
+                                                <t t-if="doc.pnt_single_document_type == 'output'">
+                                                    <span t-if="doc.pnt_partner_pickup_id.street"
+                                                          t-esc="doc.pnt_partner_pickup_id.street[0:30]"/>
+                                                    <span t-if="not doc.pnt_partner_pickup_id.street"
+                                                          t-esc="doc.pnt_partner_pickup_id.parent_id.street[0:30]"/>
+                                                    <span t-if="doc.pnt_partner_pickup_id.street2"
+                                                          t-esc="doc.pnt_partner_pickup_id.street2[0:30]"/>
+                                                    <span t-if="not doc.pnt_partner_pickup_id.street2 and doc.pnt_partner_pickup_id.parent_id.street2"
+                                                          t-esc="doc.pnt_partner_pickup_id.parent_id.street2[0:30]"/>
+                                                    <br/>
+                                                    <t t-if="doc.pnt_partner_pickup_id.zip">
+                                                        <span t-field="doc.pnt_partner_pickup_id.zip"/>,
+                                                        <span t-field="doc.pnt_partner_pickup_id.city"/>,
+                                                        <span t-field="doc.pnt_partner_pickup_id.state_id"/>
+                                                    </t>
+                                                    <t t-if="not doc.pnt_partner_pickup_id.zip">
+                                                        <span t-field="doc.pnt_partner_pickup_id.parent_id.zip_id"/>
+                                                    </t>
+                                                    <br/>
+                                                    <table style="width:100%;">
+                                                        <td style="width:40%;">
+                                                            <strong>Teléfono</strong>
+                                                            <span t-if="doc.pnt_partner_pickup_id.phone" t-esc="doc.pnt_partner_pickup_id.phone[0:16]"/>
+                                                            <span t-if="not doc.pnt_partner_pickup_id.phone" t-esc="doc.pnt_partner_pickup_id.parent_id.phone[0:16]"/>
+                                                        </td>
+                                                        <td style="width:60%;">
+                                                            <strong>Mail</strong>
+                                                            <span t-if="doc.pnt_partner_pickup_id.email"
+                                                                  t-esc="doc.pnt_partner_pickup_id.email[0:35]"/>
+                                                            <span t-if="not doc.pnt_partner_pickup_id.email and doc.pnt_partner_pickup_id.parent_id.email"
+                                                                  t-esc="doc.pnt_partner_pickup_id.parent_id.email[0:35]"/>
+                                                        </td>
+                                                    </table>
+                                                    <table style="width:100%;">
+                                                        <td style="width:40%;">
+                                                            <strong>NIMA</strong>
+                                                            <t t-esc="doc.get_partner_waste_codes('nima','end_mgm',doc.pnt_partner_pickup_id.id,doc.pnt_single_document_line_ids)"/>
+                                                        </td>
+                                                        <td style="width:60%;">
+                                                            <strong>Cod. Aut.</strong>
+                                                            <t t-esc="doc.get_partner_waste_codes('rpgr','end_mgm',doc.pnt_partner_pickup_id.id,doc.pnt_single_document_line_ids)"/>
+                                                        </td>
+                                                    </table>
+                                                </t>
+                                                <t t-else="">
+                                                    <span t-if="delivery.street"
+                                                          t-esc="delivery.street[0:30]"/>
+                                                    <span t-if="not delivery.street and delivery.parent_id.street"
+                                                          t-esc="delivery.parent_id.street[0:30]"/>
+                                                    <span t-if="delivery.street2"
+                                                          t-esc="delivery.street2[0:30]"/>
+                                                    <span t-if="not delivery.street2 and delivery.parent_id.street2"
+                                                          t-esc="delivery.parent_id.street2"/>
+                                                    <br/>
+                                                    <t t-if="delivery.zip_id">
+                                                        <span t-field="delivery.zip_id"/>
+                                                    </t>
+                                                    <t t-if="not delivery.zip_id">
+                                                        <span t-field="delivery.parent_id.zip_id"/>
+                                                    </t>
+                                                    <br/>
+                                                    <table style="width:100%;">
+                                                        <td style="width:40%;">
+                                                            <strong>Teléfono</strong>
+                                                            <span t-if="delivery.phone"
+                                                                  t-esc="delivery.phone[0:16]"/>
+                                                            <span t-if="not delivery.phone and delivery.parent_id.phone"
+                                                                  t-esc="delivery.parent_id.phone[0:16]"/>
+                                                        </td>
+                                                        <td style="width:60%;">
+                                                            <strong>Mail</strong>
+                                                            <span t-if="delivery.email"
+                                                                  t-esc="delivery.email[0:35]"/>
+                                                            <span t-if="not delivery.email and delivery.parent_id.email"
+                                                                  t-esc="delivery.parent_id.email[0:35]"/>
+                                                        </td>
+                                                    </table>
+                                                    <table style="width:100%;">
+                                                        <td style="width:40%;">
+                                                            <strong>NIMA</strong>
+                                                            <t t-esc="doc.get_partner_waste_codes('nima','end_mgm',delivery.id,doc.pnt_single_document_line_ids)"/>
+                                                        </td>
+                                                        <td style="width:60%;">
+                                                            <strong>Cod. Aut.</strong>
+                                                            <t t-esc="doc.get_partner_waste_codes('rpgr','end_mgm',delivery.id,doc.pnt_single_document_line_ids)"/>
+                                                        </td>
+                                                    </table>
+                                                </t>
+                                            </td>
+                                        </table>
+                                    </td>
+                                    <td style="width:50%;">
+                                        <table style="width:98%;border: 1px solid black;">
+                                            <thead style="color:white !important;" >
+                                                <tr class="custom_table">
+                                                    <th style="width:100%;">
+                                                        <strong>Firma Gestor</strong>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <td class="text-center">
+                                                <t t-if="delivery.pnt_sign_image and doc.company_id == 1">
+                                                    <br />
+                                                    <img t-att-src="'data:image/png;base64,%s' % to_text(delivery.pnt_sign_image)"
+                                                         style="max-height:2cm; max-width:8cm;"/>
+                                                    <br/>
+                                                    <br/>
+                                                </t>
+                                                <t t-else="">
+                                                    <br/>
+                                                    <br/>
+                                                    <br/>
+                                                    <br/>
+                                                    <br/>
+                                                    <br/>
+                                                </t>
+                                            </td>
+                                        </table>
+                                    </td>
+                                </table>
+                                <br/>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <div t-attf-class="footer">
+                        <style>
+                            .custom_table{
+                            background-color:<t t-esc="doc.company_id.color_navbar_bg"/>;
+                            color:white;
+                            }
+                        </style>
+                        <table style="width:100%;font-size:13px">
+                            <td style="width:50%;">
+                                <table style="width:99%;border: 1px solid black;">
+                                    <thead style="color:white !important;" >
+                                        <tr class="custom_table">
+                                            <th style="width:100%;">
+                                                <strong>Firma Productor</strong>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <td>
+                                        <t t-set="app" t-value="doc.sudo().get_app_sd()"/>
+                                        <t t-if="app">
+                                            <strong>Nombre:</strong>
+                                            <span t-esc="app.firmanombre"/>
+                                            <br/>
+                                            <strong>Firma:</strong>
+                                            <t t-if="app.firmaimagentext">
+                                                <img t-att-src="'data:image/png;base64,%s' % to_text(app.firmaimagentext)"
+                                                     style="max-height:2cm; max-width:8cm;"/>
+                                            </t>
+                                            <strong>DNI:</strong>
+                                            <span t-esc="app.firmadni"/>
+                                        </t>
+                                        <t t-else="">
+                                            <strong>Nombre:</strong>
+                                            <br/>
+                                            <strong>Firma:</strong>
+                                            <br/>
+                                            <br/>
+                                            <br/>
+                                            <strong>DNI:</strong>
+                                            <br/>
+                                        </t>
+                                    </td>
+                                </table>
+                            </td>
+                            <td style="width:50%;" class="text-right">
+                                <span>Tiempo servicio&amp;nbsp;&amp;nbsp;</span>
+                                <input type="text"/>
+                            </td>
+                        </table>
+                        <div style="font-size:9px;">
+                            El cliente certifica que los residuos entregados a
+                            <span t-field="doc.company_id.name"/>
+                            son de procedencia lícita
+                        </div>
+                        <div style="font-size:11px;">
+                            *Pendiente revisar la naturaleza del residuo. Si el residuo es distinto o no está recogido en el presupuesto, se facturaré a precio de tarifa de
+                            <span t-field="doc.company_id.name"/>
+                        </div>
+                        <div style="font-size:11px;">
+                            Documento de identificación (RD 553/2020, de 2 de Junio). Documento de control de mercancias transportadas (ORDEN FOM/2861/2012, DE 13 DE DICIEMBRE).
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <template id="pnt_report_ticket_du">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="report_pnt.pnt_report_ticket_du_document"/>
+                </t>
+            </t>
+        </template>
+
+        <template id="pnt_report_ticket_weight_du">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="report_pnt.pnt_report_ticket_weight_du_document"/>
+                </t>
+            </t>
+        </template>
+
+        <template id="pnt_report_du">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="report_pnt.pnt_report_du_document"/>
+                </t>
+            </t>
+        </template>
+
+        <template id="pnt_report_du_grouped">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="report_pnt.pnt_report_du_document_grouped"/>
+                </t>
+            </t>
+        </template>
+
+        <template id="pnt_report_du_from_task">
+            <t t-call="web.html_container">
+                <t t-foreach="docs.pnt_single_document_id" t-as="doc">
+                    <t t-call="report_pnt.pnt_report_du_document"/>
+                </t>
+            </t>
+        </template>
+
+        <record id="pnt_du_report_from_task" model="ir.actions.report">
+            <field name="name">Format DU</field>
+            <field name="model">project.task</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">report_pnt.pnt_report_du_from_task</field>
+            <field name="paperformat_id" ref="report_pnt.pnt_report_du_format"/>
+            <field name="binding_type">report</field>
+            <field name="binding_model_id" ref="project.model_project_task"/>
+        </record>
+    </data>
+</odoo>

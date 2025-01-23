@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_pnt_change_logistics_date_wizard_form" model="ir.ui.view">
+        <field name="name">view.pnt.change.logistics.date.wizard.form</field>
+        <field name="model">pnt.change.logistics.data</field>
+        <field name="arch" type="xml">
+            <form string="Change data in logistics">
+                <group>
+                    <field name="pnt_task_ids"
+                           widget="many2many_tags"
+                           invisible="1"
+                    />
+                    <field name="pnt_task_qty"
+                           readonly="1"
+                    />
+                </group>
+                <group>
+                    <group>
+                        <field name="pnt_update_transport_type"
+                               widget="radio"
+                        />
+                        <field name="pnt_transport_id"
+                               readonly="0"
+                               options="{'no_create': True,}"
+                               attrs="{'invisible':[('pnt_update_transport_type','!=','update')],
+                                       'required': [('pnt_update_transport_type','=','update')]
+                                       }"
+                        />
+                    </group>
+                    <group>
+                        <field name="pnt_update_vehicle_category_id"
+                               widget="radio"
+                        />
+                        <field name="pnt_vehicle_category_id"
+                               readonly="0"
+                               options="{'no_create': True,}"
+                               attrs="{'invisible':[('pnt_update_vehicle_category_id','!=','update')],
+                                       'required': [('pnt_update_vehicle_category_id','=','update')]
+                                       }"
+                        />
+                    </group>
+                </group>
+                <group>
+                    <group>
+                        <field name="pnt_update_vehicle_id"
+                               widget="radio"
+                        />
+                        <field name="pnt_vehicle_id"
+                               readonly="0"
+                               options="{'no_create': True,}"
+                               attrs="{'invisible':[('pnt_update_vehicle_id','!=','update')],
+                                       'required': [('pnt_update_vehicle_id','=','update')]
+                                       }"
+                        />
+                    </group>
+                    <group>
+                        <field name="pnt_update_date_deadline"
+                               widget="radio"
+                        />
+                        <field name="date_deadline"
+                               readonly="0"
+                               attrs="{'invisible':[('pnt_update_date_deadline','!=','update')],
+                                       'required': [('pnt_update_date_deadline','=','update')]
+                                       }"
+                        />
+                    </group>
+                </group>
+                <footer>
+                    <button name="apply_changes"
+                            string="Confirm"
+                            type="object"
+                            confirm="Are you sure you want to update de selected records?"
+                            class="oe_highlight"
+                    />
+                    <button string="Cancel"
+                            special="cancel"
+                            class="oe_link"
+                    />
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_server_pnt_change_logistics_data" model="ir.actions.server">
+        <field name="name">Change logistics data</field>
+        <field name="model_id" ref="project.model_project_task"/>
+        <field name="binding_model_id" ref="project.model_project_task"/>
+        <field name="state">code</field>
+        <field name="code">action = {
+            "type": "ir.actions.act_window",
+            "name": "Cambiar datos de logística",
+            "res_model": "pnt.change.logistics.data",
+            "view_mode": "form",
+            "target": "new",
+            "views": [(env.ref("custom_pnt.view_pnt_change_logistics_date_wizard_form").id, "form")],
+            "context": {"default_pnt_task_ids": [(6, 0, records.ids)]},
+            }
+        </field>
+    </record>
+
+</odoo>

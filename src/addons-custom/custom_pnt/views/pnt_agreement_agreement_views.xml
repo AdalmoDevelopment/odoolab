@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pnt_agreement_line_view_search" model="ir.ui.view">
+        <field name="name">pnt.agreement.line.view.search</field>
+        <field name="model">pnt.agreement.line</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="pnt_product_id"/>
+                <separator/>
+                <filter name="processed" string="Processed" domain="[('pnt_processed_contract_filter', '=', True)]"/>
+                <filter name="no_processed" string="No Processed" domain="[('pnt_processed_contract_filter', '=', False)]"/>
+                <separator/>
+                <group>
+                    <filter string="State" name="groupby_pnt_processed_contract" context="{'group_by': 'pnt_processed_contract_text'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="pnt_agreement_agreement_tree_view" model="ir.ui.view">
+        <field name="name">pnt.agreement.agreement.tree</field>
+        <field name="model">pnt.agreement.agreement</field>
+        <field name="priority">1</field>
+        <field name="arch" type="xml">
+            <tree string="Agreement">
+                <field name="name" readonly="1" optional="show" string="Nº"/>
+                <field name="pnt_complete_name" readonly="1"/>
+                <field name="pnt_agreement_type" readonly="1"/>
+                <field name="pnt_description" readonly="1"/>
+                <field name="pnt_holder_id" optional="hidden"/>
+                <field name="pnt_partner_pickup_ids"
+                       readonly="1"
+                       widget="many2many_tags"
+                       invisible="context.get('search_default_pnt_partner_pickup_ids')"
+                />
+                <field name="pnt_partner_pickup_id" optional="hidden"/>
+                <field name="pnt_operator_id" optional="show"/>
+                <field name="pnt_date_budget" optional="show"/>
+                <field name="pnt_start_date" optional="show"/>
+                <field name="pnt_end_date" optional="show"/>
+                <field name="pnt_user_id" optional="show"/>
+                <field name="state"
+                       decoration-success="state == 'active' or state == 'done'"
+                       decoration-info="state == 'draft' or state == 'sent' or state == 'to_renew'"
+                       widget="badge"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- FORM -->
+    <record id="pnt_agreement_agreement_form_view" model="ir.ui.view">
+        <field name="name">pnt.agreement.agreement.form</field>
+        <field name="model">pnt.agreement.agreement</field>
+        <field name="priority">100</field>
+        <field name="arch" type="xml">
+            <form string="Agreement">
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,sent,confirm"/>
+                    <button name="generate_rental_sale" invisible="1" string="Create Rental" class="btn-primary" type="object"/>
+                    <button name="action_activate" id="action_activate"
+                            string="Activate" class="btn-primary" type="object"
+                            groups="custom_pnt.group_pnt_agreement_manager"
+                            attrs="{'invisible': [('state', 'in', ['cancel', 'done', 'active', 'finish', 'to_renew'])]}"/>
+                    <button name="action_done" id="action_done"
+                            string="Done" class="btn-primary" type="object"
+                            groups="custom_pnt.group_pnt_agreement_manager"
+                            attrs="{'invisible': [('state', 'not in', ['active'])]}"/>
+                    <button type="action"
+                            name="%(custom_pnt.pnt_action_agreement_agreement_wizard)d"
+                            string="Renew"
+                            class="oe_highlight oe_read_only btn-primary"
+                            attrs="{'invisible': [('state', '!=', 'to_renew')],}"/>
+                    <button name="action_agreement_send"
+                            string="Send by Email"
+                            type="object"
+                            states="draft"
+                            class="btn-primary"/>
+                    <button name="action_agreement_send"
+                            string="Send by Email"
+                            type="object"
+                            states="sent,active"/>
+                    <button name="action_unlocked" id="action_unlocked"
+                            string="Unlocked" type="object"
+                            groups="custom_pnt.group_pnt_agreement_admin"
+                            attrs="{'invisible': [('state', 'not in', ['done'])]}"/>
+                    <button name="action_cancel" id="action_cancel"
+                            string="Cancel" type="object"
+                            confirm="Are you sure you want to cancel this agreement?"
+                            attrs="{'invisible': [('state', 'in', ['cancel', 'done', 'finish'])]}"/>
+                    <button name="pnt_action_copy" id="pnt_action_copy"
+                            string="Close / update agreement" type="object"
+                            groups="custom_pnt.group_pnt_agreement_admin"
+                            attrs="{'invisible': [('state', 'not in', ['active', 'done'])]}"/>
+                    <button name="action_register_agreement"
+                            string="Register Agreement" type="object"
+                            groups="custom_pnt.group_pnt_agreement_user"/>
+                    <button name="action_register_agreement_old"
+                            string="Register Agreement Old" type="object"
+                            groups="custom_pnt.group_pnt_agreement_user"/>
+                    <button name="button_start_rental" string="Start Rental" type="object" class="btn-primary"
+                            attrs="{'invisible': [('state', 'not in', ['done'])]}"/>
+                    <button name="button_stop_rental" string="Stop Rental" type="object" class="btn-primary btn-danger"
+                            attrs="{'invisible': [('state', 'not in', ['done'])]}"/>
+                </header>
+                <sheet>
+                     <div class="oe_button_box" name="button_box">
+                        <button name="action_view_invoice"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-pencil-square-o"
+                            attrs="{'invisible': [('pnt_invoice_count', '=', 0)]}">
+                            <field name="pnt_invoice_count" widget="statinfo" string="Invoices"/>
+                        </button>
+                         <button name="action_view_pickups"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-pencil-square-o"
+                            attrs="{'invisible': [('pnt_partner_pickup_count', '=', 0)]}">
+                            <field name="pnt_partner_pickup_count" widget="statinfo" string="Pickups"/>
+                        </button>
+                    </div>
+                    <field name="active" invisible="1"/>
+                    <widget name="web_ribbon" title="Archived"
+                            bg_color="bg-danger"
+                            attrs="{'invisible': [('active', '=', True)]}"/>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group name="pnt_agreement_header">
+                        <group>
+                            <field name="pnt_agreement_type"
+                                   readonly="0"
+                                   required="1"
+                            />
+                            <field name="pnt_is_market_price"
+                                   attrs="{'invisible': [('pnt_agreement_type', '!=', 'portal')],}"
+                                   readonly="0"
+                            />
+                            <field name="pnt_description"
+                                   attrs="{'required': [('pnt_agreement_type', '=', 'portal')]}"
+                            />
+                            <field name="pnt_parent_agreement_id"/>
+                            <field name="pnt_holder_id"
+                                   attrs="{'required': [('pnt_parent_agreement_id', '=', False)],
+                                   'invisible': [('pnt_parent_agreement_id', '!=', False)],}"
+                            />
+                            <field name="pnt_parent_partner_pickup_ids" invisible="1"/>
+                            <field name="pnt_partner_pickup_id"
+                                   domain="[('id','in', pnt_parent_partner_pickup_ids)]"
+                                   options="{'no_create': True,}"
+                                   attrs="{'required': [('pnt_parent_agreement_id', '!=', False)],
+                                   'invisible': [('pnt_parent_agreement_id', '=', False)],}"
+                            />
+                            <field name="pnt_partner_pickup_domain_ids"
+                                   invisible="1"
+                            />
+                            <field name="pnt_partner_pickup_ids"
+                                   options="{'no_create': True,}"
+                                   widget="many2many_tags"
+                                   string="Pickups"
+                                   domain="[('id', 'in', pnt_partner_pickup_domain_ids)]"
+                                   attrs="{'required': [('pnt_parent_agreement_id', '=', False)],
+                                   'invisible': ['|',('pnt_parent_agreement_id', '!=', False),('pnt_agreement_type','=','manager')],
+                                   'readonly':[('state','not in',['draft', 'sent', 'active'])]}"
+                            />
+                            <field name="pnt_partner_pickup_ids"
+                                   options="{'no_create': True,}"
+                                   widget="many2many_tags"
+                                   string="Deliveries"
+                                   domain="[('id', 'in', pnt_partner_pickup_domain_ids)]"
+                                   attrs="{'required': [('pnt_parent_agreement_id', '=', False)],
+                                   'invisible': ['|',('pnt_parent_agreement_id', '!=', False),('pnt_agreement_type','!=','manager')],
+                                   'readonly':[('state','not in',['draft', 'sent', 'active'])]}"
+                            />
+                            <field name="pnt_transport_id"/>
+                        </group>
+                        <group>
+                            <field name="pnt_operator_id"
+                                   attrs="{'readonly': [('state','not in',['draft', 'sent', 'active'])]}"
+                            />
+                            <field name="pnt_date_budget"
+                                   attrs="{'required': [('pnt_parent_agreement_id', '=', False)],
+                                   'invisible': [('pnt_parent_agreement_id', '!=', False)]}"/>
+                            <field name="pnt_start_date"
+                                   attrs="{'invisible': [('pnt_parent_agreement_id', '!=', False)]}"/>
+                            <field name="pnt_end_date"
+                                   attrs="{'invisible': [('pnt_parent_agreement_id', '!=', False)]}"/>
+                            <div name="parent_pnt_dates" colspan="2"
+                                 attrs="{'invisible': [('pnt_parent_agreement_id', '=', False)]}">
+                                <p>Dates are managed on
+                                    <button name="open_agreement_entity" type="object" string="the parent agreement"
+                                            class="oe_link"/>
+                                </p>
+                            </div>
+                            <field name="pnt_treatment_date"/>
+                            <field name="pnt_deposit"/>
+                        </group>
+                    </group>
+                    <group>
+                        <button name="generate_product_list"
+                                type="object"
+                                string="Update product list from parent agreement"
+                                attrs="{'invisible': ['|',('state', 'in', ('cancel', 'done', 'finish')),
+                                           ('pnt_parent_agreement_id','=',False)]}"
+                        />
+                    </group>
+                    <notebook>
+                        <page name="pnt_agreement_lines" string="Lines">
+                            <field name="pnt_domain_product_ids" invisible="1"/>
+                            <field name="pnt_agreement_line_ids"
+                                   widget="section_and_note_one2many"
+                                   mode="tree,kanban">
+                                <tree string="Agreement Lines"
+                                      editable="bottom">
+                                    <control>
+                                        <create name="add_product_control" string="Add a product"/>
+                                        <create name="add_section_control" string="Add a section"
+                                                context="{'default_display_type': 'line_section'}"/>
+                                        <create name="add_note_control" string="Add a note"
+                                                context="{'default_display_type': 'line_note'}"/>
+                                    </control>
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="pnt_processed_contract"/>
+                                    <field name="display_type" invisible="1"/>
+                                    <field name="company_id" invisible="1"/>
+                                    <field name="pnt_is_waste" invisible="1"/>
+                                    <field name="pnt_is_container" invisible="1"/>
+                                    <field name="pnt_default" widget="boolean_favorite" nolabel="1"/>
+                                    <field name="pnt_product_id" domain="[('id', 'in', parent.pnt_domain_product_ids)]" required="1" options="{'no_create': True,}" context="{'only_products': True}"/>
+                                    <field name="pnt_product_economic_uom" optional="show"/>
+                                    <field name="pnt_waste_ler_id" readonly="1" optionl="show"/>
+                                    <field name="pnt_price_unit" optional="show"/>
+                                    <field name="authorized_container_domain_ids"
+                                           invisible="1"
+                                    />
+                                    <field name="pnt_container_id"
+                                           optional="show"
+                                           domain="[('id','in',authorized_container_domain_ids)]"
+                                    />
+                                    <field name="pnt_m3" attrs="{'column_invisible': [('parent.pnt_agreement_type', '!=', 'marpol')]}"/>
+                                    <field name="pnt_all_containers"
+                                           attrs="{'readonly': [('pnt_is_waste', '!=', True)],}"
+                                           optional="show"/>
+                                    <field name="pnt_monetary_waste" optional="show"/>
+                                    <field name="pnt_product_waste_id"
+                                           attrs="{'readonly': [('pnt_is_waste', '=', True)]}"
+                                           optional="show"/>
+                                    <field name="pnt_product_uom_qty" optional="show"/>
+                                    <field name="pnt_product_uom" optional="show"/>
+                                    <field name="pnt_fleet_vehicle_category_ids"
+                                           attrs="{'readonly': ['|', ('pnt_is_waste', '=', True), ('pnt_is_container', '=', True)],}"
+                                           widget="many2many_tags" optional="show"/>
+                                    <field name="pnt_product_container_ids"
+                                           attrs="{'readonly': ['|', ('pnt_is_waste', '=', True), ('pnt_is_container', '=', True)],}"
+                                           widget="many2many_tags" optional="hide"/>
+                                    <field name="name" required="1" optional="hide"/>
+                                    <field name="pnt_transfer_periodicity" optional="show"
+                                           string="Estimated periodicity of the transfer"/>
+                                    <field name="pnt_partner_pickup_id"
+                                           options="{'no_create': True,}"
+                                           string="Pickups"
+                                           domain="[('id', 'in', parent.pnt_partner_pickup_ids)]"
+                                           attrs="{'invisible': [('pnt_agreement_type','=','manager')]}"
+                                    />
+                                    <field name="pnt_partner_pickup_id"
+                                           options="{'no_create': True,}"
+                                           string="Deliveries"
+                                           domain="[('id', 'in', parent.pnt_partner_pickup_ids)]"
+                                           attrs="{'invisible': [('pnt_agreement_type','!=','manager')]}"
+                                    />
+                                    <field name="pnt_description_line" optional="hide"/>
+<!--                                    <field name="pnt_customer_name" optional="hide"/>-->
+<!--                                    <field name="pnt_supplier_name" optional="hide"/>-->
+                                    <field name="pnt_agreement_type" invisible="1"/>
+                                    <field name="pnt_according_market_price"
+                                           string="Segun Tarifa base"
+                                           optional="show"
+                                           attrs="{'invisible': [('pnt_agreement_type', '=', 'portal')],}"
+                                    />
+                                    <field name="pnt_observations_agreement" optional = "show"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page name="pnt_terms" string="Terms and conditions"
+                              attrs="{'invisible': [('pnt_parent_agreement_id', '!=', False)]}">
+                            <group>
+                                <field name="pnt_note" nolabel="1" placeholder="Terms and conditions."/>
+                            </group>
+                            <button name="update_general_condition"
+                                    type="object"
+                                    string="Update general conditions from category"
+                                    attrs="{'invisible': [('state', 'in', ('cancel', 'done', 'finish'))]}"/>
+                            <field name="pnt_general_conditions" type="html" modifiers="{}"/>
+                        </page>
+                        <page string="Terms and conditions" name="pnt_terms_disable" attrs="{'invisible': [('pnt_parent_agreement_id', '=', False)]}">
+                            <div>
+                                <p>Terms and conditions settings are managed on
+                                    <button name="open_agreement_entity" type="object" string="the parent agreement"
+                                            class="oe_link"/>
+                                </p>
+                            </div>
+                        </page>
+                        <page name="pnt_other_information" string="Other Info" attrs="{'invisible': [('pnt_parent_agreement_id', '!=', False)]}">
+                            <group string="Downpayment Lines" attrs="{'invisible': [('pnt_agreement_downpayment_line_ids', '=', [])]}">
+                                <field string="Remaining down payment" name="pnt_amount_downpayment"/>
+                                <field colspan="2" nolabel="1" name="pnt_agreement_downpayment_line_ids">
+                                    <tree>
+                                        <field name="pnt_product_id"/>
+                                        <field name="pnt_price_unit"/>
+                                    </tree>
+                                </field>
+                            </group>
+                            <group>
+                                <group name="pnt_user_info">
+                                    <group>
+                                        <group>
+                                            <field name="pnt_user_id" attrs="{'readonly': [('state', 'not in', ('draft', 'sent', 'active', 'done'))]}"/>
+                                            <field name="company_id"/>
+                                            <field name="pnt_use_company_email"/>
+
+                                        </group>
+                                        <group string="References/orders">
+                                            <field name="pnt_agreement_reference_ids"
+                                                   nolabel="1"
+                                            >
+                                                <tree editable="bottom">
+                                                    <field name="name" string="Code"/>
+                                                    <field name="pnt_partner_pickup_ids"
+                                                           invisible="1"
+                                                    />
+                                                    <field name="pnt_partner_pickup_id"
+                                                    />
+                                                </tree>
+                                            </field>
+                                        </group>
+                                        <group name="pnt_settings_agreement" string="Settings Agreement">
+                                            <field name="pnt_auto_renewal"/>
+                                            <field name="pnt_inheritance_ids" invisible="1"/>
+                                        </group>
+                                    </group>
+                                </group>
+                                <group name="pnt_agreement_info">
+                                    <field name="pnt_opportunity_id" />
+                                    <field name="pnt_customer_payment_mode_id"/>
+                                    <field name="pnt_customer_payment_term_id"/>
+                                    <field name="pnt_supplier_payment_mode_id"/>
+                                    <field name="pnt_supplier_payment_term_id"/>
+                                </group>
+
+                            </group>
+                        </page>
+                        <page string="Other Info" name="pnt_other_information_disable" attrs="{'invisible': [('pnt_parent_agreement_id', '=', False)]}">
+                            <div>
+                                <p>Other Info settings are managed on
+                                    <button name="open_agreement_entity" type="object" string="the parent agreement"
+                                            class="oe_link"/>
+                                </p>
+                            </div>
+                        </page>
+                        <page string="Programming" name="pnt_agreement_lot" invisible="0">
+                            <group>
+                                <field name="pnt_agreement_lot_ids" context="{'hidden': True}" nolabel="1">
+                                    <tree>
+                                        <field name="name"/>
+                                        <field name="pnt_pickup_id" optional="show" string="Pickup"/>
+                                        <field name="state" optional="show"/>
+                                        <field name="pnt_type" optional="show"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+                        <page name="pnt_sale_rental_ids" string="Rentals" attrs="{'invisible': [('pnt_sale_rental_ids', '=', [])]}">
+                            <field name="pnt_sale_rental_ids">
+                                <tree>
+                                    <field name="partner_shipping_id"/>
+                                    <field name="name"/>
+                                    <field name="pnt_rental_manual_description"/>
+                                    <field name="date_order"/>
+                                    <field name="pnt_rental_manual_date_origin"/>
+                                    <field name="state" invisible="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <!-- SEARCH -->
+    <record id="view_pnt_agreement_agreement_filter" model="ir.ui.view">
+        <field name="name">pnt.agreement.agreement.select</field>
+        <field name="model">pnt.agreement.agreement</field>
+        <field name="arch" type="xml">
+            <search string="Search Agreement">
+                <field name="name" string="Agreement number" filter_domain="[('name', 'ilike', self)]"/>
+                <field name="pnt_holder_id" string="Holder" filter_domain="[('pnt_holder_id', 'ilike', self)]"/>
+                <field name="pnt_partner_pickup_ids" string="Pickup" filter_domain="[('pnt_partner_pickup_ids', 'ilike', self)]"/>
+            </search>
+        </field>
+    </record>
+    <!-- ACTIONS -->
+    <record id="action_pnt_agreement_agreement_quotation" model="ir.actions.act_window">
+        <field name="name">Quotation Agreement</field>
+        <field name="res_model">pnt.agreement.agreement</field>
+        <field name="context">{}</field>
+        <field name="domain">[('state', 'not in', ('cancel', 'finish', 'to_renew'))]</field>
+    </record>
+     <record id="agreement_action_quotation_new_pnt" model="ir.actions.act_window">
+        <field name="name">Agreement</field>
+        <field name="res_model">pnt.agreement.agreement</field>
+        <field name="view_mode">form,tree,graph</field>
+        <field name="domain">[('pnt_opportunity_id', '=', active_id)]</field>
+        <field name="context">{'search_default_pnt_opportunity_id': active_id, 'default_pnt_opportunity_id': active_id}</field>
+    </record>
+
+    <record id="action_pnt_agreement_agreement_all" model="ir.actions.act_window">
+        <field name="name">Agreement</field>
+        <field name="res_model">pnt.agreement.agreement</field>
+        <field name="context">{}</field>
+        <field name="domain">[('state', 'not in', ('draft', 'sent'))]</field>
+    </record>
+    <record id="action_pnt_agreement_agreement_to_renew" model="ir.actions.act_window">
+        <field name="name">Agreement</field>
+        <field name="res_model">pnt.agreement.agreement</field>
+        <field name="context">{}</field>
+        <field name="domain">[('state', '=', 'to_renew')]</field>
+    </record>
+    <record id="action_agreement_config_settings" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_id" ref="view_general_configuration"/>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module' : 'custom_pnt', 'bin_size': False}</field>
+    </record>
+<!--    <record id="action_finished_agreement" model="ir.actions.server">-->
+<!--        <field name="name">Action Finished</field>-->
+<!--        <field name="model_id" ref="model_pnt_agreement_agreement"/>-->
+<!--        <field name="binding_model_id" ref="pnt_agreement_agreement.model_pnt_agreement_agreement"/>-->
+<!--        <field name="state">code</field>-->
+<!--        <field name="code">records.action_finished()</field>-->
+<!--    </record>-->
+    <!-- MENU -->
+    <menuitem id="menu_pnt_agreement"
+              name="Agreement"
+              action="action_pnt_agreement_agreement_quotation"
+              web_icon="custom_pnt,static/description/icon_app.png"
+              sequence="20"/>
+    <menuitem id="menu_pnt_agreement_agreement"
+              name="Agreement"
+              action="action_pnt_agreement_agreement_quotation"
+              parent="menu_pnt_agreement"
+              sequence="20"/>
+    <menuitem id="menu_pnt_agreement_agreement_quotation"
+              name="Quotation Agreement"
+              action="action_pnt_agreement_agreement_quotation"
+              parent="menu_pnt_agreement_agreement"
+              sequence="20"/>
+    <menuitem id="menu_pnt_agreement_agreement_all"
+              name="Agreement"
+              action="action_pnt_agreement_agreement_all"
+              parent="menu_pnt_agreement_agreement"
+              sequence="20"/>
+    <menuitem id="menu_pnt_agreement_agreement_to_renew"
+              name="To Renew Agreement"
+              action="action_pnt_agreement_agreement_to_renew"
+              parent="menu_pnt_agreement"
+              sequence="20"/>
+    <menuitem id="menu_pnt_agreement_config"
+              name="Configuration"
+              parent="menu_pnt_agreement"
+              sequence="99"/>
+    <menuitem id="menu_pnt_agreement_setting_settings"
+              name="Settings"
+              action="action_agreement_config_settings"
+              parent="menu_pnt_agreement_config"
+              sequence="99"/>
+</odoo>

@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Table 2 -->
+        <record id="pnt_data_product_tmpl_waste_table_D1" model="pnt.product.tmpl.waste.table">
+            <field name="name">D1</field>
+            <field name="pnt_table_type">table2</field>
+            <field name="pnt_description">Depósito sobre el suelo o en su interior (por ejemplo, vertido, etc.).</field>
+        </record>
+        <record id="pnt_data_product_tmpl_waste_table_D2" model="pnt.product.tmpl.waste.table">
+            <field name="name">D2</field>
+            <field name="pnt_table_type">table2</field>
+            <field name="pnt_description">Tratamiento en medio terrestre (por ejemplo, biodegradación de residuos
+                líquidos o lodos en el suelo, etc.).
+            </field>
+        </record>
+        <record id="pnt_data_product_tmpl_waste_table_D3" model="pnt.product.tmpl.waste.table">
+            <field name="name">D3</field>
+            <field name="pnt_table_type">table2</field>
+            <field name="pnt_description">Inyección en profundidad (por ejemplo, inyección de residuos bombeables en
+                pozos, minas de sal, fallas geológicas naturales, etc.).
+            </field>
+        </record>
+        <record id="pnt_data_product_tmpl_waste_table_D4" model="pnt.product.tmpl.waste.table">
+            <field name="name">D4</field>
+            <field name="pnt_table_type">table2</field>
+            <field name="pnt_description">Embalse superficial (por ejemplo vertido de residuos líquidos o lodos en
+                pozos, estanques o lagunas, etc.).
+            </field>
+        </record>
+        <record id="pnt_data_product_tmpl_waste_table_D5" model="pnt.product.tmpl.waste.table">
+            <field name="name">D5</field>
+            <field name="pnt_table_type">table2</field>
+            <field name="pnt_description">Vertido en lugares especialmente diseñados (por ejemplo, colocación en celdas
+                estancas separadas, recubiertas y aisladas entre sí y el medio ambiente, etc.).
+            </field>
+        </record>
+        <record id="pnt_data_product_tmpl_waste_table_D6" model="pnt.product.tmpl.waste.table">
+            <field name="name">D6</field>
+            <field name="pnt_table_type">table2</field>
+            <field name="pnt_description">Vertido en el medio acuático, salvo en el mar.</field>
+        </record>
+        <record id="pnt_data_product_tmpl_waste_table_D7" model="pnt.product.tmpl.waste.table">
+            <field name="name">D7</field>
+            <field name="pnt_table_type">table2</field>
+            <field name="pnt_description">Vertido en el mar, incluida la inserción en el lecho marino.</field>
+        </record>
+        <record id="pnt_data_product_tmpl_waste_table_D8" model="pnt.product.tmpl.waste.table">
+            <field name="name">D8</field>
+            <field name="pnt_table_type">table2</field>
+            <field name="pnt_description">Tratamiento biológico no especificado en otro apartado del presente anejo y
+                que dé como resultado compuestos o mezclas que se eliminen mediante alguno de los procedimientos
+                enumerados entre D1 y D12.
+            </field>
+        </record>
+        <record id="pnt_data_product_tmpl_waste_table_D9" model="pnt.product.tmpl.waste.table">
+            <field name="name">D9</field>
+            <field name="pnt_table_type">table2</field>
+            <field name="pnt_description">Tratamiento fisicoquímico no especificado en otro apartado del presente anejo
+                y que dé como resultado compuestos o mezclas que se eliminen mediante uno de los procedimientos
+                enumerados entre D1 y D12 (por ejemplo, evaporación, secado, calcinación, etc.).
+            </field>
+        </record>
+        <record id="pnt_data_product_tmpl_waste_table_D1" model="pnt.product.tmpl.waste.table">
+            <field name="name">D1</field>
+            <field name="pnt_table_type">table2</field>
+            <field name="pnt_description">Incineración en tierra.</field>
+        </record>
+        <record id="pnt_data_product_tmpl_waste_table_D1" model="pnt.product.tmpl.waste.table">
+            <field name="name">D1</field>
+            <field name="pnt_table_type">table2</field>
+            <field name="pnt_description">Incineración en el mar.</field>
+        </record>
+        <record id="pnt_data_product_tmpl_waste_table_D1" model="pnt.product.tmpl.waste.table">
+            <field name="name">D1</field>
+            <field name="pnt_table_type">table2</field>
+            <field name="pnt_description">Depósito permanente (por ejemplo, colocación de contenedores en una mina,
+                etc.).
+            </field>
+        </record>
+        <record id="pnt_data_product_tmpl_waste_table_D1" model="pnt.product.tmpl.waste.table">
+            <field name="name">D1</field>
+            <field name="pnt_table_type">table2</field>
+            <field name="pnt_description">Combinación o mezcla previa a cualquiera de las operaciones enumeradas entre
+                D1 y D12.
+            </field>
+        </record>
+        <record id="pnt_data_product_tmpl_waste_table_D1" model="pnt.product.tmpl.waste.table">
+            <field name="name">D1</field>
+            <field name="pnt_table_type">table2</field>
+            <field name="pnt_description">Reenvasado previo a cualquiera de las operaciones enumeradas entre D1 y D13.
+            </field>
+        </record>
+        <record id="pnt_data_product_tmpl_waste_table_D1" model="pnt.product.tmpl.waste.table">
+            <field name="name">D1</field>
+            <field name="pnt_table_type">table2</field>
+            <field name="pnt_description">Almacenamiento previo a cualquiera de las operaciones enumeradas entre D1 y
+                D14 (con exclusión del almacenamiento temporal previo a la recogida en el lugar de producción).
+            </field>
+        </record>
+        <record id="pnt_data_product_tmpl_waste_table_R1" model="pnt.product.tmpl.waste.table">
+            <field name="name">R1</field>
+            <field name="pnt_table_type">table2</field>
+            <field name="pnt_description">Utilización principal como combustible o como otro medio de generar energía.
+            </field>
+        </record>
+        <record id="pnt_data_product_tmpl_waste_table_R2" model="pnt.product.tmpl.waste.table">
+            <field name="name">R2</field>
+            <field name="pnt_table_type">table2</field>
+            <field name="pnt_description">Recuperación o regeneración de disolventes.</field>
+        </record>
+        <record id="pnt_data_product_tmpl_waste_table_R3" model="pnt.product.tmpl.waste.table">
+            <field name="name">R3</field>
+            <field name="pnt_table_type">table2</field>
+            <field name="pnt_description">Reciclado o recuperación de sustancias orgánicas que no se utilizan como
+                disolventes (incluidas las operaciones de formación de abono y otras transformaciones biológicas).
+            </field>
+        </record>
+        <record id="pnt_data_product_tmpl_waste_table_R4" model="pnt.product.tmpl.waste.table">
+            <field name="name">R4</field>
+            <field name="pnt_table_type">table2</field>
+            <field name="pnt_description">Reciclado o recuperación de metales y de compuestos metálicos.</field>
+        </record>
+        <record id="pnt_data_product_tmpl_waste_table_R5" model="pnt.product.tmpl.waste.table">
+            <field name="name">R5</field>
+            <field name="pnt_table_type">table2</field>
+            <field name="pnt_description">Reciclado o recuperación de otras materias inorgánicas.</field>
+        </record>
+        <record id="pnt_data_product_tmpl_waste_table_R6" model="pnt.product.tmpl.waste.table">
+            <field name="name">R6</field>
+            <field name="pnt_table_type">table2</field>
+            <field name="pnt_description">Regeneración de ácidos o de bases.</field>
+        </record>
+        <record id="pnt_data_product_tmpl_waste_table_R7" model="pnt.product.tmpl.waste.table">
+            <field name="name">R7</field>
+            <field name="pnt_table_type">table2</field>
+            <field name="pnt_description">Recuperación de componentes utilizados para reducir la contaminación.</field>
+        </record>
+        <record id="pnt_data_product_tmpl_waste_table_R8" model="pnt.product.tmpl.waste.table">
+            <field name="name">R8</field>
+            <field name="pnt_table_type">table2</field>
+            <field name="pnt_description">Recuperación de componentes procedentes de catalizadores.</field>
+        </record>
+        <record id="pnt_data_product_tmpl_waste_table_R9" model="pnt.product.tmpl.waste.table">
+            <field name="name">R9</field>
+            <field name="pnt_table_type">table2</field>
+            <field name="pnt_description">Regeneración u otro nuevo empleo de aceites.</field>
+        </record>
+        <record id="pnt_data_product_tmpl_waste_table_R1" model="pnt.product.tmpl.waste.table">
+            <field name="name">R1</field>
+            <field name="pnt_table_type">table2</field>
+            <field name="pnt_description">Tratamiento de suelos, produciendo un beneficio a la agricultura o una mejora
+                ecológica de los mismos.
+            </field>
+        </record>
+        <record id="pnt_data_product_tmpl_waste_table_R1" model="pnt.product.tmpl.waste.table">
+            <field name="name">R1</field>
+            <field name="pnt_table_type">table2</field>
+            <field name="pnt_description">Utilización de residuos obtenidos a partir de cualquiera de las operaciones
+                enumeradas entre R1 y R10.
+            </field>
+        </record>
+        <record id="pnt_data_product_tmpl_waste_table_R1" model="pnt.product.tmpl.waste.table">
+            <field name="name">R1</field>
+            <field name="pnt_table_type">table2</field>
+            <field name="pnt_description">Intercambio de residuos para someterlos a cualquiera de las operaciones
+                enumeradas entre R1 y R11.
+            </field>
+        </record>
+        <record id="pnt_data_product_tmpl_waste_table_R1" model="pnt.product.tmpl.waste.table">
+            <field name="name">R1</field>
+            <field name="pnt_table_type">table2</field>
+            <field name="pnt_description">Acumulación de residuos para someterlos a cualquiera de las operaciones
+                enumeradas entre R1 y R12 (con exclusión del almacenamiento temporal previo a la recogida en el lugar de
+                la producción).
+            </field>
+        </record>
+        <!-- Table 5 -->
+        <record id="pnt_data_product_tmpl_waste_table_HP1" model="pnt.product.tmpl.waste.table">
+            <field name="name">HP1</field>
+            <field name="pnt_table_type">table5</field>
+            <field name="pnt_description">Explosivo</field>
+<!--            <field name="pnt_table_image_1" type="base64"-->
+<!--                   file="l10n_eu_product_adr/static/img/ADR_1.svg"/>-->
+        </record>
+        <record id="pnt_data_product_tmpl_waste_table_HP2" model="pnt.product.tmpl.waste.table">
+            <field name="name">HP2</field>
+            <field name="pnt_table_type">table5</field>
+            <field name="pnt_description">Comburente/Gas a presión</field>
+            <field name="pnt_table_image_1" type="base64"
+                   file="custom_pnt/static/img/pictogram/HP2_Nou_R.bmp"/>
+            <field name="pnt_table_image_2" type="base64"
+                   file="custom_pnt/static/img/pictogram/HP2_1_Nou_R.bmp"/>
+        </record>
+        <record id="pnt_data_product_tmpl_waste_table_HP3" model="pnt.product.tmpl.waste.table">
+            <field name="name">HP3</field>
+            <field name="pnt_table_type">table5</field>
+            <field name="pnt_description">Inflamable</field>
+            <field name="pnt_table_image_1" type="base64"
+                   file="custom_pnt/static/img/pictogram/HP3_Nou_R.bmp"/>
+        </record>
+        <record id="pnt_data_product_tmpl_waste_table_HP4" model="pnt.product.tmpl.waste.table">
+            <field name="name">HP4</field>
+            <field name="pnt_table_type">table5</field>
+            <field name="pnt_description">Irritante</field>
+            <field name="pnt_table_image_1" type="base64"
+                   file="custom_pnt/static/img/pictogram/HP4_Nou_R.bmp"/>
+        </record>
+        <record id="pnt_data_product_tmpl_waste_table_HP5" model="pnt.product.tmpl.waste.table">
+            <field name="name">HP5</field>
+            <field name="pnt_table_type">table5</field>
+            <field name="pnt_description">Toxicidad específica en determinados órganos (STOT en su sigla
+                inglesa)/Toxicidad por aspiración
+            </field>
+            <field name="pnt_table_image_1" type="base64"
+                   file="custom_pnt/static/img/pictogram/HP5_Nou_R.bmp"/>
+        </record>
+        <record id="pnt_data_product_tmpl_waste_table_HP6" model="pnt.product.tmpl.waste.table">
+            <field name="name">HP6</field>
+            <field name="pnt_table_type">table5</field>
+            <field name="pnt_description">Toxicidad aguada</field>
+            <field name="pnt_table_image_1" type="base64"
+                   file="custom_pnt/static/img/pictogram/HP6_Nou_R.bmp"/>
+        </record>
+        <record id="pnt_data_product_tmpl_waste_table_HP7" model="pnt.product.tmpl.waste.table">
+            <field name="name">HP7</field>
+            <field name="pnt_table_type">table5</field>
+            <field name="pnt_description">Carcinógeno</field>
+        </record>
+        <record id="pnt_data_product_tmpl_waste_table_HP8" model="pnt.product.tmpl.waste.table">
+            <field name="name">HP8</field>
+            <field name="pnt_table_type">table5</field>
+            <field name="pnt_description">Corrosivo</field>
+            <field name="pnt_table_image_1" type="base64"
+                   file="custom_pnt/static/img/pictogram/HP8_Nou_R.bmp"/>
+        </record>
+        <record id="pnt_data_product_tmpl_waste_table_HP9" model="pnt.product.tmpl.waste.table">
+            <field name="name">HP9</field>
+            <field name="pnt_table_type">table5</field>
+            <field name="pnt_description">Infeccioso</field>
+        </record>
+        <record id="pnt_data_product_tmpl_waste_table_HP10" model="pnt.product.tmpl.waste.table">
+            <field name="name">HP10</field>
+            <field name="pnt_table_type">table5</field>
+            <field name="pnt_description">Tóxico para la reproducción</field>
+        </record>
+        <record id="pnt_data_product_tmpl_waste_table_HP11" model="pnt.product.tmpl.waste.table">
+            <field name="name">HP11</field>
+            <field name="pnt_table_type">table5</field>
+            <field name="pnt_description">Mutágeno</field>
+        </record>
+        <record id="pnt_data_product_tmpl_waste_table_HP12" model="pnt.product.tmpl.waste.table">
+            <field name="name">HP12</field>
+            <field name="pnt_table_type">table5</field>
+            <field name="pnt_description">Liberación de un gas de tóxicidad aguda</field>
+        </record>
+        <record id="pnt_data_product_tmpl_waste_table_HP13" model="pnt.product.tmpl.waste.table">
+            <field name="name">HP13</field>
+            <field name="pnt_table_type">table5</field>
+            <field name="pnt_description">Sensibilizante</field>
+        </record>
+        <record id="pnt_data_product_tmpl_waste_table_HP14" model="pnt.product.tmpl.waste.table">
+            <field name="name">HP14</field>
+            <field name="pnt_table_type">table5</field>
+            <field name="pnt_description">Ecotóxico</field>
+            <field name="pnt_table_image_1" type="base64"
+                   file="custom_pnt/static/img/pictogram/HP14_Nou_R.bmp"/>
+        </record>
+        <record id="pnt_data_product_tmpl_waste_table_HP15" model="pnt.product.tmpl.waste.table">
+            <field name="name">HP15</field>
+            <field name="pnt_table_type">table5</field>
+            <field name="pnt_description">“Residuos que pueden presentar una de las características de peligrosidad
+                antes mencionadas que el residuo original no presentaba directamente”
+            </field>
+        </record>
+    </data>
+</odoo>

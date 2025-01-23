@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="pnt_data_circulation_permit_class_am" model="pnt.circulation.permit.class">
+            <field name="name">AM</field>
+        </record>
+        <record id="pnt_data_circulation_permit_class_a1" model="pnt.circulation.permit.class">
+            <field name="name">A1</field>
+        </record>
+        <record id="pnt_data_circulation_permit_class_a2" model="pnt.circulation.permit.class">
+            <field name="name">A2</field>
+        </record>
+        <record id="pnt_data_circulation_permit_class_a" model="pnt.circulation.permit.class">
+            <field name="name">A</field>
+        </record>
+        <record id="pnt_data_circulation_permit_class_b" model="pnt.circulation.permit.class">
+            <field name="name">B</field>
+        </record>
+        <record id="pnt_data_circulation_permit_class_be" model="pnt.circulation.permit.class">
+            <field name="name">B+E</field>
+        </record>
+        <record id="pnt_data_circulation_permit_class_c1" model="pnt.circulation.permit.class">
+            <field name="name">C1</field>
+        </record>
+        <record id="pnt_data_circulation_permit_class_c1e" model="pnt.circulation.permit.class">
+            <field name="name">C1+E</field>
+        </record>
+        <record id="pnt_data_circulation_permit_class_c" model="pnt.circulation.permit.class">
+            <field name="name">C</field>
+        </record>
+        <record id="pnt_data_circulation_permit_class_ce" model="pnt.circulation.permit.class">
+            <field name="name">C+E</field>
+        </record>
+        <record id="pnt_data_circulation_permit_class_d1" model="pnt.circulation.permit.class">
+            <field name="name">D1</field>
+        </record>
+        <record id="pnt_data_circulation_permit_class_d1e" model="pnt.circulation.permit.class">
+            <field name="name">D1+E</field>
+        </record>
+        <record id="pnt_data_circulation_permit_class_d" model="pnt.circulation.permit.class">
+            <field name="name">D</field>
+        </record>
+        <record id="pnt_data_circulation_permit_class_de" model="pnt.circulation.permit.class">
+            <field name="name">D+E</field>
+        </record>
+    </data>
+</odoo>

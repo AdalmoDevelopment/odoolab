@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--  TREE  -->
+    <record id="pnt_circulation_permit_tree_view" model="ir.ui.view">
+        <field name="name">pnt.circulation.permit.class.tree</field>
+        <field name="model">pnt.circulation.permit.class</field>
+        <field name="arch" type="xml">
+            <tree string="Circulation Permit Class">
+                <field name="display_name"/>
+            </tree>
+        </field>
+    </record>
+    <!-- FORM -->
+    <record id="pnt_circulation_permit_form_view" model="ir.ui.view">
+        <field name="name">pnt.circulation.permit.class.form</field>
+        <field name="model">pnt.circulation.permit.class</field>
+        <field name="priority">100</field>
+        <field name="arch" type="xml">
+            <form string="Circulation Permit Class">
+                <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger"
+                            attrs="{'invisible': [('active', '=', True)]}"/>
+                    <group>
+                        <group>
+                            <field name="active" invisible="1"/>
+                            <field name="code"/>
+                            <field name="name" required="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- ACTIONS -->
+    <record id="action_pnt_circulation_permit" model="ir.actions.act_window">
+        <field name="name">Circulation Permit Class</field>
+        <field name="res_model">pnt.circulation.permit.class</field>
+        <field name="context">{}</field>
+        <field name="domain">[]</field>
+    </record>
+    <!-- MENU -->
+    <menuitem
+        id="menu_pnt_circulation_permit"
+        name="Circulation Permit Class"
+        action="action_pnt_circulation_permit"
+        parent="hr.menu_human_resources_configuration_employee"
+        sequence="10"/>
+</odoo>

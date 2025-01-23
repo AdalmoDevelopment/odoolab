@@ -1,0 +1,32 @@
+{
+    "name": "Incidencias",
+    "summary": "Módulo personalizado de Incidencias",
+    "version": "14.0.1.0.0",
+    "category": "Hidden",
+    "website": "https://www.puntsistemes.es",
+    "author": "Punt Sistemes",
+    "maintainers": [
+        "Guillermo Bonet",
+    ],
+    "license": "LGPL-3",
+    "application": False,
+    "installable": True,
+    "depends": [
+        "account_fleet",
+        "account_payment_mode",
+        "hr_employee_ppe",
+        "hr_fleet",
+        "l10n_eu_product_adr",
+        "purchase_stock",
+        "sale_order_type",
+        "sale_stock",
+        "custom_pnt",
+    ],
+    "data": [
+        "security/res_groups.xml",
+        "security/ir.model.access.csv",
+        "views/pnt_incidence.xml",
+        "views/pnt_single_document.xml",
+        "views/project_task.xml",
+    ],
+}

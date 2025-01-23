@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="pnt_fleet_vehicle_view_tree" model="ir.ui.view">
+        <field name="model">fleet.vehicle</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_view_tree"/>
+        <field name="arch" type="xml">
+            <field name="company_id" position="before">
+                <field name="pnt_renovation_state" widget="badge" decoration-success="pnt_renovation_state == 'done'"
+                       decoration-warning="pnt_renovation_state == 'todo'"
+                       decoration-danger="pnt_renovation_state == 'expire'" optional="show"/>
+                <field name="pnt_category_id" optional="hidden"/>
+                <field name="pnt_category_ids" optional="show"/>
+            </field>
+        </field>
+    </record>
+    <record id="pnt_fleet_vehicle_view_kanban" model="ir.ui.view">
+        <field name="model">fleet.vehicle</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_view_kanban"/>
+        <field name="arch" type="xml">
+            <field name="activity_state" position="after">
+                <field name="pnt_renovation_state"/>
+                <field name="pnt_category_ids" />
+            </field>
+            <xpath expr="//div[@class='o_kanban_image']" position="replace">
+                <div class="o_kanban_image" t-attf-style="background-image:url('#{kanban_image('fleet.vehicle', 'pnt_image_128', record.id.raw_value)}')"/>
+            </xpath>
+            <xpath expr="//ul" position="inside">
+                <li>
+                    <t t-if="record.pnt_category_ids.raw_value"><field name="pnt_category_ids"/></t>
+                </li>
+            </xpath>
+            <xpath expr="//div[@class='oe_kanban_bottom_left']" position="after">
+                <div id="pnt_div_renovation_state" class="col-6">
+                    <span class="float-right">
+                        <field name="pnt_renovation_state" widget="label_selection"
+                               options="{'classes': {'done': 'success', 'todo': 'warning', 'expire': 'danger'}}"/>
+                    </span>
+                </div>
+            </xpath>
+        </field>
+    </record>
+    <record id="pnt_fleet_vehicle_view_form" model="ir.ui.view">
+        <field name="model">fleet.vehicle</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_view_form"/>
+        <field name="arch" type="xml">
+            <field name="image_128" position="before">
+                <field name="pnt_image_128" widget="image" class="oe_avatar"/>
+            </field>
+            <field name="license_plate" position="after">
+                <field name="pnt_renovation_state" widget="badge" decoration-success="pnt_renovation_state == 'done'"
+                       decoration-warning="pnt_renovation_state == 'todo'"
+                       decoration-danger="pnt_renovation_state == 'expire'" optional="show"/>
+            </field>
+            <field name="driver_id" position="attributes">
+                <attribute name="domain">[
+                    ('parent_id', '=', pnt_carrier_id),
+                    ('pnt_is_driver', '=', True),
+                    '|', ('company_id', '=', False ), ('company_id', '=', company_id)]</attribute>
+            </field>
+            <field name="driver_id" position="before">
+                <field name="pnt_carrier_id" required="1"/>
+            </field>
+            <field name="future_driver_id" position="attributes">
+                <attribute name="domain">[
+                    ('parent_id', '=', pnt_carrier_id),
+                    ('pnt_is_driver', '=', True),
+                    '|', ('company_id', '=', False ), ('company_id', '=', company_id)]</attribute>
+            </field>
+            <xpath expr="//sheet" position="inside">
+                <group>
+                    <group name="pnt_group_technical" string="Technical Data"
+                           attrs="{'invisible': [('vehicle_type', '!=', 'car')]}">
+                        <field name="pnt_category_id"
+                               invisible="1"
+                        />
+                        <field name="pnt_category_ids"
+                               widget="many2many_tags"
+                               invisible="0"
+                        />
+                        <field name="pnt_mma"/>
+                        <field name="pnt_height"/>
+                        <field name="pnt_width"/>
+                        <field name="pnt_length"/>
+                        <field name="pnt_length2"/>
+                        <field name="pnt_wheels"/>
+                        <field name="pnt_wheels_type"/>
+                        <field name="pnt_transport_card_id"/>
+                    </group>
+                    <group name="pnt_group_account" string="Account Data"
+                           attrs="{'invisible': [('vehicle_type', '!=', 'car')]}">
+                        <field name="pnt_account_analytic_id"/>
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+    <record id="pnt_fleet_service_type_form" model="ir.ui.view">
+        <field name="name">pnt.fleet.service.type.form</field>
+        <field name="model">fleet.service.type</field>
+        <field name="arch" type="xml">
+            <form string="Fleet Service">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="category"/>
+                            <field name="pnt_delay_days" attrs="{'invisible': [('category', '!=', 'service')]}"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+<!--    <record id="fleet_vehicle_view_search_inherit_pnt" model="ir.ui.view">-->
+<!--        <field name="name">fleet.vehicle.search.inherit.pnt</field>-->
+<!--        <field name="model">fleet.vehicle</field>-->
+<!--        <field name="inherit_id" ref="fleet.fleet_vehicle_view_search"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <group position="inside">-->
+<!--                <filter string="Fleet Vehicle Category" name="group_pnt_category_id"-->
+<!--                        context="{'group_by': 'pnt_category_id'}"-->
+<!--                />-->
+<!--            </group>-->
+<!--        </field>-->
+<!--    </record>-->
+
+</odoo>

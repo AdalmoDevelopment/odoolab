@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_form_pnt_assign_services">
+        <field name="model">pnt.assign.services</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="pnt_service_date"
+                                   required="1"
+                            />
+                            <field name="pnt_transport_ids"
+                                   widget="many2many_tags"
+                            />
+                            <field name="pnt_vehicle_category_ids"
+                                   widget="many2many_tags"
+                            />
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="load_services"
+                            type="object"
+                            string="Load services pending assignment"
+                            class="oe_highlight"
+                    />
+                    <button name="button_cancel"
+                            class="oe_link"
+                            special="cancel"
+                            string="Cancel"
+                    />
+                </footer>
+            </form>
+        </field>
+    </record>
+   <record id="action_pnt_assign_services" model="ir.actions.act_window">
+        <field name="name">Assign services</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pnt.assign.services</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_form_pnt_assign_services"/>
+        <field name="target">new</field>
+    </record>
+
+<!--    <menuitem id="menu_pnt_single_document_metal_scale"-->
+<!--          name="Metal scale"-->
+<!--          action="action_pnt_load_du"-->
+<!--          web_icon="custom_pnt,static/description/icon_ms.png"-->
+<!--          sequence="31"/>-->
+    <menuitem id="menu_pnt_assign_services"
+              name="Assign services"
+              parent="custom_pnt.menu_pnt_single_document"
+              action="action_pnt_assign_services"
+              sequence="30"/>
+
+</odoo>

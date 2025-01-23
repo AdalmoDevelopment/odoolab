@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_form_pnt_create_di">
+        <field name="model">pnt.create.di</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="pnt_single_document_id"
+                                   readonly="1"
+                            />
+                            <field name="pnt_document_type"
+                                   readonly="1"
+                            />
+                            <field name="pnt_type"
+                                   readonly="0"
+                                   required="1"
+                            />
+                        </group>
+                        <group>
+                            <field name="pnt_date"
+                                   required="1"
+                            />
+                            <field name="pnt_single_document_lines_ids"
+                                   widget="many2many_tags"
+                                   domain="[('pnt_single_document_id','=', pnt_single_document_id),
+                                            ('pnt_is_waste','=', 1),
+                                            ('pnt_waste_transfer_document_id','=',False)]"
+                                   readonly="0"
+                                   required="1"
+                            />
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="create_dis"
+                            type="object"
+                            string="Create DI"
+                            class="oe_highlight"
+                    />
+                    <button name="button_cancel"
+                            class="oe_link"
+                            special="cancel"
+                            string="Cancel"
+                    />
+                </footer>
+            </form>
+        </field>
+    </record>
+   <record id="action_pnt_create_di" model="ir.actions.act_window">
+        <field name="name">Create DI</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pnt.create.di</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_form_pnt_create_di"/>
+        <field name="target">new</field>
+    </record>
+
+<!--    <menuitem id="menu_pnt_single_document_metal_scale"-->
+<!--          name="Metal scale"-->
+<!--          action="action_pnt_load_du"-->
+<!--          web_icon="custom_pnt,static/description/icon_ms.png"-->
+<!--          sequence="31"/>-->
+
+</odoo>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data noupdate="1">
+        <record id="action_server_resource_calendar_renew_attendance"
+                model="ir.actions.server">
+            <field name="name">Renew Resource Calendar</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_resource_calendar"/>
+            <field name="binding_model_id" ref="model_resource_calendar"/>
+            <field name="state">code</field>
+            <field name="code">record.action_set_renew_attendance()</field>
+        </record>
+    </data>
+</odoo>

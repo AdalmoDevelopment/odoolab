@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="fleet_vehicle_state_own" model="fleet.vehicle.state">
+            <field name="name">Own</field>
+            <field name="sequence">8</field>
+        </record>
+        <record id="fleet_vehicle_state_rent" model="fleet.vehicle.state">
+            <field name="name">Rent</field>
+            <field name="sequence">8</field>
+        </record>
+        <record id="fleet_vehicle_state_outsourced" model="fleet.vehicle.state">
+            <field name="name">Outsourced</field>
+            <field name="sequence">8</field>
+        </record>
+    </data>
+</odoo>

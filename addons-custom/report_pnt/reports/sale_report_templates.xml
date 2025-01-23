@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="pnt_sale_report_sale_order" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//div[@id='informations']//p[@t-field='doc.user_id']/.." position="after">
+            <div t-if="not doc.user_id" class="col-auto col-3 mw-100 mb-2">
+                <strong>Salesperson:</strong>
+                <p class="m-0">Ferrimet</p>
+            </div>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pnt_view_account_journal_form" model="ir.ui.view">
+        <field name="name">pnt.view.account.journal.form</field>
+        <field name="model">account.journal</field>
+        <field name="inherit_id" ref="account.view_account_journal_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='company_id']" position="after">
+                <field name="pnt_copy_ref_to_lines"/>
+            </xpath>
+            <xpath expr="//field[@name='default_account_id']" position="after">
+                <field name="pnt_supplier_account"/>
+                <field name="pnt_supplier_selection"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

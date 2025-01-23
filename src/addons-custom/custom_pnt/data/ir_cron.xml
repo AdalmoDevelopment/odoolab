@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+    <record id="pnt_ir_cron_finish_agreement" model="ir.cron">
+        <field name="name">[Pnt] Finish Agreements</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field eval="False" name="doall"/>
+        <field ref="model_pnt_agreement_agreement" name="model_id"/>
+        <field name="state">code</field>
+        <field name="code">model._finish_agreement()</field>
+        <field name="active" eval="False" />
+        <field name="nextcall" eval="(datetime.now() + timedelta(days=1)).strftime('%Y-%m-%d 00:00:00')"/>
+    </record>
+    <record id="pnt_ir_cron_to_renewal_agreement" model="ir.cron">
+        <field name="name">[Pnt] To Renew Agreements</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field eval="False" name="doall"/>
+        <field ref="model_pnt_agreement_agreement" name="model_id"/>
+        <field name="state">code</field>
+        <field name="code">model._to_renewal_agreement()</field>
+        <field name="active" eval="False" />
+        <field name="nextcall" eval="(datetime.now() + timedelta(days=1)).strftime('%Y-%m-%d 00:00:00')"/>
+    </record>
+    <record id="pnt_ir_cron_renewal_agreement" model="ir.cron">
+        <field name="name">[Pnt] Renewal Agreements</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field eval="False" name="doall"/>
+        <field ref="model_pnt_agreement_agreement" name="model_id"/>
+        <field name="state">code</field>
+        <field name="code">model._renewal_agreements()</field>
+        <field name="active" eval="False" />
+        <field name="nextcall" eval="(datetime.now() + timedelta(days=1)).strftime('%Y-%m-%d 00:00:00')"/>
+    </record>
+    <record id="pnt_ir_cron_create_program_sd" model="ir.cron">
+        <field name="name">[Pnt] Create SD from programing</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field eval="False" name="doall"/>
+        <field ref="model_pnt_agreement_lot_line" name="model_id"/>
+        <field name="state">code</field>
+        <field name="code">model._pnt_cron_new_sd()</field>
+        <field name="active" eval="False" />
+        <field name="nextcall" eval="(datetime.now() + timedelta(days=1)).strftime('%Y-%m-%d 00:00:00')"/>
+    </record>
+    <record id="pnt_ir_cron_create_sale_from_agreements" model="ir.cron">
+        <field name="name">Crear pedidos de venta desde contratos</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+        <field name="model_id" ref="model_pnt_agreement_agreement"/>
+        <field name="state">code</field>
+        <field name="code">model.generate_rental_sale()</field>
+        <field name="active" eval="False" />
+    </record>
+    <record id="pnt_ir_cron_set_admitted" model="ir.cron">
+        <field name="name">Set single document as admitted</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+        <field name="model_id" ref="model_pnt_single_document"/>
+        <field name="state">code</field>
+        <field name="code">model.cron_set_admitted()</field>
+        <field name="active" eval="False" />
+    </record>
+    <record id="create_manual_rental_sale" model="ir.cron">
+        <field name="name">Create manual rentals from agreements</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+        <field name="model_id" ref="model_pnt_agreement_agreement"/>
+        <field name="state">code</field>
+        <field name="code">model._cron_create_manual_rental_sale()</field>
+        <field name="active" eval="False" />
+    </record>
+</odoo>

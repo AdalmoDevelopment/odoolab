@@ -1,0 +1,1405 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pnt_single_document_tree_view" model="ir.ui.view">
+        <field name="name">pnt.single.document.tree</field>
+        <field name="model">pnt.single.document</field>
+        <field name="arch" type="xml">
+            <tree string="Agreement" default_order="create_date desc">
+                <field name="name" optional="show" string="Document number"/>
+                <field name="pnt_single_document_type" optional="show"/>
+                <field name="create_date" optional="show"/>
+                <field name="pnt_pickup_date" optional="show"/>
+                <field name="pnt_effective_date" optional="hide"/>
+                <field name="pnt_du_end_date" optional="hide"/>
+                <field name="pnt_date_to_plant" optional="hide"/>
+                <field name="pnt_holder_id" optional="show"/>
+                <field name="pnt_partner_pickup_id" optional="show"/>
+                <field name="pnt_partner_delivery_id" optional="show"/>
+                <field name="pnt_metal_scales_description" optional="show"/>
+                <field name="pnt_operator_id" optional="show"/>
+                <field name="pnt_user_id" optional="show"/>
+                <field name="pnt_carrier_id" optional="hide"/>
+                <field name="pnt_transport_id" optional="hide"/>
+                <field name="pnt_vehicle_id" optional="hide"/>
+                <field name="state"
+                       decoration-success="state == 'active' or state == 'done'"
+                       decoration-info="state == 'newdu' or state == 'dispached'"
+                       widget="badge"/>
+                <field name="pnt_load_du_visible" invisible="1"/>
+                <field name="activity_ids" widget="list_activity" optional="show"/>
+<!--                <field name="activity_summary" string="Next activity description" optional="show"/>-->
+            </tree>
+        </field>
+    </record>
+
+    <record id="pnt_single_document_line_tree_view" model="ir.ui.view">
+        <field name="name">pnt.single.document.line.tree</field>
+        <field name="model">pnt.single.document.line</field>
+        <field name="arch" type="xml">
+            <tree string="Agreement"
+                  default_order="pnt_single_document_id"
+                  create="false"
+                  edit="false"
+                  delete="false"
+            >
+                <field name="pnt_single_document_id"
+                       readonly="1"
+                />
+                <field name="pnt_single_document_type"
+                       readonly="1"
+                />
+                <field name="pnt_product_id"
+                       readonly="1"
+                />
+                <field name="name"
+                       readonly="1"
+                />
+                <field name="pnt_scales_record_id"
+                       optional="hidden"
+                       readonly="1"
+                />
+                <field name="pnt_product_uom_qty"
+                       string="Peso"
+                       readonly="1"
+                />
+                <field name="pnt_output_weight_qty"
+                       readonly="1"
+                       string="output of weight"
+                       optional="hide"
+                />
+                <field name="pnt_product_uom"
+                       optional="show"
+                       readonly="1"
+                />
+                <field name="pnt_m3"
+                       readonly="1"
+                       optional="hide"
+                />
+                <field name="pnt_waste_ler_id"
+                       readonly="1"
+                />
+                <field name="pnt_waste_transfer_document_id"
+                       readonly="1"
+                       optional="hidden"
+                />
+                <field name="pnt_container_qty"
+                       readonly="1"
+                       string="Unidades"
+                />
+                <field name="pnt_container_id"
+                       optional="show"
+                       readonly="1"
+                />
+                <field name="pnt_container_movement_id"
+                       optional="hidden"
+                       readonly="1"
+                />
+                <field name="pnt_monetary_waste"
+                       readonly="1"
+                />
+                <field name="pnt_product_waste_id"
+                       readonly="1"
+                />
+                <field name="pnt_product_economic_uom_qty"
+                       string="UE quantity"
+                       readonly="1"
+                />
+                <field name="pnt_product_economic_uom"
+                       optional="show"
+                       readonly="1"
+                />
+                <field name="pnt_price_unit"
+                       readonly="1"
+                />
+                <field name="pnt_price_subtotal"
+                       readonly="1"
+                />
+                <field name="pnt_partner_delivery_id"
+                       optional="show"
+                       string="Place of delivery \ Pickup location"
+                       readonly="1"
+                />
+                <field name="pnt_certificate_number"
+                       optional="show"
+                       readonly="1"
+                />
+                <field name="pnt_description_line" invisible="0" optional="hide"/>
+<!--                <field name="pnt_customer_name" optional="hide"/>-->
+<!--                <field name="pnt_supplier_name" optional="hide"/>-->
+                <field name="pnt_agreement_id" optional="hide"/>
+                <field name="pnt_holder_id" optional="hide"/>
+                <field name="pnt_partner_pickup_id" optional="hide"/>
+                <field name="pnt_effective_date" optional="hide"/>
+                <field name="pnt_du_end_date" optional="hide"/>
+                <field name="pnt_date_to_plant" optional="hide"/>
+                <field name="state" optional="hide"/>
+                <field name="pnt_carrier_id" optional="hide"/>
+                <field name="pnt_license_plate" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="pnt_single_document_line_search_view" model="ir.ui.view">
+        <field name="name">pnt.single.document.line.search</field>
+        <field name="model">pnt.single.document.line</field>
+        <field name="arch" type="xml">
+            <search string="Search Document Lines">
+                <field name="pnt_holder_id"/>
+                <field name="pnt_single_document_id"/>
+                <field name="pnt_single_document_type"/>
+                <field name="pnt_product_id"/>
+                <field name="pnt_carrier_id"/>
+                <field name="pnt_effective_date"/>
+                <field name="pnt_waste_ler_id"/>
+                <field name="pnt_partner_pickup_id"/>
+                <field name="pnt_waste_transfer_document_id"/>
+                <field name="pnt_license_plate"/>
+                <group expand="1" string="Group By">
+                    <filter name="group_pnt_holder_id" string="Holder"
+                            context="{'group_by':'pnt_holder_id'}"/>
+                    <filter name="group_pnt_single_document_id" string="Document"
+                            context="{'group_by':'pnt_single_document_id'}"/>
+                    <filter name="group_pnt_single_document_type" string="Document Type"
+                            context="{'group_by':'pnt_single_document_type'}"/>
+                    <filter name="group_pnt_product_id" string="Product"
+                            context="{'group_by':'pnt_product_id'}"/>
+                    <filter name="group_pnt_carrier_id" string="Carrier"
+                            context="{'group_by':'pnt_carrier_id'}"/>
+                    <filter name="group_pnt_effective_date" string="Effective Date"
+                            context="{'group_by':'pnt_effective_date'}"/>
+                    <filter name="group_pnt_waste_ler_id" string="Waste LER"
+                            context="{'group_by':'pnt_waste_ler_id'}"/>
+                    <filter name="group_pnt_partner_pickup_id" string="Partner Pickup"
+                            context="{'group_by':'pnt_partner_pickup_id'}"/>
+                    <filter name="group_pnt_waste_transfer_document_id"
+                            string="Waste Transfer Document"
+                            context="{'group_by':'pnt_waste_transfer_document_id'}"/>
+                    <filter name="group_pnt_license_plate" string="License Plate"
+                            context="{'group_by':'pnt_license_plate'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="pnt_single_document_form_view" model="ir.ui.view">
+        <field name="name">pnt.single.document.form</field>
+        <field name="model">pnt.single.document</field>
+        <field name="priority">16</field>
+        <field name="arch" type="xml">
+            <form string="Single document">
+                <div class="alert alert-warning"
+                     role="alert"
+                     attrs="{'invisible': ['|', ('pnt_single_document_type', 'in', ['portal']), ('pnt_admitted', '=', False)]}">Admitted</div>
+                <div class="alert alert-warning"
+                     role="alert"
+                     attrs="{'invisible': ['|', ('pnt_single_document_type', 'not in', ['output']), ('pnt_force_in_final_manager', '=', False)]}">In final manager</div>
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="newdu,dispached,done,received,finished"/>
+                    <field name="pnt_show_create_service" invisible="1"/>
+                    <field name="pnt_admitted" invisible="1"/>
+                    <field name="pnt_force_in_final_manager" invisible="1"/>
+                    <button name="action_done" id="action_done"
+                            string="Generate service" class="btn-primary" type="object"
+                            groups="custom_pnt.group_pnt_single_document_manager"
+                            attrs="{'invisible': ['|',('pnt_show_create_service','=',False),
+                                                  ('state', 'not in', ['dispached']),]}"
+                    />
+                    <button name="action_done_portal" id="action_done_portal"
+                            string="Confirm weights" class="btn-primary" type="object"
+                            groups="custom_pnt.group_pnt_single_document_manager"
+                            attrs="{'invisible': ['|',('pnt_show_create_service','!=',False),
+                                                  ('state', 'not in', ['dispached']),]}"
+                    />
+                    <button name="action_unlocked" id="action_unlocked"
+                            string="Unlocked" type="object"
+                            groups="custom_pnt.group_pnt_single_document_admin"
+                            attrs="{'invisible': [('state', 'not in', ['done'])]}"
+                    />
+                    <button name="action_received" id="action_received"
+                            string="Confirm Receive" type="object"
+                            groups="custom_pnt.group_pnt_single_document_admin"
+                            attrs="{'invisible': ['|',('state', 'not in', ['plant']),
+                                                  ('pnt_single_document_type', 'in',['output'])]}"
+                    />
+                    <button name="action_received" id="action_received"
+                            string="Confirm Departure" type="object"
+                            groups="custom_pnt.group_pnt_single_document_admin"
+                            attrs="{'invisible': ['|',('state', 'not in', ['plant']),
+                                                  ('pnt_single_document_type', 'not in',['output'])]}"
+                    />
+                    <button name="action_inplant" id="action_inplant"
+                            string="Receive" type="object"
+                            groups="custom_pnt.group_pnt_single_document_admin"
+                            attrs="{'invisible': ['|',('state', 'not in', ['done']),
+                                                  ('pnt_single_document_type', 'in',['output'])]}"
+                    />
+                    <button name="action_inplant" id="action_inplant"
+                            string="Output weight" type="object"
+                            groups="custom_pnt.group_pnt_single_document_admin"
+                            attrs="{'invisible': ['|',('state', 'not in', ['done']),
+                                                  ('pnt_single_document_type', 'not in',['output'])]}"
+                    />
+                    <button name="action_finished" id="action_finished"
+                            string="Generate documents" type="object"
+                            groups="custom_pnt.group_pnt_single_document_admin"
+                            attrs="{'invisible': ['|',
+                                    ('state', 'not in', ['received']),
+                                    ('pnt_single_document_type', 'in', ['internal']),
+                            ]}"
+                    />
+                    <button name="action_cancel" id="action_cancel"
+                            confirm="Are you sure you want to cancel the document?"
+                            string="Cancel" type="object"
+                            attrs="{'invisible': [('state', 'in', ['newdu','cancel', 'finished'])]}"
+                    />
+                    <button name="create_returns" id="action_material_return_id"
+                            confirm="Are you sure you want to return the document?"
+                            string="Material return" type="object"
+                            attrs="{'invisible': [('state', 'not in', ['finished'])]}"
+                    />
+                    <button name="create_invoice" id="action_create_invoice_id"
+                            string="Create invoices " type="object"
+                            attrs="{'invisible': ['|',('state', 'not in', ['finished']),
+                                                   ('pnt_single_document_type','not in',['portal','metal'])]}"
+                    />
+                    <button name="generate_di"
+                            type="object"
+                            string="Generate DI"
+                            context="{'default_pnt_single_document_id' : active_id,
+                                      'default_pnt_document_type' : 'di',
+                                      'default_pnt_type': 'other'}"
+                            attrs="{'invisible': [('pnt_single_document_type','in',['portal','metal'])]}"/>
+                    <button name="button_set_admitted" string="Force as admitted"
+                            type="object"
+                            attrs="{'invisible': ['|', '|', ('pnt_single_document_type', 'in', ['portal']), ('pnt_admitted', '=', True), ('state', '!=', 'received')]}"
+                            groups="custom_pnt.group_pnt_single_document_force_admitted"/>
+                    <button name="button_set_in_final_manager" string="In final manager"
+                            type="object"
+                            attrs="{'invisible': ['|',
+                                                  '|',
+                                                  ('pnt_single_document_type', '!=', 'output'),
+                                                  ('pnt_force_in_final_manager', '=', True),
+                                                  ('state','not in',['received']),
+                                    ]}"
+                            groups="custom_pnt.group_pnt_single_document_force_admitted"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button type="object"
+                                name="action_view_task"
+                                class="oe_stat_button"
+                                icon="fa-tasks"
+                                string="Service"
+                                attrs="{'invisible': [('task_id', '=', False)]}"
+                                groups="project.group_project_user">
+                            <field name="task_id" invisible="1"/>
+                        </button>
+                        <button
+                                name="action_view_stock_picking"
+                                class="oe_stat_button"
+                                icon="fa-truck"
+                                type="object"
+                                attrs="{'invisible': [('picking_count', '=', 0)]}"
+                        >
+                            <field
+                                    string="Pickings"
+                                    name="picking_count"
+                                    widget="statinfo"
+                            />
+                        </button>
+                        <button
+                                name="action_view_purchase_order"
+                                class="oe_stat_button"
+                                icon="fa-shopping-cart"
+                                type="object"
+                                attrs="{'invisible': [('purchase_count', '=', 0)]}"
+                        >
+                            <field
+                                    string="Purchases"
+                                    name="purchase_count"
+                                    widget="statinfo"
+                            />
+                        </button>
+                        <button
+                                name="action_view_purchase_invoice"
+                                class="oe_stat_button"
+                                icon="fa-pencil-square-o"
+                                type="object"
+                                attrs="{'invisible': [('purchase_invoice_count', '=', 0)]}"
+                        >
+                            <field
+                                    string="Purchase invoices pnt"
+                                    name="purchase_invoice_count"
+                                    widget="statinfo"
+                            />
+                        </button>
+                        <button
+                                name="action_view_sale_order"
+                                class="oe_stat_button"
+                                icon="fa-dollar"
+                                type="object"
+                                attrs="{'invisible': [('sale_count', '=', 0)]}"
+                        >
+                            <field
+                                    string="Sales"
+                                    name="sale_count"
+                                    widget="statinfo"
+                            />
+                        </button>
+                        <button
+                                name="action_view_sale_invoice"
+                                class="oe_stat_button"
+                                icon="fa-pencil-square-o"
+                                type="object"
+                                attrs="{'invisible': [('sale_invoice_count', '=', 0)]}"
+                        >
+                            <field
+                                    string="Sale invoices pnt"
+                                    name="sale_invoice_count"
+                                    widget="statinfo"
+                            />
+                        </button>
+                        <field name="pnt_single_document_issue_project_count" invisible="1"/>
+                        <button
+                                name="action_view_issue_project"
+                                class="oe_stat_button"
+                                icon="fa-book"
+                                type="object"
+                                attrs="{'invisible': [('pnt_single_document_issue_project_count', '=', 0)]}"
+                        >
+                            <field
+                                    string="Issues"
+                                    name="pnt_single_document_issue_project_count"
+                                    widget="statinfo"
+                            />
+                        </button>
+                        <button
+                                name="action_view_di"
+                                class="oe_stat_button"
+                                icon="fa-clipboard"
+                                type="object"
+                                attrs="{'invisible': [('pnt_di_count', '=', 0)]}"
+                        >
+                            <field
+                                    string="DI"
+                                    name="pnt_di_count"
+                                    widget="statinfo"
+                            />
+                        </button>
+                    </div>
+                    <field name="active" invisible="1"/>
+                    <widget name="web_ribbon" title="Archived"
+                            bg_color="bg-danger"
+                            attrs="{'invisible': [('active', '=', True)]}"/>
+                    <div class="oe_title">
+                        <group>
+                            <group>
+                                <h1>
+                                    <field name="name" readonly="1"/>
+                                </h1>
+                            </group>
+                            <group>
+                                <field name="pnt_du_dest_id"
+                                       readonly="1"
+                                       force_save="1"
+                                       attrs="{'invisible': [('pnt_du_dest_id', '=', False)]}"
+                                />
+                            </group>
+                        </group>
+                    </div>
+                    <group name="pnt_single_document_header">
+                        <group>
+                            <field name="project_id"
+                                   readonly="1"
+                                   required="1"
+                                   invisible="1"
+                            />
+                            <field name="pnt_single_document_type"
+                                   readonly="0"
+                                   required="1"
+                            />
+                            <field name="pnt_create_service"
+                                   readonly="0"
+                                   required="1"
+                                   attrs="{'invisible': [('pnt_single_document_type', 'not in', ['others','output','internal'])],
+                                           'readonly': [('state', 'in', ['finished'])]
+                                   }"
+                            />
+                            <field name="pnt_holder_id"
+                                   required="1"
+                                   attrs="{'invisible': [('pnt_single_document_type', 'in', ['portal','internal'])]}"
+                            />
+                            <field name="pnt_partner_pickup_domain_ids" invisible="1"/>
+                            <field name="pnt_partner_pickup_id_locked"
+                                   string="Bloquejar"
+                                   invisible="1"
+                            />
+                            <field name="pnt_partner_pickup_id"
+                                   required="1"
+                                   string="Titular"
+                                   force_save="1"
+                                   domain="[('id','in',pnt_partner_pickup_domain_ids)]"
+                                   attrs="{
+                                    'invisible': [('pnt_single_document_type', 'not in', ['portal'])],
+                                    'readonly': [
+                                    '|',
+                                    '&amp;',
+                                    ('pnt_single_document_type', '!=', 'portal'),
+                                    ('state', 'not in', ('newdu','dispached')),
+                                    '&amp;',
+                                    ('pnt_single_document_type', '=', 'portal'),
+                                    ('state', 'not in', ('newdu','dispached', 'done', 'plant','received'))],
+                                   }"
+                            />
+                            <field name="pnt_partner_pickup_id"
+                                   required="1"
+                                   force_save="1"
+                                   string="Entrega"
+                                   domain="[('id','in',pnt_partner_pickup_domain_ids)]"
+                                   attrs="{'invisible': [('pnt_single_document_type', 'not in', ['output'])]}"
+                            />
+                            <field name="pnt_partner_pickup_id"
+                                   required="1"
+                                   force_save="1"
+                                   string="Recogida"
+                                   domain="[('id','in',pnt_partner_pickup_domain_ids)]"
+                                   attrs="{'invisible': [('pnt_single_document_type', 'in', ['portal','others','output'])]}"
+                            />
+                            <field name="pnt_agreement_domain_ids"
+                                   invisible="1"
+                            />
+                            <field name="pnt_agreement_id"
+                                   domain="[('id','in',pnt_agreement_domain_ids)]"
+                                   attrs="{'invisible': [('pnt_single_document_type', 'in', ['internal'])],
+                                           'required': [('pnt_single_document_type', 'not in', ['internal'])]}"
+                            />
+                            <field name="pnt_agreement_count"
+                                   readonly="1"
+                                   force_save="1"
+                                   string="Number of active contracts"
+                                   attrs="{'invisible': ['|',
+                                                         ('pnt_agreement_count', '=', 0),
+                                                         ('pnt_agreement_count', '=', 1)]}"
+                            />
+                            <field name="pnt_variable_direction"
+                                   readonly="1"
+                                   attrs="{'invisible': [('pnt_single_document_type', 'in', ['portal','others','internal'])]}"
+                            />
+                            <div class="o_address_format"
+                                 attrs="{'invisible': [('pnt_single_document_type', 'in', ['portal','others','internal'])]}"
+                            >
+                                <field name="street" placeholder="Street..." class="o_address_street"
+                                       attrs="{'readonly': [('pnt_variable_direction', '=', False)]}"
+                                       force_save="1"
+                                />
+                                <field name="street2" placeholder="Street 2..." class="o_address_street"
+                                       attrs="{'readonly': [('pnt_variable_direction', '=', False)]}"
+                                       force_save="1"
+                                />
+                                <field name="city" placeholder="City" class="o_address_city"
+                                       attrs="{'readonly': [('pnt_variable_direction', '=', False)]}"
+                                       force_save="1"
+                                />
+                                <field name="state_id" class="o_address_state" placeholder="State"
+                                       options="{'no_open': True, 'no_quick_create': True}"
+                                       context="{'country_id': country_id, 'default_country_id': country_id, 'zip': zip}"
+                                       attrs="{'readonly': [('pnt_variable_direction', '=', False)]}"
+                                       force_save="1"
+                                />
+                                <field name="zip" placeholder="ZIP" class="o_address_zip"
+                                       attrs="{'readonly': [('pnt_variable_direction', '=', False)]}"
+                                       force_save="1"
+                                />
+                                <field name="country_id" placeholder="Country" class="o_address_country"
+                                       options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"
+                                       attrs="{'readonly': [('pnt_variable_direction', '=', False)]}"
+                                       force_save="1"
+                                />
+                            </div>
+                            <field name="pnt_partner_delivery_domain_ids" invisible="1"/>
+                            <field name="pnt_partner_delivery_id"
+                                   required="1"
+                                   domain="[('id','in', pnt_partner_delivery_domain_ids)]"
+                                   string="Place of delivery"
+                                   attrs="{'invisible': [('pnt_single_document_type', 'in', ['portal','others','output'])]}"
+                            />
+                            <field name="pnt_partner_delivery_id"
+                                   required="1"
+                                   domain="[('id','in', pnt_partner_delivery_domain_ids)]"
+                                   string="Pickup location"
+                                   attrs="{'invisible': [('pnt_single_document_type', 'not in', ['output'])]}"
+                            />
+                            <field name="pnt_producer_id"
+                                   readonly="1"
+                                   attrs="{'invisible': [('pnt_single_document_type', 'in', ['portal','others','internal','output'])]}"
+                            />
+                            <field name="pnt_there_is_waste"
+                                   readonly="1"
+                                   invisible="1"
+                            />
+                        </group>
+                        <group>
+                            <field name="create_date"
+                                   readonly="1"
+                            />
+                            <field name="pnt_scales_domain_ids" invisible="1"/>
+                            <field name="pnt_scales_id"
+                                   readonly="0"
+                                   attrs="{'invisible': [('pnt_single_document_type', 'in', ['others','pickup','output','marpol']),
+                                                         ('state', 'in', ['newdu','dispached','active','done']),],
+                                           'readonly': [('state', 'in', ['finished'])]
+                                   }"
+                                   domain="[('id', 'in', pnt_scales_domain_ids)]"
+                            />
+                            <field name="pnt_pickup_date_type"
+                                   attrs="{'readonly': [('pnt_single_document_type', 'in', ['output']),
+                                                        ('state', 'in', ['finished']),],
+                                           'invisible': [('pnt_single_document_type', 'not in', ['output']),]}"
+                            />
+                            <field name="pnt_pickup_date_type"
+                                   readonly="0"
+                                   widget="radio"
+                                   attrs="{'invisible': [('pnt_single_document_type', 'in', ['output']),],
+                                           'readonly': [('state', 'in', ['finished'])]
+                                   }"
+                            />
+                            <field name="pnt_pickup_date"
+                                   required="1"
+                                   attrs="{'invisible': [('pnt_pickup_date_type', '=', 'soon')]}"
+                            />
+                            <field name="pnt_effective_date"/>
+                            <field name="pnt_du_end_date"/>
+                            <field name="pnt_date_to_plant"
+                                   readonly="1"
+                                   invisible="1"
+                            />
+                            <field name="pnt_vehicle_category_id"
+                                   options="{'no_create': True,}"
+                                   attrs="{'invisible': [('pnt_single_document_type', '=', 'portal')],
+                                           'required': [('pnt_single_document_type', '!=', 'toplant'), ('pnt_create_service','=','yes')],}"
+                            />
+                            <field name="pnt_carrier_id"
+                                   attrs="{'readonly': ['|', ('pnt_vehicle_category_id', '=', False), ('state', '=', 'finished')], 'invisible': [('pnt_single_document_type', '!=', 'toplant'), ('pnt_create_service', '=', 'no')]}"
+                                   options="{'no_create': True}"
+                            />
+                            <field name="pnt_domain_transport_ids" invisible="1"/>
+                            <field name="pnt_transport_id"
+                                   attrs="{'invisible': ['|',
+                                                         ('pnt_vehicle_category_id', '=', 12),
+                                                         ('pnt_single_document_type', 'not in', ['marpol','output']),
+                                                         ('pnt_transport_id', '=', False),
+                                                         ]}"
+                                   options="{'no_create': True}"
+                                   domain="[('id', 'in', pnt_domain_transport_ids)]"
+                                   force_save="1"
+                            />
+                            <field name="pnt_show_vehicle" invisible="1"/>
+                            <field name="pnt_show_vehicle_aux" invisible="1"/>
+                            <field name="pnt_domain_vehicle_ids" invisible="1"/>
+                            <field name="pnt_vehicle_id"
+                                   options="{'no_create': True,}"
+                                   domain="[('id', 'in', pnt_domain_vehicle_ids)]"
+                                   attrs="{'invisible': [('pnt_show_vehicle', '=', False)]}"
+                                   force_save="1"
+                            />
+                            <field name="pnt_vehicle_aux_id"
+                                   options="{'no_create': True}"
+                                   domain="[('id', 'in', pnt_domain_vehicle_ids)]"
+                                   attrs="{'invisible': [('pnt_show_vehicle_aux', '=', False)]}"
+                            />
+                            <field name="pnt_vehicle_second_registration"
+                                   attrs="{'invisible': [('pnt_vehicle_category_id', '!=', 12),],
+                                           'readonly': [('state', 'in', ['finished'])],
+                                   }"
+                            />
+                            <field name="pnt_operator_id"
+                                   attrs="{
+                                            'invisible': [('pnt_single_document_type', 'in', ['portal','others'])],
+                                            'readonly': [('state','in',['finished', 'cancel'])]
+                                   }"
+                            />
+                            <field name="pnt_logistic_route_id"
+                                   attrs="{'invisible': [('pnt_single_document_type', 'in', ['output','portal'])],
+                                           'readonly': [('state', 'in', ['finished'])],
+                                   }"
+                            />
+                            <field name="pnt_order_reference"
+                            />
+                            <field name="pnt_stock_picking_id" invisible="1"/>
+                            <field name="pnt_stock_picking_ids"
+                                   invisible="1"
+                                   widget="many2many_tags"
+                            />
+                            <field name="pnt_purchase_order_id" invisible="1"/>
+                            <field name="pnt_purchase_order_ids"
+                                   invisible="1"
+                                   widget="many2many_tags"
+                            />
+                            <field name="pnt_sale_order_ids"
+                                   invisible="1"
+                                   widget="many2many_tags"
+                            />
+                            <field name="pnt_metal_scales_description"
+                                   readonly="0"
+                                   attrs="{'invisible': [('pnt_single_document_type', '!=', 'metal')]}"
+                            />
+                            <field name="pnt_last_weighing_qty"
+                                   invisible="1"
+                            />
+                            <field name="currency_id"
+                                   invisible="1"
+                            />
+                            <field name="pnt_amount_total_sale"
+                                   readonly="1"
+                                   widget="monetary"
+                                   attrs="{'invisible': [('company_id', '=', 1), ('pnt_single_document_type', '!=', 'portal')]}"
+                                   options="{'currency_field': 'currency_id'}"
+                            />
+                            <field name="pnt_amount_total_purchase"
+                                   readonly="1"
+                                   widget="monetary"
+                                   attrs="{'invisible': [('company_id', '=', 1), ('pnt_single_document_type', '!=', 'portal')]}"
+                                   options="{'currency_field': 'currency_id'}"
+                            />
+                            <field name="pnt_load_du_visible" invisible="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="pnt_single_document_lines"
+                              string="Lines"
+                        >
+                            <field name="pnt_show_du_lines" invisible="1"/>
+                            <field name="pnt_single_document_line_ids"
+                                   widget="section_and_note_one2many"
+                                   mode="tree,kanban"
+                                   attrs="{'invisible': [('pnt_show_du_lines', '=', False)]}"
+                            >
+                                <tree string="Single Document Lines"
+                                      editable="bottom">
+                                    <control>
+                                        <create name="add_product_control" string="Add a product"/>
+                                        <create name="add_section_control" string="Add a section"
+                                                context="{'default_display_type': 'line_section'}"/>
+                                        <create name="add_note_control" string="Add a note"
+                                                context="{'default_display_type': 'line_note'}"/>
+                                    </control>
+                                    <field name="state" invisible="1" attrs="{'readonly': [('state', 'in', ['finished'])]}"/>
+                                    <field name="sequence" widget="handle" attrs="{'readonly': [('state', 'in', ['finished'])]}"/>
+                                    <field name="display_type" invisible="1" attrs="{'readonly': [('state', 'in', ['finished'])]}"/>
+                                    <field name="company_id" invisible="1" attrs="{'readonly': [('state', 'in', ['finished'])]}"/>
+                                    <field name="pnt_is_waste" invisible="1" attrs="{'readonly': [('state', 'in', ['finished'])]}"/>
+                                    <field name="pnt_is_container" invisible="1" attrs="{'readonly': [('state', 'in', ['finished'])]}"/>
+                                    <field name="pnt_single_document_type" invisible="1" attrs="{'readonly': [('state', 'in', ['finished'])]}"/>
+                                    <field name="authorized_products_domain_ids" invisible="1" attrs="{'readonly': [('state', 'in', ['finished'])]}"/>
+                                    <field name="pnt_product_type" invisible="1" attrs="{'readonly': [('state', 'in', ['finished'])]}"/>
+                                    <field name="pnt_agreement_line_id" invisible="1" attrs="{'readonly': [('state', 'in', ['finished'])]}"/>
+                                    <field name="pnt_rental" invisible="1" attrs="{'readonly': [('state', 'in', ['finished'])]}"/>
+                                    <field name="pnt_second_weighing" invisible="1" string="Segundo peso" attrs="{'readonly': [('state', 'in', ['finished'])]}"/>
+                                    <field name="pnt_product_id"
+                                           required="1"
+                                           domain="[('id','in',authorized_products_domain_ids)]"
+                                           options="{'no_quick_create':True,'no_create_edit':True,'no_open': False,}"
+                                           attrs="{'readonly': [('state', 'in', ['finished'])]}"
+                                    />
+                                    <field name="name"
+                                           required="0"
+                                           invisible="1"
+                                           attrs="{'readonly': [('state', 'in', ['finished'])]}"
+                                    />
+                                    <button name="scale_record"
+                                            type="object"
+                                            string="Pesar"
+                                            icon="fa-dashboard"
+                                            class="oe_read_only"
+                                            attrs="{'readonly': [('state', 'in', ['finished'])], 'invisible': [('state', 'in', ['cancel', 'finished',])]}"
+                                    />
+                                    <field name="pnt_scales_record_id"
+                                           optional="hidden"
+                                           readonly="1"
+                                           force_save="1"
+                                    />
+                                    <field name="pnt_product_uom_qty"
+                                           string="Peso"
+                                           attrs="{'invisible': ['|',('state', 'in', [ 'active', 'cancel']),
+                                                                ('pnt_single_document_type', 'not in', ['portal','pickup','output','toplant','others','internal','marpol']),
+                                                                ],
+                                                   'readonly': [('state', 'in', ('done','cancel','finished'))]
+                                                 }"
+                                    />
+                                    <field name="pnt_output_weight_qty"
+                                           readonly="1"
+                                           string="output of weight"
+                                           attrs="{'column_invisible': ['|',
+                                                                        '|',
+                                                                        ('parent.pnt_single_document_type', '!=', 'output'),
+                                                                        ('parent.state', 'not in', ['received','finished']),
+                                                                        ('parent.pnt_force_in_final_manager', '!=', True)]}"
+                                    />
+                                    <field name="pnt_product_uom"
+                                           optional="show"
+                                           readonly="1"
+                                           force_save="1"
+                                    />
+                                    <field name="pnt_lot_id"
+                                           attrs="{'readonly': ['|', ('pnt_is_container', '=', False), ('state', 'in', ['finished'])]}"
+                                           domain="[('product_id','=',pnt_product_id)]"
+                                           options="{'no_create': True,}"
+                                           optional="show"
+                                           invisible="1"
+                                    />
+                                    <field name="pnt_m3"
+                                           attrs="{'readonly': [('state', 'in', ['finished'])], 'column_invisible': [('parent.pnt_single_document_type', '!=', 'marpol')]}"
+                                    />
+                                    <field name="pnt_waste_ler_id" readonly="1"/>
+                                    <field name="pnt_waste_transfer_document_id"
+                                           readonly="1"
+                                           optional="hidden"
+                                    />
+                                    <field name="authorized_containers_domain_ids" invisible="1"/>
+                                    <field name="pnt_container_qty"
+                                           attrs="{'readonly': [('state', 'in', ['finished'])], 'column_invisible': [('parent.pnt_single_document_type', '=', 'portal')]}"
+                                           string="Unidades"
+                                    />
+                                    <field name="pnt_container_id"
+                                           attrs="{'readonly': ['|', ('state', 'in', ['finished']), ('pnt_product_type', '=', 'service'), ('pnt_rental', '=', False)], 'required': ['|', ('pnt_is_waste', '=', True), '&amp;', ('pnt_product_type', '=', 'service'), ('pnt_rental', '=', True)]}"
+                                           domain="[('id', 'in', authorized_containers_domain_ids)]"
+                                           options="{'no_create': True,}"
+                                           optional="show"
+                                    />
+                                    <button name="container_movement"
+                                            type="object"
+                                            string="Movimiento"
+                                            icon="fa-compress"
+                                            class="oe_read_only"
+                                            attrs="{'readonly': [('state', 'in', ['finished'])], 'invisible': ['|',('state', 'in', ['cancel']),
+                                                                  ('pnt_single_document_type', '!=', 'pickup'),
+                                                                ]
+                                                 }"
+                                    />
+                                    <field name="pnt_container_movement_id"
+                                           optional="hidden"
+                                           readonly="1"
+                                           force_save="1"
+                                    />
+                                    <field name="pnt_monetary_waste"
+                                           attrs="{'readonly': [('state', 'in', ['finished'])], 'invisible': [('state', 'in', ['active', 'cancel'])]}"
+                                    />
+                                    <field name="pnt_domain_product_waste_ids" invisible="1" attrs="{'readonly': [('state', 'in', ['finished'])]}"/>
+                                    <field name="pnt_product_waste_id"
+                                           attrs="{'readonly': ['|', '|', ('state', 'in', ['finished']), ('pnt_product_type', '!=', 'service'), ('pnt_rental', '=', False)], 'required': [('pnt_product_type', '=', 'service'), ('pnt_rental', '=', True)]}"
+                                           domain="[('id', 'in', pnt_domain_product_waste_ids)]"
+                                           options="{'no_create': True,}"/>
+                                    <field name="pnt_product_economic_uom_qty"
+                                           attrs="{'invisible': [('state', 'in', ['newdu', 'dispached', 'active', 'cancel'])]}"
+                                           string="UE quantity"
+                                           readonly="1"
+                                           force_save="1"
+                                    />
+                                    <field name="pnt_product_economic_uom"
+                                           optional="show"
+                                           readonly="1"
+                                           force_save="1"
+                                    />
+                                    <field name="pnt_price_unit"
+                                           attrs="{'invisible': [('state', 'in', ['newdu', 'dispached', 'active', 'cancel'])],
+                                                   'readonly': ['|', ('state', 'in', ['finished']), ('pnt_single_document_type', '!=', 'portal')]}"
+                                           force_save="1"
+                                    />
+                                    <field name="pnt_price_subtotal"
+                                           attrs="{'invisible': [('state', 'in', ['newdu', 'dispached', 'active', 'cancel'])]}"
+                                           readonly="1"
+                                           force_save="1"
+                                    />
+                                    <field name="pnt_partner_delivery_id"
+                                           optional="show"
+                                           string="Place of delivery"
+                                           domain="[('id','in', parent.pnt_partner_delivery_domain_ids)]"
+                                           attrs="{'readonly': [('state', 'in', ['finished'])], 'invisible': [('pnt_single_document_type','in',['output'])]}"
+                                    />
+                                    <field name="pnt_partner_delivery_id"
+                                           optional="show"
+                                           string="Pickup location"
+                                           domain="[('id','in', parent.pnt_partner_delivery_domain_ids)]"
+                                           attrs="{'readonly': [('state', 'in', ['finished'])], 'invisible': [('pnt_single_document_type','not in',['output'])]}"
+                                    />
+                                    <field name="pnt_certificate_number"
+                                           optional="show"
+                                           readonly="0"/>
+                                    <field name="pnt_fleet_vehicle_category_ids"
+                                           attrs="{'readonly': ['|', '|', ('state', 'in', ['finished']), ('pnt_is_waste', '=', True), ('pnt_is_container', '=', True)],}"
+                                           widget="many2many_tags"
+                                           optional="show"
+                                           invisible="1"
+                                    />
+                                    <field name="pnt_product_container_ids"
+                                           attrs="{'readonly': ['|', '|', ('state', 'in', ['finished']), ('pnt_is_waste', '=', True), ('pnt_is_container', '=', True)]}"
+                                           widget="many2many_tags"
+                                           optional="show"
+                                           invisible="1"
+                                    />
+<!--                                    <field name="pnt_supplier_name" optional="hide" attrs="{'readonly': [('state', 'in', ['finished'])]}"/>-->
+<!--                                    <field name="pnt_customer_name" optional="hide" attrs="{'readonly': [('state', 'in', ['finished'])]}"/>-->
+                                    <field name="pnt_description_line" optional="hide" attrs="{'readonly': [('state', 'in', ['finished'])]}"/>
+                                    <field name="pnt_task_flag" invisible="1" attrs="{'readonly': [('state', 'in', ['finished'])]}"/>
+                                    <button name="pnt_action_create_new_issue"
+                                            id="pnt_action_create_new_issue"
+                                            attrs="{
+                                            'readonly': [('state', 'in', ['finished'])],
+                                            'invisible': [
+                                            ('pnt_task_flag', '=', False),
+                                            ],
+                                            }"
+                                            icon="fa-info"
+                                            string="Create issue"
+                                            type="object"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page name="pnt_other_information" string="Other Info">
+                            <group>
+                                <group name="pnt_user_info">
+                                    <field name="pnt_user_id" attrs="{'readonly': [('state', 'not in', ('newdu', 'dispached'))]}"/>
+                                    <field name="company_id"
+                                           readonly="1"
+                                    />
+                                    <field name="pnt_agreement_reference"
+                                           readonly="1"
+                                           force_save="1"
+                                    />
+                                    <field name="pnt_hours"
+                                           widget="float_time"
+                                           attrs="{'readonly': [('state', 'in', ('finished',))]}"
+                                    />
+                                    <field name="pnt_check_number_certificate_single" invisible="1"/>
+                                    <field name="pnt_group_lines"
+                                           attrs="{'readonly': [('state', 'in', ['finished'])]}"
+                                    />
+                                    <field name="pnt_filename_du_signed" invisible="1"/>
+                                    <field name="pnt_du_signed_file" filename="pnt_filename_du_signed"/>
+                                    <field name="pnt_date_email_sent"
+                                           readonly="1"
+                                           force_save="1"
+                                    />
+                                </group>
+                                <group name="pnt_agreement_info">
+                                    <field name="pnt_customer_payment_mode_id"/>
+                                    <field name="pnt_customer_payment_term_id"/>
+                                    <field name="pnt_supplier_payment_mode_id"/>
+                                    <field name="pnt_supplier_payment_term_id"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page name="pnt_page_observations" string="Observaciones">
+                            <field name="pnt_observations" readonly="0"/>
+                        </page>
+                        <page name="pnt_single_holder_portal" string="Terceros"
+                              attrs="{'invisible': [('pnt_single_document_type', 'not in', ['portal', 'metal'])]}">
+                            <field name="pnt_single_document_holder_portal_ids"
+                                   attrs="{'invisible': [('pnt_single_document_type', 'not in', ['portal', 'metal'])]}"
+                            >
+                                <tree string="Single Document holder Portal"
+                                      editable="bottom">
+                                    <field name="state" invisible="1"/>
+                                    <field name="company_id" invisible="1"/>
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="pnt_partner_id"
+                                           string="Tercero"
+                                           options="{'no_quick_create':True,'no_create_edit':True,'no_open': True,}"
+                                    />
+                                    <field name="pnt_monetary_waste"
+                                           string="Tipo"
+                                    />
+                                    <field name="pnt_percent"
+                                           string="%"
+                                           readonly="1"
+                                           invisible="1"
+                                    />
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Marpol" name="marpol" attrs="{'invisible': [('pnt_single_document_type', '!=', 'marpol')]}">
+                            <group>
+                                <field name="pnt_ship_scale_num"/>
+                                <field name="pnt_control_sheet_ids">
+                                    <tree editable="bottom">
+                                        <field name="pnt_name"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="pnt_single_document_logistic_form_view" model="ir.ui.view">
+        <field name="model">pnt.single.document</field>
+        <field name="inherit_id" ref="pnt_single_document_form_view"/>
+        <field name="mode">primary</field>
+        <field name="priority">20</field>
+        <field name="arch" type="xml">
+            <field name="pnt_single_document_type" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="pnt_single_document_type" position="after">
+                <field name="pnt_single_document_type_logistic" readonly="0" required="1"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="pnt_single_document_form_metal_scale_view" model="ir.ui.view">
+        <field name="name">pnt.single.document.form.metal.scale.view</field>
+        <field name="model">pnt.single.document</field>
+        <field name="priority">16</field>
+        <field name="arch" type="xml">
+            <form string="Metal scale"
+                  edit="false"
+                  create="false"
+            >
+                <header>
+                </header>
+                <sheet>
+                    <div>
+                        <group>
+                            <group>
+                                <field name="name"
+                                       readonly="1"
+                                       string="DU"
+                                       style="font-size:18pt;"
+                                />
+                                <field name="pnt_partner_pickup_id_name"
+                                       invisible="0"
+                                       readonly="1"
+                                       style="font-size:18pt;"
+                                       string="Titular"
+                                />
+                                <field name="pnt_scales_id"
+                                       readonly="1"
+                                       force_save="1"
+                                       invisible="1"
+                                       style="font-size:18pt;"
+                                />
+                            </group>
+                            <group>
+                                <field name="pnt_pickup_date"
+                                       readonly="1"
+                                       force_save="1"
+                                       string="Date"
+                                       style="font-size:18pt;"
+                                />
+                                <field name="pnt_metal_scales_description"
+                                       readonly="0"
+                                       style="font-size:18pt;"
+                                />
+                                <field name="pnt_last_weighing_qty"
+                                       invisible="1"
+                                />
+                            </group>
+                        </group>
+                    </div>
+                    <group name="pnt_single_document_header">
+                        <group>
+                            <field name="pnt_single_document_type"
+                                   readonly="1"
+                                   required="1"
+                                   force_save="1"
+                                   invisible="1"
+                            />
+                            <field name="pnt_holder_id"
+                                   readonly="1"
+                                   force_save="1"
+                                   invisible="1"
+                            />
+                            <field name="pnt_partner_pickup_domain_ids" invisible="1"/>
+                            <field name="pnt_partner_pickup_id"
+                                   required="0"
+                                   domain="[('id','in',pnt_partner_pickup_domain_ids)]"
+                                   invisible="1"
+                            />
+                            <field name="pnt_partner_delivery_id"
+                                   readonly="1"
+                                   force_save="1"
+                                   invisible="1"
+                            />
+                            <field name="pnt_producer_id"
+                                   readonly="1"
+                                   force_save="1"
+                                   invisible="1"
+                            />
+                        </group>
+                        <group>
+                            <field name="state"
+                                   invisible="1"
+                            />
+                            <field name="company_id"
+                                   invisible="1"
+                            />
+                            <field name="pnt_agreement_id"
+                                   readonly="1"
+                                   force_save="1"
+                                   invisible="1"
+                            />
+                            <field name="pnt_pickup_date_type"
+                                   readonly="1"
+                                   force_save="1"
+                                   invisible="1"
+                            />
+                        </group>
+                    </group>
+                    <group>
+                        <notebook>
+                            <page string="Products" name="products">
+                                <field name="pnt_product_product_metal_scale_ids"
+                                       mode="kanban"
+                                       attrs="{'invisible': [('id', '=', False)],}"
+                                >
+                                    <kanban class="o_kanban_mobile">
+                                        <field name="pnt_product_id"/>
+                                        <templates>
+                                            <t t-name="kanban-box">
+                                                <div class="oe_kanban_card oe_kanban_global_click"
+                                                     style="width:175px">
+                                                    <div class="o_kanban_content text-center"
+                                                         style="padding-top:20px;padding-bottom:20px">
+                                                        <t t-esc="record.pnt_product_id.value"/>
+                                                    </div>
+                                                </div>
+                                            </t>
+                                        </templates>
+                                    </kanban>
+                                </field>
+                            </page>
+                        </notebook>
+                        <notebook>
+                            <page string="Lines" name="lines">
+                                <field name="pnt_single_document_line_ids"
+                                       attrs="{'invisible': [('id', '=', False)],}"
+                                       style="font-size:18pt;"
+                                >
+                                    <tree create="0" delete="0" edit="0">
+                                        <field name="state" invisible="1"/>
+                                        <field name="pnt_product_id"
+                                               readonly="1"
+                                        />
+                                        <button name="scale_record_metal"
+                                                type="object"
+                                                string="Pesar"
+                                                icon="fa-dashboard"
+                                                class="oe_read_only"
+                                                style="font-size:14pt;"
+                                                attrs="{'invisible': [('state', 'in',['plant'])],}"
+                                        />
+                                        <field name="pnt_product_uom_qty"
+                                               string="Peso"
+                                               readonly="1"
+                                               sum="Total"
+                                        />
+                                        <field name="pnt_product_uom"
+                                               string="UdM"
+                                               readonly="1"
+                                               sum="Total"
+                                        />
+                                        <button name="delete_line"
+                                                type="object"
+                                                string="Borrar"
+                                                icon="fa-trash-o"
+                                                class="oe_read_only"
+                                                style="font-size:14pt;"
+                                                attrs="{'invisible': [('state', 'in',['plant'])],}"
+                                        />
+                                    </tree>
+                                </field>
+                                <group>
+                                    <button name="confirm_du_metal"
+                                            type="object"
+                                            icon="fa-check-square-o"
+                                            string="Confirm"
+                                            class="oe_highlight"
+                                            width="180"
+                                            height="80"
+                                            attrs="{'invisible': ['|',('id', '=', False),
+                                                                  ('state', 'in',['plant'])],}"
+                                            style="font-size:14pt;"
+                                    />
+                                    <h1>
+                                        <field name="state"
+                                               readonly="1"
+                                               force_save="1"
+                                        />
+                                    </h1>
+                                </group>
+                                <button name="new_du_metal"
+                                        id="new_du_metal"
+                                        string="Load another DU"
+                                        class="oe_highlight"
+                                        type="object"
+                                        icon="fa-barcode"
+                                        width="180"
+                                        height="80"
+                                        style="font-size:14pt;"
+                                />
+
+                            </page>
+                        </notebook>
+                    </group>
+                </sheet>
+                <footer>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="pnt_single_document_form_metal_line_view" model="ir.ui.view">
+        <field name="name">pnt.single.document.form.metal.line.view</field>
+        <field name="model">pnt.single.document.metal.line</field>
+        <field name="priority">16</field>
+        <field name="arch" type="xml">
+            <form string="Metal scale">
+                <header>
+
+                </header>
+                <sheet>
+                    <group colspan="2">
+                        <group>
+                            <field name="pnt_product_id"/>
+                            <field name="pnt_weight_qty"
+                                   string="Weight"
+                            />
+                            <field name="pnt_product_uom"
+                                   readonly="1"
+                                   force_save="1"
+                                   string="Udm"
+                            />
+                        </group>
+                        <div style="width:300px">
+                            <style>
+                                .button_number {
+                                margin-top: 1px;
+                                margin-right: 1px;
+                                }
+                            </style>
+                            <field name="state" invisible="1"/>
+                            <button name="button_7"
+                                    type="object"
+                                    string="7"
+                                    class="oe_highlight button_number"
+                                    width="80"
+                                    height="80"
+                                    attrs="{'invisible': [('state', 'in',['plant'])],}"
+                            />
+                            <button name="button_8"
+                                    type="object"
+                                    string="8"
+                                    class="oe_highlight button_number"
+                                    width="80"
+                                    height="80"
+                                    attrs="{'invisible': [('state', 'in',['plant'])],}"
+                            />
+                            <button name="button_9"
+                                    type="object"
+                                    string="9"
+                                    class="oe_highlight button_number"
+                                    width="80"
+                                    height="80"
+                                    attrs="{'invisible': [('state', 'in',['plant'])],}"
+                            />
+                            <button name="button_4"
+                                    type="object"
+                                    string="4"
+                                    class="oe_highlight button_number"
+                                    width="80"
+                                    height="80"
+                                    attrs="{'invisible': [('state', 'in',['plant'])],}"
+                            />
+                            <button name="button_5"
+                                    type="object"
+                                    string="5"
+                                    class="oe_highlight button_number"
+                                    width="80"
+                                    height="80"
+                                    attrs="{'invisible': [('state', 'in',['plant'])],}"
+                            />
+                            <button name="button_6"
+                                    type="object"
+                                    string="6"
+                                    class="oe_highlight button_number"
+                                    width="80"
+                                    height="80"
+                                    attrs="{'invisible': [('state', 'in',['plant'])],}"
+                            />
+                            <button name="button_1"
+                                    type="object"
+                                    string="1"
+                                    class="oe_highlight button_number"
+                                    width="80"
+                                    height="80"
+                                    attrs="{'invisible': [('state', 'in',['plant'])],}"
+                            />
+                            <button name="button_2"
+                                    type="object"
+                                    string="2"
+                                    class="oe_highlight button_number"
+                                    width="80"
+                                    height="80"
+                                    attrs="{'invisible': [('state', 'in',['plant'])],}"
+                            />
+                            <button name="button_3"
+                                    type="object"
+                                    string="3"
+                                    class="oe_highlight button_number"
+                                    width="80"
+                                    height="80"
+                                    attrs="{'invisible': [('state', 'in',['plant'])],}"
+                            />
+                            <button name="button_0"
+                                    type="object"
+                                    string="0"
+                                    class="oe_highlight button_number"
+                                    width="80"
+                                    height="80"
+                                    attrs="{'invisible': [('state', 'in',['plant'])],}"
+                            />
+                            <button name="button_delete"
+                                    type="object"
+                                    string="Borrar"
+                                    class="oe_highlight button_number"
+                                    width="80"
+                                    height="80"
+                                    attrs="{'invisible': [('state', 'in',['plant'])],}"
+                            />
+                        </div>
+
+
+                    </group>
+                    <button name="button_add_line"
+                            type="object"
+                            string="Confirmar"
+                            class="oe_highlight"
+                            width="100"
+                            height="80"
+                            data-dismiss="modal"
+                            attrs="{'invisible': [('state', 'in',['plant'])],}"
+                    />
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="pnt_single_document_view_pivot" model="ir.ui.view">
+        <field name="name">pnt.single.document.view.pivot</field>
+        <field name="model">pnt.single.document</field>
+        <field name="priority">60</field>
+        <field name="arch" type="xml">
+            <pivot string="Single document" sample="1">
+                <field name="pnt_single_document_type" type="row"/>
+            </pivot>
+        </field>
+    </record>
+
+
+    <record id="view_pnt_single_document_filter" model="ir.ui.view">
+        <field name="name">pnt.single.document.select</field>
+        <field name="model">pnt.single.document</field>
+        <field name="arch" type="xml">
+            <search string="Search Single Document">
+                <field name="name" string="Nº Documento"/>
+                <field name="pnt_holder_id" string="Holder" filter_domain="[('pnt_holder_id', 'ilike', self)]"/>
+                <field name="pnt_partner_pickup_id" string="Holder pickup"/>
+                <field name="pnt_du_partner_id" string="DU partner"/>
+                <field name="pnt_partner_pickup_id_vat" string="Holder pickup vat"/>
+                <group expand="0" string="Group By">
+                    <filter string="DU type" name="DU type" domain="[]"
+                            context="{'group_by': 'pnt_single_document_type'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="action_pnt_single_document_quotation" model="ir.actions.act_window">
+        <field name="name">Single Document</field>
+        <field name="res_model">pnt.single.document</field>
+        <field name="context">{}</field>
+        <field name="view_mode">tree,form,pivot</field>
+    </record>
+
+    <record id="pnt_single_document_logistic_action" model="ir.actions.act_window">
+        <field name="name">Single Document</field>
+        <field name="res_model">pnt.single.document</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="pnt_single_document_line_action" model="ir.actions.act_window">
+        <field name="name">Single Document Line</field>
+        <field name="res_model">pnt.single.document.line</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+    <record id="pnt_single_document_logistic_act_view_tree" model="ir.actions.act_window.view">
+        <field name="sequence">10</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="pnt_single_document_tree_view"/>
+        <field name="act_window_id" ref="pnt_single_document_logistic_action"/>
+    </record>
+
+    <record id="pnt_single_document_line_act_view_tree" model="ir.actions.act_window.view">
+        <field name="sequence">10</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="pnt_single_document_line_tree_view"/>
+        <field name="act_window_id" ref="pnt_single_document_line_action"/>
+    </record>
+
+    <record id="pnt_single_document_logistic_act_view_form" model="ir.actions.act_window.view">
+        <field name="sequence">20</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="pnt_single_document_logistic_form_view"/>
+        <field name="act_window_id" ref="pnt_single_document_logistic_action"/>
+    </record>
+
+    <record id="action_pnt_single_document_metal_scale" model="ir.actions.act_window">
+        <field name="name">Single Document</field>
+        <field name="res_model">pnt.single.document</field>
+        <field name="context">{'default_pnt_single_document_type' : 'metal'}</field>
+        <field name="view_id" ref="custom_pnt.pnt_single_document_form_metal_scale_view"/>
+        <field name="view_mode">form</field>
+    </record>
+    <record id="action_single_document_config_settings" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_id" ref="view_general_configuration"/>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module' : 'custom_pnt', 'bin_size': False}</field>
+    </record>
+    <menuitem id="menu_pnt_single_document"
+              name="Single Document"
+              action="action_pnt_single_document_quotation"
+              web_icon="custom_pnt,static/description/icon_du.png"
+              sequence="25"/>
+    <menuitem id="menu_pnt_single_document_config"
+              name="Configuration"
+              parent="menu_pnt_single_document"
+              sequence="99"/>
+    <menuitem id="menu_pnt_single_document_line"
+              name="Single Document Line"
+              parent="menu_pnt_single_document"
+              action="pnt_single_document_line_action"
+              sequence="90"/>
+
+    <menuitem id="menu_pnt_single_document_setting_settings"
+              name="Settings"
+              action="action_single_document_config_settings"
+              parent="menu_pnt_single_document_config"
+              sequence="95"/>
+
+    <menuitem id="menu_pnt_single_document_logistic"
+              name="Single Document - Logistic"
+              action="pnt_single_document_logistic_action"
+              web_icon="custom_pnt,static/description/icon_du.png"
+              sequence="26"/>
+</odoo>

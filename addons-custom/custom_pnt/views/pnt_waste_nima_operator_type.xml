@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pnt_waste_nima_operator_type_view_form" model="ir.ui.view">
+        <field name="name">pnt.waste.nima.operator.type.view.form</field>
+        <field name="model">pnt.waste.nima.operator.type</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="pnt_type_code"/>
+                    <field name="pnt_type_operator"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="pnt_waste_nima_operator_type_view_tree" model="ir.ui.view">
+        <field name="name">pnt.waste.nima.operator.type.view.tree</field>
+        <field name="model">pnt.waste.nima.operator.type</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="pnt_type_code"/>
+                <field name="pnt_type_operator"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="pnt_waste_nima_operator_type_action" model="ir.actions.act_window">
+        <field name="name">Operator Types</field>
+        <field name="res_model">pnt.waste.nima.operator.type</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No items created.</p>
+        </field>
+    </record>
+
+    <record id="pnt_waste_nima_operator_type_act_view_tree" model="ir.actions.act_window.view">
+        <field eval="1" name="sequence"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="pnt_waste_nima_operator_type_view_tree"/>
+        <field name="act_window_id" ref="pnt_waste_nima_operator_type_action"/>
+    </record>
+
+    <record id="pnt_waste_nima_operator_type_act_view_form" model="ir.actions.act_window.view">
+        <field eval="2" name="sequence"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="pnt_waste_nima_operator_type_view_form"/>
+        <field name="act_window_id" ref="pnt_waste_nima_operator_type_action"/>
+    </record>
+
+    <record id="pnt_waste_nima_operator_type_menu" model="ir.ui.menu">
+        <field name="name">Operator Types</field>
+        <field name="action" ref="pnt_waste_nima_operator_type_action"/>
+        <field name="parent_id" ref="custom_pnt.menu_pnt_contact_waste"/>
+    </record>
+</odoo>

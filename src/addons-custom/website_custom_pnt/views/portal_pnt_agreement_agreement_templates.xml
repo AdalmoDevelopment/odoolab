@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="portal_pnt_agreement_agreement" name="Agreement Agreement">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Agreement</t>
+            </t>
+            <t t-if="not pnt_agreement_agreements">
+                <div class="alert alert-warning mt8" role="alert">
+                    <p>No agreements found.</p>
+                </div>
+            </t>
+            <t t-if="pnt_agreement_agreements" t-call="website_custom_pnt.portal_pnt_agreement_agreement_list"/>
+        </t>
+    </template>
+
+    <template id="portal_pnt_agreement_agreement_list" name="Agreement Agreement">
+        <t t-call="portal.portal_table">
+            <thead>
+                <tr t-attf-class="thead-light">
+                    <th class="text-left">Name</th>
+                    <th class="text-left">Start date</th>
+                    <th class="text-left">End date</th>
+                </tr>
+            </thead>
+            <t t-foreach="pnt_agreement_agreements" t-as="pnt_agreement_agreement">
+                <tbody>
+                    <tr>
+                        <td class="text-left">
+                            <a t-att-href="'/my/agreement_agreement/%s'%(pnt_agreement_agreement.id)">
+                                <span t-esc="pnt_agreement_agreement.name"/>
+                            </a>
+                        </td>
+                        <td class="text-left">
+                            <span t-esc="pnt_agreement_agreement.pnt_start_date" t-options='{"widget": "date","format": "dd-MM-yyyy"}'/>
+                        </td>
+                        <td class="text-left">
+                            <span t-esc="pnt_agreement_agreement.pnt_end_date" t-options='{"widget": "date","format": "dd-MM-yyyy"}'/>
+                        </td>
+                    </tr>
+                </tbody>
+            </t>
+        </t>
+    </template>
+
+    <template id="portal_agreement_agreement_page" name="Agreement Agreement Portal Template" inherit_id="portal.portal_sidebar" primary="True">
+        <xpath expr="//div[hasclass('o_portal_sidebar')]" position="inside">
+            <div class="row mt16 o_portal_invoice_sidebar">
+
+                <!-- Sidebar -->
+                <t t-call="portal.portal_record_sidebar">
+                    <t t-set="classes" t-value="'col-lg-auto d-print-none'"/>
+                    <t t-set="entries">
+                        <ul class="list-group list-group-flush flex-wrap flex-row flex-lg-column">
+                            <li class="list-group-item flex-grow-1">
+                                <div class="o_download_pdf btn-toolbar flex-sm-nowrap">
+                                    <div class="btn-group  flex-grow-1 mr-1 mb-1">
+                                        <a class="btn btn-secondary btn-block o_download_btn"
+                                           t-att-href="'/my/agreement_agreement/%s/%s'%(pnt_agreement_agreement.id, 'pdf')"
+                                           t-att-download="pnt_agreement_agreement.name"
+                                           target="download"
+                                           title="Download"><i class="fa fa-download"/> Download
+                                        </a>
+                                    </div>
+                                    <div class="btn-group flex-grow-1 mb-1">
+                                        <a class="btn btn-secondary btn-block o_print_btn o_portal_invoice_print"
+                                           t-att-href="'/my/agreement_agreement/%s/%s'%(pnt_agreement_agreement.id, 'pdf')"
+                                           target="_blank"
+                                           title="Print"><i class="fa fa-print"/> Print
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li t-if="pnt_agreement_agreement.pnt_user_id" class="list-group-item flex-grow-1">
+                                <div class="small mb-1"><strong class="text-muted">
+                                        Salesperson
+                                </strong></div>
+                                <div class="row">
+                                    <div class="col flex-grow-0 pr-2">
+                                        <img t-if="pnt_agreement_agreement.pnt_user_id.image_1024" class="rounded-circle mt-1 o_portal_contact_img" t-att-src="image_data_uri(pnt_agreement_agreement.pnt_user_id.image_1024)" alt="Contact"/>
+                                        <img t-else="" class="rounded-circle mt-1 o_portal_contact_img" src="/web/static/src/img/user_menu_avatar.png" alt="Contact"/>
+                                    </div>
+                                    <div class="col pl-0">
+                                        <span t-field="pnt_agreement_agreement.pnt_user_id" t-options='{"widget": "contact", "fields": ["name", "phone"], "no_marker": True}'/>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </t>
+                </t>
+
+                <!-- Page Content -->
+                <div id="invoice_content" class="col-12 col-lg">
+                    <div class="o_portal_html_view shadow p-3">
+                        <div id="introduction" class="card-header bg-white">
+                          <h2 class="my-0">
+                                <span>Agreement Agreement: </span><span t-esc="pnt_agreement_agreement.name"/>
+                            </h2>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="o_portal_html_view shadow p-3">
+                        <div class="o_portal_html_loader text-center">
+                            <i class="fa fa-circle-o-notch fa-spin fa-2x fa-fw text-black-50"></i>
+                        </div>
+                        <iframe id="invoice_html" class="mt8 mb8" width="100%" height="100%" frameborder="0" scrolling="no" t-att-src="'/my/agreement_agreement/%s/%s'%(pnt_agreement_agreement.id, 'html')"/>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+</odoo>

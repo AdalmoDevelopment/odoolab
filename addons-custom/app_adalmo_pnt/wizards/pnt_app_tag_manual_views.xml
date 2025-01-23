@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_form_pnt_app_tag_manual">
+        <field name="model">pnt.app.tag.manual</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="company_id" invisible="1"/>
+                            <field name="pnt_related_holder_id"
+                                   readonly="1"
+                                   invisible="1"
+                            />
+                            <field name="pnt_type"
+                                   widget="radio"
+                                   required="1"
+                                   attrs="{'invisible': [('pnt_related_holder_id', '!=', False),]}"
+                            />
+                            <field name="pnt_holder_domain_ids" invisible="1"/>
+                            <field name="pnt_holder_id"
+                                   options="{'no_create': True, 'no_create_edit':True, 'no_open': True}"
+                                   domain="[('id','in',pnt_holder_domain_ids)]"
+                                   attrs="{'invisible': [('pnt_type', '=', 'manual'),],
+                                           'required': [('pnt_type', '=', 'agreement')]}"
+                            />
+                            <field name="pnt_partner_pickup_domain_ids" invisible="1"/>
+                            <field name="pnt_partner_id"
+                                   string="Pickup"
+                                   domain="[('id','in',pnt_partner_pickup_domain_ids)]"
+                                   attrs="{'required': [('pnt_type', '!=', 'manual'),]}"
+                                   options="{'no_create': True, 'no_create_edit':True, 'no_open': True}"
+                            />
+                            <field name="pnt_agreement_domain_ids"
+                                   invisible="1"
+                            />
+                            <field name="pnt_agreement_id"
+                                   domain="[('id','in',pnt_agreement_domain_ids)]"
+                                   options="{'no_create': True, 'no_create_edit':True, 'no_open': True}"
+                                   attrs="{'invisible': [('pnt_type', '=', 'manual'),],
+                                           'required': [('pnt_type', '=', 'agreement')]}"
+                            />
+                            <field name="pnt_agreement_count"
+                                   readonly="1"
+                                   force_save="1"
+                                   string="Number of active contracts"
+                                   attrs="{'invisible': ['|',
+                                                         ('pnt_agreement_count', '=', 0),
+                                                         ('pnt_agreement_count', '=', 1)]}"
+                            />
+                            <field name="pnt_functional_unit_id"
+                                   readonly="0"
+                                   domain="[('pnt_partner_id', '=', pnt_partner_id)]"
+                                   options="{'no_create': True, 'no_create_edit':True, 'no_open': True}"
+                            />
+                        </group>
+                        <group>
+                            <field name="pnt_print_date"
+                                   widget="boolean_toggle"
+                            />
+                            <field name="pnt_date"/>
+                            <field name="pnt_tag_type"
+                                   widget="radio"
+                                   required="1"
+                            />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="pnt_tag_waste"
+                              string="Product tags"
+                              attrs="{'invisible': [('pnt_partner_id', '=', False),
+                                                    ('pnt_type', '=', 'agreement'),],}"
+                        >
+                            <field name="pnt_tag_waste_ids"
+                                   widget="section_and_note_one2many"
+                                   mode="tree,kanban">
+                                <tree string="Product tags"
+                                      editable="bottom">
+                                    <control>
+                                        <create name="add_product_control" string="Add a product"/>
+                                    </control>
+                                    <field name="pnt_tag_type"
+                                           readonly="1"
+                                           invisible="1"
+                                    />
+                                    <field name="pnt_products_domain_ids"
+                                           invisible="1"
+                                    />
+                                    <field name="pnt_product_id"
+                                           readonly="0"
+                                           domain="[('id','in',pnt_products_domain_ids)]"
+                                           options="{'no_create': True, 'no_create_edit':True, 'no_open': True}"
+                                    />
+                                    <field name="pnt_quantity"
+                                           readonly="0"
+                                    />
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <footer>
+                    <button name="action_generate_tags"
+                            type="object"
+                            string="Gemerar etiquetas (app QR)"
+                            class="oe_highlight"
+                    />
+                    <button name="button_cancel"
+                            class="oe_link"
+                            special="cancel"
+                            string="Cancel"
+                    />
+                </footer>
+            </form>
+        </field>
+    </record>
+   <record id="action_pnt_app_tag_manual" model="ir.actions.act_window">
+        <field name="name">Tag manual</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pnt.app.tag.manual</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_form_pnt_app_tag_manual"/>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_pnt_app_tag_manual"
+          name="Tag manual"
+          parent="custom_pnt.menu_pnt_single_document"
+          action="action_pnt_app_tag_manual"
+          sequence="31"/>
+
+</odoo>

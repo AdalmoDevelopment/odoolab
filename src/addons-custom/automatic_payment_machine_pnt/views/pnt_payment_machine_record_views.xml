@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--  TREE  -->
+    <record id="pnt_payment_machine_record_tree_view" model="ir.ui.view">
+        <field name="name">pnt.payment.machine.record.tree</field>
+        <field name="model">pnt.payment.machine.record</field>
+        <field name="arch" type="xml">
+            <tree string="Payment machine record"
+                  default_order="create_date desc"
+            >
+                <field name="create_date" readonly="1"/>
+                <field name="create_uid" readonly="1"/>
+                <field name="name" readonly="1"/>
+                <field name="company_id"
+                       readonly="1"
+                       optional="hidden"
+                />
+                <field name="pnt_payment_machine_id"
+                       readonly="1"
+                />
+                <field name="pnt_single_document_id"
+                       readonly="1"
+                />
+                <field name="pnt_partner_id"
+                       readonly="1"
+                />
+                <field name="pnt_account_payment_id"
+                       readonly="1"
+                />
+                <field name="pnt_payment_type"
+                       readonly="1"
+                />
+                <field name="pnt_amount"
+                       readonly="1"
+                />
+            </tree>
+        </field>
+    </record>
+    <!-- FORM -->
+    <record id="pnt_payment_machine_rocord_form_view" model="ir.ui.view">
+        <field name="name">pnt.payment.machine.record.form</field>
+        <field name="model">pnt.payment.machine.record</field>
+        <field name="priority">100</field>
+        <field name="arch" type="xml">
+            <form string="Payment machine record">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            Name:
+                            <field name="name" readonly="1"/>
+                            <field name="company_id"
+                                   readonly="1"
+                                   invisible="1"
+                            />
+                        </h1>
+                    </div>
+                    <group name="pnt_payment_machine_record_header">
+                        <group>
+                            <field name="pnt_payment_machine_id"
+                                   readonly="0"
+                            />
+                            <field name="pnt_single_document_id"
+                                   readon="1"
+                            />
+                            <field name="pnt_partner_id"
+                                   readonly="1"
+                            />
+                        </group>
+                        <group>
+                            <field name="pnt_account_payment_id"
+                                   readonly="0"
+                            />
+                            <field name="pnt_payment_type"
+                                   readonly="1"
+                            />
+                            <field name="pnt_amount"
+                                   readonly="1"
+                            />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <!-- ACTIONS -->
+    <record id="action_payment_machine_record_menu_pnt" model="ir.actions.act_window">
+        <field name="name">Payment machine record</field>
+        <field name="res_model">pnt.payment.machine.record</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_pnt_payment_machine_record"
+              name="Payment machine record"
+              action="action_payment_machine_record_menu_pnt"
+              parent="custom_pnt.menu_pnt_single_document_config"
+              sequence="86"
+              groups="base.group_user"
+    />
+</odoo>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_form_pnt_return_du">
+        <field name="model">pnt.return.du</field>
+        <field name="arch" type="xml">
+            <form>
+                <field name="pnt_has_invoice" invisible="1" />
+                <sheet>
+                    <group attrs="{'invisible': [('pnt_has_invoice', '!=', True)]}">
+                        <field name="pnt_single_document_id"
+                               readonly="1"
+                        />
+                    </group>
+                    <group attrs="{'invisible': [('pnt_has_invoice', '!=', True)]}">
+                        <field name="pnt_note"
+                               readonly="1"
+                               nolabel="1"
+                               style="font-size:12pt;"
+                        />
+                    </group>
+                    <group>
+                        <p>Do you want to create a new single document?</p>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="create_returns"
+                            type="object"
+                            string="Create new DU"
+                            class="oe_highlight"
+                    />
+                    <button name="create_returns_without_new"
+                            type="object"
+                            string="Continue without new DU"
+                            class="oe_highlight"
+                    />
+                    <button name="button_cancel"
+                            class="oe_link"
+                            special="cancel"
+                            string="Cancel"
+                    />
+                </footer>
+            </form>
+        </field>
+    </record>
+   <record id="action_pnt_return_du" model="ir.actions.act_window">
+        <field name="name">Confirm return du</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pnt.return.du</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_form_pnt_return_du"/>
+        <field name="target">new</field>
+    </record>
+</odoo>

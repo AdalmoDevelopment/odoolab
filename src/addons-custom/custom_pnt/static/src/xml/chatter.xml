@@ -1,0 +1,5 @@
+<templates xml:space="preserve">
+    <t t-inherit="mail.ChatterTopbar" t-inherit-mode="extension">
+        <xpath expr="//button[1]" position="replace"/>
+    </t>
+</templates>

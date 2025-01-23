@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_form_pnt_app_du_change">
+        <field name="model">pnt.app.du.change</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="company_id" invisible="1"/>
+                        <field name="transfer_id" readonly="1"/>
+                        <field name="pnt_current_single_document_id"
+                               readonly="1"
+                        />
+                        <field name="pnt_new_single_document_id"
+                               readonly="0"
+                               required="1"
+                        />
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_change_du"
+                            type="object"
+                            string="Actualizar DU en registro app (lineas y fotos)"
+                            class="oe_highlight"
+                    />
+                    <button name="button_cancel"
+                            class="oe_link"
+                            special="cancel"
+                            string="Cancel"
+                    />
+                </footer>
+            </form>
+        </field>
+    </record>
+   <record id="action_pnt_app_du_change" model="ir.actions.act_window">
+        <field name="name">Change DU in record app</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pnt.app.du.change</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_form_pnt_app_du_change"/>
+        <field name="target">new</field>
+    </record>
+
+<!--    <menuitem id="menu_pnt_app_tag_manual"-->
+<!--          name="Tag manual"-->
+<!--          parent="custom_pnt.menu_pnt_single_document"-->
+<!--          action="action_pnt_app_tag_manual"-->
+<!--          sequence="31"/>-->
+
+</odoo>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="pnt_report_statement" inherit_id="account.report_statement">
+        <xpath expr="//div[@class='page']/table[@class='table table-borderless m-0']" position="after">
+            <t t-if="o.cashbox_end_id" t-set="cash_lines" t-value="o.cashbox_end_id.cashbox_lines_ids.filtered(lambda x: x.number > 0)"/>
+            <t t-if="cash_lines">
+                <br/>
+                <br/>
+                <h4 class="text-left w-100" name="h4_coin_breakdown">
+                    <strong>
+                        <span>Desglose monetario</span>
+                    </strong>
+                </h4>
+                <table name="coin_breakdown_table" class="table table-lg m-0 table-borderless border border-right-0 border-left-0 border-info" style="width:50% !important;">
+                    <thead>
+                        <th class="p-0" name="coin_breakdown_th_value">
+                          <strong>
+                            <span>Valor moneda</span>
+                          </strong>
+                        </th>
+                        <th class="p-0" name="coin_breakdown_th_number">
+                          <strong>
+                            <span>Contadas</span>
+                          </strong>
+                        </th>
+                        <th class="p-0" name="coin_breakdown_th_total">
+                          <strong>
+                            <span>Total</span>
+                          </strong>
+                        </th>
+                    </thead>
+                    <tbody>
+                      <tr t-foreach="cash_lines" t-as="cash_line" class="pb-2">
+                        <td class="p-0" name="coin_breakdown_td_value">
+                          <span t-field="cash_line.coin_value" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                        </td>
+                        <td class="p-0" name="coin_breakdown_td_number">
+                          <span t-esc="cash_line.number"/>
+                        </td>
+                        <td class="p-0" name="coin_breakdown_td_total">
+                          <span t-esc="cash_line.subtotal" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                        </td>
+                      </tr>
+                    </tbody>
+                </table>
+            </t>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_single_document_send_du_signed" model="ir.actions.server">
+        <field name="name">Send DU signed</field>
+        <field name="model_id" ref="custom_pnt.model_pnt_single_document"/>
+        <field name="binding_model_id" ref="custom_pnt.model_pnt_single_document"/>
+        <field name="binding_view_types">list,form</field>
+        <field name="state">code</field>
+        <field name="code">records._send_mail_du_signed(force_send=True)</field>
+    </record>
+</odoo>

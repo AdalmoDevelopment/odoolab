@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="base_view_company_form" model="ir.ui.view">
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="model">res.company</field>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Logos">
+                    <field name="pnt_logo_ids">
+                        <tree>
+                            <field name="pnt_logo" widget="image" class="oe_avatar" />
+                            <field name="name" />
+                            <field name="pnt_type" />
+                        </tree>
+                    </field>
+                </page>
+                <page name="print_general_conditions" string="Print General Conditions">
+                    <group name="general_conditions">
+                        <group>
+                            <field name="pnt_logo_general_conditions" widget="image"/>
+                            <field name="pnt_inscription_general_conditions" widget="image"/>
+                            <field name="pnt_symbol_general_conditions" widget="image"/>
+                            <field name="pnt_sign_general_conditions" widget="image"/>
+                            <field name="pnt_seal_general_conditions" widget="image"/>
+                            <field name="pnt_scale_general_conditions" widget="image"/>
+                            <field name="pnt_sign_name_general_conditions"/>
+                            <field name="pnt_sign_position_general_conditions"/>
+                            <field name="pnt_sign_customer_general_conditions"/>
+                            <field name="pnt_email_logistics_general_conditions"/>
+                            <field name="pnt_phone_logistics_general_conditions"/>
+                        </group>
+                    </group>
+                </page>
+                <page name="print_amianto_conditions" string="Print Amianto Conditions">
+                    <group name="amianto_conditions">
+                        <group>
+                            <field name="pnt_logo_general_conditions_amianto" widget="image"/>
+                            <field name="pnt_inscription_general_conditions_amianto" widget="image"/>
+                            <field name="pnt_symbol_general_conditions_amianto" widget="image"/>
+                            <field name="pnt_sign_general_conditions_amianto" widget="image"/>
+                            <field name="pnt_seal_general_conditions_amianto" widget="image"/>
+                            <field name="pnt_scale_general_conditions_amianto" widget="image"/>
+                            <field name="pnt_sign_name_general_conditions_amianto"/>
+                            <field name="pnt_sign_position_general_conditions_amianto"/>
+                            <field name="pnt_sign_customer_general_conditions_amianto"/>
+                            <field name="pnt_text_customer_general_conditions_amianto"/>
+                            <field name="pnt_page_general_conditions_amianto"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+            <field name="email" position="after">
+                <field name="pnt_invoice_send_email" widget="email"/>
+            </field>
+        </field>
+    </record>
+</odoo>

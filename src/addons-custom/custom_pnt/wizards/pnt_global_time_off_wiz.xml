@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pnt_global_time_off_wizz_view_form" model="ir.ui.view">
+        <field name="name">pnt.global.time.off.wiz.view.form</field>
+        <field name="model">pnt.global.time.off.wiz</field>
+        <field name="arch" type="xml">
+            <form>
+                <group string="Leaves">
+                    <field nolabel="1" name="pnt_leave_id"/>
+                </group>
+                <footer>
+                    <button string="Confirm" class="btn-primary" type="object" name="assign_leaves_resources_calendar"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="pnt_global_time_off_wizz_action" model="ir.actions.act_window">
+        <field name="name">Global Time Off</field>
+        <field name="res_model">pnt.global.time.off.wiz</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="pnt_global_time_off_wizz_act_view_form" model="ir.actions.act_window.view">
+        <field name="sequence">10</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="pnt_global_time_off_wizz_view_form"/>
+        <field name="act_window_id" ref="pnt_global_time_off_wizz_action"/>
+    </record>
+</odoo>

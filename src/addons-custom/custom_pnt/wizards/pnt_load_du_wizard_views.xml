@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_form_pnt_load_du">
+        <field name="model">pnt.load.du</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="pnt_single_document_txt"
+                                   string="Single document"
+                                   attrs="{'invisible': [('pnt_introduction_type', '=', 'manual')]}"
+                            />
+                            <field name="pnt_single_document_id"
+                                   readonly="0"
+                                   force_save="1"
+                                   attrs="{'invisible': [('pnt_introduction_type', '=', 'reader')]}"
+                            />
+                        </group>
+                        <group>
+                            <field name="pnt_introduction_type"
+                                   widget="radio"
+                            />
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="load_du"
+                            type="object"
+                            string="Load DU"
+                            class="oe_highlight"
+                    />
+                    <button name="button_cancel"
+                            class="oe_link"
+                            special="cancel"
+                            string="Cancel"
+                    />
+                    <button name="button_new_du"
+                            type="object"
+                            string="NEW DU"
+                            class="pull-right btn-danger"
+                    />
+                </footer>
+            </form>
+        </field>
+    </record>
+   <record id="action_pnt_load_du" model="ir.actions.act_window">
+        <field name="name">Load du</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pnt.load.du</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_form_pnt_load_du"/>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_pnt_single_document_metal_scale"
+          name="Metal scale"
+          action="action_pnt_load_du"
+          web_icon="custom_pnt,static/description/icon_ms.png"
+          sequence="31"/>
+
+</odoo>

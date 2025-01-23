@@ -1,0 +1,1376 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* report_pnt
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-14 07:59+0000\n"
+"PO-Revision-Date: 2024-10-14 10:00+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 3.0.1\n"
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document_grouped
+msgid ""
+"*Pendiente revisar la naturaleza del residuo. Si el residuo es distinto o no está recogido en el presupuesto, se facturaré a precio de "
+"tarifa de"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_document_adalmo_structure
+msgid ""
+", con un mínimo de diez días de antelación, <span style=\"text-decoration: underline;\">indicando el tipo de residuo y el número de "
+"recipientes</span> (bidones, big bag’s, cubetos, contenedores, etc.). Los big bag’s o sacas deberán ir sobre palet."
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_document_adalmo_structure
+msgid ", siendo la fecha de vencimiento como máximo"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_ticket_weight_du_document
+msgid "0.000"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document_grouped
+msgid ""
+"<br/>\n"
+"                                            <strong>Firma:</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_agreement_contract_document
+msgid ""
+"<br/>\n"
+"                                            <strong>NIMA:</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_agreement_contract_document
+msgid ""
+"<br/>\n"
+"                                            <strong>Nombre:</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_budget_contract_document
+msgid ""
+"<br/>\n"
+"                                    <strong style=\"margin-left: 5px\">Dirección:</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_budget_contract_document
+msgid ""
+"<br/>\n"
+"                                    <strong>Email:</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_budget_contract_document
+msgid ""
+"<br/>\n"
+"                                    <strong>Persona de contacto:</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_ticket_weight_du_document
+msgid ""
+"<br/>\n"
+"                            <b>Chofer: </b>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_ticket_weight_du_document
+msgid ""
+"<br/>\n"
+"                            <b>Martícula: </b>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_ticket_du_document
+msgid ""
+"<br/>\n"
+"                        <b>Fecha: </b>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_ticket_weight_du_document
+msgid ""
+"<br/>\n"
+"                        <b>Nombre: </b>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_ticket_weight_du_document
+msgid ""
+"<br/>\n"
+"                        <b>Número DU: </b>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_ticket_weight_du_document
+msgid ""
+"<br/>\n"
+"                        <br/>\n"
+"                        <b>Fecha: </b>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_ticket_du_document
+msgid ""
+"<br/>\n"
+"                        <br/>\n"
+"                        <b>Nombre: </b>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_ticket_du_document
+msgid ""
+"<br/>\n"
+"                        <br/>\n"
+"                        <b>Número DU:</b>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_ticket_du_document
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_ticket_weight_du_document
+msgid "<span class=\"text-muted\">No barcode available</span>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_invoice_document_grouped_pnt
+msgid ""
+"<span groups=\"account.group_show_line_subtotals_tax_excluded\">Amount</span>\n"
+"                                <span groups=\"account.group_show_line_subtotals_tax_included\">Total Price</span>"
+msgstr ""
+"<span groups=\"account.group_show_line_subtotals_tax_excluded\">Importe</span>\n"
+"                                <span groups=\"account.group_show_line_subtotals_tax_included\">Total</span>"
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_document_adalmo_structure
+msgid ""
+"<span style=\"text-decoration: underline;\">Colaborar con el gestor:</span> informar a su personal para que separe correctamente los "
+"residuos y no se mezclen; identificar los residuos con las etiquetas facilitadas; informar del horario de su empresa para evitar "
+"desplazamientos no productivos, etc."
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_document_adalmo_structure
+msgid "<span style=\"text-decoration: underline;\">Solicitar servicio de retirada al Dpto. de Logística</span> mediante el correo electrónico"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_agreement_contract_document
+msgid ""
+"<span>ACEPTACIÓN GESTOR</span>\n"
+"                                                        <br/>\n"
+"                                                        <span>(firma y sello)</span>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_agreement_contract_document
+msgid ""
+"<span>ACEPTACIÓN INSTALACIÓN ORIGEN</span>\n"
+"                                                        <br/>\n"
+"                                                        <span>(firma y sello)</span>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_invoice_document_pnt
+msgid "<span>Container</span>"
+msgstr "<span>Envase</span>"
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_invoice_document_grouped_pnt
+msgid "<span>Disc.%</span>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_agreement_contract_document
+msgid "<span>Fecha:</span>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_invoice_document_pnt
+msgid "<span>Line without orders</span>"
+msgstr "<span>Líneas sin pedidos</span>"
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document_grouped
+msgid "<span>Tiempo servicio&amp;nbsp;&amp;nbsp;</span>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_invoice_document_pnt
+msgid "<strong class=\"mr16\">Subtotal</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_invoice_document_grouped_pnt
+msgid "<strong class=\"text-center\">Scan me with your banking app.</strong><br/><br/>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_budget_contract_document
+msgid "<strong style=\"margin-left: 10px 10px 0 10px\">Fecha:</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_agreement_contract_document
+msgid "<strong style=\"margin-left: 10px\">Descripción:</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_agreement_contract_document
+msgid "<strong style=\"margin-left: 10px\">NIF:</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_budget_contract_document
+msgid "<strong style=\"margin-left: 5px\">Teléfono:</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_agreement_contract_document
+msgid "<strong style=\"margin-left:10px\">Nº</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_statement
+msgid ""
+"<strong>\n"
+"                            <span>Contadas</span>\n"
+"                          </strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_statement
+msgid ""
+"<strong>\n"
+"                            <span>Total</span>\n"
+"                          </strong>"
+msgstr ""
+"<strong>\n"
+"                          <span>Valor moneda</span>\n"
+"                      </strong>"
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_statement
+msgid ""
+"<strong>\n"
+"                            <span>Valor moneda</span>\n"
+"                          </strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_statement
+msgid ""
+"<strong>\n"
+"                        <span>Desglose monetario</span>\n"
+"                    </strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_document_adalmo_structure
+msgid ""
+"<strong>Alta en el Registro de productor de residuos:</strong> Nos debe aportar el código NIMA o si no lo tiene,\n"
+"                                realizar el trámite de solicitud de alta de productor de residuos ante la Conselleria de Medi Ambient "
+"(Servei de Residus),\n"
+"                                si genera residuos peligrosos o genera más de 1000 toneladas/año de residuos no peligrosos."
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_invoice_document_grouped_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_invoice_document_pnt
+msgid "<strong>Amount Due</strong>"
+msgstr "<strong>Importe</strong>"
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_agreement_contract_document
+msgid "<strong>Cantidad de residuo a trasladar:</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document_grouped
+msgid "<strong>Chofer</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document_grouped
+msgid "<strong>Cod. Aut.</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_budget_contract_document
+msgid "<strong>Comercial asignado:</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document_grouped
+msgid "<strong>Comercial</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_agreement_contract_document
+msgid "<strong>Condiciones de aceptación del residuo:</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_document_adalmo_structure
+msgid ""
+"<strong>Contrato de Tratamiento (CT):</strong> Debe devolvernos firmado el Contrato de tratamiento de cada residuo que le enviemos.\n"
+"                                Es el acuerdo de aceptación por parte del gestor de los residuos generados por el productor, que establece "
+"las especificaciones,\n"
+"                                las condiciones del traslado y las obligaciones de las partes cuando se presenten incidencias. Se emite un "
+"único contrato por residuo,\n"
+"                                que permanecerá en vigor hasta que surjan cambios significativos."
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_invoice_document_grouped_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_invoice_document_pnt
+msgid "<strong>Credit Note Date:</strong>"
+msgstr "<strong>Fecha:</strong>"
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_agreement_contract_document
+msgid "<strong>Código LER:</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document_grouped
+msgid "<strong>DNI:</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_invoice_document_grouped_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_invoice_document_pnt
+msgid "<strong>Date:</strong>"
+msgstr "<strong>Fecha:</strong>"
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_agreement_contract_document
+msgid ""
+"<strong>Dirección del centro/Localidad/Provincia:</strong>\n"
+"                                            <br/>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document_grouped
+msgid "<strong>Dirección</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_document_adalmo_structure
+msgid ""
+"<strong>Documento de Identificación (DI):</strong> En cada retirada el productor entregará al transportista un DI con el contenido del Anexo "
+"I del RD 553/2020.\n"
+"                                Es el documento de control de la transferencia del residuo entre productor y gestor, que identifica y "
+"acompaña al residuo durante su traslado.\n"
+"                                En caso contrario puede autorizarnos como Agente de residuos para la emisión de la documentación de traslado."
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_invoice_document_grouped_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_invoice_document_pnt
+msgid "<strong>Due Date:</strong>"
+msgstr "<strong>Fecha de vencimiento:</strong>"
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_agreement_contract_document
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_budget_contract_document
+msgid "<strong>Email:</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_agreement_contract_document
+msgid "<strong>En caso de residuo peligroso:</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document_grouped
+msgid "<strong>Fecha </strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document_grouped
+msgid "<strong>Firma Gestor</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document_grouped
+msgid "<strong>Firma Productor</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document_grouped
+msgid "<strong>Gestor</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document_grouped
+msgid "<strong>Horario</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_invoice_document_grouped_pnt
+msgid "<strong>Incoterm: </strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_invoice_document_grouped_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_invoice_document_pnt
+msgid "<strong>Invoice Date:</strong>"
+msgstr "<strong>Fecha Factura:</strong>"
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document_grouped
+msgid "<strong>Mail</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document_grouped
+msgid "<strong>Matrícula</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document_grouped
+msgid "<strong>Móvil</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document_grouped
+msgid "<strong>NIF</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document_grouped
+msgid "<strong>NIMA</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_document_adalmo_structure
+msgid ""
+"<strong>No mezclar residuos:</strong> <span style=\"text-decoration: underline;\">Separar los residuos que genere</span> en función de las "
+"categorías acordadas con Adalmo a través de los contratos de tratamiento,\n"
+"                                sirviéndose para ello de los depósitos que le sean facilitados."
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_budget_contract_document
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document_grouped
+msgid "<strong>Nombre:</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document_grouped
+msgid ""
+"<strong>Nombre:</strong>\n"
+"                                            <br/>\n"
+"                                            <strong>Firma:</strong>\n"
+"                                            <br/>\n"
+"                                            <br/>\n"
+"                                            <br/>\n"
+"                                            <strong>DNI:</strong>\n"
+"                                            <br/>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document_grouped
+msgid "<strong>Nombre</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document_grouped
+msgid "<strong>Nº </strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_agreement_contract_document
+msgid "<strong>Nº Inscripción RPGR:</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_budget_contract_document
+msgid "<strong>Nº oferta:</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document_grouped
+msgid "<strong>Observaciones</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document_grouped
+msgid "<strong>Operador</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_agreement_contract_document
+msgid "<strong>Periodicidad estimada del traslado:</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_agreement_contract_document
+msgid "<strong>Persona contacto:</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document_grouped
+msgid "<strong>Productor</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_agreement_contract_document
+msgid "<strong>Razón social:</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_invoice_document_grouped_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_invoice_document_pnt
+msgid "<strong>Receipt Date:</strong>"
+msgstr "<strong>Fecha:</strong>"
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document_grouped
+msgid "<strong>Ref. Contrato</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document_grouped
+msgid "<strong>Ref. Pedido</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_invoice_document_grouped_pnt
+msgid "<strong>Reference:</strong>"
+msgstr "<strong>Referencia:</strong>"
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_sale_report_sale_order
+msgid "<strong>Salesperson:</strong>"
+msgstr "<strong>Comercial:</strong>"
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_invoice_document_grouped_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_invoice_document_pnt
+msgid "<strong>Subtotal</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_agreement_contract_document
+msgid "<strong>Teléfono/Móvil:</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_budget_contract_document
+msgid "<strong>Teléfono:</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document_grouped
+msgid "<strong>Teléfono</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document_grouped
+msgid "<strong>Tipo operador</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document_grouped
+msgid "<strong>Titular</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_invoice_document_grouped_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_invoice_document_pnt
+msgid "<strong>Total</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document_grouped
+msgid "<strong>Transportista</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_agreement_contract_document
+msgid "<strong>Tratamiento del residuo:</strong>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_budget_contract_document
+msgid "Aceptación cliente (Fecha, firma y sello)"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_document_identification_document
+msgid "Aceptado"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_document_adalmo_structure
+msgid "Agradecemos la confianza depositada en nosotros y quedamos a su disposición para cualquier consulta o aclaración de la presente."
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_ticket_weight_du_document
+msgid "Articulo"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document_grouped
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_incident model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_ticket_du_document
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_ticket_weight_du_document
+msgid "Barcode"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_ticket_weight_du_document
+msgid "Bruto (kg)"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_document_adalmo_structure_amianto
+msgid "CONDICIONES ESPECÍFICAS PARA DESAMIANTADOS"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_document_adalmo_structure
+msgid "CONDICIONES GENERALES"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_agreement_contract_document
+msgid "CONTRATO DE TRATAMIENTO DE RESIDUO"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.view_form_pnt_print_tag_format
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_invoice_document_grouped_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_invoice_document_pnt
+msgid "Cancelled Invoice"
+msgstr "Factura cancelada"
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document
+msgid "Cant. Realiz."
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_budget_contract_document
+msgid "Code"
+msgstr "Código"
+
+#. module: report_pnt
+#: model:ir.actions.report,name:report_pnt.pnt_agreement_conditions_report_amianto
+msgid "Condiciones Generales Amianto"
+msgstr ""
+
+#. module: report_pnt
+#: model:ir.model,name:report_pnt.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: report_pnt
+#: model:ir.actions.report,name:report_pnt.pnt_agreement_contract_report
+msgid "Contrato de tratamiento de Residuo"
+msgstr ""
+
+#. module: report_pnt
+#: model:ir.model.fields,field_description:report_pnt.field_pnt_print_tag_format__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: report_pnt
+#: model:ir.model.fields,field_description:report_pnt.field_pnt_print_tag_format__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_invoice_document_grouped_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_invoice_document_pnt
+msgid "Customer Credit Note"
+msgstr "Factura abono"
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_budget_contract_document
+msgid "Código LER"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_agreement_contract_document
+msgid ""
+"DATOS DE LA INSTALACIÓN\n"
+"                                                    ORIGEN\n"
+"                                                    DEL\n"
+"                                                    TRASLADO"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_agreement_contract_document
+msgid ""
+"DATOS DEL DESTINATARIO DEL\n"
+"                                                    TRASLADO\n"
+"                                                    (GESTOR)"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_agreement_contract_document
+msgid "DATOS DEL RESIDUO"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document_grouped
+msgid "DOCUMENTO DE TRANSPORTE"
+msgstr ""
+
+#. module: report_pnt
+#: code:addons/report_pnt/wizards/pnt_print_tag_format_wizard.py:0
+#: model:ir.model.fields.selection,name:report_pnt.selection__pnt_print_tag_format__pnt_select_report__dangerous
+#, python-format
+msgid "Dangerous Tag"
+msgstr "Etiqueta residuos peligrosos"
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_budget_contract_document
+msgid "Datos del cliente"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_document_adalmo_structure
+msgid "De la normativa anteriormente citada se desprenden una serie de OBLIGACIONES que como PRODUCTOR de residuos debe cumplir:"
+msgstr ""
+
+#. module: report_pnt
+#: model:ir.model.fields,field_description:report_pnt.field_account_move__display_name
+#: model:ir.model.fields,field_description:report_pnt.field_ir_actions_report__display_name
+#: model:ir.model.fields,field_description:report_pnt.field_pnt_print_tag_format__display_name
+#: model:ir.model.fields,field_description:report_pnt.field_pnt_single_document__display_name
+#: model:ir.model.fields,field_description:report_pnt.field_pnt_waste_transfer_document__display_name
+#: model:ir.model.fields,field_description:report_pnt.field_product_product__display_name
+#: model:ir.model.fields,field_description:report_pnt.field_project_task__display_name
+#: model:ir.model.fields,field_description:report_pnt.field_report_report_pnt_pnt_report_du__display_name
+#: model:ir.model.fields,field_description:report_pnt.field_report_report_pnt_pnt_report_du_from_task__display_name
+#: model:ir.model.fields,field_description:report_pnt.field_report_report_pnt_report_document_identification__display_name
+#: model:ir.model.fields,field_description:report_pnt.field_res_partner__display_name
+msgid "Display Name"
+msgstr "Nombre"
+
+#. module: report_pnt
+#: model:ir.actions.report,name:report_pnt.action_report_document_identification
+msgid "Document Identification (DI)"
+msgstr "Documento identificación (DI)"
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document_grouped
+msgid ""
+"Documento de identificación (RD 553/2020, de 2 de Junio). Documento de control de mercancias transportadas (ORDEN FOM/2861/2012, DE 13 DE "
+"DICIEMBRE)."
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document_grouped
+msgid "El cliente certifica que los residuos entregados a"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_document_adalmo_structure
+msgid ""
+"En caso de que el residuo retirado sea distinto al descrito o no esté recogido en el presupuesto, se facturará a precio de tarifa de Adalmo."
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_budget_contract_document
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document_grouped
+msgid "Envase"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_budget_contract_document
+msgid ""
+"Estimados señores:\n"
+"                                <br/>\n"
+"                                Según conversación mantenida con ustedes, nos es grato proporcionarles nuestra mejor\n"
+"                                oferta\n"
+"                                para la gestión de los siguientes residuos:"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_incident
+msgid "FORMATO DE INCIDENCIAS"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_document_adalmo_structure
+msgid "Fecha, firma y sello"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_sale_report_sale_order
+msgid "Ferrimet"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_budget_contract_document
+msgid "Firma"
+msgstr ""
+
+#. module: report_pnt
+#: code:addons/report_pnt/wizards/pnt_print_tag_format_wizard.py:0
+#: model:ir.model.fields.selection,name:report_pnt.selection__pnt_print_tag_format__pnt_select_report__format
+#, python-format
+msgid "Format"
+msgstr "DU"
+
+#. module: report_pnt
+#: model:ir.actions.report,name:report_pnt.pnt_du_report model:ir.actions.report,name:report_pnt.pnt_du_report_from_task
+#: model:ir.actions.report,name:report_pnt.pnt_du_report_html
+msgid "Format DU"
+msgstr "Formato DU"
+
+#. module: report_pnt
+#: model:ir.actions.report,name:report_pnt.pnt_du_report_grouped
+msgid "Format DU (grouped by product)"
+msgstr "Formato DU (agrupado por producto)"
+
+#. module: report_pnt
+#: model:ir.actions.report,name:report_pnt.pnt_agreement_conditions_report
+msgid "General Conditions"
+msgstr "Condiciones generales"
+
+#. module: report_pnt
+#: model:ir.model.fields,field_description:report_pnt.field_account_move__id
+#: model:ir.model.fields,field_description:report_pnt.field_ir_actions_report__id
+#: model:ir.model.fields,field_description:report_pnt.field_pnt_print_tag_format__id
+#: model:ir.model.fields,field_description:report_pnt.field_pnt_single_document__id
+#: model:ir.model.fields,field_description:report_pnt.field_pnt_waste_transfer_document__id
+#: model:ir.model.fields,field_description:report_pnt.field_product_product__id
+#: model:ir.model.fields,field_description:report_pnt.field_project_task__id
+#: model:ir.model.fields,field_description:report_pnt.field_report_report_pnt_pnt_report_du__id
+#: model:ir.model.fields,field_description:report_pnt.field_report_report_pnt_pnt_report_du_from_task__id
+#: model:ir.model.fields,field_description:report_pnt.field_report_report_pnt_report_document_identification__id
+#: model:ir.model.fields,field_description:report_pnt.field_res_partner__id
+msgid "ID"
+msgstr "Identificación"
+
+#. module: report_pnt
+#: model:ir.actions.report,name:report_pnt.pnt_budget_contract_report
+msgid "Imprimir contrato"
+msgstr ""
+
+#. module: report_pnt
+#: model:ir.actions.report,name:report_pnt.pnt_budget_contract_report_2
+msgid "Imprimir contrato sin valorar"
+msgstr ""
+
+#. module: report_pnt
+#: model:ir.actions.report,name:report_pnt.pnt_contract_report
+msgid "Imprimir residuos"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_invoice_document_grouped_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_invoice_document_pnt
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: report_pnt
+#: model:ir.actions.report,name:report_pnt.pnt_invoice_grouped_report
+msgid "Invoice grouped"
+msgstr "Facturas (agrupado por producto)"
+
+#. module: report_pnt
+#: model:ir.model,name:report_pnt.model_account_move
+msgid "Journal Entry"
+msgstr "Asiento contable"
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document_grouped
+msgid "LER"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_document_adalmo_structure
+msgid ""
+"La <span style=\"text-decoration: underline;\">facturación</span> de residuos a granel será por <span style=\"text-decoration: underline;"
+"\">Tonelada bruta retirada</span>, incluyendo los acondicionamientos de residuo (bidones, embalajes, palets y cualquier otro "
+"acondicionamiento)."
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_document_adalmo_structure
+msgid "La <span style=\"text-decoration: underline;\">forma de pago</span> deberá ser por"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_document_adalmo_structure
+msgid ""
+"La <strong>duración máxima de almacenamiento</strong> de residuos peligrosos es de 6 meses.\n"
+"                                En el caso de residuos no peligrosos la duración máxima será de 1 año cuando se destinen a eliminación,\n"
+"                                y dos años cuando se destinen a valorización."
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_document_adalmo_structure
+msgid ""
+"La gestión de los residuos se regula en base a normativa específica: Ley 7/2022, de 8 de abril,\n"
+"                    de residuos y suelos contaminados para una economía circular, y el Real Decreto 553/2020 de traslado de residuos."
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_document_adalmo_structure
+msgid ""
+"La relación contractual pactada a través de estas condiciones se establece por un período inicial de  <span style=\"text-decoration: "
+"underline;\"> dos años</span>, desde la fecha expuesta en la primera hoja del presupuesto, que se renovará automáticamente por períodos "
+"bianuales siempre y cuando ninguna de las dos partes se pronuncie en sentido contrario mediante comunicación fehaciente y escrita notificada "
+"con una antelación mínima de 3 meses a la respectiva fecha de vencimiento."
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_document_adalmo_structure
+msgid ""
+"Las tarifas aplicables a la gestión de los residuos serán las vigentes en cada momento en la empresa Adalmo SL para cada tipo de residuo y/o "
+"gestión. En todo caso, dichos precios pactados podrán ser modificados anualmente, sin previo aviso, según el <span style=\"text-decoration: "
+"underline;\">incremento del IPC</span> (Índice de Precios de Consumo)."
+msgstr ""
+
+#. module: report_pnt
+#: model:ir.model.fields,field_description:report_pnt.field_account_move____last_update
+#: model:ir.model.fields,field_description:report_pnt.field_ir_actions_report____last_update
+#: model:ir.model.fields,field_description:report_pnt.field_pnt_print_tag_format____last_update
+#: model:ir.model.fields,field_description:report_pnt.field_pnt_single_document____last_update
+#: model:ir.model.fields,field_description:report_pnt.field_pnt_waste_transfer_document____last_update
+#: model:ir.model.fields,field_description:report_pnt.field_product_product____last_update
+#: model:ir.model.fields,field_description:report_pnt.field_project_task____last_update
+#: model:ir.model.fields,field_description:report_pnt.field_report_report_pnt_pnt_report_du____last_update
+#: model:ir.model.fields,field_description:report_pnt.field_report_report_pnt_pnt_report_du_from_task____last_update
+#: model:ir.model.fields,field_description:report_pnt.field_report_report_pnt_report_document_identification____last_update
+#: model:ir.model.fields,field_description:report_pnt.field_res_partner____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: report_pnt
+#: model:ir.model.fields,field_description:report_pnt.field_pnt_print_tag_format__write_uid
+msgid "Last Updated by"
+msgstr "Última modificación por"
+
+#. module: report_pnt
+#: model:ir.model.fields,field_description:report_pnt.field_pnt_print_tag_format__write_date
+msgid "Last Updated on"
+msgstr "Última modificación el"
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.external_layout_boxed
+msgid "Logo"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_budget_contract_document
+msgid ""
+"Los precios no incluyen el IVA vigente u otros impuestos aplicables. Si surgiera alguna\n"
+"                                        modificación de precios relativa a tarifas públicas estas se repercutiran\n"
+"                                        directamente al cliente.\n"
+"                                        <br/>\n"
+"                                        Validez de la oferta 3 meses.\n"
+"                                        <br/>\n"
+"                                        En el caso de aceptación rogamos nos remitan estos documentos firmados y sellados.\n"
+"                                        <br/>\n"
+"                                        Agradecemos la confianza depositada en nosotros y quedamos a su disposición para\n"
+"                                        cualquier consulta o aclaración sobre el presente presupuesto"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_document_adalmo_structure
+msgid "Los precios ofertados ya incluyen los importes abonados a Adalmo por los sistemas de responsabilidad ampliada del productor (SRAP)."
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_document_adalmo_structure
+msgid ""
+"Los residuos peligrosos deberán estar <strong>etiquetados</strong> etiquetados de forma clara\n"
+"                                y visible incluyendo el código LER, peligrosidad, datos del Productor y fecha de inicio de depósito."
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document
+msgid "M3"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.external_layout_boxed
+msgid "Mail:"
+msgstr ""
+
+#. module: report_pnt
+#: code:addons/report_pnt/wizards/pnt_print_tag_format_wizard.py:0
+#: model:ir.model.fields.selection,name:report_pnt.selection__pnt_print_tag_format__pnt_select_report__no_dangerous
+#, python-format
+msgid "No Dangerous Tag"
+msgstr "Etiqueta residuos no peligrosos"
+
+#. module: report_pnt
+#: code:addons/report_pnt/reports/report_document_identification.py:0
+#, python-format
+msgid "No Document Identification found for all the selected documents."
+msgstr "Hay DUs que no tienen DIs."
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document_grouped
+msgid "NºDI"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_agreement_contract_document
+msgid ""
+"OBLIGACIONES DE LAS PARTES\n"
+"                                                    (el\n"
+"                                                    acuerdo aquí suscrito conlleva la valorización o eliminación\n"
+"                                                    del\n"
+"                                                    residuo notificado y será efectivo en el\n"
+"                                                    momento de la notificación y durante todo el traslado)."
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_agreement_contract_document
+msgid "OTRA INFORMACIÓN RELEVANTE"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_budget_contract_document
+msgid "PRESUPUESTO/CONTRATO"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_document_adalmo_structure_amianto
+msgid "PRUEBA"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_document_adalmo_structure
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_document_adalmo_structure_amianto
+msgid ""
+"Page:\n"
+"                    <span class=\"page\"/>\n"
+"                    /\n"
+"                    <span class=\"topage\"/>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.external_layout_boxed
+msgid "Page: <span class=\"page\"/> / <span class=\"topage\"/>"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_invoice_document_grouped_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_invoice_document_pnt
+msgid "Paid on"
+msgstr "Pagado en"
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_document_adalmo_structure
+msgid ""
+"Para cualquier divergencia derivada de este contrato las partes se someten expresamente a los Juzgados y Tribunales de Palma de Mallorca."
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document_grouped
+msgid "Pelig."
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_agreement_contract_document
+msgid "Periódico"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_ticket_weight_du_document
+msgid "Peso (kg)"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document_grouped
+msgid "Peso(Kg)"
+msgstr ""
+
+#. module: report_pnt
+#: model:ir.model,name:report_pnt.model_pnt_single_document
+msgid "Pnt Single Document"
+msgstr "DU"
+
+#. module: report_pnt
+#: model:ir.model,name:report_pnt.model_pnt_waste_transfer_document
+msgid "Pnt Waste Transfer Document"
+msgstr "Documento traslado residuos"
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.view_form_pnt_print_tag_format
+msgid "Print"
+msgstr "Imprimir"
+
+#. module: report_pnt
+#: model:ir.actions.server,name:report_pnt.action_server_pnt_print_tag_format
+msgid "Print Format and Tags"
+msgstr "Impresión de formato y etiquetas"
+
+#. module: report_pnt
+#: model:ir.model,name:report_pnt.model_product_product model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_budget_contract_document
+msgid "Product"
+msgstr "Producto"
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_invoice_document_grouped_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_invoice_document_pnt
+msgid "Proforma:"
+msgstr ""
+
+#. module: report_pnt
+#: code:addons/report_pnt/models/project_task.py:0
+#, python-format
+msgid "Register Payment"
+msgstr "Registrar pago"
+
+#. module: report_pnt
+#: model:ir.model,name:report_pnt.model_ir_actions_report
+msgid "Report Action"
+msgstr "Informar acción"
+
+#. module: report_pnt
+#: model:ir.model,name:report_pnt.model_report_report_pnt_report_document_identification
+msgid "Report DI"
+msgstr "Informe DI"
+
+#. module: report_pnt
+#: code:addons/report_pnt/wizards/pnt_print_tag_format_wizard.py:0
+#: model:ir.model.fields.selection,name:report_pnt.selection__pnt_print_tag_format__pnt_select_report__sanitary
+#, python-format
+msgid "Sanitary Tag"
+msgstr "Etiqueta sanitaria"
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_document_adalmo_structure
+msgid "Se pactan por las partes los siguientes aspectos que regirán en la gestión de los residuos generados:"
+msgstr ""
+
+#. module: report_pnt
+#: model:ir.model.fields,field_description:report_pnt.field_pnt_print_tag_format__pnt_select_report
+msgid "Select report"
+msgstr "Seleccione una opción"
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_invoice_document_grouped_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_invoice_document_pnt
+msgid "Self Bill"
+msgstr "Autofactura"
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_document_adalmo_structure
+msgid ""
+"Si el residuo retirado no se encuentra en las <span style=\"text-decoration: underline;\">condiciones pactadas</span> se cobrará un plus de "
+"manipulación en función de las horas invertidas (a razón de 50 eur/hora) y la peligrosidad del residuo. Si finalmente dicho residuo no "
+"reuniera las condiciones para ser asumido, se procederá a su devolución al productor, cobrándose los servicios realizados."
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_invoice_document_grouped_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_invoice_document_pnt
+msgid "Supplier Credit Note"
+msgstr "Factura abono proveedor"
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_ticket_weight_du_document
+msgid "Tara (kg)"
+msgstr ""
+
+#. module: report_pnt
+#: model:ir.model,name:report_pnt.model_project_task
+#: model:ir.model.fields,field_description:report_pnt.field_pnt_print_tag_format__pnt_task_ids
+msgid "Task"
+msgstr "Tarea"
+
+#. module: report_pnt
+#: model:ir.actions.report,name:report_pnt.pnt_du_report_task_incident
+msgid "Task incident"
+msgstr "Formato incidencias"
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_invoice_document_grouped_pnt
+msgid "Tax ID"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.external_layout_boxed
+msgid "Tel:"
+msgstr ""
+
+#. module: report_pnt
+#: model:ir.actions.report,name:report_pnt.pnt_ticket_du_report
+msgid "Ticket DU"
+msgstr ""
+
+#. module: report_pnt
+#: model:ir.model,name:report_pnt.model_report_report_pnt_pnt_report_du_from_task
+msgid "Ticket DU (task)"
+msgstr ""
+
+#. module: report_pnt
+#: model:ir.actions.report,name:report_pnt.pnt_ticket_weight_du_report
+msgid "Ticket DU with weight"
+msgstr "Ticket DU con pesos"
+
+#. module: report_pnt
+#: model:ir.model,name:report_pnt.model_report_report_pnt_pnt_report_du
+msgid "Ticket para DU"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_budget_contract_document
+msgid "Total"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document_grouped
+msgid "Trat."
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_invoice_document_grouped_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_invoice_document_pnt
+msgid "Ud"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_budget_contract_document
+msgid "Ud."
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document_grouped
+msgid "Unidades"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_budget_contract_document
+msgid "Unit Price"
+msgstr "Precio unitario"
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_invoice_document_grouped_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_invoice_document_pnt
+msgid "Vendor Bill"
+msgstr "Factura de proveedor"
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.external_layout_boxed
+msgid "Web:"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document_grouped
+msgid "[Código] Descripción"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_document_adalmo_structure
+msgid ""
+"a fecha de factura (según la Ley 15/2010 de 5 de julio, de modificación de la Ley 3/2004 de 29 de diciembre por la que se establecen medidas "
+"de lucha contra la morosidad en las operaciones comerciales). En el caso que no lo especifiquen se entenderá que el vencimiento es de 45 "
+"días, si existe la condición de pago por adelanto, será según el importe acordado previo a la realización de los trabajos. En caso de no "
+"cumplirse con los plazos de pago se podrá aplicar el tipo de interés señalado en la citada Ley 3/2004 sin necesidad de intimación previa."
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_document_adalmo_structure
+msgid "o teléfono"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_invoice_document_grouped_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_invoice_document_pnt
+msgid "on"
+msgstr " "
+
+#. module: report_pnt
+#: model:ir.model,name:report_pnt.model_pnt_print_tag_format
+msgid "pnt.print.tag.format"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_document_adalmo_structure
+msgid "pnt_inscription_general_conditions"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_document_adalmo_structure_amianto
+msgid "pnt_inscription_general_conditions_amianto"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_document_adalmo_structure
+msgid "pnt_logo_general_conditions"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_document_adalmo_structure_amianto
+msgid "pnt_logo_general_conditions_amianto"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_document_adalmo_structure
+msgid "pnt_scale_general_conditions"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_document_adalmo_structure_amianto
+msgid "pnt_scale_general_conditions_amianto"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_document_adalmo_structure
+msgid "pnt_seal_general_conditions"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_document_adalmo_structure_amianto
+msgid "pnt_seal_general_conditions_amianto"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_document_adalmo_structure
+msgid "pnt_sign_general_conditions"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_document_adalmo_structure_amianto
+msgid "pnt_sign_general_conditions_amianto"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_document_adalmo_structure
+msgid "pnt_symbol_general_conditions"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.report_document_adalmo_structure_amianto
+msgid "pnt_symbol_general_conditions_amianto"
+msgstr ""
+
+#. module: report_pnt
+#: model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document model_terms:ir.ui.view,arch_db:report_pnt.pnt_report_du_document_grouped
+msgid "son de procedencia lícita"
+msgstr ""

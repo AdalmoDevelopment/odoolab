@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record model="ir.ui.view" id="view_sales_order_line_filter">
+        <field name="model">sale.order.line</field>
+        <field name="inherit_id" ref="sale.view_sales_order_line_filter"/>
+        <field name="arch" type="xml">
+            <field name="product_id" position="after">
+                <field name="pnt_sd_effective_date"/>
+                <field name="pnt_single_document_id"/>
+            </field>
+            <group position="inside">
+                <filter string="Efective date" name="pnt_sd_effective_date" domain="[]" context="{'group_by':'pnt_sd_effective_date'}"/>
+            </group>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="pnt_view_order_line_tree_custom">
+        <field name="name">pnt.view.order.line.tree</field>
+        <field name="model">sale.order.line</field>
+        <field name="priority" eval="999" />
+        <field name="inherit_id" ref="sale.view_order_line_tree"/>
+        <field name="arch" type="xml">
+            <field name="price_subtotal" position="after">
+                <field name="pnt_certificate_number_sale"/>
+                <field name="pnt_sd_effective_date" optional="hide"/>
+<!--                <field name="pnt_single_document_sale_id"/>-->
+            </field>
+            <field name="order_id" position="after">
+                <field name="pnt_single_document_sale_id"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_order_form_pnt" model="ir.ui.view">
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+            <field name="partner_id" position="attributes">
+                <attribute name="domain">['|',
+                                           ('company_id','=',False),
+                                           ('company_id','=',company_id),
+                                           ('pnt_is_lead','=',False),]
+                </attribute>
+            </field>
+            <field name="validity_date" position="before">
+                <field name="pnt_is_created_rental_manual" invisible="1"/>
+                <field name="pnt_rental_manual_date_origin" attrs="{'invisible': [('pnt_is_created_rental_manual', '=', False)]}"/>
+            </field>
+            <field name="team_id" position="after">
+                <field name="pnt_sd_effective_date"/>
+                <field name="pnt_single_document_id" readonly="1"/>
+                <field name="pnt_single_document_type" invisible="0"/>
+                <field name="pnt_agreement_id" readonly="1"/>
+                <field name="pnt_agreement_reference" readonly="1"/>
+                <field name="pnt_order_reference"
+                       readonly="1"
+                />
+            </field>
+            <xpath expr="//sheet/notebook/page[@name='order_lines']/field[@name='order_line']/tree/field[@name='product_id']" position="after">
+                  <field name="pnt_single_document_line_id"
+                         optional="hidden"
+                  />
+                  <field name="pnt_single_document_line_ids"
+                         optional="hidden"
+                         widget="many2many_tags"
+                  />
+                 <field name="pnt_certificate_number_sale"
+                        optional="hidden"
+                 />
+                 <field name="pnt_single_document_sale_id"
+                        optional="hidden"
+                 />
+            </xpath>
+            <xpath expr="//sheet/notebook/page[@name='order_lines']/field[@name='order_line']/tree/field[@name='price_subtotal']" position="after">
+                  <field name="pnt_certificate_number_sale" optional="hidden"/>
+            </xpath>
+            <xpath expr="//sheet/notebook/page[@name='order_lines']/field[@name='order_line']/tree/field[@name='qty_delivered']" position="after">
+                <field name="pnt_m3"
+                       invisible="1"
+                />
+            </xpath>
+            <xpath expr="//sheet/notebook" position="inside">
+                <page name="marpol"
+                      string="Marpol"
+                      attrs="{'invisible': [('pnt_single_document_type', '!=', 'marpol')]}"
+                >
+                    <group>
+                        <field name="pnt_ship_scale_num"/>
+                        <field name="pnt_control_sheet_ids">
+                            <tree editable="bottom">
+                                <field name="pnt_name"/>
+                            </tree>
+                        </field>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_order_tree" model="ir.ui.view">
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_tree"/>
+        <field name="arch" type="xml">
+            <field name="date_order" position="after">
+                <field name="pnt_sd_effective_date" optional="hide"/>
+                <field name="pnt_single_document_id"/>
+                <field name="pnt_single_document_type"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="sot_sale_order_type_form_view_pnt" model="ir.ui.view">
+        <field name="name">sot.sale.order.type.form.view.pnt</field>
+        <field name="model">sale.order.type</field>
+        <field name="inherit_id" ref="sale_order_type.sot_sale_order_type_form_view" />
+        <field name="arch" type="xml">
+            <field name="warehouse_id" position="before">
+                <field name="pnt_is_DU"
+                       readonly="0"
+                />
+            </field>
+        </field>
+    </record>
+
+    <record id="sot_sale_order_type_tree_view_pnt" model="ir.ui.view">
+        <field name="name">sot.sale.order.type.tree.view.pnt</field>
+        <field name="model">sale.order.type</field>
+        <field name="inherit_id" ref="sale_order_type.sot_sale_order_type_tree_view" />
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="pnt_is_DU"
+                       readonly="0"
+                />
+            </field>
+        </field>
+    </record>
+    <record model="ir.actions.act_window" id="sale_order_line_menu.action_orders_lines">
+        <field name="name">Sales Lines</field>
+        <field name="res_model">sale.order.line</field>
+        <field name="view_mode">tree,pivot</field>
+        <field
+            name="view_ids"
+            eval="[(5, 0, 0),
+                  (0, 0, {'view_mode': 'tree', 'view_id': ref('extra_info_sale_pnt.pnt_view_order_line_tree')}),
+                  (0, 0, {'view_mode': 'pivot', 'view_id': ref('extra_info_sale_pnt.pnt_view_order_line_pivot')}),
+                  (0, 0, {'view_mode': 'form',})
+                  ]"
+        />
+        <field name="context">
+            {'search_default_sale_order': 1, 'search_default_not_invoiced': 1}
+        </field>
+        <field name="domain">[
+                ('display_type', '=', False),
+                ('order_id.force_invoiced', '=', False),
+            ]
+        </field>
+    </record>
+
+    <record id="pnt_action_sale_tree_all" model="ir.actions.act_window">
+        <field name="name">Sales</field>
+        <field name="res_model">sale.order</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,kanban,form,calendar</field>
+        <field name="domain"></field>
+        <field name="context">{'contact_display': 'partner_address', 'default_company_id': allowed_company_ids[0]}</field>
+        <field name="search_view_id" ref="sale.view_sales_order_filter"/>
+    </record>
+
+    <record id="action_create_invoice_from_lines" model="ir.actions.server">
+        <field name="name">Create Invoice</field>
+        <field name="model_id" ref="sale.model_sale_order_line"/>
+        <field name="binding_model_id" ref="sale.model_sale_order_line"/>
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">action = records.action_create_invoice_from_lines()</field>
+    </record>
+
+</odoo>

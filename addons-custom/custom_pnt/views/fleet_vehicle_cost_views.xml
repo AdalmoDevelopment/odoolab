@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="pnt_fleet_vehicle_log_services_view_tree" model="ir.ui.view">
+        <field name="model">fleet.vehicle.log.services</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_log_services_view_tree"/>
+        <field name="arch" type="xml">
+            <field name="state" position="after">
+                <field name="pnt_renovation_state" widget="badge" decoration-success="pnt_renovation_state == 'done'"
+                       decoration-warning="pnt_renovation_state == 'todo'"
+                       decoration-danger="pnt_renovation_state == 'expire'" optional="show"/>
+            </field>
+        </field>
+    </record>
+    <record id="pnt_fleet_vehicle_log_services_view_kanban" model="ir.ui.view">
+        <field name="model">fleet.vehicle.log.services</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_log_services_view_kanban"/>
+        <field name="arch" type="xml">
+            <field name="currency_id" position="after">
+                <field name="pnt_renovation_state"/>
+            </field>
+            <xpath expr="//div[@t-attf-class='oe_kanban_global_click']/div[1]" position="after">
+                <span class="float-left">
+                    <field name="pnt_renovation_state" widget="label_selection"
+                           options="{'classes': {'done': 'success', 'todo': 'warning', 'expire': 'danger'}}"/>
+                </span>
+            </xpath>
+        </field>
+    </record>
+    <record id="pnt_fleet_vehicle_log_services_view_form" model="ir.ui.view">
+        <field name="model">fleet.vehicle.log.services</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_log_services_view_form"/>
+        <field name="arch" type="xml">
+            <field name="vehicle_id" position="before">
+                <field name="pnt_renovation_state" widget="badge" decoration-success="pnt_renovation_state == 'done'"
+                       decoration-warning="pnt_renovation_state == 'todo'"
+                       decoration-danger="pnt_renovation_state == 'expire'" optional="show"/>
+            </field>
+        </field>
+    </record>
+</odoo>

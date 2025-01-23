@@ -1,0 +1,464 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* website_custom_pnt
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-09-09 17:15+0000\n"
+"PO-Revision-Date: 2024-09-09 19:16+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.5\n"
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_agreement_agreement_page
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_single_document_page
+msgid "<i class=\"fa fa-download\"/> Download"
+msgstr "<i class=\"fa fa-download\"/> Descargar"
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_single_document_page
+msgid "<i class=\"fa fa-fw fa-check\"/> <b>Paid</b>"
+msgstr "<i class=\"fa fa-fw fa-check\"/> <b>Pagada</b>"
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_single_document_page
+msgid "<i class=\"fa fa-fw fa-clock-o\"/> <b>Waiting Payment</b>"
+msgstr "<i class=\"fa fa-fw fa-clock-o\"/> <b>Pendiente de pago</b>"
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_agreement_agreement_page
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_single_document_page
+msgid "<i class=\"fa fa-print\"/> Print"
+msgstr "<i class=\"fa fa-print\"/> Imprimir"
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_agreement_agreement_page
+msgid "<span>Agreement Agreement: </span>"
+msgstr "<span>Contrato: </span>"
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.pnt_portal_my_home_menu
+msgid "<span>Agreement Agreement</span>"
+msgstr "<span>Contratos</span>"
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.pnt_portal_my_home_menu
+msgid "<span>Agreement Registration</span>"
+msgstr "<span>Contratos de Tratamiento</span>"
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.pnt_portal_my_home_menu
+msgid "<span>DI</span>"
+msgstr ""
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_pnt_agreement_registration_list
+msgid "<span>Download</span>"
+msgstr "<span>Descargar</span>"
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.pnt_portal_my_home_menu
+msgid "<span>Single Document</span>"
+msgstr "<span>Documento único</span>"
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_single_document_page
+msgid "<span>Unique Document: </span>"
+msgstr "<span>Documento único: </span>"
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.pnt_portal_my_home_menu
+msgid "<span>Waste Report</span>"
+msgstr "<span>Informe de residuos</span>"
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_single_document_page
+msgid "<strong class=\"d-block mb-1\">DI List</strong>"
+msgstr "<strong class=\"d-block mb-1\">Lista de DI</strong>"
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_single_document_page
+msgid "<strong class=\"d-block mb-1\">Liquidaciones</strong>"
+msgstr ""
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_single_document_page
+msgid "<strong class=\"d-block mb-1\">Sale Invoices</strong>"
+msgstr "<strong class=\"d-block mb-1\">Facturas de cliente</strong>"
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_agreement_agreement_page
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_single_document_page
+msgid ""
+"<strong class=\"text-muted\">\n"
+"                                        Salesperson\n"
+"                                </strong>"
+msgstr ""
+"<strong class=\"text-muted\">\n"
+"                                        Comercial\n"
+"                                </strong>"
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_pnt_agreement_agreement
+msgid "Agreement"
+msgstr "Contrato"
+
+#. module: website_custom_pnt
+#: code:addons/website_custom_pnt/controllers/portal_pnt_agreement_registration.py:0
+#, python-format
+msgid "Agreement date"
+msgstr ""
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.pnt_portal_my_home_helpdesk
+msgid "Agreements"
+msgstr "Contratos"
+
+#. module: website_custom_pnt
+#: code:addons/website_custom_pnt/controllers/portal_invoices.py:0
+#: code:addons/website_custom_pnt/controllers/portal_pnt_agreement_agreement.py:0
+#: code:addons/website_custom_pnt/controllers/portal_pnt_agreement_registration.py:0
+#: code:addons/website_custom_pnt/controllers/portal_pnt_single_document.py:0
+#: code:addons/website_custom_pnt/controllers/portal_pnt_single_document_line.py:0
+#: code:addons/website_custom_pnt/controllers/portal_pnt_waste_transfer_document.py:0
+#, python-format
+msgid "All"
+msgstr "Todos"
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_agreement_agreement_page
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_single_document_page
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_pnt_single_document_line_list
+msgid "Container"
+msgstr "Contenedor"
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_pnt_agreement_registration
+msgid "Contratos de tratamiento"
+msgstr ""
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.pnt_portal_my_home_helpdesk
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_pnt_single_document_line_list
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_pnt_single_document_list
+msgid "DI"
+msgstr ""
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_pnt_single_document_line_list
+msgid "DU"
+msgstr ""
+
+#. module: website_custom_pnt
+#: code:addons/website_custom_pnt/controllers/portal_invoices.py:0
+#: code:addons/website_custom_pnt/controllers/portal_pnt_waste_transfer_document.py:0
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_pnt_agreement_registration_list
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_pnt_single_document_list
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_pnt_waste_transfer_document_list
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_single_document_page
+#, python-format
+msgid "Date"
+msgstr "Fecha"
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_single_document_page
+msgid "Date:"
+msgstr "Fecha:"
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_pnt_single_document_list
+msgid "Descargar"
+msgstr ""
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_pnt_agreement_registration_list
+msgid "Document"
+msgstr "Documento"
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_agreement_agreement_page
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_single_document_page
+msgid "Download"
+msgstr "Descargar"
+
+#. module: website_custom_pnt
+#: code:addons/website_custom_pnt/controllers/portal_invoices.py:0
+#, python-format
+msgid "Due Date"
+msgstr "Fecha de vencimiento"
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_pnt_single_document_line_list
+msgid "Effective Date"
+msgstr "Fecha"
+
+#. module: website_custom_pnt
+#: code:addons/website_custom_pnt/controllers/portal_pnt_single_document.py:0
+#: code:addons/website_custom_pnt/controllers/portal_pnt_single_document_line.py:0
+#, python-format
+msgid "Effective date"
+msgstr "Fecha"
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_pnt_agreement_agreement_list
+msgid "End date"
+msgstr "Fecha de fin"
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_pnt_single_document_line_list
+msgid "Holder"
+msgstr "Titular"
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_pnt_single_document_line_list
+msgid "Kg"
+msgstr ""
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_pnt_agreement_registration_list
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_pnt_single_document_line_list
+msgid "LER"
+msgstr ""
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_pnt_waste_transfer_document_list
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_single_document_page
+msgid "Legal Code"
+msgstr "Código legal"
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.pnt_portal_my_invoices
+msgid "Move Type"
+msgstr "Tipo factura"
+
+#. module: website_custom_pnt
+#: code:addons/website_custom_pnt/controllers/portal_pnt_agreement_agreement.py:0
+#: code:addons/website_custom_pnt/controllers/portal_pnt_single_document.py:0
+#: code:addons/website_custom_pnt/controllers/portal_pnt_single_document_line.py:0
+#: code:addons/website_custom_pnt/controllers/portal_pnt_waste_transfer_document.py:0
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_pnt_agreement_agreement_list
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_pnt_single_document_list
+#, python-format
+msgid "Name"
+msgstr "Referencia"
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_pnt_waste_transfer_document
+msgid "No Waste Transfer Document found."
+msgstr "No se han encontrado documentos de transferencia para este Documento único."
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_pnt_agreement_agreement
+msgid "No agreements found."
+msgstr "No se han encontrado contratos."
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_pnt_agreement_registration
+msgid "No se han encontrado contratos de tratamiento."
+msgstr ""
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_pnt_single_document
+msgid "No unique documents found."
+msgstr "No se han encontrado documentos únicos."
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_pnt_single_document_line
+msgid "No waste report items found."
+msgstr "No se han encontrado residuos."
+
+#. module: website_custom_pnt
+#: code:addons/website_custom_pnt/controllers/portal_pnt_agreement_registration.py:0
+#, python-format
+msgid "Number"
+msgstr "Número CT"
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_pnt_agreement_registration_list
+msgid "Nº C.T."
+msgstr ""
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_pnt_single_document_line_list
+msgid "Pickup place"
+msgstr "Recogida"
+
+#. module: website_custom_pnt
+#: code:addons/website_custom_pnt/controllers/portal_pnt_single_document_line.py:0
+#, python-format
+msgid "Pickup: %s"
+msgstr "Recogida: %s"
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_pnt_single_document_list
+msgid "Place"
+msgstr "Lugar de recogida"
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_agreement_agreement_page
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_single_document_page
+msgid "Print"
+msgstr "Imprimir"
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_pnt_waste_transfer_document_list
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_single_document_page
+msgid "Product"
+msgstr "Producto"
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_pnt_agreement_registration_list
+msgid "Productor"
+msgstr ""
+
+#. module: website_custom_pnt
+#: code:addons/website_custom_pnt/controllers/portal_invoices.py:0
+#, python-format
+msgid "Purchase Invoices"
+msgstr "Facturas de compra"
+
+#. module: website_custom_pnt
+#: code:addons/website_custom_pnt/controllers/portal_invoices.py:0
+#, python-format
+msgid "Reference"
+msgstr "Referencia"
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.pnt_portal_my_home_helpdesk
+msgid "Registration Agreement"
+msgstr "Contrato de Tratamiento"
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_pnt_agreement_registration_list
+msgid "Residuo"
+msgstr ""
+
+#. module: website_custom_pnt
+#: code:addons/website_custom_pnt/controllers/portal_invoices.py:0
+#, python-format
+msgid "Sale Invoices"
+msgstr "Facturas de venta"
+
+#. module: website_custom_pnt
+#: code:addons/website_custom_pnt/controllers/portal_pnt_agreement_agreement.py:0
+#: code:addons/website_custom_pnt/controllers/portal_pnt_agreement_registration.py:0
+#: code:addons/website_custom_pnt/controllers/portal_pnt_single_document.py:0
+#: code:addons/website_custom_pnt/controllers/portal_pnt_single_document_line.py:0
+#: code:addons/website_custom_pnt/controllers/portal_pnt_waste_transfer_document.py:0
+#, python-format
+msgid "Search in All"
+msgstr "Buscar en Todos"
+
+#. module: website_custom_pnt
+#: code:addons/website_custom_pnt/controllers/portal_pnt_single_document_line.py:0
+#, python-format
+msgid "Search in Container"
+msgstr "Buscar en Envases"
+
+#. module: website_custom_pnt
+#: code:addons/website_custom_pnt/controllers/portal_pnt_single_document_line.py:0
+#, python-format
+msgid "Search in DU"
+msgstr "Buscar en DU"
+
+#. module: website_custom_pnt
+#: code:addons/website_custom_pnt/controllers/portal_pnt_agreement_agreement.py:0
+#: code:addons/website_custom_pnt/controllers/portal_pnt_single_document.py:0
+#: code:addons/website_custom_pnt/controllers/portal_pnt_waste_transfer_document.py:0
+#, python-format
+msgid "Search in Name"
+msgstr "Buscar en Referencia"
+
+#. module: website_custom_pnt
+#: code:addons/website_custom_pnt/controllers/portal_pnt_agreement_registration.py:0
+#, python-format
+msgid "Search in Productor"
+msgstr "Buscar en Productor"
+
+#. module: website_custom_pnt
+#: code:addons/website_custom_pnt/controllers/portal_pnt_agreement_registration.py:0
+#: code:addons/website_custom_pnt/controllers/portal_pnt_single_document_line.py:0
+#, python-format
+msgid "Search in Waste"
+msgstr "Buscar en Residuos"
+
+#. module: website_custom_pnt
+#: code:addons/website_custom_pnt/controllers/portal_pnt_agreement_registration.py:0
+#, python-format
+msgid "Search in pnt_agreement_sequence"
+msgstr "Buscar en Número CT"
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_pnt_single_document_list
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_single_document_page
+msgid "Signed Document"
+msgstr "Documento Firmado"
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_pnt_agreement_agreement_list
+msgid "Start date"
+msgstr "Fecha de inicio"
+
+#. module: website_custom_pnt
+#: code:addons/website_custom_pnt/controllers/portal_invoices.py:0
+#, python-format
+msgid "Status"
+msgstr "Estado"
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_pnt_agreement_registration_list
+msgid "Table 2"
+msgstr "Tabla 2"
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_pnt_agreement_registration_list
+msgid "Table 5"
+msgstr "Tabla 5"
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_pnt_single_document_line_list
+msgid "UdM"
+msgstr ""
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_pnt_single_document
+msgid "Unique Document"
+msgstr "Documento Único"
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.pnt_portal_my_home_helpdesk
+msgid "Unique Documents"
+msgstr "Documentos únicos"
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_pnt_single_document_line_list
+msgid "Units"
+msgstr "Unidades"
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_pnt_single_document_line_list
+msgid "Waste"
+msgstr "Residuo"
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.pnt_portal_my_home_helpdesk
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_pnt_single_document_line
+msgid "Waste Report"
+msgstr "Informe de residuos"
+
+#. module: website_custom_pnt
+#: model_terms:ir.ui.view,arch_db:website_custom_pnt.portal_pnt_waste_transfer_document
+msgid "Waste Transfer Document"
+msgstr "Documento de transferencia"

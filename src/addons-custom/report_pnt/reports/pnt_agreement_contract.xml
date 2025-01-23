@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="pnt_report_agreement_contract_format"
+                model="report.paperformat">
+            <field name="name">Custom A4 format</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">15</field>
+            <field name="margin_bottom">8</field>
+            <field name="margin_left">10</field>
+            <field name="margin_right">20</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">0</field>
+            <field name="dpi">96</field>
+        </record>
+        <record id="pnt_report_agreement_contract_format_custom" model="report.paperformat">
+            <field name="name">Custom ticket format</field>
+            <field name="default" eval="True"/>
+            <field name="format">custom</field>
+            <field name="page_height">70</field>
+            <field name="page_width">55</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">6</field>
+            <field name="margin_bottom">0</field>
+            <field name="margin_left">6</field>
+            <field name="margin_right">3</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">0</field>
+            <field name="dpi">96</field>
+        </record>
+        <record id="pnt_agreement_contract_report" model="ir.actions.report">
+            <field name="name">Contrato de tratamiento de Residuo</field>
+            <field name="model">pnt.agreement.agreement</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">report_pnt.pnt_report_agreement_contract</field>
+            <field name="paperformat_id" ref="pnt_report_agreement_contract_format"/>
+            <field name="binding_model_id" ref="custom_pnt.model_pnt_agreement_agreement"/>
+            <field name="binding_type">report</field>
+        </record>
+        <record id="pnt_agreement_contract_report" model="ir.actions.report">
+            <field name="name">Contrato de tratamiento de Residuo</field>
+            <field name="model">pnt.agreement.registration</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">report_pnt.pnt_report_agreement_contract</field>
+            <field name="paperformat_id" ref="pnt_report_agreement_contract_format"/>
+            <field name="binding_model_id" ref="custom_pnt.model_pnt_agreement_registration"/>
+            <field name="binding_type">report</field>
+        </record>
+        <record id="pnt_contract_report" model="ir.actions.report">
+            <field name="name">Imprimir residuos</field>
+            <field name="model">pnt.agreement.agreement</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">report_pnt.pnt_report_agreement_contract</field>
+            <field name="report_file">report_pnt.pnt_report_agreement_contract</field>
+            <field name="paperformat_id" ref="report_pnt.pnt_report_agreement_contract_format"/>
+            <field name="binding_type">report</field>
+        </record>
+        <template id="pnt_report_agreement_contract_document">
+            <t t-call="web.basic_layout">
+                <t t-set="doc_count" t-value="0"/>
+                <div class="page" style="page-break-after:always;">
+                    <t t-set="doc_count" t-value="doc_count+1"/>
+                    <t t-set="doc_number" t-value="str(doc_count)"/>
+                    <t t-if="len(doc_number) &lt; 2">
+                        <t t-set="doc_number" t-value="'0'+doc_number"/>
+                    </t>
+                    <table style="width:100%;font-size:15px; border: 1px solid black;">
+                        <td style="width:65%; border: 1px solid black; text-align:center">
+                            <strong>
+                                <p style="margin: 30px 0 20px 0;">CONTRATO DE TRATAMIENTO DE RESIDUO</p>
+                            </strong>
+                        </td>
+                        <td style="width:35%; border: 1.2px solid black">
+                            <strong style="margin-left:10px">Nº</strong>
+                            <span style="margin: 30px 0 20px 0;" t-field="doc.pnt_agreement_sequence"/>
+                        </td>
+                    </table>
+
+                    <t t-if="doc.pnt_agreement_registration_type == 'mgm'">
+                        <t t-set="traslado" t-value="doc.pnt_real_producer_id"/>
+                        <t t-set="gestor" t-value="doc.pnt_pickup_id"/>
+                    </t>
+                    <t t-else="">
+                        <t t-set="traslado" t-value="doc.pnt_pickup_id"/>
+                        <t t-set="gestor" t-value="doc.pnt_real_producer_id"/>
+                    </t>
+
+                    <!-- DATOS DE LA INSTALACIÓN ORIGEN DEL TRASLADO -->
+                    <table style="width:100%;font-size:11px; margin-top: 10px">
+                        <td style="width:50%;">
+                            <table style="width:100%;border: 1.2px solid black;">
+                                <thead style="">
+                                    <tr style="background-color:#C4C4C4;">
+                                        <td style="width:100%;border: 1.2px solid black;">
+                                            <strong>
+                                                <p style="margin: 15px 0 5px 10px;">DATOS DE LA INSTALACIÓN
+                                                    ORIGEN
+                                                    DEL
+                                                    TRASLADO
+                                                </p>
+                                            </strong>
+                                        </td>
+                                    </tr>
+                                </thead>
+                                <td>
+                                    <table style="width:100%;">
+                                        <td style="width:66%; padding: 10px">
+                                            <strong>Razón social:</strong>
+                                            <span t-field="traslado.commercial_partner_id.name"/>
+                                            <br/>
+                                            <strong>Nombre:</strong>
+                                            <span t-field="traslado.name"/>
+                                        </td>
+                                        <td style="width:33%; border-left :1.2px solid black">
+                                            <strong style="margin-left: 10px">NIF:</strong>
+                                            <span t-field="traslado.parent_id.vat"/>
+                                        </td>
+                                    </table>
+                                    <table style="width:100%; border-top:1px solid black">
+                                        <td style="width:66%; padding: 10px">
+                                            <strong>Dirección del centro/Localidad/Provincia:</strong>
+                                            <br/>
+                                            <span t-esc="traslado._get_default_address_format()"/>
+                                        </td>
+                                        <td style="width:33%; padding: 10px; border-left :1.2px solid black">
+                                            <strong>Nº Inscripción RPGR:</strong>
+                                            <span t-esc="', '.join(traslado.pnt_waste_nima_code_ids.pnt_waste_authorization_code_ids.mapped('name'))"/>
+                                            <br/>
+                                            <strong>NIMA:</strong>
+                                            <span t-esc="', '.join(traslado.pnt_waste_nima_code_ids.mapped('name'))"/>
+                                        </td>
+                                    </table>
+                                    <table style="width:100%; border-top:1px solid black">
+                                        <td style="width:33%; padding: 10px">
+                                            <strong>Persona contacto:</strong>
+                                            <span t-if="traslado._get_contact_person()"
+                                                  t-esc="traslado._get_contact_person().name"/>
+                                        </td>
+                                        <td style="width:33%; padding: 10px; border-left :1px solid black">
+                                            <strong>Email:</strong>
+                                            <span t-if="traslado._get_contact_person()"
+                                                  t-esc="traslado._get_contact_person().email"/>
+                                            <span t-else=""
+                                                  t-esc="traslado.email"/>
+                                        </td>
+                                        <td style="width:33%; padding: 10px; border-left :1.2px solid black">
+                                            <strong>Teléfono/Móvil:</strong>
+                                            <span t-if="traslado._get_contact_person()"
+                                                  t-esc="traslado._get_contact_person().phone"/>
+                                            <span t-else=""
+                                                  t-esc="traslado.phone"/>
+                                        </td>
+                                    </table>
+                                </td>
+                            </table>
+                        </td>
+                    </table>
+                    <!-- DATOS DEL DESTINATARIO DEL TRASLADO (GESTOR) -->
+                    <table style="width:100%;font-size:11px; margin-top: 10px">
+                        <td style="width:50%;">
+                            <table style="width:100%;border: 1.2px solid black;">
+                                <thead style="">
+                                    <tr style="background-color:#C4C4C4;">
+                                        <td style="width:100%;border: 1.2px solid black;">
+                                            <strong>
+                                                <p style="margin: 15px 0 5px 10px;">DATOS DEL DESTINATARIO DEL
+                                                    TRASLADO
+                                                    (GESTOR)
+                                                </p>
+                                            </strong>
+                                        </td>
+                                    </tr>
+                                </thead>
+                                <td>
+                                    <table style="width:100%;">
+                                        <td style="width:66%; padding: 10px">
+                                            <strong>Razón social:</strong>
+                                            <span t-field="gestor.commercial_partner_id.name"/>
+                                            <br/>
+                                            <strong>Nombre:</strong>
+                                            <span t-field="gestor.name"/>
+                                        </td>
+                                        <td style="width:33%; border-left :1.2px solid black">
+                                            <strong style="margin-left: 10px">NIF:</strong>
+                                            <span t-field="gestor.vat"/>
+                                        </td>
+                                    </table>
+                                    <table style="width:100%; border-top:1px solid black">
+                                        <td style="width:66%; padding: 10px">
+                                            <strong>Dirección del centro/Localidad/Provincia:</strong>
+                                            <br/>
+                                            <span t-esc="gestor._get_default_address_format()"/>
+                                        </td>
+                                        <td style="width:33%; padding: 10px; border-left :1.2px solid black">
+                                            <strong>Nº Inscripción RPGR:</strong>
+<!--                                            <t t-if="gestor.company_id.du_di_partner_default_nima_id.pnt_waste_nima_code_ids">-->
+<!--                                                <span t-field="gestor.company_id.du_di_partner_default_nima_id.pnt_waste_nima_code_ids[0].pnt_waste_authorization_code_ids[0].name"/>-->
+<!--                                            </t>-->
+                                            <span t-esc="', '.join(gestor.pnt_waste_nima_code_ids.pnt_waste_authorization_code_ids.mapped('name'))"/>
+                                            <br/>
+                                            <strong>NIMA:</strong>
+                                            <span t-esc="', '.join(gestor.pnt_waste_nima_code_ids.mapped('name'))"/>
+                                        </td>
+                                    </table>
+                                    <table style="width:100%; border-top:1px solid black">
+                                        <td style="width:33%; padding: 10px">
+                                            <strong>Persona contacto:</strong>
+                                            <span t-if="gestor._get_contact_person()"
+                                                  t-esc="gestor._get_contact_person().name"/>
+                                        </td>
+                                        <td style="width:33%; padding: 10px; border-left :1px solid black">
+                                            <strong>Email:</strong>
+                                            <span t-if="gestor._get_contact_person()"
+                                                  t-esc="gestor._get_contact_person().email"/>
+                                            <span t-else=""
+                                                  t-esc="gestor.email"/>
+                                        </td>
+                                        <td style="width:33%; padding: 10px; border-left :1.2px solid black">
+                                            <strong>Teléfono/Móvil:</strong>
+                                            <span t-if="gestor._get_contact_person()"
+                                                  t-esc="gestor._get_contact_person().phone"/>
+                                            <span t-else=""
+                                                  t-esc="gestor.phone"/>
+                                        </td>
+                                    </table>
+                                </td>
+                            </table>
+                        </td>
+                    </table>
+                    <!-- DATOS DEL RESIDUO -->
+                    <table style="width:100%;font-size:11px; margin-top: 10px">
+                        <td style="width:50%;">
+                            <table style="width:100%;border: 1.2px solid black;">
+                                <thead style="">
+                                    <tr style="background-color:#C4C4C4;">
+                                        <td style="width:100%;border: 1.2px solid black;">
+                                            <strong>
+                                                <p style="margin: 15px 0 5px 10px;">DATOS DEL RESIDUO</p>
+                                            </strong>
+                                        </td>
+                                    </tr>
+                                </thead>
+                                <td>
+                                    <table style="width:100%;">
+                                        <td style="width:33%; padding: 1px 0 1px 17px ">
+                                            <strong>Código LER:</strong>
+                                            <span t-field="doc.pnt_product_id.product_tmpl_id.pnt_waste_ler_id.name"/>
+                                        </td>
+                                        <td style="width:66%; border-left :1.2px solid black; padding: 1px 0 1px 17px ">
+                                            <strong style="margin-left: 10px">Descripción:</strong>
+                                            <span t-field="doc.pnt_product_id.product_tmpl_id.pnt_waste_ler_id.pnt_description"/>
+                                        </td>
+                                    </table>
+                                    <t t-if="doc.pnt_product_id.product_tmpl_id.pnt_waste_table5_ids">
+                                        <table style="width:100%; border-top:1px solid black">
+                                            <td style="width:100%; padding: 10px">
+                                                <strong>En caso de residuo peligroso:</strong>
+                                                <t t-if="doc.pnt_agreement_registration_type == 'mgm'">
+                                                    <span t-field="doc.pnt_waste_table5_ids"/>
+                                                </t>
+                                                <t t-else="">
+                                                    <span t-field="doc.pnt_product_id.product_tmpl_id.pnt_waste_table5_ids"/>
+                                                </t>
+                                            </td>
+                                        </table>
+                                    </t>
+                                    <table style="width:100%; border-top:1px solid black">
+                                        <td style="width:100%; padding: 10px">
+                                            <strong>Tratamiento del residuo:</strong>
+                                            <t t-if="doc.pnt_agreement_registration_type == 'mgm'">
+                                                <span t-field="doc.pnt_waste_table2_ids"/>
+                                            </t>
+                                            <t t-else="">
+                                                <span t-field="doc.pnt_product_id.product_tmpl_id.pnt_waste_table2_ids"/>
+                                            </t>
+                                        </td>
+                                    </table>
+                                    <table style="width:100%; border-top:1px solid black">
+                                        <td style="width:50%; padding: 10px">
+                                            <strong>Cantidad de residuo a trasladar:</strong>
+                                            <span t-field="doc.pnt_qty_to_transport"/>
+                                        </td>
+                                        <td style="width:50%; border-left :1.2px solid black; padding: 10px">
+                                            <strong>Periodicidad estimada del traslado:</strong>
+                                            <t t-if="doc.pnt_periodicity_transfer in ('Periodicity','Periodicidad')">
+                                                Periódico
+                                            </t>
+                                            <t t-else="">
+                                                <span t-field="doc.pnt_periodicity_transfer"/>
+                                            </t>
+                                        </td>
+                                    </table>
+                                    <table style="width:100%; border-top:1px solid black">
+                                        <td style="width:100%; padding: 10px">
+                                            <strong>Condiciones de aceptación del residuo:</strong>
+                                            <span t-if="doc.pnt_agreement_registration_type == 'producer'"
+                                                  t-field="doc.pnt_product_id.product_tmpl_id.pnt_acceptance_waste_condition"/>
+                                            <span t-else=""
+                                                  t-field="doc.pnt_comments"/>
+                                        </td>
+                                    </table>
+                                </td>
+                            </table>
+                        </td>
+                    </table>
+                    <table style="width:100%;font-size:11px;">
+                        <td style="width:50%;">
+                            <table style="width:100%;border: 1.2px solid black;">
+                                <thead style="">
+                                    <tr style="background-color:#C4C4C4;">
+                                        <td style="width:100%;border: 1.2px solid black;">
+                                            <strong>
+                                                <p style="margin: 15px 0 5px 10px;">OTRA INFORMACIÓN RELEVANTE
+                                                </p>
+                                            </strong>
+                                        </td>
+                                    </tr>
+                                </thead>
+                                <td>
+                                    <table style="width:100%;">
+                                        <td style="width:100%; padding: 10px">
+                                            <span t-field="doc.pnt_product_id.product_tmpl_id.pnt_more_relevant_info"/>
+                                        </td>
+                                    </table>
+                                </td>
+                            </table>
+                        </td>
+                    </table>
+                    <!-- OBLIGACIONES DE LAS PARTES -->
+                    <table style="width:100%;font-size:11px; margin-top: 5px">
+                        <td style="width:50%;">
+                            <table style="width:100%;border: 1.2px solid black;">
+                                <thead style="">
+                                    <tr style="background-color:#C4C4C4;">
+                                        <td style="width:100%;border: 1.2px solid black;">
+                                            <strong>
+                                                <p style="margin: 15px 0 5px 10px;">OBLIGACIONES DE LAS PARTES
+                                                    (el
+                                                    acuerdo aquí suscrito conlleva la valorización o eliminación
+                                                    del
+                                                    residuo notificado y será efectivo en el
+                                                    momento de la notificación y durante todo el traslado).
+                                                </p>
+                                            </strong>
+                                        </td>
+                                    </tr>
+                                </thead>
+                                <td style="padding: 5px;">
+                                    <p t-field="doc.company_id.pnt_obligations_of_the_parties"/>
+                                </td>
+                            </table>
+                            <table style="width:100%;font-size:11px;">
+                                <td style="width:50%;">
+                                    <table style="width:100%;border: 1.2px solid black;">
+                                        <tr>
+                                            <td>
+                                                <table style="width:100%;">
+                                                    <td style="width:49.5%; padding-left: 15px ">
+                                                        <span>ACEPTACIÓN INSTALACIÓN ORIGEN</span>
+                                                        <br/>
+                                                        <span>(firma y sello)</span>
+                                                        <t style="text-align: center;" t-if="traslado.pnt_sign_image">
+                                                            <br/>
+                                                            <img t-att-src="image_data_uri(traslado.pnt_sign_image)"
+                                                                 style="max-width: 150px; max-height: 150px;"/>
+                                                            <br/>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <br/>
+                                                            <br/>
+                                                            <br/>
+                                                            <br/>
+                                                            <br/>
+                                                            <br/>
+                                                        </t>
+                                                        <span>Fecha:</span>
+                                                        <span t-if="doc.pnt_agreement_registration_type == 'mgm'"
+                                                              t-field="doc.pnt_agreement_date"/>
+                                                    </td>
+                                                    <td style="width:49.5%; padding-left: 15px; border-left:1px solid black ">
+                                                        <span>ACEPTACIÓN GESTOR</span>
+                                                        <br/>
+                                                        <span>(firma y sello)</span>
+                                                        <t style="text-align: center;" t-if="gestor.pnt_sign_image">
+                                                            <br/>
+                                                            <img t-att-src="image_data_uri(gestor.pnt_sign_image)"
+                                                                 style="max-width: 150px; max-height: 150px;"/>
+                                                            <br/>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <br/>
+                                                            <br/>
+                                                            <br/>
+                                                            <br/>
+                                                            <br/>
+                                                            <br/>
+                                                        </t>
+                                                        <span>Fecha:</span>
+                                                        <span t-if="doc.pnt_agreement_registration_type != 'mgm'"
+                                                              t-field="doc.pnt_agreement_date"/>
+                                                    </td>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </table>
+                        </td>
+                    </table>
+                </div>
+            </t>
+        </template>
+        <template id="pnt_report_agreement_contract">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="report_pnt.pnt_report_agreement_contract_document"/>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

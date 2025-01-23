@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="pnt_data_fleet_service_type_ITV" model="fleet.service.type">
+            <field name="name">ITV</field>
+            <field name="category">service</field>
+            <field name="pnt_delay_days">60</field>
+        </record>
+        <record id="pnt_data_fleet_service_type_insurance" model="fleet.service.type">
+            <field name="name">Insurance</field>
+            <field name="category">service</field>
+            <field name="pnt_delay_days">60</field>
+        </record>
+        <record id="pnt_data_fleet_service_type_ADR" model="fleet.service.type">
+            <field name="name">ADR</field>
+            <field name="category">service</field>
+            <field name="pnt_delay_days">60</field>
+        </record>
+        <record id="pnt_data_fleet_service_type_tachograph" model="fleet.service.type">
+            <field name="name">Tachograph</field>
+            <field name="category">service</field>
+            <field name="pnt_delay_days">60</field>
+        </record>
+        <record id="pnt_data_fleet_service_type_transport_card" model="fleet.service.type">
+            <field name="name">Transport Card</field>
+            <field name="category">service</field>
+            <field name="pnt_delay_days">60</field>
+        </record>
+        <record id="pnt_data_fleet_service_type_isothermal_inspection" model="fleet.service.type">
+            <field name="name">Isothermal Inspection</field>
+            <field name="category">service</field>
+            <field name="pnt_delay_days">60</field>
+        </record>
+    </data>
+</odoo>

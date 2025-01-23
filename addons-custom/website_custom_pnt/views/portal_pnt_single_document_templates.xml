@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="portal_pnt_single_document" name="Unique Document">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Unique Document</t>
+            </t>
+            <t t-if="not pnt_single_documents">
+                <div class="alert alert-warning mt8" role="alert">
+                    <p>No unique documents found.</p>
+                </div>
+            </t>
+            <t t-if="pnt_single_documents" t-call="website_custom_pnt.portal_pnt_single_document_list"/>
+        </t>
+    </template>
+
+    <template id="portal_pnt_single_document_list" name="Unique Document">
+        <t t-call="portal.portal_table">
+            <thead>
+                <tr t-attf-class="thead-light">
+                    <th class="text-left">Name</th>
+                    <th class="text-left">Date</th>
+                    <th class="text-left">Place</th>
+                    <th class="text-left">Signed Document</th>
+                    <th class="text-left">DI</th>
+                </tr>
+            </thead>
+            <t t-foreach="pnt_single_documents" t-as="pnt_single_document">
+                <tbody>
+                    <tr>
+                        <td class="text-left">
+                            <a t-att-href="'/my/single_document/%s'%(pnt_single_document.id)">
+                                <span t-esc="pnt_single_document.name"/>
+                            </a>
+                        </td>
+                        <td class="text-left">
+                            <span t-esc="pnt_single_document.pnt_effective_date" t-options='{"widget": "date","format": "dd-MM-yyyy"}'/>
+                        </td>
+                        <td class="text-left">
+                            <span t-esc="pnt_single_document.pnt_partner_delivery_id.name"/>
+                        </td>
+                        <td class="text-left">
+                             <a t-if="pnt_single_document.pnt_du_signed_file"
+                                t-att-href="'/web/content?model=%s&amp;field=%s&amp;filename_field=%s&amp;id=%s'%('pnt.single.document', 'pnt_du_signed_file', 'pnt_filename_du_signed', pnt_single_document.id)" target="download">
+                                <span t-if="pnt_single_document.pnt_filename_du_signed" t-esc="pnt_single_document.pnt_filename_du_signed"/>
+                                 <span t-if="not pnt_single_document.pnt_filename_du_signed">Descargar</span>
+                            </a>
+                        </td>
+                        <td class="text-left">
+                             <a t-att-href="'/my/single_document/%s/waste_transfer_document'%pnt_single_document.id">
+                                DI
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </t>
+        </t>
+    </template>
+
+    <template id="portal_single_document_page" name="Single Document Portal Template" inherit_id="portal.portal_sidebar" primary="True">
+        <xpath expr="//div[hasclass('o_portal_sidebar')]" position="inside">
+            <div class="row mt16 o_portal_invoice_sidebar">
+
+                <!-- Sidebar -->
+                <t t-call="portal.portal_record_sidebar">
+                    <t t-set="classes" t-value="'col-lg-auto d-print-none'"/>
+                    <t t-set="title" t-if="single_document.pnt_du_signed_file">
+                        <h2 class="mb-0">
+                            Signed Document
+                        </h2>
+                    </t>
+
+                    <t t-set="entries">
+                        <ul class="list-group list-group-flush flex-wrap flex-row flex-lg-column">
+                            <li t-if="single_document.pnt_du_signed_file" class="list-group-item flex-grow-1">
+                                <div class="o_download_pdf btn-toolbar flex-sm-nowrap">
+                                    <div class="btn-group  flex-grow-1 mr-1 mb-1">
+                                        <a class="btn btn-secondary btn-block o_download_btn"
+                                           t-att-href="'/web/content?model=%s&amp;field=%s&amp;filename_field=%s&amp;id=%s'%('pnt.single.document', 'pnt_du_signed_file', 'pnt_filename_du_signed', single_document.id)"
+                                           t-att-download="single_document.pnt_filename_du_signed"
+                                           target="download"
+                                           title="Download"><i class="fa fa-download"/> Download
+                                        </a>
+                                    </div>
+                                    <div class="btn-group flex-grow-1 mb-1">
+                                        <a class="btn btn-secondary btn-block o_print_btn o_portal_invoice_print"
+                                           t-att-href="'/web/content?model=%s&amp;field=%s&amp;filename_field=%s&amp;id=%s'%('pnt.single.document', 'pnt_du_signed_file', 'pnt_filename_du_signed', single_document.id)"
+                                           t-att-download="single_document.pnt_filename_du_signed"
+                                           target="_blank"
+                                           title="Print"><i class="fa fa-print"/> Print
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li t-if="single_document.pnt_user_id" class="list-group-item flex-grow-1">
+                                <div class="small mb-1"><strong class="text-muted">
+                                        Salesperson
+                                </strong></div>
+                                <div class="row">
+                                    <div class="col flex-grow-0 pr-2">
+                                        <img t-if="single_document.pnt_user_id.image_1024" class="rounded-circle mt-1 o_portal_contact_img" t-att-src="image_data_uri(single_document.pnt_user_id.image_1024)" alt="Contact"/>
+                                        <img t-else="" class="rounded-circle mt-1 o_portal_contact_img" src="/web/static/src/img/user_menu_avatar.png" alt="Contact"/>
+                                    </div>
+                                    <div class="col pl-0">
+                                        <span t-field="single_document.pnt_user_id" t-options='{"widget": "contact", "fields": ["name", "phone"], "no_marker": True}'/>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </t>
+                </t>
+
+                <!-- Page Content -->
+                <div id="invoice_content" class="col-12 col-lg">
+                    <div class="o_portal_html_view shadow p-3">
+                        <div id="introduction" class="card-header bg-white">
+                          <h2 class="my-0">
+                                <span>Unique Document: </span><span t-esc="single_document.name"/>
+                            </h2>
+                        </div>
+                        <div class="card-body">
+                            <t t-set="sale_invoices" t-value="single_document.pnt_get_sale_invoices_for_portal()"/>
+                            <div t-if="sale_invoices" class="row">
+                                <div class="col">
+                                    <strong class="d-block mb-1">Sale Invoices</strong>
+                                    <ul class="list-group mb-4">
+                                        <t t-foreach="sale_invoices" t-as="i">
+                                            <t t-set="report_url" t-value="i.get_portal_url(report_type='pdf', download=True)"/>
+                                            <div class="d-flex flex-wrap align-items-center justify-content-between" style="background-color:#D3D3D3;">
+                                                <div>
+                                                    <a t-att-href="report_url">
+                                                        <span t-esc="i.name"/>
+                                                    </a>
+                                                    <div class="small d-lg-inline-block">Date: <span class="text-muted" t-field="i.invoice_date"/></div>
+                                                </div>
+                                                <span t-if="i.payment_state in ('paid', 'in_payment')" class="small badge badge-success orders_label_text_align"><i class="fa fa-fw fa-check"/> <b>Paid</b></span>
+                                                <span t-else="" class="small badge badge-info orders_label_text_align"><i class="fa fa-fw fa-clock-o"/> <b>Waiting Payment</b></span>
+                                            </div>
+                                        </t>
+                                    </ul>
+                                </div>
+                                </div>
+                            <br/>
+                            <t t-set="purchase_invoices" t-value="single_document.pnt_get_purchase_invoices_for_portal()"/>
+                            <div t-if="purchase_invoices" class="row">
+                                <div class="col">
+                                    <strong class="d-block mb-1">Liquidaciones</strong>
+                                    <ul class="list-group mb-4">
+                                        <t t-foreach="purchase_invoices" t-as="i">
+                                            <t t-set="report_url" t-value="i.get_portal_url(report_type='pdf', download=True)"/>
+                                            <div class="d-flex flex-wrap align-items-center justify-content-between">
+                                                <div>
+                                                    <a t-att-href="report_url">
+                                                        <span t-esc="i.name"/>
+                                                    </a>
+                                                    <div class="small d-lg-inline-block">Date: <span class="text-muted" t-field="i.invoice_date"/></div>
+                                                </div>
+                                                <span t-if="i.payment_state in ('paid', 'in_payment')" class="small badge badge-success orders_label_text_align"><i class="fa fa-fw fa-check"/> <b>Paid</b></span>
+                                                <span t-else="" class="small badge badge-info orders_label_text_align"><i class="fa fa-fw fa-clock-o"/> <b>Waiting Payment</b></span>
+                                            </div>
+                                        </t>
+                                    </ul>
+                                </div>
+                                <br/>
+                            </div>
+                            <div>
+                                <strong class="d-block mb-1">DI List</strong>
+                            </div>
+                            <div class="card-body">
+                                <t t-set="di_ids" t-value="single_document.pnt_di_ids"/>
+                                <table t-if="di_ids" width="100%">
+                                   <thead>
+                                        <tr class="thead-light">
+                                            <th class="text-left">Legal Code</th>
+                                            <th class="text-left">Product</th>
+                                            <th class="text-left">Date</th>
+                                        </tr>
+                                    </thead>
+                                    <t t-foreach="di_ids" t-as="di">
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-left">
+                                                    <a t-att-href="'/my/single_document/%s/waste_transfer_document/%s'%(di.pnt_single_document_id.id, 'pdf')" target="download">
+                                                        <span t-esc="di.pnt_legal_code"/>
+                                                    </a>
+                                                </td>
+                                                <td class="text-left">
+                                                    <span t-if="di.pnt_product_id" t-esc="di.pnt_product_id.name"/>
+                                                </td>
+                                                <td class="text-left">
+                                                    <span t-esc="di.pnt_date" t-options='{"widget": "date","format": "dd-MM-yyyy"}'/>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </t>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="o_portal_html_view shadow p-3">
+                        <div class="o_portal_html_loader text-center">
+                            <i class="fa fa-circle-o-notch fa-spin fa-2x fa-fw text-black-50"></i>
+                        </div>
+                        <iframe id="invoice_html" class="mt8 mb8" width="100%" height="100%" frameborder="0" scrolling="no" t-att-src="'/my/single_document/%s/%s'%(single_document.id, 'html')"/>
+                    </div>
+                    <br/>
+                    <!-- chatter -->
+    <!--                    <div id="invoice_communication" class="mt-4">-->
+    <!--                        <h2>History</h2>-->
+    <!--                        <t t-call="portal.message_thread">-->
+    <!--                            <t t-set="object" t-value="invoice"/>-->
+    <!--                        </t>-->
+    <!--                    </div>-->
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+</odoo>

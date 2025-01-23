@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="crm_stage_view_tree_pnt" model="ir.ui.view">
+        <field name="name">crm stage view tree pnt</field>
+        <field name="model">crm.stage</field>
+        <field name="inherit_id" ref="crm.crm_stage_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='team_id']" position="after">
+                <field name="pnt_is_pending_confirm"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="crm_stage_view_form_pnt" model="ir.ui.view">
+        <field name="name">crm stage view form pnt</field>
+        <field name="model">crm.stage</field>
+        <field name="inherit_id" ref="crm.crm_stage_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='fold']" position="after">
+                <field name="pnt_is_pending_confirm"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

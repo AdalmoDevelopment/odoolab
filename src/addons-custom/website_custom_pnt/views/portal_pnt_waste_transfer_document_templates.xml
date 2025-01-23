@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="portal_pnt_waste_transfer_document" name="Waste Transfer Document">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Waste Transfer Document</t>
+            </t>
+            <t t-if="not pnt_waste_transfer_documents">
+                <div class="alert alert-warning mt8" role="alert">
+                    <p>No Waste Transfer Document found.</p>
+                </div>
+            </t>
+            <t t-if="pnt_waste_transfer_documents" t-call="website_custom_pnt.portal_pnt_waste_transfer_document_list"/>
+        </t>
+    </template>
+
+    <template id="portal_pnt_waste_transfer_document_list" name="Waste Transfer Document">
+        <t t-call="portal.portal_table">
+            <thead>
+                <tr t-attf-class="thead-light">
+                    <th class="text-left">Legal Code</th>
+                    <th class="text-left">Product</th>
+                    <th class="text-left">Date</th>
+                </tr>
+            </thead>
+            <t t-foreach="pnt_waste_transfer_documents" t-as="pnt_waste_transfer_document">
+                <tbody>
+                    <tr>
+                        <td class="text-left">
+                            <t t-if="page_name == 'waste_transfer_document_home'">
+                                <a t-att-href="'/my/waste_transfer_document/%s'%(pnt_waste_transfer_document.id)" target="_blank">
+                                    <span t-esc="pnt_waste_transfer_document.pnt_legal_code"/>
+                                </a>
+                            </t>
+                            <t t-if="page_name != 'waste_transfer_document_home'">
+                                <a t-att-href="'/my/single_document/%s/waste_transfer_document/%s'%(pnt_waste_transfer_document.pnt_single_document_id.id, 'pdf')" target="_blank">
+                                    <span t-esc="pnt_waste_transfer_document.pnt_legal_code"/>
+                                </a>
+                            </t>
+                        </td>
+                        <td class="text-left">
+                            <span t-if="pnt_waste_transfer_document.pnt_product_id" t-esc="pnt_waste_transfer_document.pnt_product_id.name"/>
+                        </td>
+                        <td class="text-left">
+                            <span t-esc="pnt_waste_transfer_document.pnt_date" t-options='{"widget": "date","format": "dd-MM-yyyy"}'/>
+                        </td>
+<!--                        <td class="text-left">-->
+<!--                            <span t-esc="product.pnt_product_categ_id.name"/>-->
+<!--                        </td>-->
+<!--                        <td class="text-left" style="min-width:500px;width:500px;">-->
+<!--                            <span t-esc="product.pnt_product_template_model"/>-->
+<!--                        </td>-->
+<!--                        <td class="text-right">-->
+<!--                            <span t-esc="product.pnt_location_total_qty"/>-->
+<!--                        </td>-->
+<!--                        <td class="text-center">-->
+<!--                            <img t-if="product.pnt_product_id.image_1920" t-att-src="image_data_uri(product.pnt_product_id.image_1920)" style="max-height:65pt;max-width:100%"/>-->
+<!--                        </td>-->
+<!--                        <td class="text-center">-->
+<!--                            <t t-if="product.pnt_color=='green'">-->
+<!--                                <span class="badge badge-pill badge-info" title="Current stage of the ticket" style="background-color:green;color:green;">availa</span>-->
+<!--                            </t>-->
+<!--                            <t t-if="product.pnt_color=='red'">-->
+<!--                                <span class="badge badge-pill badge-info" title="Current stage of the ticket" style="background-color:red;color:red;">availa</span>-->
+<!--                            </t>-->
+<!--                            <t t-if="product.pnt_color=='orange'">-->
+<!--                                <span class="badge badge-pill badge-info" title="Current stage of the ticket" style="background-color:orange;color:orange;">availa</span>-->
+<!--                            </t>-->
+<!--                        </td>-->
+                    </tr>
+                </tbody>
+            </t>
+        </t>
+    </template>
+
+</odoo>

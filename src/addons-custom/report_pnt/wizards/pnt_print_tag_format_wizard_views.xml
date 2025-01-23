@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_form_pnt_print_tag_format">
+        <field name="model">pnt.print.tag.format</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="pnt_task_ids"
+                               widget="many2many_tags"
+                               readonly="0"
+                               required="1"
+                               invisible="1"
+                            />
+                    </group>
+                    <group>
+                        <field name="pnt_select_report"
+                               widget="radio"
+                        />
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="send_to_print"
+                            type="object"
+                            string="Print"
+                            class="oe_highlight"
+                    />
+                    <button name="button_cancel"
+                            class="oe_link"
+                            special="cancel"
+                            string="Cancel"
+                    />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_server_pnt_print_tag_format" model="ir.actions.server">
+        <field name="name">Print Format and Tags</field>
+        <field name="model_id" ref="project.model_project_task"/>
+        <field name="binding_model_id" ref="project.model_project_task"/>
+        <field name="state">code</field>
+        <field name="code">action = {
+            "type": "ir.actions.act_window",
+            "res_model": "pnt.print.tag.format",
+            "view_mode": "form",
+            "target": "new",
+            "views": [(env.ref("report_pnt.view_form_pnt_print_tag_format").id, "form")],
+            "context": {"default_pnt_task_ids": [(6, 0, records.ids)]},
+        }</field>
+    </record>
+</odoo>

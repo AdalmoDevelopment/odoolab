@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--  TREE  -->
+    <record id="pnt_scales_tree_view" model="ir.ui.view">
+        <field name="name">pnt.scales.tree</field>
+        <field name="model">pnt.scales</field>
+        <field name="arch" type="xml">
+            <tree string="Scales">
+                <field name="name" readonly="1"/>
+                <field name="company_id"
+                       readonly="1"
+                       optional="hidden"
+                />
+                <field name="pnt_warehouse_id"
+                       readonly="1"
+                />
+                <field name="pnt_scale_uom"
+                       readonly="1"
+                />
+                <field name="pnt_scale_host"
+                       readonly="1"
+                />
+                <field name="pnt_scale_port"
+                       readonly="1"
+                />
+            </tree>
+        </field>
+    </record>
+    <!-- FORM -->
+    <record id="pnt_scales_form_view" model="ir.ui.view">
+        <field name="name">pnt.scales.form</field>
+        <field name="model">pnt.scales</field>
+        <field name="priority">100</field>
+        <field name="arch" type="xml">
+            <form string="Scales">
+                <header>
+                    <button name="test_scale" id="test_scale"
+                            string="Test bascula" type="object"/>
+                </header>
+                <sheet>
+                    <field name="active" invisible="1"/>
+                    <widget name="web_ribbon" title="Archived"
+                            bg_color="bg-danger"
+                            attrs="{'invisible': [('active', '=', True)]}"/>
+                    <div class="oe_title">
+                        <h1>
+                            Scale Name:
+                            <field name="name" readonly="0"/>
+                        </h1>
+                    </div>
+                    <group name="pnt_scales_header">
+                        <group>
+                            <field name="pnt_scale_host"
+                                   readonly="0"
+                            />
+                            <field name="pnt_scale_port"
+                                   readonly="0"
+                            />
+                            <field name="pnt_time_cron"/>
+                            <field name="pnt_default_delivery_id"/>
+                        </group>
+                        <group>
+                            <field name="company_id"
+                                   readonly="1"
+                            />
+                            <field name="pnt_warehouse_id"
+                                   readonly="0"
+                                   required="1"
+                            />
+                            <field name="pnt_scale_uom"
+                                   readonly="0"
+                            />
+                            <field name="pnt_responsible_id"/>
+                            <field name="pnt_manager_responsible_id"/>
+                            <field name="pnt_waste_ids">
+                                <tree>
+                                    <field name="default_code"/>
+                                    <field name="display_name"/>
+                                </tree>
+                            </field>
+                            <field name="pnt_company_default"
+                                   invisible="1"
+                            />
+                        </group>
+                        <group>
+                            <field name="pnt_stock_picking_type_purchase_du_id"
+                                   readonly="0"
+                                   required="1"
+                            />
+                            <field name="pnt_stock_picking_type_sale_du_id"
+                                   readonly="0"
+                                   required="1"
+                            />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <!-- ACTIONS -->
+    <record id="action_scales_menu_pnt" model="ir.actions.act_window">
+        <field name="name">Scales</field>
+        <field name="res_model">pnt.scales</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_pnt_scales"
+              name="Scales"
+              action="action_scales_menu_pnt"
+              parent="custom_pnt.menu_pnt_single_document_config"
+              sequence="80"
+              groups="base.group_user"
+    />
+
+</odoo>

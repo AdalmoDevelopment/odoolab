@@ -1,0 +1,89 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* glad2link_connector_pnt
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-23 08:50+0000\n"
+"PO-Revision-Date: 2024-05-23 10:52+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.3\n"
+
+#. module: glad2link_connector_pnt
+#: model:mail.template,body_html:glad2link_connector_pnt.email_template_du_signed
+msgid "<p>We attach the signed documents.</p>"
+msgstr "<p>Le adjuntamos los documentos firmados.</p>"
+
+#. module: glad2link_connector_pnt
+#: model:ir.model.fields,field_description:glad2link_connector_pnt.field_account_move__display_name
+#: model:ir.model.fields,field_description:glad2link_connector_pnt.field_pnt_single_document__display_name
+msgid "Display Name"
+msgstr "Nombre"
+
+#. module: glad2link_connector_pnt
+#: code:addons/glad2link_connector_pnt/models/pnt_single_document.py:0
+#, python-format
+msgid "Documents.pdf"
+msgstr "Documentos.pdf"
+
+#. module: glad2link_connector_pnt
+#: code:addons/glad2link_connector_pnt/models/pnt_single_document.py:0
+#, python-format
+msgid "Error merging PDFs: %s"
+msgstr "Error al fusionar PDFs: %s"
+
+#. module: glad2link_connector_pnt
+#: model:ir.model.fields,field_description:glad2link_connector_pnt.field_pnt_single_document__pnt_gla2link_datetime
+msgid "Glad2Link Datetime"
+msgstr "Glad2Link Fecha y hora"
+
+#. module: glad2link_connector_pnt
+#: model:ir.model.fields,field_description:glad2link_connector_pnt.field_pnt_single_document__pnt_gla2link_id
+msgid "Glad2Link ID"
+msgstr "Glad2Link ID"
+
+#. module: glad2link_connector_pnt
+#: model:ir.model.fields,field_description:glad2link_connector_pnt.field_account_move__id
+#: model:ir.model.fields,field_description:glad2link_connector_pnt.field_pnt_single_document__id
+msgid "ID"
+msgstr "ID"
+
+#. module: glad2link_connector_pnt
+#: model:ir.model,name:glad2link_connector_pnt.model_account_move
+msgid "Journal Entry"
+msgstr "Asiento contable"
+
+#. module: glad2link_connector_pnt
+#: model:ir.model.fields,field_description:glad2link_connector_pnt.field_account_move____last_update
+#: model:ir.model.fields,field_description:glad2link_connector_pnt.field_pnt_single_document____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: glad2link_connector_pnt
+#: model:ir.model,name:glad2link_connector_pnt.model_pnt_single_document
+msgid "Pnt Single Document"
+msgstr "Documento único"
+
+#. module: glad2link_connector_pnt
+#: model:ir.actions.server,name:glad2link_connector_pnt.action_account_move_send_du_signed
+#: model:ir.actions.server,name:glad2link_connector_pnt.action_single_document_send_du_signed
+msgid "Send DU signed"
+msgstr "Enviar DU firmado"
+
+#. module: glad2link_connector_pnt
+#: model:mail.template,subject:glad2link_connector_pnt.email_template_du_signed
+msgid "Signed documents"
+msgstr "Documentos firmados"
+
+#. module: glad2link_connector_pnt
+#: model:ir.model.fields,field_description:glad2link_connector_pnt.field_pnt_single_document__pnt_du_signed_file_email_sent
+msgid "Unique document signed email sent"
+msgstr "Documentos único firmado enviado"

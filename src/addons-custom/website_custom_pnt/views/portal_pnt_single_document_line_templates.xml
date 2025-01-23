@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="portal_pnt_single_document_line" name="Unique Document">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Waste Report</t>
+            </t>
+            <t t-if="not pnt_single_document_lines">
+                <div class="alert alert-warning mt8" role="alert">
+                    <p>No waste report items found.</p>
+                </div>
+            </t>
+            <t t-if="pnt_single_document_lines" t-call="website_custom_pnt.portal_pnt_single_document_line_list"/>
+        </t>
+    </template>
+
+    <template id="portal_pnt_single_document_line_list" name="Unique Document">
+        <t t-call="portal.portal_table">
+            <thead>
+                <tr t-attf-class="thead-light">
+                    <th class="text-left">DU</th>
+                    <th class="text-left">Effective Date</th>
+                    <th class="text-left">Holder</th>
+                    <!-- <th class="text-left">Shipping place</th> -->
+                    <th class="text-left">Pickup place</th>
+                    <th class="text-left">Waste</th>
+                    <th class="text-left">Units</th>
+                    <th class="text-left">Container</th>
+                    <th class="text-left">Kg</th>
+                    <th class="text-left">UdM</th>
+                    <th class="text-left">LER</th>
+                    <th class="text-left">DI</th>
+                </tr>
+            </thead>
+            <t t-foreach="pnt_single_document_lines" t-as="pnt_single_document_line">
+                <tbody>
+                    <tr>
+                        <td class="text-left">
+<!--                            <a t-att-href="'/my/single_document/%s'%(pnt_single_document_line.pnt_single_document_id.id)">-->
+                            <span t-if="pnt_single_document_line.pnt_single_document_id"
+                              t-esc="pnt_single_document_line.pnt_single_document_id.name"/>
+<!--                            </a>-->
+                        </td>
+                        <td class="text-left">
+                             <span t-if="pnt_single_document_line.pnt_single_document_id"
+                                   t-esc="pnt_single_document_line.pnt_single_document_id.pnt_effective_date"
+                                   t-options='{"widget": "date","format": "dd-MM-yyyy"}'
+                             />
+                        </td>
+                        <td class="text-left">
+                             <span t-if="pnt_single_document_line.pnt_holder_id"
+                                   t-esc="pnt_single_document_line.pnt_holder_id.name"/>
+                        </td>
+                        <!-- <td class="text-left">
+                              <span t-if="pnt_single_document_line.pnt_partner_delivery_id"
+                                    t-esc="pnt_single_document_line.pnt_partner_delivery_id.name"/>
+                        </td> -->
+                        <td class="text-left">
+                              <span t-if="pnt_single_document_line.pnt_single_document_id.pnt_partner_pickup_id"
+                                    t-esc="pnt_single_document_line.pnt_single_document_id.pnt_partner_pickup_id.display_name"/>
+                        </td>
+                        <td class="text-left">
+                              <span t-if="pnt_single_document_line.pnt_product_id"
+                                    t-esc="pnt_single_document_line.pnt_product_id.name"/>
+                        </td>
+                        <td class="text-left">
+                            <span t-if="pnt_single_document_line.pnt_container_qty"
+                                  t-esc="pnt_single_document_line.pnt_container_qty"/>
+                        </td>
+                        <td class="text-left">
+                              <span t-if="pnt_single_document_line.pnt_container_id"
+                                    t-esc="pnt_single_document_line.pnt_container_id.name"/>
+                        </td>
+                        <td class="text-left">
+                            <span t-if="pnt_single_document_line.pnt_product_uom_qty"
+                                  t-esc="pnt_single_document_line.pnt_product_uom_qty"/>
+                        </td>
+                        <td class="text-left">
+                            <span t-if="pnt_single_document_line.pnt_product_uom"
+                                  t-esc="pnt_single_document_line.pnt_product_uom.name"/>
+                        </td>
+                        <td class="text-left">
+                              <span t-if="pnt_single_document_line.pnt_waste_ler_id"
+                                    t-esc="pnt_single_document_line.pnt_waste_ler_id.name"/>
+                        </td>
+                        <td class="text-left">
+                              <span t-if="pnt_single_document_line.pnt_waste_transfer_document_id"
+                                    t-esc="pnt_single_document_line.pnt_waste_transfer_document_id.pnt_legal_code"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </t>
+        </t>
+    </template>
+
+</odoo>

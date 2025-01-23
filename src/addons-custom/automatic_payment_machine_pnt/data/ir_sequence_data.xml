@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Sequences for pnt.payment.machine.record -->
+        <record id="seq_pnt_payment_machine_record" model="ir.sequence">
+            <field name="name">Payment machine record</field>
+            <field name="code">pnt.payment.machine.record</field>
+            <field name="prefix">APM</field>
+            <field name="padding">9</field>
+            <field name="company_id" eval="True"/>
+        </record>
+    </data>
+</odoo>

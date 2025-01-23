@@ -1,0 +1,672 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pnt_invoice_grouped_report" model="ir.actions.report">
+        <field name="name">Invoice grouped</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">report_pnt.pnt_report_invoice_grouped</field>
+        <field name="binding_model_id" ref="model_account_move"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_invoice_document_pnt" inherit_id="account.report_invoice_document">
+        <xpath expr="//div[@name='customer_code']" position="replace"/>
+        <xpath expr="//div[@class='page']//h2" position="replace">
+            <h2>
+                <span t-if="o.move_type == 'out_invoice' and o.state == 'posted'">
+                    Invoice
+                </span>
+                <span t-if="o.move_type == 'out_invoice' and o.state == 'draft'">
+                    <strong>Proforma: <span t-esc="int(o.id)"/></strong>
+                </span>
+                <span t-if="o.move_type == 'out_invoice' and o.state == 'cancel'">
+                    Cancelled Invoice
+                </span>
+                <span t-if="o.move_type == 'out_refund'">Customer Credit Note</span>
+                <span t-if="o.move_type == 'in_refund'">Supplier Credit Note</span>
+                <span t-if="o.move_type == 'in_invoice' and o.state == 'draft'">
+                    <strong>Proforma: <span t-esc="int(o.id)"/></strong>
+                </span>
+                <span
+                    t-if="o.move_type == 'in_invoice' and o.state != 'draft' and not o.pnt_is_isp">
+                    Vendor Bill
+                </span>
+                <span
+                    t-if="o.move_type == 'in_invoice' and o.state != 'draft' and o.pnt_is_isp">
+                    Self Bill
+                </span>
+                <span t-if="o.name != '/'" t-field="o.name"/>
+            </h2>
+            <p t-if="o.move_type == 'out_invoice' and o.state == 'draft'">
+                <strong t-translation="off">SOLICITAMOS ENVIAR NÚMERO DE PEDIDO A: <span t-field="o.company_id.pnt_invoice_send_email"/></strong>
+            </p>
+        </xpath>
+        <xpath expr="//div[@name='invoice_date']" position="replace">
+            <div class="col-auto col-3 mw-100 mb-2" t-if="o.invoice_date" name="invoice_date">
+                <t t-if="o.move_type == 'out_invoice'">
+                    <strong>Invoice Date:</strong>
+                </t>
+                <t t-elif="o.move_type == 'out_refund'">
+                    <strong>Credit Note Date:</strong>
+                </t>
+                <t t-elif="o.move_type == 'out_receipt'">
+                    <strong>Receipt Date:</strong>
+                </t>
+                <t t-elif="o.move_type == 'in_invoice'">
+                    <strong>Invoice Date:</strong>
+                </t>
+                <t t-else="">
+                    <strong>Date:</strong>
+                </t>
+                <p class="m-0" t-field="o.invoice_date"/>
+            </div>
+            <div class="col-auto col-3 mw-100 mb-2" t-if="not o.invoice_date and o.state == 'draft'" name="invoice_date">
+                <strong>Invoice Date:</strong>
+                <p class="m-0" t-field="o.pnt_proforma_date"/>
+            </div>
+            <div class="col-auto col-3 mw-100 mb-2" t-if="o.invoice_date_due and o.move_type == 'out_invoice' and o.state == 'posted'" name="due_date">
+                <strong>Due Date:</strong>
+                <p class="m-0" t-field="o.invoice_date_due"/>
+            </div>
+        </xpath>
+        <xpath expr="//table[@name='invoice_line_table']" position="attributes">
+            <attribute name="style">font-size:11px;</attribute>
+        </xpath>
+        <xpath expr="//div[@name='origin']" position="replace"/>
+        <xpath expr="//th[@name='th_description']" position="replace">
+            <th name="th_description" class="text-left"><span t-translation="off">Concepto</span></th>
+        </xpath>
+        <xpath expr="//th[@name='th_quantity']" position="replace">
+            <th name="th_quantity" class="text-right"><span t-translation="off">UE</span></th>
+        </xpath>
+        <xpath expr="//th[@name='th_quantity']" position="before">
+            <th name="th_di" t-attf-class="text-center {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}"><span t-translation="off">DI</span></th>
+            <th name="th_qty_container" t-attf-class="text-left {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}"><span>Container</span></th>
+            <th name="th_unity" t-attf-class="text-right {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}"><span t-translation="off">Unidad (Ud)</span></th>
+            <th name="th_weight" t-attf-class="text-right {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}"><span t-translation="off">Peso (Kg)</span></th>
+        </xpath>
+        <xpath expr="//th[@name='th_priceunit']" position="replace">
+            <th name="th_priceunit" t-attf-class="text-right {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}"><span t-translation="off">Precio</span></th>
+        </xpath>
+        <xpath expr="//th[@name='th_taxes']" position="replace"/>
+        <tbody class="invoice_tbody" position="replace">
+            <style>
+                .custom_table{
+                background-color:<t t-esc="o.company_id.color_navbar_bg"/>;
+                color:white;
+                }
+            </style>
+            <t t-set="order_group" t-value="o.lines_grouped_by_order()"/>
+            <t t-set="current_subtotal" t-value="0"/>
+            <t t-foreach="order_group" t-as="og">
+                <tr>
+                    <td class="border-right-0"/>
+                    <td class="border-right-0"/>
+                    <td class="border-right-0"/>
+                    <td class="border-right-0"/>
+                    <td class="border-right-0"/>
+                    <td class="border-right-0"/>
+                    <td class="border-right-0"/>
+                    <td/>
+                </tr>
+                <tr>
+                    <td class="border-right-0"/>
+                    <td class="border-right-0"/>
+                    <td class="border-right-0"/>
+                    <td class="border-right-0"/>
+                    <td class="border-right-0"/>
+                    <td class="border-right-0"/>
+                    <td class="border-right-0"/>
+                    <td/>
+                </tr>
+                <tr t-att-class="'font-weight-bold'">
+                    <td colspan="99">
+                        <t t-if="og != 'without_order'">
+                            <t t-if="og[4]">
+                                <span t-esc="og[3]" t-options="{'widget': 'date'}"/>
+                                -
+                                <span t-esc="og[4].name"/>
+                                <t t-if="og[4].pnt_single_document_type == 'toplant'">
+                                    *
+                                </t>
+                                <t t-if="og[5]">
+                                    -
+                                    <span t-esc="og[5]"/>
+                                </t>
+                                <t t-if="og[6]">
+                                    <t t-if="og[6] != og[5]">
+                                        -
+                                        <span t-esc="og[6]"/>
+                                    </t>
+                                </t>
+                                <t t-if="og[4].pnt_single_document_type != 'portal'">
+                                    -
+                                    <span t-if="og[4].pnt_single_document_type == 'output'"
+                                          t-esc="og[4].pnt_partner_delivery_id.display_name"/>
+                                    <span t-else="" t-esc="og[4].pnt_partner_pickup_id.display_name"/>
+                                </t>
+                            </t>
+                            <t t-else="">
+                                <t t-if="og[2]">
+                                    <t t-if="og[11]">
+                                        <span t-esc="og[14]"/>
+                                        -
+                                        <span t-esc="og[2].name"/>
+                                        <t t-if="og[13]">
+                                            -
+                                            <span t-esc="og[13]"/>
+                                        </t>
+                                    </t>
+                                    <t t-else="">
+                                        <span t-esc="og[2].name"/>
+                                    </t>
+                                </t>
+                            </t>
+                        </t>
+                        <t t-else="">
+                            <span>Line without orders</span>
+                        </t>
+                    </td>
+                </tr>
+                <t t-foreach="order_group[og]" t-as="line">
+                    <t t-set="current_subtotal"
+                       t-value="current_subtotal + line.price_subtotal"
+                       groups="account.group_show_line_subtotals_tax_excluded"/>
+                    <t t-set="current_subtotal"
+                       t-value="current_subtotal + line.price_total"
+                       groups="account.group_show_line_subtotals_tax_included"/>
+                    <tr>
+                        <t t-if="not line.display_type" name="account_invoice_line_accountable">
+                            <td name="account_invoice_line_name" class="border-right-0">
+                                <span t-field="line.name"
+                                      t-options="{'widget': 'text'}"/>
+                            </td>
+                            <td class="text-right border-right-0">
+                                <t t-if="line.sale_line_ids">
+                                    <t t-if="line.sale_line_ids[0].pnt_single_document_line_id.pnt_waste_transfer_document_id">
+                                        <span t-esc="(line.sale_line_ids[0].pnt_single_document_line_id.pnt_waste_transfer_document_id[:1].pnt_legal_code or '')[-7:]"/>
+                                    </t>
+                                </t>
+                                <t t-if="line.purchase_line_id">
+                                    <t t-if="line.purchase_line_id.pnt_single_document_line_id.pnt_waste_transfer_document_id">
+                                        <span t-esc="(line.purchase_line_id.pnt_single_document_line_id.pnt_waste_transfer_document_id[:1].pnt_legal_code or '')[-7:]"/>
+                                    </t>
+                                </t>
+                            </td>
+                            <td class="text-left border-right-0">
+                                <!-- container -->
+                                <t t-if="line.sale_line_ids">
+                                    <span t-if="line.sale_line_ids[0].pnt_single_document_line_id.pnt_container_id.id != 2329"
+                                          t-field="line.sale_line_ids[0].pnt_single_document_line_id.pnt_container_id.name"/>
+                                    <t t-if="line.sale_line_ids[0].pnt_single_document_line_id.pnt_product_waste_id and line.sale_line_ids[0].pnt_single_document_line_id.pnt_product_id.pnt_container_movement_type in ('delivery','removal','change')">
+                                        -
+                                        <span t-field="line.sale_line_ids[0].pnt_single_document_line_id.pnt_product_waste_id.name"/>
+                                    </t>
+                                </t>
+                                <t t-if="line.purchase_line_id">
+                                    <span t-field="line.purchase_line_id.pnt_single_document_line_id.pnt_container_id.name"/>
+                                    <t t-if="line.purchase_line_id.pnt_single_document_line_id.pnt_product_waste_id and line.purchase_line_id.pnt_single_document_line_id.pnt_product_id.pnt_container_movement_type in ('delivery','removal','change')">
+                                        -
+                                        <span t-field="line.purchase_line_id.pnt_single_document_line_id.pnt_product_waste_id.name"/>
+                                    </t>
+                                </t>
+                            </td>
+                            <td class="text-right border-right-0">
+                                <!-- units -->
+                                <t t-if="line.product_uom_id.name != 'kg'">
+                                    <span t-field="line.quantity"
+                                          t-options="{'widget': 'float', 'precision': 2}"
+                                    />
+                                </t>
+                                <t t-else="">
+                                    <t t-if="line.sale_line_ids">
+                                        <span t-if="line.sale_line_ids[0].pnt_single_document_line_id.pnt_container_id.id != 2329"
+                                              t-esc="o._pnt_get_container_qty(line)"
+                                              t-options="{'widget': 'float', 'precision': 2}"
+                                        />
+                                    </t>
+                                    <t t-else="">
+                                        <span t-field="line.pnt_du_line_container_qty"
+                                              t-options="{'widget': 'float', 'precision': 2}"
+                                        />
+                                    </t>
+                                </t>
+                            </td>
+                            <td class="text-right border-right-0">
+                                <!-- weight -->
+                                <t t-if="line.sale_line_ids">
+                                    <t t-if="line.product_uom_id.name == 'kg'">
+                                        <t t-if="line.quantity != 0.0">
+                                            <span t-field="line.quantity"
+                                                  t-options="{'widget': 'float', 'precision': 2}"
+                                            />
+                                        </t>
+                                    </t>
+                                    <t t-else="">
+                                        <t t-if="line.pnt_du_line_weight_qty != 0.0">
+                                            <span t-field="line.pnt_du_line_weight_qty"
+                                                  t-options="{'widget': 'float', 'precision': 2}"
+                                            />
+                                        </t>
+                                    </t>
+                                </t>
+                                <t t-else="">
+                                    <t t-if="line.purchase_line_id">
+                                        <t t-if="line.product_uom_id.name == 'kg'">
+                                            <t t-if="line.quantity != 0.0">
+                                                <span t-field="line.quantity"
+                                                      t-options="{'widget': 'float', 'precision': 2}"
+                                                />
+                                            </t>
+                                        </t>
+                                        <t t-else="">
+                                            <t t-if="line.pnt_du_line_weight_qty != 0.0">
+                                                <span t-field="line.pnt_du_line_weight_qty"
+                                                      t-options="{'widget': 'float', 'precision': 2}"
+                                                />
+                                            </t>
+                                        </t>
+                                    </t>
+                                    <t t-else="">
+                                        <t t-if="line.product_uom_id.name == 'kg'">
+                                            <span t-field="line.quantity"
+                                                  t-options="{'widget': 'float', 'precision': 2}"
+                                            />
+                                        </t>
+                                    </t>
+                                </t>
+                            </td>
+                            <td class="text-right border-right-0">
+                                <t t-if="line.product_uom_id.name == 'Unidades'">
+                                    Ud
+                                </t>
+                                <t t-else="">
+                                    <span t-field="line.product_uom_id" groups="uom.group_uom"/>
+                                </t>
+                            </td>
+                            <td t-attf-class="border-right-0 text-right {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
+                                <span class="text-nowrap" t-field="line.price_unit"
+                                      t-options="{'widget': 'float', 'precision': 3}"/>
+                                <span t-field="o.currency_id.symbol"/>
+                            </td>
+                            <td class="text-right">
+                                <span class="text-nowrap"
+                                      t-field="line.price_subtotal"
+                                      t-options="{'widget': 'float', 'precision': 3}"
+                                      groups="account.group_show_line_subtotals_tax_excluded"/>
+                                <span class="text-nowrap"
+                                      t-field="line.price_total"
+                                      t-options="{'widget': 'float', 'precision': 3}"
+                                      groups="account.group_show_line_subtotals_tax_included"/>
+                                <span t-field="o.currency_id.symbol"/>
+                            </td>
+                        </t>
+                        <t t-if="line.display_type == 'line_section'">
+                            <td colspan="99">
+                                <span t-field="line.name"
+                                      t-options="{'widget': 'text'}"/>
+                            </td>
+                            <t t-set="current_section" t-value="line"/>
+                            <t t-set="current_subtotal" t-value="0"/>
+                        </t>
+                        <t t-if="line.display_type == 'line_note'">
+                            <td colspan="99">
+                                <span t-field="line.name"
+                                      t-options="{'widget': 'text'}"/>
+                            </td>
+                        </t>
+                        <t t-if="current_section and (line_last or lines[line_index+1].display_type == 'line_section')">
+                            <tr class="is-subtotal text-right">
+                                <td colspan="99">
+                                    <strong class="mr16">Subtotal</strong>
+                                    <span
+                                        t-esc="current_subtotal"
+                                        t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"
+                                    />
+                                </td>
+                            </tr>
+                        </t>
+                    </tr>
+                </t>
+            </t>
+        </tbody>
+        <xpath expr="//div[@id='total']" position="replace">
+            <div id="total" class="row">
+                <div t-attf-class="#{'col-6' if report_type != 'html' else 'col-sm-7 col-md-6'} ml-auto">
+                    <table class="table table-sm" style="page-break-inside: avoid;">
+                        <tr class="border-black o_subtotal" style="">
+                            <td><strong>Subtotal</strong></td>
+                            <td class="text-right">
+                                <span t-field="o.amount_untaxed"/>
+                            </td>
+                        </tr>
+                        <t t-set="num_taxes" t-value="len(o.amount_by_group)"/>
+                        <t t-foreach="o.amount_by_group" t-as="amount_by_group">
+                            <tr style="">
+                                <t t-if="len(o.line_ids.filtered(lambda line: line.tax_line_id)) in [0, 1] and float_compare(o.amount_untaxed, amount_by_group[2], precision_rounding=o.currency_id.rounding) == 0">
+                                    <td><span class="text-nowrap" t-esc="amount_by_group[0]"/></td>
+                                    <td class="text-right o_price_total">
+                                        <span class="text-nowrap" t-esc="amount_by_group[3]" />
+                                    </td>
+                                </t>
+                                <t t-else="">
+                                    <td>
+                                        <span t-esc="amount_by_group[0]"/>
+                                        <span class="text-nowrap"> on
+                                            <t t-if="num_taxes > 1">
+                                                <t t-esc="amount_by_group[4]"/>
+                                            </t>
+                                        </span>
+                                    </td>
+                                    <td class="text-right o_price_total">
+                                        <span class="text-nowrap" t-esc="amount_by_group[3]"/>
+                                    </td>
+                                </t>
+                            </tr>
+                        </t>
+                        <tr class="border-black o_total">
+                            <td><strong>Total</strong></td>
+                            <td class="text-right">
+                                <span class="text-nowrap" t-field="o.amount_total"/>
+                            </td>
+                        </tr>
+                        <t t-if="print_with_payments">
+                            <t t-if="o.payment_state != 'invoicing_legacy'">
+                                <t t-set="payments_vals" t-value="o.sudo()._get_reconciled_info_JSON_values()"/>
+                                <t t-foreach="payments_vals" t-as="payment_vals">
+                                    <tr>
+                                        <td>
+                                            <i class="oe_form_field text-right oe_payment_label">Paid on <t t-esc="payment_vals['date']" t-options='{"widget": "date"}'/></i>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-esc="payment_vals['amount']" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                        </td>
+                                    </tr>
+                                </t>
+                                <t t-if="len(payments_vals) > 0">
+                                    <tr class="border-black">
+                                        <td><strong>Amount Due</strong></td>
+                                        <td class="text-right">
+                                            <span t-field="o.amount_residual"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </t>
+                        </t>
+                    </table>
+                    <t t-if="o.pnt_is_isp">
+                        <div style="font-size:12px;font-style: italic;">
+                            <strong t-translation="off" t-if="not o.fiscal_position_id.pnt_intra_extra_community">
+                                Operación con inversión del sujeto pasivo conforme al Art.84 de la Ley del IVA 37/1992
+                            </strong>
+                            <strong t-translation="off" t-if="o.fiscal_position_id.pnt_intra_extra_community">
+                                Operación con inversión de sujeto pasivo conforme al Art. 22 de la Ley de 37/192
+                            </strong>
+                        </div>
+                        <br/>
+                        <div t-if="o.imagedata">
+                            <img
+                                t-att-src="'data:image/png;base64,%s' % to_text(o.imagedata)"
+                                style="max-height:2cm; max-width:8cm;"/>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//p[@name='payment_communication']" position="replace"/>
+        <xpath expr="//p[@name='payment_term']" position="replace"/>
+        <xpath expr="//p[@name='comment']" position="replace"/>
+        <xpath expr="//p[@name='note']" position="replace"/>
+    </template>
+
+    <template id="report_invoice_document_grouped_pnt">
+        <t t-call="web.external_layout">
+            <t t-set="o" t-value="o.with_context(lang=lang)" />
+            <t t-set="address">
+                <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}' />
+                <div t-if="o.partner_id.vat" class="mt16">
+                    <t t-if="o.company_id.country_id.vat_label" t-esc="o.company_id.country_id.vat_label" id="inv_tax_id_label"/>
+                    <t t-else="">Tax ID</t>: <span t-field="o.partner_id.vat"/></div>
+            </t>
+            <div class="page">
+                <h2>
+                    <span t-if="o.move_type == 'out_invoice' and o.state == 'posted'">
+                        Invoice
+                    </span>
+                    <span t-if="o.move_type == 'out_invoice' and o.state == 'draft'">
+                        <strong>Proforma: <span t-esc="int(o.id)"/></strong>
+                    </span>
+                    <span t-if="o.move_type == 'out_invoice' and o.state == 'cancel'">
+                        Cancelled Invoice
+                    </span>
+                    <span t-if="o.move_type == 'out_refund'">Customer Credit Note</span>
+                    <span t-if="o.move_type == 'in_refund'">Supplier Credit Note</span>
+                    <span t-if="o.move_type == 'in_invoice' and o.state == 'draft'">
+                        <strong>Proforma: <span t-esc="int(o.id)"/></strong>
+                    </span>
+                    <span
+                        t-if="o.move_type == 'in_invoice' and o.state != 'draft' and not o.pnt_is_isp">
+                        Vendor Bill
+                    </span>
+                    <span
+                        t-if="o.move_type == 'in_invoice' and o.state != 'draft' and o.pnt_is_isp">
+                        Self Bill
+                    </span>
+                    <span t-if="o.name != '/'" t-field="o.name"/>
+                </h2>
+                <p t-if="o.move_type == 'out_invoice' and o.state == 'draft'">
+                    <strong t-translation="off">SOLICITAMOS ENVIAR NÚMERO DE PEDIDO A: <span t-field="o.company_id.pnt_invoice_send_email"/></strong>
+                </p>
+                <div id="informations" class="row mt-4 mb-4">
+                    <div class="col-auto col-3 mw-100 mb-2" t-if="o.invoice_date" name="invoice_date">
+                        <t t-if="o.move_type == 'out_invoice'">
+                            <strong>Invoice Date:</strong>
+                        </t>
+                        <t t-elif="o.move_type == 'out_refund'">
+                            <strong>Credit Note Date:</strong>
+                        </t>
+                        <t t-elif="o.move_type == 'out_receipt'">
+                            <strong>Receipt Date:</strong>
+                        </t>
+                        <t t-elif="o.move_type == 'in_invoice'">
+                            <strong>Invoice Date:</strong>
+                        </t>
+                        <t t-else="">
+                            <strong>Date:</strong>
+                        </t>
+                        <p class="m-0" t-field="o.invoice_date"/>
+
+                    </div>
+                    <div class="col-auto col-3 mw-100 mb-2" t-if="not o.invoice_date and o.state == 'draft'" name="invoice_date">
+                        <strong>Invoice Date:</strong>
+                        <p class="m-0" t-field="o.pnt_proforma_date"/>
+                    </div>
+                    <div class="col-auto col-3 mw-100 mb-2" t-if="o.invoice_date_due and o.move_type == 'out_invoice' and o.state == 'posted'" name="due_date">
+                        <strong>Due Date:</strong>
+                        <p class="m-0" t-field="o.invoice_date_due"/>
+                    </div>
+                    <div class="col-auto col-3 mw-100 mb-2" t-if="o.ref" name="reference">
+                        <strong>Reference:</strong>
+                        <p class="m-0" t-field="o.ref"/>
+                    </div>
+                </div>
+                <t t-set="display_discount" t-value="any(l.discount for l in o.invoice_line_ids)"/>
+                <table class="table table-sm o_main_table" name="invoice_line_table" style="font-size:11px;">
+                    <thead>
+                        <tr>
+                            <th name="th_description" class="text-left"><span t-translation="off">Concepto</span></th>
+                            <th name="th_container" class="text-left"><span  t-translation="off">Envase</span></th>
+                            <th name="th_units" class="text-right"><span  t-translation="off">Unidad (Ud)</span></th>
+                            <th name="th_Weight" class="text-right"><span t-translation="off">Peso (Kg)</span></th>
+                            <th name="th_quantity" class="text-right"><span t-translation="off">UE</span></th>
+                            <th name="th_priceunit" t-attf-class="text-right {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}"><span t-translation="off">Precio</span></th>
+                            <th name="th_price_unit" t-if="display_discount" t-attf-class="text-right {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
+                                <span>Disc.%</span>
+                            </th>
+                            <th name="th_subtotal" class="text-right">
+                                <span groups="account.group_show_line_subtotals_tax_excluded">Amount</span>
+                                <span groups="account.group_show_line_subtotals_tax_included">Total Price</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="invoice_tbody">
+                        <t t-set="order_group" t-value="o.lines_grouped_by_product()"/>
+                        <tr t-foreach="order_group" t-as="og">
+                            <td name="account_invoice_line_name">
+                                <span t-esc="og[0]" t-options="{'widget': 'text'}"/>
+                            </td>
+                            <td>
+                                <span t-esc="og[6]" t-options="{'widget': 'text'}"/>
+                            </td>
+                            <td class="text-right">
+                                <t t-if="og[5] != 'kg'">
+                                    <span t-esc="og[1]"
+                                          t-options="{'widget': 'float', 'precision': 2}"/>
+                                </t>
+                                <t t-else="">
+                                    <span t-esc="og[8]"
+                                          t-options="{'widget': 'float', 'precision': 2}"/>
+                                </t>
+                            </td>
+                            <td class="text-right">
+                                <t t-if="og[7] != 0.0">
+                                <span t-esc="og[7]"
+                                      t-options="{'widget': 'float', 'precision': 2}"/>
+                                </t>
+                            </td>
+                            <td class="text-right">
+                                <t t-if="og[5] == 'Unidades'">
+                                    Ud
+                                </t>
+                                <t t-else="">
+                                    <span t-esc="og[5]" />
+                                </t>
+                            </td>
+                            <td t-attf-class="text-right {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
+                                <span class="text-nowrap" t-esc="og[2]"
+                                      t-options="{'widget': 'float', 'precision': 3}"/>
+                                <span t-field="o.currency_id.symbol"/>
+                            </td>
+                            <td class="text-right o_price_total">
+                                <span class="text-nowrap" t-esc="og[3]"
+                                      t-options="{'widget': 'float', 'precision': 3}"
+                                      groups="account.group_show_line_subtotals_tax_excluded"/>
+                                <span class="text-nowrap" t-esc="og[4]"
+                                      t-options="{'widget': 'float', 'precision': 3}"
+                                      groups="account.group_show_line_subtotals_tax_included"/>
+                                <span t-field="o.currency_id.symbol"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="clearfix">
+                    <div id="total" class="row">
+                        <div t-attf-class="#{'col-6' if report_type != 'html' else 'col-sm-7 col-md-6'} ml-auto">
+                            <table class="table table-sm" style="page-break-inside: avoid;">
+                                <tr class="border-black o_subtotal" style="">
+                                    <td><strong>Subtotal</strong></td>
+                                    <td class="text-right">
+                                        <span t-field="o.amount_untaxed"/>
+                                    </td>
+                                </tr>
+                                <t t-set="num_taxes" t-value="len(o.amount_by_group)"/>
+                                <t t-foreach="o.amount_by_group" t-as="amount_by_group">
+                                    <tr style="">
+                                        <t t-if="len(o.line_ids.filtered(lambda line: line.tax_line_id)) in [0, 1] and float_compare(o.amount_untaxed, amount_by_group[2], precision_rounding=o.currency_id.rounding) == 0">
+                                            <td><span class="text-nowrap" t-esc="amount_by_group[0]"/></td>
+                                            <td class="text-right o_price_total">
+                                                <span class="text-nowrap" t-esc="amount_by_group[3]" />
+                                            </td>
+                                        </t>
+                                        <t t-else="">
+                                            <td>
+                                                <span t-esc="amount_by_group[0]"/>
+                                                <span class="text-nowrap"> on
+                                                    <t t-if="num_taxes > 1">
+                                                        <t t-esc="amount_by_group[4]"/>
+                                                    </t>
+                                                </span>
+                                            </td>
+                                            <td class="text-right o_price_total">
+                                                <span class="text-nowrap" t-esc="amount_by_group[3]"/>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                </t>
+                                <tr class="border-black o_total">
+                                    <td><strong>Total</strong></td>
+                                    <td class="text-right">
+                                        <span class="text-nowrap" t-field="o.amount_total"/>
+                                    </td>
+                                </tr>
+                                <t t-if="print_with_payments">
+                                    <t t-if="o.payment_state != 'invoicing_legacy'">
+                                        <t t-set="payments_vals" t-value="o.sudo()._get_reconciled_info_JSON_values()"/>
+                                        <t t-foreach="payments_vals" t-as="payment_vals">
+                                            <tr>
+                                                <td>
+                                                    <i class="oe_form_field text-right oe_payment_label">Paid on <t t-esc="payment_vals['date']" t-options='{"widget": "date"}'/></i>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-esc="payment_vals['amount']" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                        <t t-if="len(payments_vals) > 0">
+                                            <tr class="border-black">
+                                                <td><strong>Amount Due</strong></td>
+                                                <td class="text-right">
+                                                    <span t-field="o.amount_residual"/>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </t>
+                                </t>
+                            </table>
+                            <t t-if="o.pnt_is_isp">
+                                <div style="font-size:12px;font-style: italic;">
+                                    <strong t-translation="off" t-if="not o.fiscal_position_id.pnt_intra_extra_community">
+                                        Operación con inversión del sujeto pasivo conforme al Art.84 de la Ley del IVA 37/1992
+                                    </strong>
+                                    <strong t-translation="off" t-if="o.fiscal_position_id.pnt_intra_extra_community">
+                                        Operación con inversión de sujeto pasivo conforme al Art. 22 de la Ley de 37/192
+                                    </strong>
+                                </div>
+                                <br/>
+                                <div t-if="o.imagedata">
+                                    <img
+                                        t-att-src="'data:image/png;base64,%s' % to_text(o.imagedata)"
+                                        style="max-height:2cm; max-width:8cm;"/>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+                <p t-if="o.invoice_incoterm_id" name="incoterm">
+                    <strong>Incoterm: </strong><span t-field="o.invoice_incoterm_id.code"/> - <span t-field="o.invoice_incoterm_id.name"/>
+                </p>
+                <div id="qrcode" t-if="o.display_qr_code and o.amount_residual > 0">
+                    <p t-if="qr_code_urls.get(o.id)">
+                        <strong class="text-center">Scan me with your banking app.</strong><br/><br/>
+                        <img class="border border-dark rounded" t-att-src="qr_code_urls[o.id]"/>
+                    </p>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="pnt_report_invoice_grouped">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-set="lang" t-value="o.partner_id.lang"/>
+                <t t-if="o._get_name_invoice_report() == 'account.report_invoice_document'"
+                   t-call="report_pnt.report_invoice_document_grouped_pnt"
+                   t-lang="lang"/>
+            </t>
+        </t>
+    </template>
+
+    <record id="sale.report_invoice_document_inherit_sale" model="ir.ui.view">
+        <field name="active">False</field>
+    </record>
+</odoo>

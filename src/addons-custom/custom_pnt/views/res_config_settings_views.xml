@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pnt_res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.hr</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="70"/>
+        <field name="inherit_id" ref="hr.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <div name="work_organization_setting_container" position="inside">
+                <div class="col-12 col-lg-6 o_setting_box" name="pnt_settings_delay_days_expiration">
+                    <div class="o_setting_right_pane">
+                        <span class="o_form_label">Delay days for due date</span>
+                        <span class="fa fa-lg fa-building-o" title="Values set here are company-specific." role="img"
+                              aria-label="Values set here are company-specific." groups="base.group_multi_company"/>
+                        <div class="row">
+                            <div class="text-muted col-lg-8">
+                                Set default company delay days to manage your expiry dates
+                            </div>
+                        </div>
+                        <div class="text-muted content-group">
+                            <div>
+                                <span>Change state</span>
+                                <field name="pnt_delay_days_due_date_circulation_permit" class="o_light_label"
+                                       context="{'default_company_id': company_id}"/>
+                                <span>days before the circulation permit end date</span>
+                            </div>
+                            <div>
+                                <span>Change state</span>
+                                <field name="pnt_delay_days_due_date_cpa" class="o_light_label"
+                                       context="{'default_company_id': company_id}"/>
+                                <span>days before the CPA end date</span>
+                            </div>
+                            <div>
+                                <span>Change state</span>
+                                <field name="pnt_delay_days_due_date_tachograph" class="o_light_label"
+                                       context="{'default_company_id': company_id}"/>
+                                <span>days before the tachograph end date</span>
+                            </div>
+                            <div>
+                                <span>Change state</span>
+                                <field name="pnt_delay_days_due_date_adr" class="o_light_label"
+                                       context="{'default_company_id': company_id}"/>
+                                <span>days before the ADR end date</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </field>
+    </record>
+    <record id="view_general_configuration" model="ir.ui.view">
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base_setup.res_config_settings_view_form"/>
+        <field name="priority" eval="99"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block" data-string="PntAgreements" id="pnt_agreement" string="Agreements"
+                     data-key="custom_pnt">
+                    <h2>Quotations &amp; Agreements</h2>
+                    <div class="row mt16 o_settings_container" name="pnt_quotation_agreement_setting_container">
+                        <div class="col-12 col-lg-12 o_setting_box" id="pnt_agreement_options">
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Delay days for renewal agreements</span>
+                                <span class="fa fa-lg fa-building-o" title="Values set here are company-specific." role="img"
+                                      aria-label="Values set here are company-specific." groups="base.group_multi_company"/>
+                                <div class="row">
+                                    <div class="text-muted col-lg-8">
+                                        Set default company delay days to manage your expiry dates
+                                    </div>
+                                </div>
+                                <div class="text-muted content-group">
+                                    <div>
+                                        <span>Change state </span>
+                                        <field name="pnt_delay_days_due_agreement_to_renew" class="o_light_label"
+                                               context="{'default_company_id': company_id}" style="width: 10%" />
+                                        <span>days before to renewal agreements</span>
+                                    </div>
+                                </div>
+
+                                <span class="o_form_label">Bulk item for single contract</span>
+                                <span class="fa fa-lg fa-building-o" title="Values set here are company-specific." role="img"
+                                      aria-label="Values set here are company-specific." groups="base.group_multi_company"/>
+                                <div class="row">
+                                    <div class="text-muted col-lg-8">
+                                        Set default Bulk item for single contract
+                                    </div>
+                                </div>
+                                <div class="text-muted content-group">
+                                    <div>
+                                        <field name="pnt_agreement_bulk_product_id" class="o_light_label"
+                                               context="{'default_company_id': company_id}"/>
+                                    </div>
+                                </div>
+                                <span class="o_form_label">Obligations of the parties</span>
+                                <div class="text-muted content-group">
+                                    <div>
+                                        <field name="pnt_obligations_of_the_parties" class="o_light_label"
+                                               context="{'default_company_id': company_id}" style="width:100%"/>
+                                    </div>
+                                </div>
+                                <span class="o_form_label">Rental generation day</span>
+                                <div class="text-muted content-group">
+                                    <div><field name="pnt_rental_generation_day" class="o_light_label"/></div>
+                                </div>
+                                <span class="o_form_label">Default manager form Producer CT agreements</span>
+                                <div class="text-muted content-group">
+                                    <div><field name="pnt_agree_reg_producer_default_manager_id" class="o_light_label"/></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="app_settings_block" data-string="Pntdu" id="pnt_du" string="Single Document"
+                     data-key="custom_pnt">
+                    <h2>Single Document</h2>
+                    <div class="row mt16 o_settings_container" name="pnt_single_document_setting_container">
+                        <div class="col-12 col-lg-6 o_setting_box" id="pnt_du_options">
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">logistics project</span>
+                                <span class="fa fa-lg fa-building-o" title="Values set here are company-specific." role="img"
+                                      aria-label="Values set here are company-specific." groups="base.group_multi_company"/>
+                                <div class="row">
+                                    <div class="text-muted col-lg-8">
+                                        Set the project assigned to logistics tasks
+                                    </div>
+                                </div>
+                                <div class="text-muted content-group">
+                                    <div>
+                                        <field name="pnt_single_document_project_id" class="o_light_label"
+                                               context="{'default_company_id': company_id}"/>
+                                    </div>
+                                </div>
+
+                                <span class="o_form_label">Contrato de portal por defecto</span>
+                                <span class="fa fa-lg fa-building-o" title="Values set here are company-specific." role="img"
+                                      aria-label="Values set here are company-specific." groups="base.group_multi_company"/>
+                                <div class="row">
+                                    <div class="text-muted col-lg-8">
+                                        Set the default Portal Agreement
+                                    </div>
+                                </div>
+                                <div class="text-muted content-group">
+                                    <div>
+                                        <field name="pnt_single_document_default_portal_id" class="o_light_label"
+                                               context="{'default_company_id': company_id}"
+                                        />
+                                    </div>
+                                </div>
+
+<!--                                <span class="o_form_label">Default Portal Partner Pickup</span>-->
+<!--                                <span class="fa fa-lg fa-building-o" title="Values set here are company-specific." role="img"-->
+<!--                                      aria-label="Values set here are company-specific." groups="base.group_multi_company"/>-->
+<!--                                <div class="row">-->
+<!--                                    <div class="text-muted col-lg-8">-->
+<!--                                        Set the default Portal Partner Pickup-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="text-muted content-group">-->
+<!--                                    <div>-->
+<!--                                        <field name="pnt_single_document_portal_partner_pickup_id" class="o_light_label"-->
+<!--                                               context="{'default_company_id': company_id}"/>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+
+                                <span class="o_form_label">Lugar de entrega de portal por defecto</span>
+                                <span class="fa fa-lg fa-building-o" title="Values set here are company-specific." role="img"
+                                      aria-label="Values set here are company-specific." groups="base.group_multi_company"/>
+                                <div class="row">
+                                    <div class="text-muted col-lg-8">
+                                        Set the default Portal Partner Delivery
+                                    </div>
+                                </div>
+                                <div class="text-muted content-group">
+                                    <div>
+                                        <field name="pnt_single_document_portal_partner_delivery_id" class="o_light_label"
+                                               context="{'default_company_id': company_id}"/>
+                                    </div>
+                                </div>
+
+                                <span class="o_form_label">Tipo de pedido de compra para DU</span>
+                                <span class="fa fa-lg fa-building-o" title="Values set here are company-specific." role="img"
+                                      aria-label="Values set here are company-specific." groups="base.group_multi_company"/>
+                                <div class="row">
+                                    <div class="text-muted col-lg-8">
+                                        Set the Waste Purchase Order Type
+                                    </div>
+                                </div>
+                                <div class="text-muted content-group">
+                                    <div>
+                                        <field name="pnt_waste_order_purchase_id" class="o_light_label"
+                                               context="{'default_company_id': company_id}"/>
+                                    </div>
+                                </div>
+
+                                <span class="o_form_label">Tipo de pedido de venta para DU</span>
+                                <span class="fa fa-lg fa-building-o" title="Values set here are company-specific." role="img"
+                                      aria-label="Values set here are company-specific." groups="base.group_multi_company"/>
+                                <div class="row">
+                                    <div class="text-muted col-lg-8">
+                                        Set the Waste Sale Order Type
+                                    </div>
+                                </div>
+                                <div class="text-muted content-group">
+                                    <div>
+                                        <field name="pnt_waste_order_sale_id" class="o_light_label"
+                                               context="{'default_company_id': company_id}"/>
+                                    </div>
+                                </div>
+
+<!--                                <span class="o_form_label">Dirección IP de la báscula</span>-->
+<!--                                <span class="fa fa-lg fa-building-o" title="Values set here are company-specific." role="img"-->
+<!--                                      aria-label="Values set here are company-specific." groups="base.group_multi_company"/>-->
+<!--                                <div class="row">-->
+<!--                                    <div class="text-muted col-lg-8">-->
+<!--                                        Establecer dirección IP de la báscula-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="text-muted content-group">-->
+<!--                                    <div>-->
+<!--                                        <field name="pnt_scale_host" class="o_light_label"-->
+<!--                                               context="{'default_company_id': company_id}"/>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+
+<!--                                <span class="o_form_label">Puerto de la báscula</span>-->
+<!--                                <span class="fa fa-lg fa-building-o" title="Values set here are company-specific." role="img"-->
+<!--                                      aria-label="Values set here are company-specific." groups="base.group_multi_company"/>-->
+<!--                                <div class="row">-->
+<!--                                    <div class="text-muted col-lg-8">-->
+<!--                                        Puerto IP de la báscula-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="text-muted content-group">-->
+<!--                                    <div>-->
+<!--                                        <field name="pnt_scale_port" class="o_light_label"-->
+<!--                                               context="{'default_company_id': company_id}"/>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+
+                                <span class="o_form_label">Contrato báscula metales</span>
+                                <span class="fa fa-lg fa-building-o" title="Values set here are company-specific." role="img"
+                                      aria-label="Values set here are company-specific." groups="base.group_multi_company"/>
+                                <div class="row">
+                                    <div class="text-muted col-lg-8">
+                                        Contrato para la báscula de metales (lista de artículos disponible)
+                                    </div>
+                                </div>
+                                <div class="text-muted content-group">
+                                    <div>
+                                        <field name="pnt_metal_scale_agreement_id" class="o_light_label"
+                                               context="{'default_company_id': company_id}"/>
+                                    </div>
+                                </div>
+                                <span class="o_form_label">Default Metal scales Partner Pickup</span>
+                                <span class="fa fa-lg fa-building-o" title="Values set here are company-specific." role="img"
+                                      aria-label="Values set here are company-specific." groups="base.group_multi_company"/>
+                                <div class="row">
+                                    <div class="text-muted col-lg-8">
+                                        Set the default Metal scales Partner Pickup
+                                    </div>
+                                </div>
+                                <div class="text-muted content-group">
+                                    <div>
+                                        <field name="pnt_single_document_metal_partner_pickup_id" class="o_light_label"
+                                               context="{'default_company_id': company_id}"/>
+                                    </div>
+                                </div>
+                                <span class="o_form_label">Scales for Metal scales</span>
+                                <span class="fa fa-lg fa-building-o" title="Values set here are company-specific." role="img"
+                                      aria-label="Values set here are company-specific." groups="base.group_multi_company"/>
+                                <div class="row">
+                                    <div class="text-muted col-lg-8">
+                                        Set the Scales for Metal scalesp
+                                    </div>
+                                </div>
+                                <div class="text-muted content-group">
+                                    <div>
+                                        <field name="pnt_scales_metal_id" class="o_light_label"
+                                               context="{'default_company_id': company_id}"/>
+                                    </div>
+                                </div>
+                                <span class="o_form_label">SD Issue project</span>
+                                <span class="fa fa-lg fa-building-o" title="Values set here are company-specific." role="img"
+                                      aria-label="Values set here are company-specific." groups="base.group_multi_company"/>
+                                <div class="row">
+                                    <div class="text-muted col-lg-8">
+                                        Set the project assigned to issue tasks
+                                    </div>
+                                </div>
+                                <div class="text-muted content-group">
+                                    <div>
+                                        <field name="pnt_single_document_issue_project_id" class="o_light_label"
+                                               context="{'default_company_id': company_id}"/>
+                                    </div>
+                                </div>
+                                <span class="o_form_label">SL vendor DU</span>
+                                <span class="fa fa-lg fa-building-o" title="Values set here are company-specific." role="img"
+                                      aria-label="Values set here are company-specific." groups="base.group_multi_company"/>
+                                <div class="row">
+                                    <div class="text-muted col-lg-8">
+                                        Set the Stock location vendors DU
+                                    </div>
+                                </div>
+                                <div class="text-muted content-group">
+                                    <div>
+                                        <field name="pnt_stock_location_vendors_du_id" class="o_light_label"
+                                               context="{'default_company_id': company_id}"/>
+                                    </div>
+                                </div>
+                                <span class="o_form_label">Generic QR code counter</span>
+                                <span class="fa fa-lg fa-building-o" title="Values set here are company-specific." role="img"
+                                      aria-label="Values set here are company-specific." groups="base.group_multi_company"/>
+                                <div class="row">
+                                    <div class="text-muted col-lg-8">
+                                        Set the Generic QR code counter
+                                    </div>
+                                </div>
+                                <div class="text-muted content-group">
+                                    <div>
+                                        <field name="du_app_tag_generic_number" class="o_light_label"
+                                               context="{'default_company_id': company_id}"/>
+                                    </div>
+                                </div>
+
+                                <span class="o_form_label">Sanitary Product used as GIII in app</span>
+                                <span class="fa fa-lg fa-building-o" title="Values set here are company-specific." role="img"
+                                      aria-label="Values set here are company-specific." groups="base.group_multi_company"/>
+                                <div class="row">
+                                    <div class="text-muted col-lg-8">
+                                        Set the Sanitary Product not GIII used as GIII in app
+                                    </div>
+                                </div>
+                                <div class="text-muted content-group">
+                                    <div>
+                                        <field name="pnt_app_product_use_g3_ids" class="o_light_label"
+                                               context="{'default_company_id': company_id}">
+                                            <tree>
+                                                <field name="name"/>
+                                            </tree>
+                                        </field>
+                                    </div>
+                                </div>
+
+                                <span class="o_form_label">Partner DI dafault NIMA</span>
+                                <span class="fa fa-lg fa-building-o" title="Values set here are company-specific." role="img"
+                                      aria-label="Values set here are company-specific." groups="base.group_multi_company"/>
+                                <div class="row">
+                                    <div class="text-muted col-lg-8">
+                                        Set Partner for extract de deafult NIMA for DI sequence
+                                    </div>
+                                </div>
+                                <div class="text-muted content-group">
+                                    <div>
+                                        <field name="du_di_partner_default_nima_id" class="o_light_label"
+                                               context="{'default_company_id': company_id}"/>
+                                    </div>
+                                </div>
+                                <span class="o_form_label">Partner Scales for App</span>
+                                <span class="fa fa-lg fa-building-o" title="Values set here are company-specific." role="img"
+                                      aria-label="Values set here are company-specific." groups="base.group_multi_company"/>
+                                <div class="row">
+                                    <div class="text-muted col-lg-8">
+                                        Set default scales for app services
+                                    </div>
+                                </div>
+                                <div class="text-muted content-group">
+                                    <div>
+                                        <field name="pnt_scales_app_id" class="o_light_label"
+                                               context="{'default_company_id': company_id}"/>
+                                    </div>
+                                </div>
+                                <span class="o_form_label">Not dangerous label pictogram</span>
+                                <span class="fa fa-lg fa-building-o" title="Values set here are company-specific." role="img"
+                                      aria-label="Values set here are company-specific." groups="base.group_multi_company"/>
+                                <div class="row">
+                                    <div class="text-muted col-lg-8">
+                                        Set not dangerous label pictogram
+                                    </div>
+                                </div>
+                                <div class="text-muted content-group">
+                                    <div>
+                                        <field name="pnt_notdangerous_image"
+                                               class="o_light_label"
+                                               widget="image"
+                                               context="{'default_company_id': company_id}"/>
+                                    </div>
+                                </div>
+                                <h2>Shipping</h2>
+                                <div class="row mt16 o_settings_container" name="shipping_setting_container">
+                                    <div class="o_setting_left_pane">
+                                        <field name="du_app_email_validation"/>
+                                    </div>
+                                    <div class="o_setting_right_pane">
+                                        <label for="du_app_email_validation"
+                                               string="Email Confirmation app DU"/>
+                                        <span class="fa fa-lg fa-building-o"
+                                              title="Values set here are company-specific."
+                                              groups="base.group_multi_company"/>
+                                        <div class="text-muted">
+                                            Send an automatic confirmation email when app processes DU
+                                        </div>
+                                        <div class="row mt16" >
+                                            <label for="du_app_mail_confirmation_template_id"
+                                                   string="Email Template app DU"
+                                                   class="col-lg-4 o_light_label"/>
+                                            <field name="du_app_mail_confirmation_template_id"
+                                                   class="oe_inline"
+                                                   attrs="{'required': [('du_app_email_validation', '=', True)]}"
+                                                   context="{'default_model': 'pnt.single.document'}"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </xpath>
+        </field>
+    </record>
+</odoo>

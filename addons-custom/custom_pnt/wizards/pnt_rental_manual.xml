@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pnt_rental_manual_warning_view_form" model="ir.ui.view">
+        <field name="name">pnt.rental.manual.warning.view.form</field>
+        <field name="model">pnt.rental.manual</field>
+        <field name="arch" type="xml">
+            <form>
+                <field name="pnt_name" readonly="1" widget="text"/>
+                <footer>
+                    <button string="Continue" type="object" name="button_continue_rental" class="btn-primary btn-danger"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="pnt_rental_manual_delete_view_form" model="ir.ui.view">
+        <field name="name">pnt.rental.manual.delete.view.form</field>
+        <field name="model">pnt.rental.manual</field>
+        <field name="arch" type="xml">
+            <form>
+                <field name="pnt_rental_sale_ids" domain="[('id', '=', 0)]" options="{'no_create': True, 'no_open': True}">
+                    <tree>
+                        <field name="partner_shipping_id"/>
+                        <field name="name"/>
+                        <field name="pnt_rental_manual_description"/>
+                        <field name="date_order"/>
+                        <field name="pnt_rental_manual_date_origin"/>
+                        <field name="state" invisible="1"/>
+                    </tree>
+                </field>
+                <footer>
+                    <button string="Stop Rental" type="object" name="button_stop_rental" class="btn-primary btn-danger"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="pnt_rental_manual_view_form" model="ir.ui.view">
+        <field name="name">pnt.rental.manual.view.form</field>
+        <field name="model">pnt.rental.manual</field>
+        <field name="arch" type="xml">
+            <form>
+                <field name="pnt_domain_pickup_ids" invisible="1"/>
+                <field name="pnt_domain_waste_ids" invisible="1"/>
+                <field name="pnt_rental_line_ids">
+                    <tree create="false" editable="bottom" decoration-bf="pnt_container_id!=False" decoration-muted="pnt_container_id==False">
+                        <field name="pnt_line_agreement_id" invisible="1"/>
+                        <field name="pnt_exist_waste" invisible="1"/>
+                        <field name="pnt_exist_pickup" invisible="1"/>
+                        <field name="pnt_product_id" force_save="1"/>
+                        <field name="pnt_quantity" force_save="1"/>
+                        <field name="pnt_price_unit" force_save="1"/>
+                        <field name="pnt_container_id" required="1" force_save="1"/>
+                        <field name="pnt_date_origin" required="1" force_save="1" attrs="{'readonly': [('pnt_container_id', '=', False)]}"/>
+                        <field name="pnt_waste_id" required="1" force_save="1" domain="[('id', 'in', parent.pnt_domain_waste_ids)]" attrs="{'readonly': ['|',('pnt_container_id', '=', False), ('pnt_exist_waste', '=', True)]}"/>
+                        <field name="pnt_pickup_id" required="1" force_save="1" domain="[('id', 'in', parent.pnt_domain_pickup_ids)]" attrs="{'readonly': ['|',('pnt_container_id', '=', False), ('pnt_exist_pickup', '=', True)]}"/>
+                    </tree>
+                </field>
+                <footer>
+                    <button string="Create Rental" type="object" name="button_create_rental" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="pnt_rental_manual_action" model="ir.actions.act_window">
+        <field name="name">Create Rental</field>
+        <field name="res_model">pnt.rental.manual</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="pnt_rental_manual_act_view_form" model="ir.actions.act_window.view">
+        <field name="sequence">10</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="pnt_rental_manual_view_form"/>
+        <field name="act_window_id" ref="pnt_rental_manual_action"/>
+    </record>
+</odoo>

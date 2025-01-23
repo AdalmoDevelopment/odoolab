@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="pnt_day_1" model="pnt.day.order">
+        <field name="pnt_name">1</field>
+    </record>
+    <record id="pnt_day_2" model="pnt.day.order">
+        <field name="pnt_name">2</field>
+    </record>
+    <record id="pnt_day_3" model="pnt.day.order">
+        <field name="pnt_name">3</field>
+    </record>
+    <record id="pnt_day_4" model="pnt.day.order">
+        <field name="pnt_name">4</field>
+    </record>
+    <record id="pnt_day_5" model="pnt.day.order">
+        <field name="pnt_name">5</field>
+    </record>
+    <record id="pnt_day_6" model="pnt.day.order">
+        <field name="pnt_name">6</field>
+    </record>
+    <record id="pnt_day_7" model="pnt.day.order">
+        <field name="pnt_name">7</field>
+    </record>
+</odoo>

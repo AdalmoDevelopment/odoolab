@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="pnt_product_uom_form_view" model="ir.ui.view">
+        <field name="name">pnt.product.uom.form.view</field>
+        <field name="model">uom.uom</field>
+        <field name="inherit_id" ref="uom.product_uom_form_view" />
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="pnt_use_marpol_m3" />
+            </field>
+        </field>
+    </record>
+</odoo>

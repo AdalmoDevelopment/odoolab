@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pnt_pnt_single_document_form_view" model="ir.ui.view">
+        <field name="name">pnt.pnt.single.document.form.view</field>
+        <field name="model">pnt.single.document</field>
+        <field name="inherit_id" ref="custom_pnt.pnt_single_document_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form//sheet//div[@name='button_box']" position="inside">
+                <button name="action_view_incidences"
+                        class="oe_stat_button"
+                        icon="fa-exclamation-triangle"
+                        type="object"
+                        attrs="{'invisible': [('state', 'not in', ('received')),],}">
+                    <field string="Incidencias" name="incidence_count" widget="statinfo"/>
+                </button>
+            </xpath>
+            <xpath expr="//field[@name='pnt_single_document_line_ids']//tree//field[@name='pnt_partner_delivery_id']" position="after">
+                <field name="pnt_incidence_ids" readonly="1" invisible="1"/>
+                <button name="show_form_incidence" string="Incidence" class="fa fa-warning" type="object" attrs="{'invisible': ['|', ('state', '!=', 'received'), ('pnt_incidence_ids', '!=', [])]}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

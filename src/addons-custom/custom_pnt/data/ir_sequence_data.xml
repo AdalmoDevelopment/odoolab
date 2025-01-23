@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Sequences for pnt.agreement.agreement -->
+        <record id="seq_pnt_agreement_agreement" model="ir.sequence">
+            <field name="name">Agreement</field>
+            <field name="code">pnt.agreement.agreement</field>
+            <field name="prefix">A</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="True"/>
+        </record>
+
+        <!-- Sequences for pnt.single.document -->
+        <record id="seq_pnt_single_document" model="ir.sequence">
+            <field name="name">Single document</field>
+            <field name="code">pnt.single.document</field>
+            <field name="prefix">DU</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="True"/>
+        </record>
+
+        <!-- Sequences for pnt.scales.record -->
+        <record id="seq_pnt_scales_record" model="ir.sequence">
+            <field name="name">Scales record</field>
+            <field name="code">pnt.scales.record</field>
+            <field name="prefix">ASC</field>
+            <field name="padding">10</field>
+            <field name="company_id" eval="True"/>
+        </record>
+
+        <!-- Sequences for pnt.container.movement -->
+        <record id="seq_pnt_container_movement" model="ir.sequence">
+            <field name="name">Container movement</field>
+            <field name="code">pnt.container.movement</field>
+            <field name="prefix">ACM</field>
+            <field name="padding">10</field>
+            <field name="company_id" eval="True"/>
+        </record>
+
+        <record id="seq_pnt_waste_transfer_document" model="ir.sequence">
+            <field name="name">Waste Transfer Document</field>
+            <field name="code">pnt.waste.transfer.document</field>
+            <field name="prefix">WTD</field>
+            <field name="padding">10</field>
+            <field name="company_id" eval="True"/>
+        </record>
+
+        <!-- Sequences for pnt.agreement.lot -->
+        <record id="seq_pnt_agreement_lot" model="ir.sequence">
+            <field name="name">Agreement lot</field>
+            <field name="code">pnt.agreement.lot</field>
+            <field name="prefix">AGL</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="True"/>
+        </record>
+
+        <record id="seq_pnt_agreement_registration" model="ir.sequence">
+            <field name="name">Agreement Registration</field>
+            <field name="code">agreement_registration</field>
+            <field name="padding">7</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>

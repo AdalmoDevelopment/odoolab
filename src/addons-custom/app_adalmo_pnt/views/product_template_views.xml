@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="pnt_product_template_waste_form2_view" model="ir.ui.view">
+        <field name="name">pnt.product.template.waste.form</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="custom_pnt.pnt_product_template_waste_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='pnt_label_name']" position="after">
+                <field name="pnt_print_tag"
+                       invisible="1"
+                />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="pnt_product_template_app_form_view" model="ir.ui.view">
+        <field name="name">pnt.product.template.app.form</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='uom_po_id']" position="after">
+            </xpath>
+            <xpath expr="//page[last()]" position="after">
+                <page name="pnt_app"
+                      string="App Adalmo"
+                >
+                    <group name="pnt_app_adalmo">
+                        <group>
+                            <field name="pnt_waste_app_code"
+                                   readonly="0"
+                                   attrs="{'invisible': ['|',
+                                                         ('pnt_is_container', '=', True),
+                                                         ('pnt_is_sanitary', '=', False)]}"
+                            />
+                            <field name="pnt_waste_app_code_number"
+                                   readonly="0"
+                                   attrs="{'invisible': ['|',
+                                                         ('pnt_is_container', '=', True),
+                                                         ('pnt_is_sanitary', '=', False)]}"
+                            />
+                            <field name="pnt_qr_app_code"
+                                   readonly="0"
+                                   attrs="{'invisible': ['|',
+                                                         ('pnt_is_container', '=', True),
+                                                         ('pnt_is_sanitary', '=', True)]}"
+                            />
+                            <field name="pnt_qr_app_code_number"
+                                   readonly="0"
+                                   attrs="{'invisible': ['|',
+                                                         ('pnt_is_container', '=', True),
+                                                         ('pnt_is_sanitary', '=', True)]}"
+                            />
+                            <field name="pnt_app_container_imege_txt"
+                                   widget="image"
+                                   class="oe_avatar"
+                                   attrs="{'invisible': [('pnt_is_waste', '=', True)]}"
+                            />
+                            <field name="pnt_app_capacity"
+                                   attrs="{'invisible': [('pnt_is_waste', '=', True)]}"
+                            />
+                            <field name="pnt_use_ibsalut"
+                                   readonly="0"
+                                   widget="boolean_toggle"
+                                   attrs="{'invisible': [('pnt_is_waste', '=', True)]}"
+                            />
+                            <field name="pnt_use_sonespases"
+                                   readonly="0"
+                                   widget="boolean_toggle"
+                                   attrs="{'invisible': [('pnt_is_waste', '=', True)]}"
+                            />
+                            <field name="pnt_use_quiron"
+                                   readonly="0"
+                                   widget="boolean_toggle"
+                                   attrs="{'invisible': [('pnt_is_waste', '=', True)]}"
+                            />
+                        </group>
+                        <group>
+                            <field name="pnt_use_tag_ibsalut"
+                                   readonly="0"
+                                   widget="boolean_toggle"
+                                   invisible="1"
+                            />
+                            <field name="pnt_use_tag_sonespases"
+                                   readonly="0"
+                                   widget="boolean_toggle"
+                                   invisible="1"
+                            />
+                            <field name="pnt_use_tag_quiron"
+                                   readonly="0"
+                                   widget="boolean_toggle"
+                                   invisible="1"
+                            />
+                            <field name="pnt_keep_in_du_quiron"
+                                   readonly="0"
+                                   widget="boolean_toggle"
+                                   attrs="{'invisible': [('pnt_is_waste', '=', True)]}"
+                            />
+                            <field name="pnt_apply_gross_weight_ib"
+                                   readonly="0"
+                                   widget="boolean_toggle"
+                                   attrs="{'invisible': [('pnt_is_waste', '=', True)]}"
+                            />
+                            <field name="pnt_apply_gross_weight_se"
+                                   readonly="0"
+                                   widget="boolean_toggle"
+                                   attrs="{'invisible': [('pnt_is_waste', '=', True)]}"
+                            />
+                            <field name="pnt_apply_gross_weight"
+                                   readonly="0"
+                                   widget="boolean_toggle"
+                                   attrs="{'invisible': [('pnt_is_waste', '=', True)]}"
+                            />
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
